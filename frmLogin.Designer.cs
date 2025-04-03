@@ -35,15 +35,15 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             txtUsername = new TextBox();
-            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            iconUsername = new FontAwesome.Sharp.IconPictureBox();
+            iconPassword = new FontAwesome.Sharp.IconPictureBox();
             txtPassword = new TextBox();
             pictureBox2 = new PictureBox();
             btnLogin = new FlourSystem.Classes.Controls.roundedButton();
             pnlBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconUsername).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPassword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -59,21 +59,24 @@
             // 
             // btnDarkMode
             // 
-            btnDarkMode.BackColor = Color.FromArgb(15, 0, 0, 0);
+            btnDarkMode.BackColor = Color.Transparent;
             btnDarkMode.Cursor = Cursors.Hand;
-            btnDarkMode.Dock = DockStyle.Left;
+            btnDarkMode.Dock = DockStyle.Right;
             btnDarkMode.FlatAppearance.BorderSize = 0;
             btnDarkMode.FlatStyle = FlatStyle.Flat;
-            btnDarkMode.ForeColor = Color.FromArgb(232, 237, 223);
+            btnDarkMode.ForeColor = Color.FromArgb(36, 35, 35);
             btnDarkMode.IconChar = FontAwesome.Sharp.IconChar.Moon;
-            btnDarkMode.IconColor = Color.FromArgb(232, 237, 223);
+            btnDarkMode.IconColor = Color.FromArgb(36, 35, 35);
             btnDarkMode.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnDarkMode.IconSize = 16;
-            btnDarkMode.Location = new Point(0, 0);
+            btnDarkMode.Location = new Point(895, 0);
             btnDarkMode.Name = "btnDarkMode";
-            btnDarkMode.Size = new Size(40, 30);
+            btnDarkMode.Size = new Size(45, 30);
             btnDarkMode.TabIndex = 2;
             btnDarkMode.UseVisualStyleBackColor = false;
+            btnDarkMode.Click += btnDarkMode_Click;
+            btnDarkMode.MouseEnter += btnDarkMode_MouseEnter;
+            btnDarkMode.MouseLeave += btnDarkMode_MouseLeave;
             // 
             // btnClose
             // 
@@ -93,10 +96,13 @@
             btnClose.TabIndex = 1;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
+            btnClose.MouseEnter += btnDarkMode_MouseEnter;
+            btnClose.MouseLeave += btnDarkMode_MouseLeave;
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Cairo Black", 33F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(36, 36, 35);
             label1.Location = new Point(630, 116);
@@ -128,33 +134,33 @@
             txtUsername.TabIndex = 3;
             txtUsername.TextAlign = HorizontalAlignment.Right;
             // 
-            // iconPictureBox1
+            // iconUsername
             // 
-            iconPictureBox1.BackColor = Color.FromArgb(207, 219, 213);
-            iconPictureBox1.ForeColor = Color.FromArgb(36, 36, 35);
-            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.UserLarge;
-            iconPictureBox1.IconColor = Color.FromArgb(36, 36, 35);
-            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox1.IconSize = 18;
-            iconPictureBox1.Location = new Point(909, 258);
-            iconPictureBox1.Name = "iconPictureBox1";
-            iconPictureBox1.Size = new Size(18, 18);
-            iconPictureBox1.TabIndex = 4;
-            iconPictureBox1.TabStop = false;
+            iconUsername.BackColor = Color.FromArgb(207, 219, 213);
+            iconUsername.ForeColor = Color.FromArgb(36, 36, 35);
+            iconUsername.IconChar = FontAwesome.Sharp.IconChar.UserLarge;
+            iconUsername.IconColor = Color.FromArgb(36, 36, 35);
+            iconUsername.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconUsername.IconSize = 18;
+            iconUsername.Location = new Point(909, 258);
+            iconUsername.Name = "iconUsername";
+            iconUsername.Size = new Size(18, 18);
+            iconUsername.TabIndex = 4;
+            iconUsername.TabStop = false;
             // 
-            // iconPictureBox2
+            // iconPassword
             // 
-            iconPictureBox2.BackColor = Color.FromArgb(207, 219, 213);
-            iconPictureBox2.ForeColor = Color.FromArgb(36, 36, 35);
-            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            iconPictureBox2.IconColor = Color.FromArgb(36, 36, 35);
-            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox2.IconSize = 18;
-            iconPictureBox2.Location = new Point(909, 318);
-            iconPictureBox2.Name = "iconPictureBox2";
-            iconPictureBox2.Size = new Size(18, 18);
-            iconPictureBox2.TabIndex = 7;
-            iconPictureBox2.TabStop = false;
+            iconPassword.BackColor = Color.FromArgb(207, 219, 213);
+            iconPassword.ForeColor = Color.FromArgb(36, 36, 35);
+            iconPassword.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            iconPassword.IconColor = Color.FromArgb(36, 36, 35);
+            iconPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPassword.IconSize = 18;
+            iconPassword.Location = new Point(909, 318);
+            iconPassword.Name = "iconPassword";
+            iconPassword.Size = new Size(18, 18);
+            iconPassword.TabIndex = 7;
+            iconPassword.TabStop = false;
             // 
             // txtPassword
             // 
@@ -190,7 +196,7 @@
             btnLogin.Cursor = Cursors.Hand;
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            btnLogin.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
             btnLogin.ForeColor = Color.FromArgb(232, 237, 223);
             btnLogin.Location = new Point(644, 391);
             btnLogin.Name = "btnLogin";
@@ -199,6 +205,7 @@
             btnLogin.Text = "تسجيل الدخول";
             btnLogin.TextColor = Color.FromArgb(232, 237, 223);
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // frmLogin
             // 
@@ -209,10 +216,10 @@
             BackgroundImage = Properties.Resources.cpyShapes;
             ClientSize = new Size(1000, 600);
             Controls.Add(btnLogin);
-            Controls.Add(iconPictureBox2);
+            Controls.Add(iconPassword);
             Controls.Add(txtPassword);
             Controls.Add(pictureBox2);
-            Controls.Add(iconPictureBox1);
+            Controls.Add(iconUsername);
             Controls.Add(txtUsername);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
@@ -228,8 +235,8 @@
             Load += frmLogin_Load;
             pnlBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconUsername).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPassword).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -243,8 +250,8 @@
         private Label label1;
         private PictureBox pictureBox1;
         private TextBox txtUsername;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private FontAwesome.Sharp.IconPictureBox iconUsername;
+        private FontAwesome.Sharp.IconPictureBox iconPassword;
         private TextBox txtPassword;
         private PictureBox pictureBox2;
         private Classes.Controls.roundedButton btnLogin;
