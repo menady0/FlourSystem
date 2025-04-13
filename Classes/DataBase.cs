@@ -3,7 +3,7 @@
 public class DataBase
 {
     static string mySQLConnection = "server=127.0.0.1 ; user=root; database=floursystem; password=";
-    public static void login(string username, string password)
+    public static bool login(string username, string password)
     {
         string query = "SELECT * FROM owner WHERE Username = @username AND Password = @password";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
@@ -17,23 +17,17 @@ public class DataBase
             conn.Open();
             reader = cmd.ExecuteReader();
             if (reader.Read())
-            {
-                MessageBox.Show("Login Successful");
-            }
-            else
-            {
-                MessageBox.Show("Invalid Username or Password");
-            }
+                return true;
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Connection Failed");
             MessageBox.Show(ex.Message);
         }
         finally
         {
             conn.Close();
         }
+        return false;
     }
 
 

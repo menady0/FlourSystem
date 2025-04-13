@@ -1,3 +1,5 @@
+using CuoreUI.Controls;
+using FlourSystem.Forms;
 using FlourSystem.Properties;
 using FontAwesome.Sharp;
 
@@ -27,7 +29,20 @@ namespace FlourSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            DataBase.login(txtUsername.Text, txtPassword.Text);
+            bool isValid = DataBase.login(txtUsername.Content, txtPassword.Text);
+            if(isValid)
+            {
+                this.Hide();
+                frmDashboard dashboard = new frmDashboard();
+                dashboard.FormClosed += (s, args) => this.Close();
+                dashboard.Show();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Username or Password");
+                txtUsername.Content = "";
+                txtPassword.Text = "";
+            }
         }
 
         private void btnDarkMode_Click(object sender, EventArgs e)

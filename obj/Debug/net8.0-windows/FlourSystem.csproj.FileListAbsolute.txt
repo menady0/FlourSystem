@@ -36,3 +36,5 @@ C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\runtimes\win-x64\na
 C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\FlourSystem.dll.config
+C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\CuoreUI.dll
+C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.frmDashboard.resources

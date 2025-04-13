@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "fmyCHuPPcuU=",
+  "dgSpecHash": "6lSnW0ev6Oo=",
   "success": true,
   "projectFilePath": "C:\\Users\\Mena\\Documents\\FlourSystem\\FlourSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mena\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
+    "C:\\Users\\Mena\\.nuget\\packages\\cuoreui.winforms\\2025.4.5\\cuoreui.winforms.2025.4.5.nupkg.sha512",
     "C:\\Users\\Mena\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512",
     "C:\\Users\\Mena\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",
     "C:\\Users\\Mena\\.nuget\\packages\\k4os.compression.lz4\\1.3.8\\k4os.compression.lz4.1.3.8.nupkg.sha512",

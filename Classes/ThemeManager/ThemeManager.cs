@@ -1,12 +1,13 @@
 ﻿using FontAwesome.Sharp;
 using FlourSystem.Properties;
+using CuoreUI.Controls;
 
 public static class ThemeManager
 {
     public static bool IsDarkMode
     {
-        get { return FlourSystem.Properties.Settings.Default.DarkMode; }
-        set { FlourSystem.Properties.Settings.Default.DarkMode = value; }
+        get { return Settings.Default.DarkMode; }
+        set { Settings.Default.DarkMode = value; }
     }
 
     public static void ToggleTheme()
@@ -65,6 +66,11 @@ public static class ThemeManager
         else if (control is TextBox)
         {
             control.BackColor = isDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightTextbox;
+        }
+        else if ( control is cuiTextBox2 cuiTextBox)
+        {
+            cuiTextBox.BackgroundColor = isDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightTextbox;
+            cuiTextBox.FocusBackgroundColor = cuiTextBox.BackgroundColor;
         }
         else if (control is IconPictureBox)
         {

@@ -15,6 +15,15 @@
           }
         }
       },
+      "CuoreUI.Winforms/2025.4.5": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/CuoreUI.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/CuoreUI.dll": {}
+        }
+      },
       "FontAwesome.Sharp/6.6.0": {
         "type": "package",
         "compile": {
@@ -509,6 +518,20 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
+      ]
+    },
+    "CuoreUI.Winforms/2025.4.5": {
+      "sha512": "eEeT3R41Qg8l0LXVlP1O+krN+svGWO4wmjRTYDVpb+8xtZwnKzf0LwxkcBff5yOzMWXc0GAN46HzN54bQDHCFA==",
+      "type": "package",
+      "path": "cuoreui.winforms/2025.4.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cuoreui.winforms.2025.4.5.nupkg.sha512",
+        "cuoreui.winforms.nuspec",
+        "icon.png",
+        "lib/net8.0/CuoreUI.dll",
+        "lib/netstandard2.0/CuoreUI.dll"
       ]
     },
     "FontAwesome.Sharp/6.6.0": {
@@ -1633,6 +1656,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "CuoreUI.Winforms >= 2025.4.5",
       "FontAwesome.Sharp >= 6.6.0",
       "MySql.Data >= 9.2.0"
     ]
@@ -1687,6 +1711,10 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
+          "CuoreUI.Winforms": {
+            "target": "Package",
+            "version": "[2025.4.5, )"
+          },
           "FontAwesome.Sharp": {
             "target": "Package",
             "version": "[6.6.0, )"

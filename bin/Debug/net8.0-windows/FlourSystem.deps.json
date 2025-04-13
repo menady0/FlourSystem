@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "FlourSystem/1.0.0": {
         "dependencies": {
+          "CuoreUI.Winforms": "2025.4.5",
           "FontAwesome.Sharp": "6.6.0",
           "MySql.Data": "9.2.0"
         },
@@ -20,6 +21,14 @@
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.3.1.17862"
+          }
+        }
+      },
+      "CuoreUI.Winforms/2025.4.5": {
+        "runtime": {
+          "lib/net8.0/CuoreUI.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -249,6 +258,13 @@
       "sha512": "sha512-buwoISwecYke3CmgG1AQSg+sNZjJeIb93vTAtJiHZX35hP/teYMxsfg0NDXGUKjGx6BKBTNKc77O2M3vKvlXZQ==",
       "path": "bouncycastle.cryptography/2.3.1",
       "hashPath": "bouncycastle.cryptography.2.3.1.nupkg.sha512"
+    },
+    "CuoreUI.Winforms/2025.4.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eEeT3R41Qg8l0LXVlP1O+krN+svGWO4wmjRTYDVpb+8xtZwnKzf0LwxkcBff5yOzMWXc0GAN46HzN54bQDHCFA==",
+      "path": "cuoreui.winforms/2025.4.5",
+      "hashPath": "cuoreui.winforms.2025.4.5.nupkg.sha512"
     },
     "FontAwesome.Sharp/6.6.0": {
       "type": "package",
