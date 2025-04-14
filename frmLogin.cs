@@ -1,4 +1,4 @@
-using CuoreUI.Controls;
+﻿using CuoreUI.Controls;
 using FlourSystem.Forms;
 using FlourSystem.Properties;
 using FontAwesome.Sharp;
@@ -29,8 +29,10 @@ namespace FlourSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            bool isValid = DataBase.login(txtUsername.Content, txtPassword.Text);
-            if(isValid)
+            // --------- Remeber To Change the condition & UnComment this ↓ ---------
+            //bool isValid = DataBase.login(txtUsername.Content, txtPassword.Text);
+            bool isValid = true;
+            if (isValid)
             {
                 this.Hide();
                 frmDashboard dashboard = new frmDashboard();
