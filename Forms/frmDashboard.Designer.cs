@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
+            lblTitle = new Label();
             btnSearch = new FontAwesome.Sharp.IconButton();
             btnRefresh = new FontAwesome.Sharp.IconButton();
             btnAdd = new FontAwesome.Sharp.IconButton();
@@ -41,10 +42,27 @@
             txtSearch = new CuoreUI.Controls.cuiTextBox2();
             cuiControlDrag1 = new CuoreUI.cuiControlDrag(components);
             pnlMenu = new Panel();
-            cuiBorder1 = new CuoreUI.Controls.cuiBorder();
+            btnSettings = new FontAwesome.Sharp.IconPictureBox();
+            lblSettings = new Label();
+            btnInfo = new FontAwesome.Sharp.IconPictureBox();
+            lblInfo = new Label();
+            btnHome = new FontAwesome.Sharp.IconPictureBox();
+            btnSta = new FontAwesome.Sharp.IconPictureBox();
+            lblStatistics = new Label();
+            lblHome = new Label();
+            circle = new CuoreUI.Controls.Shapes.cuiEllipse();
+            btnMode = new FontAwesome.Sharp.IconButton();
+            pnlContainer = new CuoreUI.Controls.cuiBorder();
             searchTimer = new System.Windows.Forms.Timer(components);
+            menuTranstion = new System.Windows.Forms.Timer(components);
+            typingTimer = new System.Windows.Forms.Timer(components);
             pnlNavBar.SuspendLayout();
             pnlSearch.SuspendLayout();
+            pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnSettings).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnInfo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnHome).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnSta).BeginInit();
             SuspendLayout();
             // 
             // frmBorder
@@ -57,6 +75,7 @@
             // pnlNavBar
             // 
             pnlNavBar.BackColor = Color.Transparent;
+            pnlNavBar.Controls.Add(lblTitle);
             pnlNavBar.Controls.Add(btnSearch);
             pnlNavBar.Controls.Add(btnRefresh);
             pnlNavBar.Controls.Add(btnAdd);
@@ -69,9 +88,19 @@
             pnlNavBar.Size = new Size(1200, 83);
             pnlNavBar.TabIndex = 0;
             // 
+            // lblTitle
+            // 
+            lblTitle.Font = new Font("Cairo", 28F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(751, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(200, 85);
+            lblTitle.TabIndex = 9;
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.Transparent;
+            btnSearch.BackColor = Color.FromArgb(18, 18, 18);
             btnSearch.Cursor = Cursors.Hand;
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.FlatStyle = FlatStyle.Flat;
@@ -82,7 +111,7 @@
             btnSearch.IconSize = 20;
             btnSearch.Location = new Point(82, 33);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(25, 25);
+            btnSearch.Size = new Size(30, 30);
             btnSearch.TabIndex = 7;
             btnSearch.TabStop = false;
             btnSearch.UseVisualStyleBackColor = false;
@@ -90,7 +119,7 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.BackColor = Color.Transparent;
+            btnRefresh.BackColor = Color.FromArgb(18, 18, 18);
             btnRefresh.Cursor = Cursors.Hand;
             btnRefresh.FlatAppearance.BorderSize = 0;
             btnRefresh.FlatStyle = FlatStyle.Flat;
@@ -101,14 +130,14 @@
             btnRefresh.IconSize = 20;
             btnRefresh.Location = new Point(51, 33);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(25, 25);
+            btnRefresh.Size = new Size(30, 30);
             btnRefresh.TabIndex = 3;
             btnRefresh.TabStop = false;
             btnRefresh.UseVisualStyleBackColor = false;
             // 
             // btnAdd
             // 
-            btnAdd.BackColor = Color.Transparent;
+            btnAdd.BackColor = Color.FromArgb(18, 18, 18);
             btnAdd.Cursor = Cursors.Hand;
             btnAdd.FlatAppearance.BorderSize = 0;
             btnAdd.FlatStyle = FlatStyle.Flat;
@@ -119,7 +148,7 @@
             btnAdd.IconSize = 20;
             btnAdd.Location = new Point(20, 33);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(25, 25);
+            btnAdd.Size = new Size(30, 30);
             btnAdd.TabIndex = 2;
             btnAdd.TabStop = false;
             btnAdd.UseVisualStyleBackColor = false;
@@ -134,10 +163,10 @@
             btnMinimize.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
             btnMinimize.IconColor = Color.White;
             btnMinimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnMinimize.IconSize = 25;
-            btnMinimize.Location = new Point(1113, 13);
+            btnMinimize.IconSize = 16;
+            btnMinimize.Location = new Point(1120, 13);
             btnMinimize.Name = "btnMinimize";
-            btnMinimize.Size = new Size(25, 25);
+            btnMinimize.Size = new Size(30, 30);
             btnMinimize.TabIndex = 1;
             btnMinimize.TabStop = false;
             btnMinimize.UseVisualStyleBackColor = false;
@@ -157,7 +186,7 @@
             btnClose.IconSize = 25;
             btnClose.Location = new Point(1160, 13);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(25, 25);
+            btnClose.Size = new Size(30, 30);
             btnClose.TabIndex = 0;
             btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = false;
@@ -231,29 +260,190 @@
             // pnlMenu
             // 
             pnlMenu.BackColor = Color.Transparent;
+            pnlMenu.Controls.Add(btnSettings);
+            pnlMenu.Controls.Add(lblSettings);
+            pnlMenu.Controls.Add(btnInfo);
+            pnlMenu.Controls.Add(lblInfo);
+            pnlMenu.Controls.Add(btnHome);
+            pnlMenu.Controls.Add(btnSta);
+            pnlMenu.Controls.Add(lblStatistics);
+            pnlMenu.Controls.Add(lblHome);
+            pnlMenu.Controls.Add(circle);
+            pnlMenu.Controls.Add(btnMode);
             pnlMenu.Dock = DockStyle.Right;
             pnlMenu.Location = new Point(1100, 83);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.Size = new Size(100, 592);
             pnlMenu.TabIndex = 1;
             // 
-            // cuiBorder1
+            // btnSettings
             // 
-            cuiBorder1.BackColor = Color.Transparent;
-            cuiBorder1.ForeColor = Color.Transparent;
-            cuiBorder1.Location = new Point(10, 85);
-            cuiBorder1.Name = "cuiBorder1";
-            cuiBorder1.OutlineThickness = 1F;
-            cuiBorder1.PanelColor = Color.FromArgb(232, 237, 223);
-            cuiBorder1.PanelOutlineColor = Color.Transparent;
-            cuiBorder1.Rounding = new Padding(25);
-            cuiBorder1.Size = new Size(1080, 580);
-            cuiBorder1.TabIndex = 2;
+            btnSettings.BackColor = Color.Transparent;
+            btnSettings.Cursor = Cursors.Hand;
+            btnSettings.IconChar = FontAwesome.Sharp.IconChar.Wrench;
+            btnSettings.IconColor = Color.White;
+            btnSettings.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnSettings.IconSize = 25;
+            btnSettings.Location = new Point(38, 391);
+            btnSettings.Name = "btnSettings";
+            btnSettings.Size = new Size(25, 25);
+            btnSettings.SizeMode = PictureBoxSizeMode.CenterImage;
+            btnSettings.TabIndex = 21;
+            btnSettings.TabStop = false;
+            btnSettings.Click += btnSettings_Click;
+            // 
+            // lblSettings
+            // 
+            lblSettings.AutoSize = true;
+            lblSettings.Font = new Font("Cairo", 8F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblSettings.ForeColor = Color.White;
+            lblSettings.Location = new Point(32, 431);
+            lblSettings.Name = "lblSettings";
+            lblSettings.Size = new Size(36, 15);
+            lblSettings.TabIndex = 20;
+            lblSettings.Text = "الإعدادات";
+            lblSettings.Visible = false;
+            // 
+            // btnInfo
+            // 
+            btnInfo.BackColor = Color.Transparent;
+            btnInfo.Cursor = Cursors.Hand;
+            btnInfo.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
+            btnInfo.IconColor = Color.White;
+            btnInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnInfo.IconSize = 25;
+            btnInfo.Location = new Point(38, 308);
+            btnInfo.Name = "btnInfo";
+            btnInfo.Size = new Size(25, 25);
+            btnInfo.SizeMode = PictureBoxSizeMode.CenterImage;
+            btnInfo.TabIndex = 19;
+            btnInfo.TabStop = false;
+            btnInfo.Click += btnInfo_Click;
+            // 
+            // lblInfo
+            // 
+            lblInfo.AutoSize = true;
+            lblInfo.Font = new Font("Cairo", 8F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblInfo.ForeColor = Color.White;
+            lblInfo.Location = new Point(27, 348);
+            lblInfo.Name = "lblInfo";
+            lblInfo.Size = new Size(46, 15);
+            lblInfo.TabIndex = 18;
+            lblInfo.Text = "فريق العمل";
+            lblInfo.Visible = false;
+            // 
+            // btnHome
+            // 
+            btnHome.BackColor = Color.White;
+            btnHome.Cursor = Cursors.Hand;
+            btnHome.ForeColor = Color.FromArgb(18, 18, 18);
+            btnHome.IconChar = FontAwesome.Sharp.IconChar.House;
+            btnHome.IconColor = Color.FromArgb(18, 18, 18);
+            btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnHome.IconSize = 25;
+            btnHome.Location = new Point(38, 140);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(25, 25);
+            btnHome.SizeMode = PictureBoxSizeMode.CenterImage;
+            btnHome.TabIndex = 17;
+            btnHome.TabStop = false;
+            btnHome.Click += btnHome_Click;
+            // 
+            // btnSta
+            // 
+            btnSta.BackColor = Color.Transparent;
+            btnSta.Cursor = Cursors.Hand;
+            btnSta.IconChar = FontAwesome.Sharp.IconChar.ChartSimple;
+            btnSta.IconColor = Color.White;
+            btnSta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSta.IconSize = 25;
+            btnSta.Location = new Point(38, 225);
+            btnSta.Name = "btnSta";
+            btnSta.Size = new Size(25, 25);
+            btnSta.SizeMode = PictureBoxSizeMode.CenterImage;
+            btnSta.TabIndex = 16;
+            btnSta.TabStop = false;
+            btnSta.Click += btnSta_Click;
+            // 
+            // lblStatistics
+            // 
+            lblStatistics.AutoSize = true;
+            lblStatistics.Font = new Font("Cairo", 8F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblStatistics.ForeColor = Color.White;
+            lblStatistics.Location = new Point(29, 265);
+            lblStatistics.Name = "lblStatistics";
+            lblStatistics.Size = new Size(42, 15);
+            lblStatistics.TabIndex = 13;
+            lblStatistics.Text = "استعلامات";
+            lblStatistics.Visible = false;
+            // 
+            // lblHome
+            // 
+            lblHome.AutoSize = true;
+            lblHome.Font = new Font("Cairo", 8F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblHome.ForeColor = Color.White;
+            lblHome.Location = new Point(33, 180);
+            lblHome.Name = "lblHome";
+            lblHome.Size = new Size(34, 15);
+            lblHome.TabIndex = 10;
+            lblHome.Text = "الرئيسية";
+            // 
+            // circle
+            // 
+            circle.Location = new Point(25, 128);
+            circle.Margin = new Padding(2, 4, 2, 4);
+            circle.Name = "circle";
+            circle.OutlineColor = Color.Empty;
+            circle.OutlineThickness = 1;
+            circle.PanelColor = Color.White;
+            circle.Size = new Size(50, 49);
+            circle.TabIndex = 12;
+            // 
+            // btnMode
+            // 
+            btnMode.BackColor = Color.FromArgb(18, 18, 18);
+            btnMode.Cursor = Cursors.Hand;
+            btnMode.FlatAppearance.BorderSize = 0;
+            btnMode.FlatStyle = FlatStyle.Flat;
+            btnMode.ForeColor = Color.Transparent;
+            btnMode.IconChar = FontAwesome.Sharp.IconChar.Moon;
+            btnMode.IconColor = Color.White;
+            btnMode.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnMode.IconSize = 30;
+            btnMode.Location = new Point(25, 530);
+            btnMode.Name = "btnMode";
+            btnMode.Size = new Size(50, 50);
+            btnMode.TabIndex = 10;
+            btnMode.TabStop = false;
+            btnMode.UseVisualStyleBackColor = false;
+            // 
+            // pnlContainer
+            // 
+            pnlContainer.BackColor = Color.Transparent;
+            pnlContainer.ForeColor = Color.Transparent;
+            pnlContainer.Location = new Point(10, 85);
+            pnlContainer.Name = "pnlContainer";
+            pnlContainer.OutlineThickness = 1F;
+            pnlContainer.PanelColor = Color.FromArgb(232, 237, 223);
+            pnlContainer.PanelOutlineColor = Color.Transparent;
+            pnlContainer.Rounding = new Padding(25);
+            pnlContainer.Size = new Size(1084, 580);
+            pnlContainer.TabIndex = 2;
             // 
             // searchTimer
             // 
             searchTimer.Interval = 10;
             searchTimer.Tick += searchTimer_Tick;
+            // 
+            // menuTranstion
+            // 
+            menuTranstion.Interval = 10;
+            menuTranstion.Tick += menuTranstion_Tick;
+            // 
+            // typingTimer
+            // 
+            typingTimer.Interval = 75;
+            typingTimer.Tick += typingTimer_Tick;
             // 
             // frmDashboard
             // 
@@ -261,7 +451,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(1200, 675);
-            Controls.Add(cuiBorder1);
+            Controls.Add(pnlContainer);
             Controls.Add(pnlMenu);
             Controls.Add(pnlNavBar);
             Font = new Font("Cairo", 10F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
@@ -273,6 +463,12 @@
             Load += frmDashboard_Load;
             pnlNavBar.ResumeLayout(false);
             pnlSearch.ResumeLayout(false);
+            pnlMenu.ResumeLayout(false);
+            pnlMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnSettings).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnInfo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnHome).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnSta).EndInit();
             ResumeLayout(false);
         }
 
@@ -285,12 +481,25 @@
         private CuoreUI.cuiControlDrag cuiControlDrag1;
         private Panel pnlMenu;
         private FontAwesome.Sharp.IconButton btnAdd;
-        private CuoreUI.Controls.cuiBorder cuiBorder1;
+        private CuoreUI.Controls.cuiBorder pnlContainer;
         private FontAwesome.Sharp.IconButton btnRefresh;
         private CuoreUI.Controls.cuiTextBox2 txtSearch;
         private FontAwesome.Sharp.IconButton btnSearch;
         private System.Windows.Forms.Timer searchTimer;
         private Panel pnlSearch;
         private FontAwesome.Sharp.IconButton btnSrchClear;
+        private Label lblTitle;
+        private FontAwesome.Sharp.IconButton btnMode;
+        private CuoreUI.Controls.Shapes.cuiEllipse circle;
+        private Label lblHome;
+        private Label lblStatistics;
+        private FontAwesome.Sharp.IconPictureBox btnSta;
+        private FontAwesome.Sharp.IconPictureBox btnHome;
+        private FontAwesome.Sharp.IconPictureBox btnInfo;
+        private Label lblInfo;
+        private FontAwesome.Sharp.IconPictureBox btnSettings;
+        private Label lblSettings;
+        private System.Windows.Forms.Timer menuTranstion;
+        private System.Windows.Forms.Timer typingTimer;
     }
 }

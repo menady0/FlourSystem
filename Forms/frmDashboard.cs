@@ -1,29 +1,22 @@
 ﻿using FontAwesome.Sharp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FlourSystem.Forms
 {
     public partial class frmDashboard : Form
     {
         IconButton[] btns;
-
+        IconPictureBox[] menu;
         public frmDashboard()
         {
             InitializeComponent();
+            btns = new IconButton[] { btnSearch, btnAdd, btnRefresh, btnSrchClear };
+            menu = new IconPictureBox[] { btnHome, btnSta, btnInfo, btnSettings };
         }
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-            btns = new IconButton[] { btnSearch, btnAdd, btnRefresh, btnSrchClear };
             AttachHoverEffect(btns);
             CloseOpenedSearch(this);
+            btnHome_Click(sender, e);
             //ThemeManager.ApplyTheme();
         }
         private void AttachHoverEffect(IconButton[] buttons)
@@ -141,6 +134,124 @@ namespace FlourSystem.Forms
         private void btnSrchClear_Click(object sender, EventArgs e)
         {
             txtSearch.Content = string.Empty;
+        }
+
+
+
+        private void LoadUserControl(UserControl uc)
+        {
+            if (pnlContainer.Controls.Count > 0)
+            {
+                UserControl? currentControl = pnlContainer.Controls[0] as UserControl;
+                if (currentControl != null && currentControl.GetType() == uc.GetType())
+                    return;
+            }
+            pnlContainer.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            pnlContainer.Controls.Add(uc);
+        }
+        
+        int targetY;
+        int transtionStep = 10;
+        IconPictureBox targetbtn;
+        Label? targetLabel;
+        void selectedbtn(IconPictureBox selectedButton)
+        {
+            foreach (var btn in menu)
+            {
+                if (btn == selectedButton)
+                {
+                    targetbtn = btn;
+                    targetY = btn.Location.Y + (btn.Height / 2) - (circle.Height / 2);
+                    menuTranstion.Start();
+                    targetLabel = GetAssociatedLabel(btn);
+                }
+                else
+                {
+                    Label? associatedLabel = GetAssociatedLabel(btn);
+                    if (associatedLabel != null)
+                    {
+                        associatedLabel.Visible = false;
+                    }
+                    btn.BackColor = Color.FromArgb(18, 18, 18);
+                    btn.IconColor = Color.White;
+                }
+            }
+        }
+        private void menuTranstion_Tick(object sender, EventArgs e)
+        {
+            if (circle.Location.Y < targetY)
+            {
+                circle.Location = new Point(circle.Location.X, Math.Min(circle.Location.Y + transtionStep, targetY));
+            }
+            else if (circle.Location.Y > targetY)
+            {
+                circle.Location = new Point(circle.Location.X, Math.Max(circle.Location.Y - transtionStep, targetY));
+            }
+            else
+            {
+                menuTranstion.Stop();
+                targetbtn.BackColor = Color.White;
+                targetbtn.IconColor = Color.FromArgb(18, 18, 18);
+                targetLabel.Visible = true;
+            }
+        }
+        private Label? GetAssociatedLabel(IconPictureBox button)
+        {
+            if (button == btnHome) return lblHome;
+            if (button == btnSta) return lblStatistics;
+            if (button == btnInfo) return lblInfo;
+            if (button == btnSettings) return lblSettings;
+            return null;
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            LoadTitle(0);
+            selectedbtn(btnHome);
+        }
+
+        private void btnSta_Click(object sender, EventArgs e)
+        {
+            LoadTitle(1);
+            selectedbtn(btnSta);
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            LoadTitle(2);
+            selectedbtn(btnInfo);
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            LoadTitle(3);
+            selectedbtn(btnSettings);
+        }
+        string[] menuNames = new string[] {
+            "الرئيسية",
+            "الاستعلامات",
+            "فريق العمل",
+            "الإعدادات"
+        };
+        int counter;
+        int index;
+        void LoadTitle(int i)
+        {
+            lblTitle.Text = "";
+            counter = 0;
+            index = i;
+            typingTimer.Start();
+        }
+        private void typingTimer_Tick(object sender, EventArgs e)
+        {
+            if (counter < menuNames[index].Length)
+            {
+                lblTitle.Text += menuNames[index][counter];
+                counter++;
+            }
+            else
+                typingTimer.Stop();
         }
     }
 }
