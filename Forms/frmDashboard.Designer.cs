@@ -31,6 +31,9 @@
             components = new System.ComponentModel.Container();
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
+            pnlAddDropDown = new CuoreUI.Controls.cuiBorder();
+            btnAddQuota = new CuoreUI.Controls.cuiButton();
+            btnAddCustomer = new CuoreUI.Controls.cuiButton();
             lblTitle = new Label();
             btnSearch = new FontAwesome.Sharp.IconButton();
             btnRefresh = new FontAwesome.Sharp.IconButton();
@@ -56,7 +59,9 @@
             searchTimer = new System.Windows.Forms.Timer(components);
             menuTranstion = new System.Windows.Forms.Timer(components);
             typingTimer = new System.Windows.Forms.Timer(components);
+            addDropDownTimer = new System.Windows.Forms.Timer(components);
             pnlNavBar.SuspendLayout();
+            pnlAddDropDown.SuspendLayout();
             pnlSearch.SuspendLayout();
             pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSettings).BeginInit();
@@ -75,6 +80,7 @@
             // pnlNavBar
             // 
             pnlNavBar.BackColor = Color.Transparent;
+            pnlNavBar.Controls.Add(pnlAddDropDown);
             pnlNavBar.Controls.Add(lblTitle);
             pnlNavBar.Controls.Add(btnSearch);
             pnlNavBar.Controls.Add(btnRefresh);
@@ -87,6 +93,101 @@
             pnlNavBar.Name = "pnlNavBar";
             pnlNavBar.Size = new Size(1200, 83);
             pnlNavBar.TabIndex = 0;
+            // 
+            // pnlAddDropDown
+            // 
+            pnlAddDropDown.BackColor = Color.Transparent;
+            pnlAddDropDown.BackgroundImage = Properties.Resources.AddDropDownBackGround;
+            pnlAddDropDown.Controls.Add(btnAddQuota);
+            pnlAddDropDown.Controls.Add(btnAddCustomer);
+            pnlAddDropDown.Location = new Point(25, 65);
+            pnlAddDropDown.MaximumSize = new Size(150, 80);
+            pnlAddDropDown.MinimumSize = new Size(150, 0);
+            pnlAddDropDown.Name = "pnlAddDropDown";
+            pnlAddDropDown.OutlineThickness = 1F;
+            pnlAddDropDown.PanelColor = Color.FromArgb(221, 221, 221);
+            pnlAddDropDown.PanelOutlineColor = Color.FromArgb(221, 221, 221);
+            pnlAddDropDown.Rounding = new Padding(10);
+            pnlAddDropDown.Size = new Size(150, 0);
+            pnlAddDropDown.TabIndex = 11;
+            // 
+            // btnAddQuota
+            // 
+            btnAddQuota.BackColor = Color.Transparent;
+            btnAddQuota.CheckButton = false;
+            btnAddQuota.Checked = false;
+            btnAddQuota.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnAddQuota.CheckedForeColor = Color.White;
+            btnAddQuota.CheckedImageTint = Color.White;
+            btnAddQuota.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnAddQuota.Content = "إضافة حصة";
+            btnAddQuota.Cursor = Cursors.Hand;
+            btnAddQuota.DialogResult = DialogResult.None;
+            btnAddQuota.Dock = DockStyle.Top;
+            btnAddQuota.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnAddQuota.ForeColor = Color.Black;
+            btnAddQuota.HoverBackground = Color.LightGray;
+            btnAddQuota.HoveredImageTint = Color.White;
+            btnAddQuota.HoverForeColor = Color.Black;
+            btnAddQuota.HoverOutline = Color.Empty;
+            btnAddQuota.Image = null;
+            btnAddQuota.ImageAutoCenter = true;
+            btnAddQuota.ImageExpand = new Point(0, 0);
+            btnAddQuota.ImageOffset = new Point(0, 0);
+            btnAddQuota.Location = new Point(0, 40);
+            btnAddQuota.Name = "btnAddQuota";
+            btnAddQuota.NormalBackground = Color.Transparent;
+            btnAddQuota.NormalForeColor = Color.Black;
+            btnAddQuota.NormalImageTint = Color.White;
+            btnAddQuota.NormalOutline = Color.Empty;
+            btnAddQuota.OutlineThickness = 0F;
+            btnAddQuota.PressedBackground = Color.FromArgb(71, 137, 75);
+            btnAddQuota.PressedForeColor = Color.White;
+            btnAddQuota.PressedImageTint = Color.White;
+            btnAddQuota.PressedOutline = Color.Empty;
+            btnAddQuota.Rounding = new Padding(0, 0, 10, 10);
+            btnAddQuota.Size = new Size(150, 40);
+            btnAddQuota.TabIndex = 1;
+            btnAddQuota.TextOffset = new Point(0, 0);
+            // 
+            // btnAddCustomer
+            // 
+            btnAddCustomer.BackColor = Color.Transparent;
+            btnAddCustomer.CheckButton = false;
+            btnAddCustomer.Checked = false;
+            btnAddCustomer.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnAddCustomer.CheckedForeColor = Color.White;
+            btnAddCustomer.CheckedImageTint = Color.White;
+            btnAddCustomer.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnAddCustomer.Content = "إضافة عميل";
+            btnAddCustomer.Cursor = Cursors.Hand;
+            btnAddCustomer.DialogResult = DialogResult.None;
+            btnAddCustomer.Dock = DockStyle.Top;
+            btnAddCustomer.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnAddCustomer.ForeColor = Color.Black;
+            btnAddCustomer.HoverBackground = Color.LightGray;
+            btnAddCustomer.HoveredImageTint = Color.White;
+            btnAddCustomer.HoverForeColor = Color.Black;
+            btnAddCustomer.HoverOutline = Color.Empty;
+            btnAddCustomer.Image = null;
+            btnAddCustomer.ImageAutoCenter = true;
+            btnAddCustomer.ImageExpand = new Point(0, 0);
+            btnAddCustomer.ImageOffset = new Point(0, 0);
+            btnAddCustomer.Location = new Point(0, 0);
+            btnAddCustomer.Name = "btnAddCustomer";
+            btnAddCustomer.NormalBackground = Color.Transparent;
+            btnAddCustomer.NormalForeColor = Color.Black;
+            btnAddCustomer.NormalImageTint = Color.White;
+            btnAddCustomer.NormalOutline = Color.Empty;
+            btnAddCustomer.OutlineThickness = 0F;
+            btnAddCustomer.PressedBackground = Color.FromArgb(71, 137, 75);
+            btnAddCustomer.PressedForeColor = Color.White;
+            btnAddCustomer.PressedImageTint = Color.White;
+            btnAddCustomer.PressedOutline = Color.Empty;
+            btnAddCustomer.Rounding = new Padding(10, 10, 3, 3);
+            btnAddCustomer.Size = new Size(150, 40);
+            btnAddCustomer.TabIndex = 0;
+            btnAddCustomer.TextOffset = new Point(0, 0);
             // 
             // lblTitle
             // 
@@ -152,6 +253,7 @@
             btnAdd.TabIndex = 2;
             btnAdd.TabStop = false;
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnMinimize
             // 
@@ -445,6 +547,11 @@
             typingTimer.Interval = 75;
             typingTimer.Tick += typingTimer_Tick;
             // 
+            // addDropDownTimer
+            // 
+            addDropDownTimer.Interval = 10;
+            addDropDownTimer.Tick += addDropDownTimer_Tick;
+            // 
             // frmDashboard
             // 
             AutoScaleDimensions = new SizeF(5F, 19F);
@@ -462,6 +569,7 @@
             Text = "frmDashboard";
             Load += frmDashboard_Load;
             pnlNavBar.ResumeLayout(false);
+            pnlAddDropDown.ResumeLayout(false);
             pnlSearch.ResumeLayout(false);
             pnlMenu.ResumeLayout(false);
             pnlMenu.PerformLayout();
@@ -501,5 +609,9 @@
         private Label lblSettings;
         private System.Windows.Forms.Timer menuTranstion;
         private System.Windows.Forms.Timer typingTimer;
+        private CuoreUI.Controls.cuiBorder pnlAddDropDown;
+        private CuoreUI.Controls.cuiButton btnAddCustomer;
+        private CuoreUI.Controls.cuiButton btnAddQuota;
+        private System.Windows.Forms.Timer addDropDownTimer;
     }
 }

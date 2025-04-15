@@ -63,6 +63,16 @@ namespace FlourSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AddDropDownBackGround {
+            get {
+                object obj = ResourceManager.GetObject("AddDropDownBackGround", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cpyShapes {
             get {
                 object obj = ResourceManager.GetObject("cpyShapes", resourceCulture);

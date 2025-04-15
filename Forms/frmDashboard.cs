@@ -11,6 +11,8 @@ namespace FlourSystem.Forms
             InitializeComponent();
             btns = new IconButton[] { btnSearch, btnAdd, btnRefresh, btnSrchClear };
             menu = new IconPictureBox[] { btnHome, btnSta, btnInfo, btnSettings };
+            targetbtn = btnHome;
+            targetLabel = lblHome;
         }
         private void frmDashboard_Load(object sender, EventArgs e)
         {
@@ -124,6 +126,8 @@ namespace FlourSystem.Forms
         {
             if (!pnlSearch.Bounds.Contains(PointToClient(MousePosition)) && srchExpanded)
                 searchTimer.Start();
+            if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
+                addDropDownTimer.Start();
         }
 
         private void txtSearch_ContentChanged(object sender, EventArgs e)
@@ -135,8 +139,6 @@ namespace FlourSystem.Forms
         {
             txtSearch.Content = string.Empty;
         }
-
-
 
         private void LoadUserControl(UserControl uc)
         {
@@ -150,7 +152,7 @@ namespace FlourSystem.Forms
             uc.Dock = DockStyle.Fill;
             pnlContainer.Controls.Add(uc);
         }
-        
+
         int targetY;
         int transtionStep = 10;
         IconPictureBox targetbtn;
@@ -252,6 +254,42 @@ namespace FlourSystem.Forms
             }
             else
                 typingTimer.Stop();
+        }
+
+
+        bool isAddDropDownExpanded = false;
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            pnlAddDropDown.Parent = this;
+            pnlAddDropDown.BringToFront();
+            addDropDownTimer.Start();
+        }
+        private void addDropDownTimer_Tick(object sender, EventArgs e)
+        {
+            if (isAddDropDownExpanded)
+            {
+                if (pnlAddDropDown.Height > 0)
+                {
+                    pnlAddDropDown.Height -= 5;
+                }
+                else
+                {
+                    addDropDownTimer.Stop();
+                    isAddDropDownExpanded = false;
+                }
+            }
+            else
+            {
+                if (pnlAddDropDown.Height < pnlAddDropDown.MaximumSize.Height)
+                {
+                    pnlAddDropDown.Height += 5;
+                }
+                else
+                {
+                    addDropDownTimer.Stop();
+                    isAddDropDownExpanded = true;
+                }
+            }
         }
     }
 }
