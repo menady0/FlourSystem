@@ -38,3 +38,7 @@ C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\runtimes\browser\li
 C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\FlourSystem.dll.config
 C:\Users\Mena\Documents\FlourSystem\bin\Debug\net8.0-windows\CuoreUI.dll
 C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.frmDashboard.resources
+C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucHome.resources
+C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucSettings.resources
+C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucStatistaics.resources
+C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucTeam.resources

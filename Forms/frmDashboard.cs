@@ -1,5 +1,5 @@
 ﻿using FontAwesome.Sharp;
-
+using FlourSystem.Forms.User_Control;
 namespace FlourSystem.Forms
 {
     public partial class frmDashboard : Form
@@ -211,24 +211,28 @@ namespace FlourSystem.Forms
         {
             LoadTitle(0);
             selectedbtn(btnHome);
+            LoadUserControl(new ucHome());
         }
 
         private void btnSta_Click(object sender, EventArgs e)
         {
             LoadTitle(1);
             selectedbtn(btnSta);
+            LoadUserControl(new ucStatistaics());
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
             LoadTitle(2);
             selectedbtn(btnInfo);
+            LoadUserControl(new ucTeam());
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             LoadTitle(3);
             selectedbtn(btnSettings);
+            LoadUserControl(new ucSettings());
         }
         string[] menuNames = new string[] {
             "الرئيسية",
@@ -237,9 +241,11 @@ namespace FlourSystem.Forms
             "الإعدادات"
         };
         int counter;
-        int index;
+        int index = -1;
         void LoadTitle(int i)
         {
+            if (index == i) return;
+
             lblTitle.Text = "";
             counter = 0;
             index = i;
