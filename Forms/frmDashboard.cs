@@ -151,6 +151,24 @@ namespace FlourSystem.Forms
             pnlContainer.Controls.Clear();
             uc.Dock = DockStyle.Fill;
             pnlContainer.Controls.Add(uc);
+            AttachClickEvent(uc);
+        }
+        private void UserControl_Click(object? sender, EventArgs e)
+        {
+            if (srchExpanded)
+                searchTimer.Start();
+
+            if (isAddDropDownExpanded)
+                addDropDownTimer.Start();
+        }
+        private void AttachClickEvent(Control control)
+        {
+            control.Click += UserControl_Click;
+
+            foreach (Control child in control.Controls)
+            {
+                AttachClickEvent(child);
+            }
         }
 
         int targetY;
