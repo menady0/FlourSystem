@@ -34,18 +34,16 @@
             btnDarkMode = new FontAwesome.Sharp.IconButton();
             btnClose = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
-            iconPassword = new FontAwesome.Sharp.IconPictureBox();
-            txtPassword = new TextBox();
-            pictureBox2 = new PictureBox();
             btnLogin = new FlourSystem.Classes.Controls.roundedButton();
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             cuiControlDrag1 = new CuoreUI.cuiControlDrag(components);
             txtUsername = new CuoreUI.Controls.cuiTextBox2();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            txtPassword = new CuoreUI.Controls.cuiTextBox2();
+            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             pnlBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPassword).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pnlBar
@@ -113,44 +111,6 @@
             label1.Size = new Size(331, 82);
             label1.TabIndex = 3;
             label1.Text = "!مرحباً بعودتك";
-            // 
-            // iconPassword
-            // 
-            iconPassword.BackColor = Color.FromArgb(207, 219, 213);
-            iconPassword.ForeColor = Color.FromArgb(36, 36, 35);
-            iconPassword.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            iconPassword.IconColor = Color.FromArgb(36, 36, 35);
-            iconPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPassword.IconSize = 18;
-            iconPassword.Location = new Point(909, 318);
-            iconPassword.Name = "iconPassword";
-            iconPassword.Size = new Size(18, 18);
-            iconPassword.TabIndex = 7;
-            iconPassword.TabStop = false;
-            // 
-            // txtPassword
-            // 
-            txtPassword.BackColor = Color.FromArgb(207, 219, 213);
-            txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtPassword.ForeColor = Color.FromArgb(136, 136, 135);
-            txtPassword.Location = new Point(652, 315);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '•';
-            txtPassword.PlaceholderText = "كلمة المرور";
-            txtPassword.Size = new Size(241, 23);
-            txtPassword.TabIndex = 1;
-            txtPassword.TextAlign = HorizontalAlignment.Right;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.input;
-            pictureBox2.Location = new Point(644, 301);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(300, 50);
-            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox2.TabIndex = 5;
-            pictureBox2.TabStop = false;
             // 
             // btnLogin
             // 
@@ -226,6 +186,46 @@
             iconPictureBox1.TabIndex = 10;
             iconPictureBox1.TabStop = false;
             // 
+            // txtPassword
+            // 
+            txtPassword.BackColor = Color.FromArgb(207, 219, 213);
+            txtPassword.BackgroundColor = Color.FromArgb(207, 219, 213);
+            txtPassword.BorderColor = Color.FromArgb(0, 64, 64, 64);
+            txtPassword.BorderSize = 1;
+            txtPassword.Content = "";
+            txtPassword.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
+            txtPassword.FocusBorderColor = Color.FromArgb(0, 255, 106, 0);
+            txtPassword.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            txtPassword.ForeColor = Color.FromArgb(136, 136, 135);
+            txtPassword.Location = new Point(644, 303);
+            txtPassword.Margin = new Padding(4);
+            txtPassword.Multiline = false;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Padding = new Padding(53, 14, 53, 0);
+            txtPassword.PasswordChar = true;
+            txtPassword.PlaceholderColor = Color.FromArgb(136, 136, 135);
+            txtPassword.PlaceholderText = "كلمة المرور";
+            txtPassword.RightToLeft = RightToLeft.Yes;
+            txtPassword.Rounding = new Padding(5);
+            txtPassword.Size = new Size(300, 50);
+            txtPassword.TabIndex = 11;
+            txtPassword.TextOffset = new Size(30, 0);
+            txtPassword.UnderlinedStyle = false;
+            // 
+            // iconPictureBox2
+            // 
+            iconPictureBox2.BackColor = Color.FromArgb(207, 219, 213);
+            iconPictureBox2.ForeColor = Color.FromArgb(36, 36, 35);
+            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            iconPictureBox2.IconColor = Color.FromArgb(36, 36, 35);
+            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox2.IconSize = 18;
+            iconPictureBox2.Location = new Point(909, 319);
+            iconPictureBox2.Name = "iconPictureBox2";
+            iconPictureBox2.Size = new Size(18, 18);
+            iconPictureBox2.TabIndex = 12;
+            iconPictureBox2.TabStop = false;
+            // 
             // frmLogin
             // 
             AcceptButton = btnLogin;
@@ -235,12 +235,11 @@
             BackgroundImage = Properties.Resources.cpyShapes;
             CancelButton = btnClose;
             ClientSize = new Size(1000, 600);
+            Controls.Add(iconPictureBox2);
+            Controls.Add(txtPassword);
             Controls.Add(iconPictureBox1);
             Controls.Add(txtUsername);
             Controls.Add(btnLogin);
-            Controls.Add(iconPassword);
-            Controls.Add(txtPassword);
-            Controls.Add(pictureBox2);
             Controls.Add(label1);
             Controls.Add(pnlBar);
             Font = new Font("Cairo", 10F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
@@ -253,9 +252,8 @@
             Text = "Login";
             Load += frmLogin_Load;
             pnlBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)iconPassword).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -266,13 +264,12 @@
         private FontAwesome.Sharp.IconButton btnClose;
         private FontAwesome.Sharp.IconButton btnDarkMode;
         private Label label1;
-        private FontAwesome.Sharp.IconPictureBox iconPassword;
-        private TextBox txtPassword;
-        private PictureBox pictureBox2;
         private Classes.Controls.roundedButton btnLogin;
         private CuoreUI.Components.cuiFormRounder frmBorder;
         private CuoreUI.cuiControlDrag cuiControlDrag1;
         private CuoreUI.Controls.cuiTextBox2 txtUsername;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private CuoreUI.Controls.cuiTextBox2 txtPassword;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
     }
 }

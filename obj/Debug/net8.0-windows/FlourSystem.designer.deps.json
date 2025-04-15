@@ -14,7 +14,7 @@
           }
         }
       },
-      "CuoreUI.Winforms/2025.4.5": {
+      "CuoreUI.Winforms/2025.4.15": {
         "runtime": {
           "lib/net8.0/CuoreUI.dll": {
             "assemblyVersion": "0.0.0.0",
@@ -334,12 +334,12 @@
       "path": "bouncycastle.cryptography/2.3.1",
       "hashPath": "bouncycastle.cryptography.2.3.1.nupkg.sha512"
     },
-    "CuoreUI.Winforms/2025.4.5": {
+    "CuoreUI.Winforms/2025.4.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-eEeT3R41Qg8l0LXVlP1O+krN+svGWO4wmjRTYDVpb+8xtZwnKzf0LwxkcBff5yOzMWXc0GAN46HzN54bQDHCFA==",
-      "path": "cuoreui.winforms/2025.4.5",
-      "hashPath": "cuoreui.winforms.2025.4.5.nupkg.sha512"
+      "sha512": "sha512-o+o8cDJqx9qVf47N9zZBvEFabhqOBRz/vF2QbtZ7Kd+S+tO2Jxdb1tXDBwAx7ZAkL21RoQfbcBRnsV4z0dmQXw==",
+      "path": "cuoreui.winforms/2025.4.15",
+      "hashPath": "cuoreui.winforms.2025.4.15.nupkg.sha512"
     },
     "FontAwesome.Sharp/6.6.0": {
       "type": "package",

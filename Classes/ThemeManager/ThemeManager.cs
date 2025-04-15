@@ -63,10 +63,6 @@ public static class ThemeManager
         {
             control.ForeColor = isDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor;
         }
-        else if (control is TextBox)
-        {
-            control.BackColor = isDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightTextbox;
-        }
         else if ( control is cuiTextBox2 cuiTextBox)
         {
             cuiTextBox.BackgroundColor = isDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightTextbox;
@@ -78,11 +74,6 @@ public static class ThemeManager
             icon.BackColor = isDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightTextbox;
             icon.IconColor = IsDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor;
         }
-        else if (control is PictureBox)
-        {
-            if (isDarkMode) ChangeImage((PictureBox)control, ThemeColors.DarkTextBoxImage);
-            else ChangeImage((PictureBox)control, ThemeColors.LightTextBoxImage);
-        }
 
         else if (control is Panel)
         {
@@ -91,18 +82,6 @@ public static class ThemeManager
             {
                 ApplyControlTheme(childControl, isDarkMode);
             }
-        }
-    }
-
-    public static void ChangeImage(PictureBox pictureBox, string imageName)
-    {
-        try
-        {
-            pictureBox.Image = Resources.ResourceManager.GetObject(imageName) as Image;
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Error loading image: {ex.Message}");
         }
     }
 }
