@@ -54,7 +54,10 @@ namespace FlourSystem.Forms
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
+            {
+                form.Close();
+            }
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -79,7 +82,7 @@ namespace FlourSystem.Forms
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            _ucHomeInstance?.RefreshData();
         }
 
         // Search Button
@@ -112,6 +115,7 @@ namespace FlourSystem.Forms
                 {
                     searchTimer.Stop();
                     srchExpanded = true;
+                    txtSearch.Focus();
                 }
             }
         }
@@ -133,11 +137,19 @@ namespace FlourSystem.Forms
         private void txtSearch_ContentChanged(object sender, EventArgs e)
         {
             btnSrchClear.Visible = !string.IsNullOrEmpty(txtSearch.Content);
+            if (_ucHomeInstance != null)
+            {
+                if (int.TryParse(txtSearch.Content, out int value))
+                    _ucHomeInstance.FilterCustomersByID(txtSearch.Content);
+                else
+                    _ucHomeInstance.FilterCustomersByName(txtSearch.Content);
+            }
         }
 
         private void btnSrchClear_Click(object sender, EventArgs e)
         {
             txtSearch.Content = string.Empty;
+            txtSearch.Focus();
         }
 
         private void LoadUserControl(UserControl uc)
@@ -224,12 +236,18 @@ namespace FlourSystem.Forms
             if (button == btnSettings) return lblSettings;
             return null;
         }
+        private ucHome? _ucHomeInstance;
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             LoadTitle(0);
             selectedbtn(btnHome);
-            LoadUserControl(new ucHome());
+            if (_ucHomeInstance == null)
+            {
+                _ucHomeInstance = new ucHome();
+            }
+            LoadUserControl(_ucHomeInstance);
+            //LoadUserControl(new ucHome());
         }
 
         private void btnSta_Click(object sender, EventArgs e)
@@ -314,6 +332,11 @@ namespace FlourSystem.Forms
                     isAddDropDownExpanded = true;
                 }
             }
+        }
+
+        private void btnAddQuota_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

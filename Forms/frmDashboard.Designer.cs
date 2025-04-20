@@ -32,6 +32,7 @@
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
             pnlAddDropDown = new CuoreUI.Controls.cuiBorder();
+            cuiButton1 = new CuoreUI.Controls.cuiButton();
             btnAddQuota = new CuoreUI.Controls.cuiButton();
             btnAddCustomer = new CuoreUI.Controls.cuiButton();
             lblTitle = new Label();
@@ -98,10 +99,12 @@
             // 
             pnlAddDropDown.BackColor = Color.Transparent;
             pnlAddDropDown.BackgroundImage = Properties.Resources.AddDropDownBackGround;
+            pnlAddDropDown.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlAddDropDown.Controls.Add(cuiButton1);
             pnlAddDropDown.Controls.Add(btnAddQuota);
             pnlAddDropDown.Controls.Add(btnAddCustomer);
             pnlAddDropDown.Location = new Point(25, 65);
-            pnlAddDropDown.MaximumSize = new Size(150, 80);
+            pnlAddDropDown.MaximumSize = new Size(150, 120);
             pnlAddDropDown.MinimumSize = new Size(150, 0);
             pnlAddDropDown.Name = "pnlAddDropDown";
             pnlAddDropDown.OutlineThickness = 1F;
@@ -110,6 +113,45 @@
             pnlAddDropDown.Rounding = new Padding(10);
             pnlAddDropDown.Size = new Size(150, 0);
             pnlAddDropDown.TabIndex = 11;
+            // 
+            // cuiButton1
+            // 
+            cuiButton1.BackColor = Color.Transparent;
+            cuiButton1.CheckButton = false;
+            cuiButton1.Checked = false;
+            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
+            cuiButton1.CheckedForeColor = Color.White;
+            cuiButton1.CheckedImageTint = Color.White;
+            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
+            cuiButton1.Content = "إضافة مستخدم";
+            cuiButton1.Cursor = Cursors.Hand;
+            cuiButton1.DialogResult = DialogResult.None;
+            cuiButton1.Dock = DockStyle.Top;
+            cuiButton1.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            cuiButton1.ForeColor = Color.Black;
+            cuiButton1.HoverBackground = Color.LightGray;
+            cuiButton1.HoveredImageTint = Color.White;
+            cuiButton1.HoverForeColor = Color.Black;
+            cuiButton1.HoverOutline = Color.Empty;
+            cuiButton1.Image = null;
+            cuiButton1.ImageAutoCenter = true;
+            cuiButton1.ImageExpand = new Point(0, 0);
+            cuiButton1.ImageOffset = new Point(0, 0);
+            cuiButton1.Location = new Point(0, 80);
+            cuiButton1.Name = "cuiButton1";
+            cuiButton1.NormalBackground = Color.Transparent;
+            cuiButton1.NormalForeColor = Color.Black;
+            cuiButton1.NormalImageTint = Color.White;
+            cuiButton1.NormalOutline = Color.Empty;
+            cuiButton1.OutlineThickness = 0F;
+            cuiButton1.PressedBackground = Color.FromArgb(71, 137, 75);
+            cuiButton1.PressedForeColor = Color.White;
+            cuiButton1.PressedImageTint = Color.White;
+            cuiButton1.PressedOutline = Color.Empty;
+            cuiButton1.Rounding = new Padding(0, 0, 10, 10);
+            cuiButton1.Size = new Size(150, 40);
+            cuiButton1.TabIndex = 2;
+            cuiButton1.TextOffset = new Point(0, 0);
             // 
             // btnAddQuota
             // 
@@ -145,10 +187,11 @@
             btnAddQuota.PressedForeColor = Color.White;
             btnAddQuota.PressedImageTint = Color.White;
             btnAddQuota.PressedOutline = Color.Empty;
-            btnAddQuota.Rounding = new Padding(0, 0, 10, 10);
+            btnAddQuota.Rounding = new Padding(0);
             btnAddQuota.Size = new Size(150, 40);
             btnAddQuota.TabIndex = 1;
             btnAddQuota.TextOffset = new Point(0, 0);
+            btnAddQuota.Click += btnAddQuota_Click;
             // 
             // btnAddCustomer
             // 
@@ -235,6 +278,7 @@
             btnRefresh.TabIndex = 3;
             btnRefresh.TabStop = false;
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnAdd
             // 
@@ -613,5 +657,6 @@
         private CuoreUI.Controls.cuiButton btnAddCustomer;
         private CuoreUI.Controls.cuiButton btnAddQuota;
         private System.Windows.Forms.Timer addDropDownTimer;
+        private CuoreUI.Controls.cuiButton cuiButton1;
     }
 }
