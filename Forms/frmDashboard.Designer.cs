@@ -61,6 +61,7 @@
             menuTranstion = new System.Windows.Forms.Timer(components);
             typingTimer = new System.Windows.Forms.Timer(components);
             addDropDownTimer = new System.Windows.Forms.Timer(components);
+            btnAddCustomerTimer = new System.Windows.Forms.Timer(components);
             pnlNavBar.SuspendLayout();
             pnlAddDropDown.SuspendLayout();
             pnlSearch.SuspendLayout();
@@ -231,6 +232,7 @@
             btnAddCustomer.Size = new Size(150, 40);
             btnAddCustomer.TabIndex = 0;
             btnAddCustomer.TextOffset = new Point(0, 0);
+            btnAddCustomer.Click += btnAddCustomer_Click;
             // 
             // lblTitle
             // 
@@ -562,6 +564,7 @@
             btnMode.TabIndex = 10;
             btnMode.TabStop = false;
             btnMode.UseVisualStyleBackColor = false;
+            btnMode.Click += btnMode_Click;
             // 
             // pnlContainer
             // 
@@ -634,7 +637,6 @@
         private Panel pnlMenu;
         private FontAwesome.Sharp.IconButton btnAdd;
         private CuoreUI.Controls.cuiBorder pnlContainer;
-        private FontAwesome.Sharp.IconButton btnRefresh;
         private CuoreUI.Controls.cuiTextBox2 txtSearch;
         private FontAwesome.Sharp.IconButton btnSearch;
         private System.Windows.Forms.Timer searchTimer;
@@ -658,5 +660,7 @@
         private CuoreUI.Controls.cuiButton btnAddQuota;
         private System.Windows.Forms.Timer addDropDownTimer;
         private CuoreUI.Controls.cuiButton cuiButton1;
+        private System.Windows.Forms.Timer btnAddCustomerTimer;
+        public FontAwesome.Sharp.IconButton btnRefresh;
     }
 }

@@ -84,5 +84,14 @@ public static class ThemeManager
             }
         }
     }
+
+    public static void ApplyThemeToControl(UserControl control)
+    {
+        foreach (Control childControl in control.Controls)
+        {
+            ApplyControlTheme(childControl, IsDarkMode);
+        }
+    }
+
 }
 

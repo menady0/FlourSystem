@@ -42,3 +42,4 @@ C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.U
 C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucSettings.resources
 C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucStatistaics.resources
 C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucTeam.resources
+C:\Users\Mena\Documents\FlourSystem\obj\Debug\net8.0-windows\FlourSystem.Forms.User_Control.ucHomeBtns.frmAddCustomer.resources

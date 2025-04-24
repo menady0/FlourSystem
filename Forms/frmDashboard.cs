@@ -1,5 +1,7 @@
 ﻿using FontAwesome.Sharp;
 using FlourSystem.Forms.User_Control;
+using FlourSystem.Properties;
+using FlourSystem.Forms.User_Control.ucHomeBtns;
 namespace FlourSystem.Forms
 {
     public partial class frmDashboard : Form
@@ -80,7 +82,7 @@ namespace FlourSystem.Forms
             btnClose.IconColor = Color.White;
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        public void btnRefresh_Click(object sender, EventArgs e)
         {
             _ucHomeInstance?.RefreshData();
         }
@@ -337,6 +339,30 @@ namespace FlourSystem.Forms
         private void btnAddQuota_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnMode_Click(object sender, EventArgs e)
+        {
+            ThemeManager.ToggleTheme();
+            Settings.Default.DarkMode = ThemeManager.IsDarkMode;
+            Settings.Default.Save();
+            if (ThemeManager.IsDarkMode)
+            {
+                btnMode.IconChar = IconChar.Sun;
+                btnMode.IconColor = Color.FromArgb(245, 203, 92);
+            }
+            else
+            {
+                btnMode.IconChar = IconChar.Moon;
+                btnMode.IconColor = Color.White;
+            }
+        }
+        frmAddCustomer frmAddCustomer;
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            frmAddCustomer = new frmAddCustomer(this);
+            addDropDownTimer.Start();
+            frmAddCustomer.ShowDialog();
         }
     }
 }

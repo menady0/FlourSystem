@@ -26,16 +26,17 @@ namespace FlourSystem
         {
             Application.Exit();
         }
-
+        public static frmDashboard dashboard;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // --------- Remeber To Change the condition & UnComment this ↓ ---------
-            //bool isValid = DataBase.login(txtUsername.Content, txtPassword.Text);
-            bool isValid = true;
+            bool isValid = DataBase.login(txtUsername.Content, txtPassword.Content);
+            //bool isValid = true;
             if (isValid)
             {
+                DataBase.loggedOwner = DataBase.retrieveOwnerID(txtUsername.Content);
                 this.Hide();
-                frmDashboard dashboard = new frmDashboard();
+                dashboard = new frmDashboard();
                 dashboard.FormClosed += (s, args) => this.Close();
                 dashboard.Show();
             }
@@ -43,7 +44,7 @@ namespace FlourSystem
             {
                 MessageBox.Show("Invalid Username or Password");
                 txtUsername.Content = "";
-                txtPassword.Text = "";
+                txtPassword.Content = "";
             }
         }
 

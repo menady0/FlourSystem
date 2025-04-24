@@ -3,6 +3,37 @@
 public class DataBase
 {
     static string mySQLConnection = "server=127.0.0.1 ; user=root; database=floursystem; password=";
+
+    public static int loggedOwner;
+    public static int retrieveOwnerID(string username)
+    {
+        string query = "SELECT OwnerID FROM owner WHERE Username = @username";
+
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@username", username);
+        cmd.CommandTimeout = 60;
+        MySqlDataReader reader;
+        try
+        {
+            conn.Open();
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return int.Parse(reader["OwnerID"].ToString());
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            conn.Close();
+        }
+        return -1;
+    }
+
     public static bool login(string username, string password)
     {
         string query = "SELECT * FROM owner WHERE Username = @username AND Password = @password";
@@ -29,7 +60,7 @@ public class DataBase
         }
         return false;
     }
-    public static List<Dictionary<string, object>> list;
+
     public static List<Dictionary<string, object>> RetrieveCustomerTable()
     {
         string query = @"
@@ -88,28 +119,31 @@ public class DataBase
         return customers;
     }
 
-    public static bool AddCustomer(string ownerName, int numberOfPeople, int price, string registration, int totalQuantity, int delivered, int customerIndex)
+    public static bool AddCustomer(long cardID, string ownerName, int numberOfPeople, int totalQuantity, int price, int registration, int delivered, string renewalDate, int index)
     {
         string query = @"
-        INSERT INTO customer (OwnerName, NumberOfPeople, Price, Registration, TotalQuantity, Delivered, customerIndex)
-        VALUES (@ownerName, @numberOfPeople, @price, @registration, @totalQuantity, @delivered, @customerIndex)";
-
-        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        INSERT INTO customer (CustomerID, OwnerName, NumberOfPeople, TotalQuantity, Price, Registration, Delivered, RenewalDate, customerIndex, OwnerID)
+        VALUES (@customerID, @ownerName, @numberOfPeople, @totalQuantity, @price, @registration, @delivered, @renewalDate, @customerIndex, @ownerID)";
+        
+        MySqlConnection conn = new MySqlConnection(mySQLConnection); 
         MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@customerID", cardID);
         cmd.Parameters.AddWithValue("@ownerName", ownerName);
         cmd.Parameters.AddWithValue("@numberOfPeople", numberOfPeople);
+        cmd.Parameters.AddWithValue("@totalQuantity", totalQuantity);
         cmd.Parameters.AddWithValue("@price", price);
         cmd.Parameters.AddWithValue("@registration", registration);
-        cmd.Parameters.AddWithValue("@totalQuantity", totalQuantity);
         cmd.Parameters.AddWithValue("@delivered", delivered);
-        cmd.Parameters.AddWithValue("@customerIndex", customerIndex);
+        cmd.Parameters.AddWithValue("@renewalDate", renewalDate);
+        cmd.Parameters.AddWithValue("@ownerID", loggedOwner);
+        cmd.Parameters.AddWithValue("@customerIndex", index);
         cmd.CommandTimeout = 60;
 
         try
         {
             conn.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
-            return rowsAffected > 0; // Return true if the insertion was successful
+            return rowsAffected > 0;
         }
         catch (MySqlException ex)
         {
@@ -123,5 +157,30 @@ public class DataBase
         }
     }
 
+    public static bool CustomerExists(long cardID)
+    {
+        string query = "SELECT COUNT(*) FROM customer WHERE CustomerID = @customerID";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@customerID", cardID);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            //int c = int.Parse((string)cmd.ExecuteScalar());
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count > 0;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to check customer existence.");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
 }
 

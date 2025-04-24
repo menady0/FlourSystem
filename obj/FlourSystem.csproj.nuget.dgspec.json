@@ -52,7 +52,7 @@
           "dependencies": {
             "CuoreUI.Winforms": {
               "target": "Package",
-              "version": "[2025.4.15, )"
+              "version": "[2025.4.18, )"
             },
             "FontAwesome.Sharp": {
               "target": "Package",
@@ -60,7 +60,7 @@
             },
             "MySql.Data": {
               "target": "Package",
-              "version": "[9.2.0, )"
+              "version": "[9.3.0, )"
             }
           },
           "imports": [

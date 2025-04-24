@@ -168,25 +168,47 @@ namespace FlourSystem.Forms.User_Control
                     BackColor = Color.Transparent,
                     Tag = customer["CustomerID"],
                 };
-                
+                //btnAdditonals.Click += btnAdditonals_Click;
                 btnAdditonals.Click += (sender, e) =>
                 {
-                    if (isAddtionalDropDownExpanded)
+                    IconButton clickedButton = (IconButton)sender;
+
+                    // Check if the drop-down is already expanded and associated with a different button
+                    if (isAddtionalDropDownExpanded && pnlAddtionalDropDown.Tag != clickedButton)
                     {
-                        pnlAddtionalDropDown.Height = 0;
-                        isAddtionalDropDownExpanded = false;
+                        // Close the drop-down first
+                        pnlAddtionalDropDown.Tag = clickedButton; // Update the tag to the new button
+                        _isClosingForReposition = true;
+                        AdditionaldropDownTimer.Start();
                     }
+                    else if (!isAddtionalDropDownExpanded)
+                    {
+                        // If the drop-down is not expanded, open it immediately
+                        pnlAddtionalDropDown.Tag = clickedButton; // Associate the drop-down with the clicked button
+                        OpenDropDown(clickedButton);
+                    }
+                    //if (isAddtionalDropDownExpanded && _currentlySelectedButton == btnAdditonals)
+                    //{
+                    //    AdditionaldropDownTimer.Start();
+                    //}
+                    //else if(isAddtionalDropDownExpanded && _currentlySelectedButton != btnAdditonals)
+                    //{
+                    //    AdditionaldropDownTimer.Start();
+                    //}
+                    //SelectedButton(btnAdditonals);
 
-                    Point location = btnAdditonals.PointToScreen(Point.Empty);
-                    Form? mainfrm = this.FindForm();
-                    Point drpdownLocation = mainfrm.PointToClient(new Point(location.X, location.Y + btnAdditonals.Height));
-                    pnlAddtionalDropDown.Location = drpdownLocation;
+                    //Point location = btnAdditonals.PointToScreen(Point.Empty);
+                    //Form? mainfrm = this.FindForm();
+                    //Point drpdownLocation = mainfrm.PointToClient(new Point(location.X, location.Y + btnAdditonals.Height));
+                    //pnlAddtionalDropDown.Location = drpdownLocation;
 
-                    // Bring the drop-down panel to the front and make it visible
-                    pnlAddtionalDropDown.Parent = this.FindForm();
-                    pnlAddtionalDropDown.BringToFront();
-                    AdditionaldropDownTimer.Start();
+
+                    //// Bring the drop-down panel to the front and make it visible
+                    //pnlAddtionalDropDown.Parent = this.FindForm();
+                    //pnlAddtionalDropDown.BringToFront();
+                    //AdditionaldropDownTimer.Start();
                 };
+
                 pnlAdditional.Controls.Add(btnAdditonals);
 
                 customerPanel.Controls.Add(drag);
@@ -220,6 +242,20 @@ namespace FlourSystem.Forms.User_Control
                 index++;
             }
         }
+        private bool _isClosingForReposition = false;
+        private void OpenDropDown(IconButton? button)
+        {
+            Point location = button.PointToScreen(Point.Empty);
+            Form? mainfrm = this.FindForm();
+            Point drpdownLocation = mainfrm.PointToClient(new Point(location.X, location.Y + button.Height));
+            pnlAddtionalDropDown.Location = drpdownLocation;
+
+            // Bring the drop-down panel to the front and make it visible
+            pnlAddtionalDropDown.Parent = this.FindForm();
+            pnlAddtionalDropDown.BringToFront();
+            AdditionaldropDownTimer.Start();
+        }
+
         #endregion
 
         #region Display Data [Best For Performance]
@@ -477,6 +513,7 @@ namespace FlourSystem.Forms.User_Control
         {
             if (isAddtionalDropDownExpanded)
             {
+                // Close the drop-down
                 if (pnlAddtionalDropDown.Height > 0)
                 {
                     pnlAddtionalDropDown.Height -= 10;
@@ -485,10 +522,18 @@ namespace FlourSystem.Forms.User_Control
                 {
                     AdditionaldropDownTimer.Stop();
                     isAddtionalDropDownExpanded = false;
+
+                    // If closing for reposition, reopen at the new position
+                    if (_isClosingForReposition && pnlAddtionalDropDown.Tag is IconButton newButton)
+                    {
+                        OpenDropDown(newButton);
+                        _isClosingForReposition = false;
+                    }
                 }
             }
             else
             {
+                // Open the drop-down
                 if (pnlAddtionalDropDown.Height < pnlAddtionalDropDown.MaximumSize.Height)
                 {
                     pnlAddtionalDropDown.Height += 10;
