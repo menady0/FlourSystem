@@ -20,41 +20,30 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             _dashboard = dashboard;
         }
 
-        private void opacityTimer_Tick(object sender, EventArgs e)
-        {
-            if (this.Opacity > 0)
-            {
-                this.Opacity -= 0.1;
-            }
-            else
-            {
-                opacityTimer.Stop();
-                this.Close();
-            }
-        }
-
-        private void frmAddCustomer_Load(object sender, EventArgs e)
-        {
-            sizeTimer.Start();
-        }
-
+        #region Closing
+        bool closing = true;
         private void btnClose_Click(object sender, EventArgs e)
         {
             opacityTimer.Start();
         }
-
-        private void sizeTimer_Tick(object sender, EventArgs e)
+        private void opacityTimer_Tick(object sender, EventArgs e)
         {
-            if (this.Height < this.MaximumSize.Height)
+            if (this.Opacity > 0)
             {
-                this.Height += 10;
-                this.Top -= 4;
+                this.Opacity -= 0.25;
             }
             else
             {
-                sizeTimer.Stop();
+                opacityTimer.Stop();
+                closing = false;
+                this.Close();
             }
         }
+        private void frmAddCustomer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = closing;
+        }
+        #endregion
 
         private void txtMembers_ContentChanged(object sender, EventArgs e)
         {
@@ -116,7 +105,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 return;
             }
 
-            if(DataBase.CustomerExists(long.Parse(txtCardID.Content)))
+            if (DataBase.CustomerExists(long.Parse(txtCardID.Content)))
             {
                 MessageBox.Show("Customer with this Card ID already exists.");
                 txtCardID.Content = "";
@@ -134,8 +123,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             int delivered = 0;
             int customerIndex = 999;
             string renewalDate = DateTime.Now.ToString("yyyy-MM-dd");
-            MessageBox.Show(DataBase.loggedOwner.ToString());
-            if (DataBase.AddCustomer(cardID, name, members, quantity,  price, registration, delivered, renewalDate, customerIndex))
+            if (DataBase.AddCustomer(cardID, name, members, quantity, price, registration, delivered, renewalDate, customerIndex))
             {
                 MessageBox.Show("Customer added successfully.");
                 this.Close();

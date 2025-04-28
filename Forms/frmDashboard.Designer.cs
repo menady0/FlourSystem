@@ -44,7 +44,7 @@
             pnlSearch = new Panel();
             btnSrchClear = new FontAwesome.Sharp.IconButton();
             txtSearch = new CuoreUI.Controls.cuiTextBox2();
-            cuiControlDrag1 = new CuoreUI.cuiControlDrag(components);
+            frmDrag = new CuoreUI.cuiControlDrag(components);
             pnlMenu = new Panel();
             btnSettings = new FontAwesome.Sharp.IconPictureBox();
             lblSettings = new Label();
@@ -401,9 +401,9 @@
             txtSearch.UnderlinedStyle = false;
             txtSearch.ContentChanged += txtSearch_ContentChanged;
             // 
-            // cuiControlDrag1
+            // frmDrag
             // 
-            cuiControlDrag1.TargetControl = pnlNavBar;
+            frmDrag.TargetControl = pnlNavBar;
             // 
             // pnlMenu
             // 
@@ -633,7 +633,7 @@
         private Panel pnlNavBar;
         private FontAwesome.Sharp.IconButton btnClose;
         private FontAwesome.Sharp.IconButton btnMinimize;
-        private CuoreUI.cuiControlDrag cuiControlDrag1;
+        private CuoreUI.cuiControlDrag frmDrag;
         private Panel pnlMenu;
         private FontAwesome.Sharp.IconButton btnAdd;
         private CuoreUI.Controls.cuiBorder pnlContainer;

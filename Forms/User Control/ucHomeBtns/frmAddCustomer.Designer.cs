@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            cuiFormDrag1 = new CuoreUI.cuiFormDrag(components);
+            frmDrag = new CuoreUI.cuiFormDrag(components);
             opacityTimer = new System.Windows.Forms.Timer(components);
             btnClose = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
-            sizeTimer = new System.Windows.Forms.Timer(components);
-            cuiFormRounder1 = new CuoreUI.Components.cuiFormRounder();
+            frmBorder = new CuoreUI.Components.cuiFormRounder();
             txtCardID = new CuoreUI.Controls.cuiTextBox2();
             picCardID = new FontAwesome.Sharp.IconPictureBox();
             picName = new FontAwesome.Sharp.IconPictureBox();
@@ -46,6 +45,7 @@
             picPrice = new FontAwesome.Sharp.IconPictureBox();
             txtPrice = new CuoreUI.Controls.cuiTextBox2();
             btnAdd = new FlourSystem.Classes.Controls.roundedButton();
+            frmAnimation = new CuoreUI.Components.cuiFormAnimator(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCardID).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picName).BeginInit();
@@ -54,9 +54,9 @@
             ((System.ComponentModel.ISupportInitialize)picPrice).BeginInit();
             SuspendLayout();
             // 
-            // cuiFormDrag1
+            // frmDrag
             // 
-            cuiFormDrag1.TargetForm = this;
+            frmDrag.TargetForm = this;
             // 
             // opacityTimer
             // 
@@ -65,6 +65,7 @@
             // 
             // btnClose
             // 
+            btnClose.BackColor = Color.Transparent;
             btnClose.Cursor = Cursors.Hand;
             btnClose.Dock = DockStyle.Right;
             btnClose.FlatAppearance.BorderSize = 0;
@@ -77,12 +78,13 @@
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(54, 30);
             btnClose.TabIndex = 0;
-            btnClose.UseVisualStyleBackColor = true;
+            btnClose.TabStop = false;
+            btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(100, 255, 255, 255);
+            panel1.BackColor = Color.FromArgb(15, 0, 0, 0);
             panel1.Controls.Add(btnClose);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -90,26 +92,21 @@
             panel1.Size = new Size(300, 30);
             panel1.TabIndex = 2;
             // 
-            // sizeTimer
+            // frmBorder
             // 
-            sizeTimer.Interval = 10;
-            sizeTimer.Tick += sizeTimer_Tick;
-            // 
-            // cuiFormRounder1
-            // 
-            cuiFormRounder1.EnhanceCorners = false;
-            cuiFormRounder1.OutlineColor = Color.FromArgb(30, 255, 255, 255);
-            cuiFormRounder1.Rounding = 10;
-            cuiFormRounder1.TargetForm = this;
+            frmBorder.EnhanceCorners = false;
+            frmBorder.OutlineColor = Color.FromArgb(71, 137, 75);
+            frmBorder.Rounding = 10;
+            frmBorder.TargetForm = this;
             // 
             // txtCardID
             // 
-            txtCardID.BackColor = Color.FromArgb(244, 245, 244);
-            txtCardID.BackgroundColor = Color.FromArgb(244, 245, 244);
+            txtCardID.BackColor = Color.FromArgb(207, 219, 213);
+            txtCardID.BackgroundColor = Color.FromArgb(207, 219, 213);
             txtCardID.BorderColor = Color.FromArgb(244, 245, 244);
             txtCardID.BorderSize = 1;
             txtCardID.Content = "";
-            txtCardID.FocusBackgroundColor = Color.FromArgb(244, 245, 244);
+            txtCardID.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
             txtCardID.FocusBorderColor = Color.FromArgb(71, 137, 75);
             txtCardID.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCardID.ForeColor = Color.Black;
@@ -124,13 +121,13 @@
             txtCardID.RightToLeft = RightToLeft.Yes;
             txtCardID.Rounding = new Padding(5);
             txtCardID.Size = new Size(280, 40);
-            txtCardID.TabIndex = 3;
+            txtCardID.TabIndex = 0;
             txtCardID.TextOffset = new Size(15, 0);
             txtCardID.UnderlinedStyle = false;
             // 
             // picCardID
             // 
-            picCardID.BackColor = Color.FromArgb(244, 245, 244);
+            picCardID.BackColor = Color.FromArgb(207, 219, 213);
             picCardID.ForeColor = Color.FromArgb(36, 36, 35);
             picCardID.IconChar = FontAwesome.Sharp.IconChar.DriversLicense;
             picCardID.IconColor = Color.FromArgb(36, 36, 35);
@@ -145,7 +142,7 @@
             // 
             // picName
             // 
-            picName.BackColor = Color.FromArgb(244, 245, 244);
+            picName.BackColor = Color.FromArgb(207, 219, 213);
             picName.ForeColor = Color.FromArgb(36, 36, 35);
             picName.IconChar = FontAwesome.Sharp.IconChar.User;
             picName.IconColor = Color.FromArgb(36, 36, 35);
@@ -160,12 +157,12 @@
             // 
             // txtName
             // 
-            txtName.BackColor = Color.FromArgb(244, 245, 244);
-            txtName.BackgroundColor = Color.FromArgb(244, 245, 244);
+            txtName.BackColor = Color.FromArgb(207, 219, 213);
+            txtName.BackgroundColor = Color.FromArgb(207, 219, 213);
             txtName.BorderColor = Color.FromArgb(244, 245, 244);
             txtName.BorderSize = 1;
             txtName.Content = "";
-            txtName.FocusBackgroundColor = Color.FromArgb(244, 245, 244);
+            txtName.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
             txtName.FocusBorderColor = Color.FromArgb(71, 137, 75);
             txtName.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtName.ForeColor = Color.Black;
@@ -180,13 +177,13 @@
             txtName.RightToLeft = RightToLeft.Yes;
             txtName.Rounding = new Padding(5);
             txtName.Size = new Size(280, 40);
-            txtName.TabIndex = 5;
+            txtName.TabIndex = 1;
             txtName.TextOffset = new Size(15, 0);
             txtName.UnderlinedStyle = false;
             // 
             // picMembers
             // 
-            picMembers.BackColor = Color.FromArgb(244, 245, 244);
+            picMembers.BackColor = Color.FromArgb(207, 219, 213);
             picMembers.ForeColor = Color.FromArgb(36, 36, 35);
             picMembers.IconChar = FontAwesome.Sharp.IconChar.UserFriends;
             picMembers.IconColor = Color.FromArgb(36, 36, 35);
@@ -201,12 +198,12 @@
             // 
             // txtMembers
             // 
-            txtMembers.BackColor = Color.FromArgb(244, 245, 244);
-            txtMembers.BackgroundColor = Color.FromArgb(244, 245, 244);
+            txtMembers.BackColor = Color.FromArgb(207, 219, 213);
+            txtMembers.BackgroundColor = Color.FromArgb(207, 219, 213);
             txtMembers.BorderColor = Color.FromArgb(244, 245, 244);
             txtMembers.BorderSize = 1;
             txtMembers.Content = "";
-            txtMembers.FocusBackgroundColor = Color.FromArgb(244, 245, 244);
+            txtMembers.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
             txtMembers.FocusBorderColor = Color.FromArgb(71, 137, 75);
             txtMembers.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtMembers.ForeColor = Color.Black;
@@ -221,14 +218,14 @@
             txtMembers.RightToLeft = RightToLeft.Yes;
             txtMembers.Rounding = new Padding(5);
             txtMembers.Size = new Size(280, 40);
-            txtMembers.TabIndex = 7;
+            txtMembers.TabIndex = 2;
             txtMembers.TextOffset = new Size(15, 0);
             txtMembers.UnderlinedStyle = false;
             txtMembers.ContentChanged += txtMembers_ContentChanged;
             // 
             // picQuantity
             // 
-            picQuantity.BackColor = Color.FromArgb(244, 245, 244);
+            picQuantity.BackColor = Color.FromArgb(207, 219, 213);
             picQuantity.ForeColor = Color.FromArgb(36, 36, 35);
             picQuantity.IconChar = FontAwesome.Sharp.IconChar.SackXmark;
             picQuantity.IconColor = Color.FromArgb(36, 36, 35);
@@ -243,12 +240,12 @@
             // 
             // txtQuantity
             // 
-            txtQuantity.BackColor = Color.FromArgb(244, 245, 244);
-            txtQuantity.BackgroundColor = Color.FromArgb(244, 245, 244);
+            txtQuantity.BackColor = Color.FromArgb(207, 219, 213);
+            txtQuantity.BackgroundColor = Color.FromArgb(207, 219, 213);
             txtQuantity.BorderColor = Color.FromArgb(244, 245, 244);
             txtQuantity.BorderSize = 1;
             txtQuantity.Content = "";
-            txtQuantity.FocusBackgroundColor = Color.FromArgb(244, 245, 244);
+            txtQuantity.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
             txtQuantity.FocusBorderColor = Color.FromArgb(71, 137, 75);
             txtQuantity.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtQuantity.ForeColor = Color.Black;
@@ -263,13 +260,13 @@
             txtQuantity.RightToLeft = RightToLeft.Yes;
             txtQuantity.Rounding = new Padding(5);
             txtQuantity.Size = new Size(280, 40);
-            txtQuantity.TabIndex = 9;
+            txtQuantity.TabIndex = 3;
             txtQuantity.TextOffset = new Size(15, 0);
             txtQuantity.UnderlinedStyle = false;
             // 
             // picPrice
             // 
-            picPrice.BackColor = Color.FromArgb(244, 245, 244);
+            picPrice.BackColor = Color.FromArgb(207, 219, 213);
             picPrice.ForeColor = Color.FromArgb(36, 36, 35);
             picPrice.IconChar = FontAwesome.Sharp.IconChar.MoneyBill1;
             picPrice.IconColor = Color.FromArgb(36, 36, 35);
@@ -284,12 +281,12 @@
             // 
             // txtPrice
             // 
-            txtPrice.BackColor = Color.FromArgb(244, 245, 244);
-            txtPrice.BackgroundColor = Color.FromArgb(244, 245, 244);
+            txtPrice.BackColor = Color.FromArgb(207, 219, 213);
+            txtPrice.BackgroundColor = Color.FromArgb(207, 219, 213);
             txtPrice.BorderColor = Color.FromArgb(244, 245, 244);
             txtPrice.BorderSize = 1;
             txtPrice.Content = "";
-            txtPrice.FocusBackgroundColor = Color.FromArgb(244, 245, 244);
+            txtPrice.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
             txtPrice.FocusBorderColor = Color.FromArgb(71, 137, 75);
             txtPrice.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPrice.ForeColor = Color.Black;
@@ -304,7 +301,7 @@
             txtPrice.RightToLeft = RightToLeft.Yes;
             txtPrice.Rounding = new Padding(5);
             txtPrice.Size = new Size(280, 40);
-            txtPrice.TabIndex = 11;
+            txtPrice.TabIndex = 4;
             txtPrice.TextOffset = new Size(15, 0);
             txtPrice.UnderlinedStyle = false;
             // 
@@ -324,19 +321,29 @@
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(280, 40);
             btnAdd.TabIndex = 13;
+            btnAdd.TabStop = false;
             btnAdd.Text = "إضافة";
             btnAdd.TextColor = Color.White;
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
+            // 
+            // frmAnimation
+            // 
+            frmAnimation.AnimateOnStart = true;
+            frmAnimation.Duration = 400;
+            frmAnimation.EasingType = CuoreUI.Drawing.EasingTypes.QuadOut;
+            frmAnimation.StartOpacity = 0D;
+            frmAnimation.TargetForm = this;
+            frmAnimation.TargetOpacity = 1D;
             // 
             // frmAddCustomer
             // 
             AcceptButton = btnAdd;
             AutoScaleDimensions = new SizeF(5F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(232, 237, 223);
             CancelButton = btnClose;
-            ClientSize = new Size(300, 0);
+            ClientSize = new Size(300, 400);
             Controls.Add(btnAdd);
             Controls.Add(picPrice);
             Controls.Add(txtPrice);
@@ -360,7 +367,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Customer";
             TopMost = true;
-            Load += frmAddCustomer_Load;
+            FormClosing += frmAddCustomer_FormClosing;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCardID).EndInit();
             ((System.ComponentModel.ISupportInitialize)picName).EndInit();
@@ -371,12 +378,11 @@
         }
 
         #endregion
-        private CuoreUI.cuiFormDrag cuiFormDrag1;
+        private CuoreUI.cuiFormDrag frmDrag;
         private System.Windows.Forms.Timer opacityTimer;
         private FontAwesome.Sharp.IconButton btnClose;
         private Panel panel1;
-        private System.Windows.Forms.Timer sizeTimer;
-        private CuoreUI.Components.cuiFormRounder cuiFormRounder1;
+        private CuoreUI.Components.cuiFormRounder frmBorder;
         private CuoreUI.Controls.cuiTextBox2 txtCardID;
         private FontAwesome.Sharp.IconPictureBox picCardID;
         private FontAwesome.Sharp.IconPictureBox picName;
@@ -388,5 +394,6 @@
         private FontAwesome.Sharp.IconPictureBox picQuantity;
         private CuoreUI.Controls.cuiTextBox2 txtQuantity;
         private Classes.Controls.roundedButton btnAdd;
+        private CuoreUI.Components.cuiFormAnimator frmAnimation;
     }
 }

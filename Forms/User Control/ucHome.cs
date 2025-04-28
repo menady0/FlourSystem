@@ -229,16 +229,15 @@ namespace FlourSystem.Forms.User_Control
                     txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = Color.FromArgb(216, 220, 208);
                     txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.FromArgb(196, 200, 188);
                     txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
-                    txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
                 }
                 else
                 {
                     customerPanel.BackColor = Color.Transparent;
                     txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = ThemeColors.LightBackground;
                     txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.LightGray;
-                    txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = ThemeColors.LightBackground;
-                    txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
+                    txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
                 }
+                txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
                 index++;
             }
         }

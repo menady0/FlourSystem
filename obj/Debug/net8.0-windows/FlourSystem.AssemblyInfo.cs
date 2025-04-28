@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55b070b82e8cf489836a63155b97307bec82443a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47ea4d8dfb566a7459362b3fecacf816a8bdcd1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
