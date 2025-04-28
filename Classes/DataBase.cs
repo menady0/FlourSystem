@@ -158,7 +158,6 @@ public class DataBase
             conn.Close();
         }
     }
-
     public static bool addQuota(float amount, int amountPerKG, int price, string dateReceived, int ownerID)
     {
         string query =
@@ -183,6 +182,33 @@ public class DataBase
         catch (MySqlException ex)
         {
             MessageBox.Show("Failed to add quota.");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static bool AddOwner(string name, string username, string password)
+    {
+        string query = "INSERT INTO owner (Name, Username, Password) VALUES (@name, @username, @password)";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@name", name);
+        cmd.Parameters.AddWithValue("@username", username);
+        cmd.Parameters.AddWithValue("@password", password);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            if (rowsAffected > 0) return true;
+            else return false;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to add owner.");
             MessageBox.Show(ex.Message);
             return false;
         }
@@ -237,6 +263,30 @@ public class DataBase
         catch (MySqlException ex)
         {
             MessageBox.Show("Failed to check quota existence.");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static bool OwnerExists(string username)
+    {
+        string query = "SELECT COUNT(*) FROM owner WHERE Username = @username";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@username", username);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count > 0;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to check owner existence.");
             MessageBox.Show(ex.Message);
             return false;
         }

@@ -75,6 +75,7 @@
             btnAdd.Text = "إضافة";
             btnAdd.TextColor = Color.White;
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // panel1
             // 
@@ -334,9 +335,11 @@
             // 
             // frmAddOwner
             // 
+            AcceptButton = btnAdd;
             AutoScaleDimensions = new SizeF(6F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(232, 237, 223);
+            CancelButton = btnClose;
             ClientSize = new Size(300, 400);
             Controls.Add(picName);
             Controls.Add(txtName);
@@ -354,6 +357,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 5, 3, 5);
             Name = "frmAddOwner";
+            ShowIcon = false;
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Owner";
             TopMost = true;

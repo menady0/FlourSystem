@@ -43,13 +43,13 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         }
         #endregion
 
+        #region Password & Confirm Password
         private void txtPassword_ContentChanged(object sender, EventArgs e)
         {
             picShowPassword.Visible = !string.IsNullOrEmpty(txtPassword.Content);
             if (string.IsNullOrEmpty(txtPassword.Content))
                 txtPassword.PasswordChar = true;
         }
-
         private void picShowPassword_Click(object sender, EventArgs e)
         {
             txtPassword.PasswordChar = !txtPassword.PasswordChar;
@@ -61,10 +61,53 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             if (string.IsNullOrEmpty(txtConfirmPassword.Content))
                 txtConfirmPassword.PasswordChar = true;
         }
-
         private void picShowConfirmPassword_Click(object sender, EventArgs e)
         {
             txtConfirmPassword.PasswordChar = !txtConfirmPassword.PasswordChar;
+        }
+        #endregion
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (
+                string.IsNullOrEmpty(txtName.Content)
+                || string.IsNullOrEmpty(txtUsername.Content)
+                || string.IsNullOrEmpty(txtPassword.Content)
+                || string.IsNullOrEmpty(txtConfirmPassword.Content)
+                )
+            {
+                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(DataBase.OwnerExists(txtUsername.Content))
+            {
+                MessageBox.Show("Username already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Content = "";
+                txtUsername.Focus();
+                return;
+            }
+            if (txtPassword.Content != txtConfirmPassword.Content)
+            {
+                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtConfirmPassword.Content = "";
+                txtConfirmPassword.Focus();
+                return;
+            }
+
+            string name = txtName.Content;
+            string username = txtUsername.Content;
+            string password = txtPassword.Content;
+            if (DataBase.AddOwner(name, username, password))
+            {
+                MessageBox.Show("Owner added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Failed to add owner.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
