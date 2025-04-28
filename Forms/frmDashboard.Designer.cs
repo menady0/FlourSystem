@@ -32,7 +32,7 @@
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
             pnlAddDropDown = new CuoreUI.Controls.cuiBorder();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
+            btnAddOwner = new CuoreUI.Controls.cuiButton();
             btnAddQuota = new CuoreUI.Controls.cuiButton();
             btnAddCustomer = new CuoreUI.Controls.cuiButton();
             lblTitle = new Label();
@@ -101,7 +101,7 @@
             pnlAddDropDown.BackColor = Color.Transparent;
             pnlAddDropDown.BackgroundImage = Properties.Resources.AddDropDownBackGround;
             pnlAddDropDown.BackgroundImageLayout = ImageLayout.Stretch;
-            pnlAddDropDown.Controls.Add(cuiButton1);
+            pnlAddDropDown.Controls.Add(btnAddOwner);
             pnlAddDropDown.Controls.Add(btnAddQuota);
             pnlAddDropDown.Controls.Add(btnAddCustomer);
             pnlAddDropDown.Location = new Point(25, 65);
@@ -115,44 +115,45 @@
             pnlAddDropDown.Size = new Size(150, 0);
             pnlAddDropDown.TabIndex = 11;
             // 
-            // cuiButton1
+            // btnAddOwner
             // 
-            cuiButton1.BackColor = Color.Transparent;
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "إضافة مستخدم";
-            cuiButton1.Cursor = Cursors.Hand;
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Dock = DockStyle.Top;
-            cuiButton1.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.LightGray;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.Empty;
-            cuiButton1.Image = null;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(0, 0);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(0, 80);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.Transparent;
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.Empty;
-            cuiButton1.OutlineThickness = 0F;
-            cuiButton1.PressedBackground = Color.FromArgb(71, 137, 75);
-            cuiButton1.PressedForeColor = Color.White;
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.Empty;
-            cuiButton1.Rounding = new Padding(0, 0, 10, 10);
-            cuiButton1.Size = new Size(150, 40);
-            cuiButton1.TabIndex = 2;
-            cuiButton1.TextOffset = new Point(0, 0);
+            btnAddOwner.BackColor = Color.Transparent;
+            btnAddOwner.CheckButton = false;
+            btnAddOwner.Checked = false;
+            btnAddOwner.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnAddOwner.CheckedForeColor = Color.White;
+            btnAddOwner.CheckedImageTint = Color.White;
+            btnAddOwner.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnAddOwner.Content = "إضافة مالك";
+            btnAddOwner.Cursor = Cursors.Hand;
+            btnAddOwner.DialogResult = DialogResult.None;
+            btnAddOwner.Dock = DockStyle.Top;
+            btnAddOwner.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnAddOwner.ForeColor = Color.Black;
+            btnAddOwner.HoverBackground = Color.LightGray;
+            btnAddOwner.HoveredImageTint = Color.White;
+            btnAddOwner.HoverForeColor = Color.Black;
+            btnAddOwner.HoverOutline = Color.Empty;
+            btnAddOwner.Image = null;
+            btnAddOwner.ImageAutoCenter = true;
+            btnAddOwner.ImageExpand = new Point(0, 0);
+            btnAddOwner.ImageOffset = new Point(0, 0);
+            btnAddOwner.Location = new Point(0, 80);
+            btnAddOwner.Name = "btnAddOwner";
+            btnAddOwner.NormalBackground = Color.Transparent;
+            btnAddOwner.NormalForeColor = Color.Black;
+            btnAddOwner.NormalImageTint = Color.White;
+            btnAddOwner.NormalOutline = Color.Empty;
+            btnAddOwner.OutlineThickness = 0F;
+            btnAddOwner.PressedBackground = Color.FromArgb(71, 137, 75);
+            btnAddOwner.PressedForeColor = Color.White;
+            btnAddOwner.PressedImageTint = Color.White;
+            btnAddOwner.PressedOutline = Color.Empty;
+            btnAddOwner.Rounding = new Padding(0, 0, 10, 10);
+            btnAddOwner.Size = new Size(150, 40);
+            btnAddOwner.TabIndex = 2;
+            btnAddOwner.TextOffset = new Point(0, 0);
+            btnAddOwner.Click += btnAddOwner_Click;
             // 
             // btnAddQuota
             // 
@@ -659,7 +660,7 @@
         private CuoreUI.Controls.cuiButton btnAddCustomer;
         private CuoreUI.Controls.cuiButton btnAddQuota;
         private System.Windows.Forms.Timer addDropDownTimer;
-        private CuoreUI.Controls.cuiButton cuiButton1;
+        private CuoreUI.Controls.cuiButton btnAddOwner;
         private System.Windows.Forms.Timer btnAddCustomerTimer;
         public FontAwesome.Sharp.IconButton btnRefresh;
     }

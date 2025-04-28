@@ -155,8 +155,8 @@
             txtUsername.Content = "";
             txtUsername.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
             txtUsername.FocusBorderColor = Color.FromArgb(0, 255, 106, 0);
-            txtUsername.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            txtUsername.ForeColor = Color.FromArgb(136, 136, 135);
+            txtUsername.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtUsername.ForeColor = Color.Black;
             txtUsername.Location = new Point(644, 241);
             txtUsername.Margin = new Padding(4);
             txtUsername.Multiline = false;
@@ -196,7 +196,7 @@
             txtPassword.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
             txtPassword.FocusBorderColor = Color.FromArgb(0, 255, 106, 0);
             txtPassword.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            txtPassword.ForeColor = Color.FromArgb(136, 136, 135);
+            txtPassword.ForeColor = Color.Black;
             txtPassword.Location = new Point(644, 303);
             txtPassword.Margin = new Padding(4);
             txtPassword.Multiline = false;

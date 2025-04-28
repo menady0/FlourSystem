@@ -119,6 +119,8 @@ public class DataBase
         return customers;
     }
 
+
+    #region Adding Buttons Group
     public static bool AddCustomer(long cardID, string ownerName, int numberOfPeople, int totalQuantity, int price, int registration, int delivered, string renewalDate, int index)
     {
         string query = @"
@@ -157,6 +159,42 @@ public class DataBase
         }
     }
 
+    public static bool addQuota(float amount, int amountPerKG, int price, string dateReceived, int ownerID)
+    {
+        string query =
+            "INSERT INTO quota (amount, AmountPerKG, Price, DateReceived, OwnerID) " +
+            "   VALUES (@amount, @amountPerKG, @price, @dateReceived, @ownerID)";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@amount", amount);
+        cmd.Parameters.AddWithValue("@amountPerKG", amountPerKG);
+        cmd.Parameters.AddWithValue("@price", price);
+        cmd.Parameters.AddWithValue("@dateReceived", dateReceived);
+        cmd.Parameters.AddWithValue("@ownerID", ownerID);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            if (rowsAffected > 0) return true;
+            else return false;
+
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to add quota.");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    #endregion
+
+
+    #region Checking Adding Buttons Group
     public static bool CustomerExists(long cardID)
     {
         string query = "SELECT COUNT(*) FROM customer WHERE CustomerID = @customerID";
@@ -182,5 +220,31 @@ public class DataBase
             conn.Close();
         }
     }
+    public static bool QuotaExists(int loggedOwner, string date)
+    {
+        string query = "SELECT COUNT(*) FROM quota WHERE OwnerID = @ownerID AND DateReceived = @date";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@ownerID", loggedOwner);
+        cmd.Parameters.AddWithValue("@date", date);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count > 0;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to check quota existence.");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    #endregion
 }
 

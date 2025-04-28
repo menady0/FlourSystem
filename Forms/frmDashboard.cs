@@ -336,11 +336,6 @@ namespace FlourSystem.Forms
             }
         }
 
-        private void btnAddQuota_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnMode_Click(object sender, EventArgs e)
         {
             ThemeManager.ToggleTheme();
@@ -357,12 +352,22 @@ namespace FlourSystem.Forms
                 btnMode.IconColor = Color.White;
             }
         }
-        frmAddCustomer frmAddCustomer;
+        #region Add Buttons
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            frmAddCustomer = new frmAddCustomer(this);
             addDropDownTimer.Start();
-            frmAddCustomer.ShowDialog();
+            new frmAddCustomer(this).ShowDialog();
         }
+        private void btnAddQuota_Click(object sender, EventArgs e)
+        {
+            addDropDownTimer.Start();
+            new frmAddQuota().ShowDialog();
+        }
+        private void btnAddOwner_Click(object sender, EventArgs e)
+        {
+            addDropDownTimer.Start();
+            new frmAddOwner().ShowDialog();
+        }
+        #endregion
     }
 }

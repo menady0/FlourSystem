@@ -71,7 +71,7 @@
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.IconChar = FontAwesome.Sharp.IconChar.Close;
-            btnClose.IconColor = Color.DarkRed;
+            btnClose.IconColor = Color.FromArgb(36, 36, 35);
             btnClose.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnClose.IconSize = 20;
             btnClose.Location = new Point(246, 0);
@@ -268,7 +268,7 @@
             // 
             picPrice.BackColor = Color.FromArgb(207, 219, 213);
             picPrice.ForeColor = Color.FromArgb(36, 36, 35);
-            picPrice.IconChar = FontAwesome.Sharp.IconChar.MoneyBill1;
+            picPrice.IconChar = FontAwesome.Sharp.IconChar.Usd;
             picPrice.IconColor = Color.FromArgb(36, 36, 35);
             picPrice.IconFont = FontAwesome.Sharp.IconFont.Solid;
             picPrice.IconSize = 22;
