@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using BCrypt.Net;
 
 namespace FlourSystem.Forms.User_Control.ucHomeBtns
 {
@@ -70,6 +71,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            #region Validation
             if (
                 string.IsNullOrEmpty(txtName.Content)
                 || string.IsNullOrEmpty(txtUsername.Content)
@@ -87,26 +89,27 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 txtUsername.Focus();
                 return;
             }
-            if (txtPassword.Content != txtConfirmPassword.Content)
+            if (txtPassword.Content!= txtConfirmPassword.Content)
             {
                 MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtConfirmPassword.Content = "";
                 txtConfirmPassword.Focus();
                 return;
             }
+            #endregion
 
             string name = txtName.Content;
             string username = txtUsername.Content;
             string password = txtPassword.Content;
-            if (DataBase.AddOwner(name, username, password))
+            string confirmPassword = txtConfirmPassword.Content;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            if (DataBase.AddOwner(name, username, hashedPassword))
             {
                 MessageBox.Show("Owner added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                btnClose.PerformClick();
             }
             else
-            {
                 MessageBox.Show("Failed to add owner.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
         }
     }

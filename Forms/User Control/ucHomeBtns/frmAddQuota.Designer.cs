@@ -250,9 +250,11 @@
             // 
             // frmAddQuota
             // 
+            AcceptButton = btnAdd;
             AutoScaleDimensions = new SizeF(6F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(232, 237, 223);
+            CancelButton = btnClose;
             ClientSize = new Size(300, 400);
             Controls.Add(picPrice);
             Controls.Add(txtPrice);

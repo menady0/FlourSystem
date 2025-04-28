@@ -264,7 +264,7 @@
             picShowPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             picShowPassword.IconColor = Color.FromArgb(36, 36, 35);
             picShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            picShowPassword.IconSize = 22;
+            picShowPassword.IconSize = 16;
             picShowPassword.Location = new Point(22, 209);
             picShowPassword.Name = "picShowPassword";
             picShowPassword.Size = new Size(22, 22);
@@ -282,7 +282,7 @@
             picShowConfirmPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             picShowConfirmPassword.IconColor = Color.FromArgb(36, 36, 35);
             picShowConfirmPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            picShowConfirmPassword.IconSize = 22;
+            picShowConfirmPassword.IconSize = 16;
             picShowConfirmPassword.Location = new Point(22, 249);
             picShowConfirmPassword.Name = "picShowConfirmPassword";
             picShowConfirmPassword.Size = new Size(22, 22);

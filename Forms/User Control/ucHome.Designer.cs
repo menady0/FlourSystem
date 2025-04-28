@@ -204,6 +204,7 @@
             // 
             // pnlCustomerContainer
             // 
+            pnlCustomerContainer.AutoScroll = true;
             pnlCustomerContainer.BackColor = Color.Transparent;
             pnlCustomerContainer.FlowDirection = FlowDirection.TopDown;
             pnlCustomerContainer.Location = new Point(0, 80);

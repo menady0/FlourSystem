@@ -32,7 +32,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 FlowLayoutPanel customerPanel = new FlowLayoutPanel
                 {
-                    Width = 1084,
+                    Width = 1067,
                     Height = 40,
                     Font = new Font("Cairo", 10),
                     Padding = new Padding(10, 0, 10, 0),

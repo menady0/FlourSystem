@@ -126,7 +126,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             if (DataBase.AddCustomer(cardID, name, members, quantity, price, registration, delivered, renewalDate, customerIndex))
             {
                 MessageBox.Show("Customer added successfully.");
-                this.Close();
+                btnClose.PerformClick();
 
                 _dashboard.btnRefresh.PerformClick();
             }

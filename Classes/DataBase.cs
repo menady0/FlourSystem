@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Net.NetworkInformation;
 
 public class DataBase
 {
@@ -34,13 +35,12 @@ public class DataBase
         return -1;
     }
 
-    public static bool login(string username, string password)
+    public static string GetHashedPassword(string username)
     {
-        string query = "SELECT * FROM owner WHERE Username = @username AND Password = @password";
+        string query = "SELECT Password FROM owner WHERE Username = @username";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@username", username);
-        cmd.Parameters.AddWithValue("@password", password);
         cmd.CommandTimeout = 60;
         MySqlDataReader reader;
         try
@@ -48,18 +48,53 @@ public class DataBase
             conn.Open();
             reader = cmd.ExecuteReader();
             if (reader.Read())
-                return true;
+            {
+                var dbPassword = reader["Password"];
+                if (dbPassword == DBNull.Value)
+                    return "";
+
+                return dbPassword.ToString();
+            }
+            else return "";
         }
         catch (MySqlException ex)
         {
             MessageBox.Show(ex.Message);
+            return "";
         }
         finally
         {
             conn.Close();
         }
-        return false;
     }
+    #region Use for logging in without hashing
+    //public static bool login(string username, string password)
+    //{
+    //    string query = "SELECT * FROM owner WHERE Username = @username AND Password = @password";
+    //    MySqlConnection conn = new MySqlConnection(mySQLConnection);
+    //    MySqlCommand cmd = new MySqlCommand(query, conn);
+    //    cmd.Parameters.AddWithValue("@username", username);
+    //    cmd.Parameters.AddWithValue("@password", password);
+    //    cmd.CommandTimeout = 60;
+    //    MySqlDataReader reader;
+    //    try
+    //    {
+    //        conn.Open();
+    //        reader = cmd.ExecuteReader();
+    //        if (reader.Read())
+    //            return true;
+    //    }
+    //    catch (MySqlException ex)
+    //    {
+    //        MessageBox.Show(ex.Message);
+    //    }
+    //    finally
+    //    {
+    //        conn.Close();
+    //    }
+    //    return false;
+    //}
+    #endregion
 
     public static List<Dictionary<string, object>> RetrieveCustomerTable()
     {

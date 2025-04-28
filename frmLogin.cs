@@ -2,6 +2,7 @@
 using FlourSystem.Forms;
 using FlourSystem.Properties;
 using FontAwesome.Sharp;
+using BCrypt.Net;
 
 namespace FlourSystem
 {
@@ -29,12 +30,39 @@ namespace FlourSystem
         public static frmDashboard dashboard;
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // --------- Remeber To Change the condition & UnComment this ↓ ---------
-            bool isValid = DataBase.login(txtUsername.Content, txtPassword.Content);
-            //bool isValid = true;
+
+            if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
+            {
+                MessageBox.Show("Username or Password cannot be empty.");
+                return;
+            }
+
+            string username = txtUsername.Content;
+            string password = txtPassword.Content;
+
+            // Logging In WITH Hashed Password
+            // ---------------------------------------------------------------------
+            string hashedPassword = DataBase.GetHashedPassword(username);
+            bool isValid;
+            try
+            {
+                isValid = BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during password verification: {ex.Message}");
+                return;
+            }
+            // ---------------------------------------------------------------------
+
+            // Logging In WITHOUT Hashed Password
+            // ---------------------------------------------------------------------
+            //bool isValid = DataBase.login(txtUsername.Content, txtPassword.Content);
+            // ---------------------------------------------------------------------
+
             if (isValid)
             {
-                DataBase.loggedOwner = DataBase.retrieveOwnerID(txtUsername.Content);
+                DataBase.loggedOwner = DataBase.retrieveOwnerID(username);
                 this.Hide();
                 dashboard = new frmDashboard();
                 dashboard.FormClosed += (s, args) => this.Close();
@@ -48,6 +76,7 @@ namespace FlourSystem
             }
         }
 
+        #region Dark Mode Button
         private void btnDarkMode_Click(object sender, EventArgs e)
         {
             ThemeManager.ToggleTheme();
@@ -74,5 +103,6 @@ namespace FlourSystem
                     btn.BackColor = Color.FromArgb(0, 0, 0, 0);
             }
         }
+        #endregion
     }
 }
