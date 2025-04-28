@@ -75,7 +75,6 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 return;
             }
 
-            MessageBox.Show(txtCardID.Content);
             if (!long.TryParse(txtCardID.Content, out _))
             {
                 MessageBox.Show("Please enter a valid number in the Card ID field.");
@@ -121,19 +120,15 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             int price = int.Parse(txtPrice.Content);
             int registration = 0;
             int delivered = 0;
-            int customerIndex = 999;
+            int customerIndex = DataBase.CustomersList.Count;
             string renewalDate = DateTime.Now.ToString("yyyy-MM-dd");
             if (DataBase.AddCustomer(cardID, name, members, quantity, price, registration, delivered, renewalDate, customerIndex))
             {
-                MessageBox.Show("Customer added successfully.");
+                this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
                 btnClose.PerformClick();
-
-                _dashboard.btnRefresh.PerformClick();
             }
             else
-            {
                 MessageBox.Show("Failed to add customer.");
-            }
 
         }
     }

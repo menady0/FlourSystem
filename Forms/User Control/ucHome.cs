@@ -1,28 +1,31 @@
 ﻿using CuoreUI.Controls;
 using FontAwesome.Sharp;
+using System.Diagnostics;
 
 namespace FlourSystem.Forms.User_Control
 {
     public partial class ucHome : UserControl
     {
-        public static List<Dictionary<string, object>> CustomersList = new List<Dictionary<string, object>>();
         public ucHome()
         {
             InitializeComponent();
-            CustomersList = DataBase.RetrieveCustomerTable();
+            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
         }
         private void ucHome_Load(object sender, EventArgs e)
         {
-            DisplayCustomers(CustomersList);
+            //DisplayCustomers(CustomersList);
+            DisplayCustomersIncrementally(DataBase.CustomersList);
             CloseOpenedSearch(this);
             #region Stop Watch
             //Stopwatch sw = Stopwatch.StartNew();
             //sw.Start();
-            //DisplayCustomersIncrementally(CustomersList);
             //sw.Stop();
             //MessageBox.Show($"Time taken to load customers: {sw.ElapsedMilliseconds} ms");
             #endregion
         }
+
+
+
         #region Display Data
         void DisplayCustomers(List<Dictionary<string, object>> customers)
         {
@@ -168,7 +171,6 @@ namespace FlourSystem.Forms.User_Control
                     BackColor = Color.Transparent,
                     Tag = customer["CustomerID"],
                 };
-                //btnAdditonals.Click += btnAdditonals_Click;
                 btnAdditonals.Click += (sender, e) =>
                 {
                     IconButton clickedButton = (IconButton)sender;
@@ -187,26 +189,6 @@ namespace FlourSystem.Forms.User_Control
                         pnlAddtionalDropDown.Tag = clickedButton; // Associate the drop-down with the clicked button
                         OpenDropDown(clickedButton);
                     }
-                    //if (isAddtionalDropDownExpanded && _currentlySelectedButton == btnAdditonals)
-                    //{
-                    //    AdditionaldropDownTimer.Start();
-                    //}
-                    //else if(isAddtionalDropDownExpanded && _currentlySelectedButton != btnAdditonals)
-                    //{
-                    //    AdditionaldropDownTimer.Start();
-                    //}
-                    //SelectedButton(btnAdditonals);
-
-                    //Point location = btnAdditonals.PointToScreen(Point.Empty);
-                    //Form? mainfrm = this.FindForm();
-                    //Point drpdownLocation = mainfrm.PointToClient(new Point(location.X, location.Y + btnAdditonals.Height));
-                    //pnlAddtionalDropDown.Location = drpdownLocation;
-
-
-                    //// Bring the drop-down panel to the front and make it visible
-                    //pnlAddtionalDropDown.Parent = this.FindForm();
-                    //pnlAddtionalDropDown.BringToFront();
-                    //AdditionaldropDownTimer.Start();
                 };
 
                 pnlAdditional.Controls.Add(btnAdditonals);
@@ -223,7 +205,7 @@ namespace FlourSystem.Forms.User_Control
                 customerPanel.Controls.Add(pnlAdditional);
 
                 pnlCustomerContainer.Controls.Add(customerPanel);
-                if(index % 2 == 0)
+                if (index % 2 == 0)
                 {
                     customerPanel.BackColor = Color.FromArgb(216, 220, 208);
                     txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = Color.FromArgb(216, 220, 208);
@@ -257,10 +239,11 @@ namespace FlourSystem.Forms.User_Control
 
         #endregion
 
+
         #region Display Data [Best For Performance]
+
         private int _currentIndex = 0;
         private List<Dictionary<string, object>> _customersToDisplay;
-        System.Windows.Forms.Timer _renderTimer;
         public void DisplayCustomersIncrementally(List<Dictionary<string, object>> customers)
         {
             _customersToDisplay = customers;
@@ -268,15 +251,11 @@ namespace FlourSystem.Forms.User_Control
 
             pnlCustomerContainer.Controls.Clear();
 
-            // Initialize and start the timer
-            _renderTimer = new System.Windows.Forms.Timer();
-            _renderTimer.Interval = 50; // Render every 50ms
-            _renderTimer.Tick += RenderNextBatch;
             _renderTimer.Start();
         }
         private void RenderNextBatch(object? sender, EventArgs e)
         {
-            int batchSize = 10; // Number of rows to render per tick
+            int batchSize = 1;
             int endIndex = Math.Min(_currentIndex + batchSize, _customersToDisplay.Count);
 
             for (int i = _currentIndex; i < endIndex; i++)
@@ -294,12 +273,12 @@ namespace FlourSystem.Forms.User_Control
                 _renderTimer.Dispose();
             }
         }
-        int index = 0;
+
         private FlowLayoutPanel CreateCustomerPanel(Dictionary<string, object> customer)
         {
             FlowLayoutPanel customerPanel = new FlowLayoutPanel
             {
-                Width = 1084,
+                Width = 1067,
                 Height = 40,
                 Font = new Font("Cairo", 10),
                 Padding = new Padding(10, 0, 10, 0),
@@ -409,6 +388,10 @@ namespace FlourSystem.Forms.User_Control
                 HoverBackground = Color.FromArgb(200, 71, 137, 75),
                 PressedBackground = Color.FromArgb(71, 137, 75),
             };
+            if (btnRegister.Content != "0")
+            {
+                btnRegister.NormalBackground = Color.FromArgb(71, 137, 75);
+            }
             Panel pnlAdditional = new Panel
             {
                 Width = 85,
@@ -464,45 +447,61 @@ namespace FlourSystem.Forms.User_Control
             customerPanel.Controls.Add(pnlAdditional);
 
             pnlCustomerContainer.Controls.Add(customerPanel);
-            if (index % 2 == 0)
+            if (_currentIndex % 2 == 0)
             {
                 customerPanel.BackColor = Color.FromArgb(216, 220, 208);
                 txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = Color.FromArgb(216, 220, 208);
                 txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.FromArgb(196, 200, 188);
-                txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
-                txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
             }
             else
             {
                 customerPanel.BackColor = Color.Transparent;
                 txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = ThemeColors.LightBackground;
                 txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.LightGray;
-                txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = ThemeColors.LightBackground;
-                txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
             }
-            index++;
+            txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
+            txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
+            _currentIndex++;
             return customerPanel;
         }
         #endregion
 
+        private void PnlCustomerContainer_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (isAddtionalDropDownExpanded)
+                AdditionaldropDownTimer.Start();
+        }
+
         #region Filter
         public void FilterCustomersByName(string searchQuery)
         {
-            var filteredCustomers = CustomersList
-                .Where(customer => customer["name"].ToString().Contains(searchQuery))
+            _customersToDisplay = DataBase.CustomersList
+                .Where(customer => customer["name"].ToString().Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
-            pnlCustomerContainer.Controls.Clear();
-            DisplayCustomers(filteredCustomers);
+            FilterCustomer();
         }
         public void FilterCustomersByID(string searchQuery)
         {
-            var filteredCustomers = CustomersList
+            _customersToDisplay = DataBase.CustomersList
                 .Where(customer => customer["CustomerID"].ToString().StartsWith(searchQuery))
                 .ToList();
+            FilterCustomer();
+        }
+        void FilterCustomer()
+        {
+            _currentIndex = 0;
 
             pnlCustomerContainer.Controls.Clear();
-            DisplayCustomers(filteredCustomers);
+
+            if (_renderTimer != null)
+            {
+                _renderTimer.Stop();
+            }
+
+            _renderTimer.Tick -= RenderNextBatch;
+            _renderTimer.Tick += RenderNextBatch;
+            _renderTimer.Start();
         }
         #endregion
 
@@ -560,8 +559,8 @@ namespace FlourSystem.Forms.User_Control
         public void RefreshData()
         {
             pnlCustomerContainer.Controls.Clear();
-            CustomersList = DataBase.RetrieveCustomerTable();
-            DisplayCustomers(CustomersList);
+            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
+            DisplayCustomers(DataBase.CustomersList);
         }
 
     }

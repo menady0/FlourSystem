@@ -6,6 +6,8 @@ public class DataBase
     static string mySQLConnection = "server=127.0.0.1 ; user=root; database=floursystem; password=";
 
     public static int loggedOwner;
+    public static List<Dictionary<string, object>> CustomersList = new List<Dictionary<string, object>>();
+
     public static int retrieveOwnerID(string username)
     {
         string query = "SELECT OwnerID FROM owner WHERE Username = @username";
@@ -113,7 +115,9 @@ public class DataBase
             LEFT JOIN 
                 store s ON c.CustomerID = s.CustomerID
             GROUP BY 
-                c.CustomerID";
+                c.CustomerID
+            ORDER BY
+                c.customerIndex";
 
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);

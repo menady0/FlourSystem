@@ -45,14 +45,14 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
 
         private void txtAmount_ContentChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAmount.Content.ToString()) || !int.TryParse(txtAmount.Content, out _))
+            if (string.IsNullOrEmpty(txtAmount.Content) || !float.TryParse(txtAmount.Content, out _))
             {
                 txtAmountPerKG.Content = "";
                 txtPrice.Content = "";
                 return;
             }
-            txtAmountPerKG.Content = (int.Parse(txtAmount.Content) * 20).ToString();
-            txtPrice.Content = (int.Parse(txtAmount.Content) * 56).ToString();
+            txtAmountPerKG.Content = (float.Parse(txtAmount.Content) * 20).ToString();
+            txtPrice.Content = (float.Parse(txtAmount.Content) * 56).ToString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

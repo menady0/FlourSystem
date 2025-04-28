@@ -592,7 +592,7 @@
             // 
             // typingTimer
             // 
-            typingTimer.Interval = 75;
+            typingTimer.Interval = 50;
             typingTimer.Tick += typingTimer_Tick;
             // 
             // addDropDownTimer

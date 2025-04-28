@@ -46,6 +46,7 @@
             label8 = new Label();
             label9 = new Label();
             AdditionaldropDownTimer = new System.Windows.Forms.Timer(components);
+            _renderTimer = new System.Windows.Forms.Timer(components);
             pnlRoundedContainer.SuspendLayout();
             pnlAddtionalDropDown.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -213,6 +214,7 @@
             pnlCustomerContainer.Size = new Size(1084, 480);
             pnlCustomerContainer.TabIndex = 1;
             pnlCustomerContainer.WrapContents = false;
+            pnlCustomerContainer.MouseWheel += PnlCustomerContainer_MouseWheel;
             // 
             // flowLayoutPanel1
             // 
@@ -337,6 +339,11 @@
             AdditionaldropDownTimer.Interval = 1;
             AdditionaldropDownTimer.Tick += AdditionaldropDownTimer_Tick;
             // 
+            // _renderTimer
+            // 
+            _renderTimer.Interval = 25;
+            _renderTimer.Tick += RenderNextBatch;
+            // 
             // ucHome
             // 
             AutoScaleDimensions = new SizeF(6F, 23F);
@@ -373,5 +380,6 @@
         private CuoreUI.Controls.cuiButton btnAddQuota;
         private CuoreUI.Controls.cuiButton btnAddCustomer;
         private System.Windows.Forms.Timer AdditionaldropDownTimer;
+        private System.Windows.Forms.Timer _renderTimer;
     }
 }

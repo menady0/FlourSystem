@@ -238,8 +238,8 @@ namespace FlourSystem.Forms
             if (button == btnSettings) return lblSettings;
             return null;
         }
+        #region Side Menu Buttons
         private ucHome? _ucHomeInstance;
-
         private void btnHome_Click(object sender, EventArgs e)
         {
             LoadTitle(0);
@@ -249,7 +249,6 @@ namespace FlourSystem.Forms
                 _ucHomeInstance = new ucHome();
             }
             LoadUserControl(_ucHomeInstance);
-            //LoadUserControl(new ucHome());
         }
 
         private void btnSta_Click(object sender, EventArgs e)
@@ -272,6 +271,7 @@ namespace FlourSystem.Forms
             selectedbtn(btnSettings);
             LoadUserControl(new ucSettings());
         }
+        #endregion
         string[] menuNames = new string[] {
             "الرئيسية",
             "الاستعلامات",

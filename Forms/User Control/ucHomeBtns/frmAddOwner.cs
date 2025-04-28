@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using BCrypt.Net;
+using FontAwesome.Sharp;
 
 namespace FlourSystem.Forms.User_Control.ucHomeBtns
 {
@@ -54,6 +55,10 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         private void picShowPassword_Click(object sender, EventArgs e)
         {
             txtPassword.PasswordChar = !txtPassword.PasswordChar;
+            if(picShowPassword.IconChar == IconChar.EyeSlash)
+                picShowPassword.IconChar = IconChar.Eye;
+            else
+                picShowPassword.IconChar = IconChar.EyeSlash;
         }
 
         private void txtConfirmPassword_ContentChanged(object sender, EventArgs e)
@@ -65,6 +70,10 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         private void picShowConfirmPassword_Click(object sender, EventArgs e)
         {
             txtConfirmPassword.PasswordChar = !txtConfirmPassword.PasswordChar;
+            if (picShowPassword.IconChar == IconChar.EyeSlash)
+                picShowPassword.IconChar = IconChar.Eye;
+            else
+                picShowPassword.IconChar = IconChar.EyeSlash;
         }
         #endregion
 
