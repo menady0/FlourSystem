@@ -34,6 +34,7 @@ namespace FlourSystem
             if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
             {
                 MessageBox.Show("Username or Password cannot be empty.");
+                txtUsername.Focus();
                 return;
             }
 
@@ -73,6 +74,7 @@ namespace FlourSystem
                 MessageBox.Show("Invalid Username or Password");
                 txtUsername.Content = "";
                 txtPassword.Content = "";
+                txtUsername.Focus();
             }
         }
 

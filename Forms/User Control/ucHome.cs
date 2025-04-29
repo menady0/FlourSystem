@@ -1,6 +1,7 @@
 ﻿using CuoreUI.Controls;
 using FontAwesome.Sharp;
 using System.Diagnostics;
+using System.Xml;
 
 namespace FlourSystem.Forms.User_Control
 {
@@ -14,7 +15,7 @@ namespace FlourSystem.Forms.User_Control
         private void ucHome_Load(object sender, EventArgs e)
         {
             //DisplayCustomers(CustomersList);
-            DisplayCustomersIncrementally(DataBase.CustomersList);
+            DisplayTimer(DataBase.CustomersList);
             CloseOpenedSearch(this);
             #region Stop Watch
             //Stopwatch sw = Stopwatch.StartNew();
@@ -244,7 +245,7 @@ namespace FlourSystem.Forms.User_Control
 
         private int _currentIndex = 0;
         private List<Dictionary<string, object>> _customersToDisplay;
-        public void DisplayCustomersIncrementally(List<Dictionary<string, object>> customers)
+        public void DisplayTimer(List<Dictionary<string, object>> customers)
         {
             _customersToDisplay = customers;
             _currentIndex = 0;
@@ -285,7 +286,11 @@ namespace FlourSystem.Forms.User_Control
                 Margin = new Padding(0, 0, 0, 0),
                 AllowDrop = true,
                 FlowDirection = FlowDirection.RightToLeft,
+                Tag = customer["CustomerID"],
             };
+            customerPanel.DragEnter += CustomerPanel_DragEnter;
+            customerPanel.DragDrop += CustomerPanel_DragDrop;
+            customerPanel.DragLeave += CustomerPanel_DragLeave;
 
             IconPictureBox drag = new IconPictureBox
             {
@@ -297,6 +302,7 @@ namespace FlourSystem.Forms.User_Control
                 SizeMode = PictureBoxSizeMode.CenterImage,
                 Cursor = Cursors.Hand,
             };
+            drag.MouseDown += (sender, e) => drag_MouseDown(sender, e, customerPanel);
 
             Label lblName = new Label
             {
@@ -464,6 +470,7 @@ namespace FlourSystem.Forms.User_Control
             _currentIndex++;
             return customerPanel;
         }
+
         #endregion
 
         private void PnlCustomerContainer_MouseWheel(object sender, MouseEventArgs e)
@@ -563,5 +570,103 @@ namespace FlourSystem.Forms.User_Control
             DisplayCustomers(DataBase.CustomersList);
         }
 
+        #region Drag, Drop & Scrolling
+        public enum scrollDirection
+        {
+            Up,
+            None,
+            Down
+        }
+        scrollDirection direction = scrollDirection.None;
+        private void drag_MouseDown(object sender, MouseEventArgs e, FlowLayoutPanel customerPanel)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                DoDragDrop(customerPanel, DragDropEffects.Move);
+            }
+        }
+        private void CustomerPanel_DragEnter(object? sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(FlowLayoutPanel)))
+            {
+                e.Effect = DragDropEffects.Move;
+
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+
+            Point clientPoint = pnlCustomerContainer.PointToClient(new Point(e.X, e.Y));
+
+            if (clientPoint.Y >= pnlCustomerContainer.Height - 50)
+            {
+                direction = scrollDirection.Down;
+                ScrollTimer.Start();
+            }
+            else if (clientPoint.Y <= 50)
+            {
+                direction = scrollDirection.Up;
+                ScrollTimer.Start();
+            }
+            else
+            {
+                direction = scrollDirection.None;
+                ScrollTimer.Stop();
+            }
+        }
+        private void CustomerPanel_DragDrop(object? sender, DragEventArgs e)
+        {
+            FlowLayoutPanel? draggedPanel = e.Data.GetData(typeof(FlowLayoutPanel)) as FlowLayoutPanel;
+            FlowLayoutPanel? targetPanel = sender as FlowLayoutPanel;
+
+            if (draggedPanel != null && targetPanel != null && targetPanel.Parent is FlowLayoutPanel container)
+            {
+
+                int targetIndex = container.Controls.GetChildIndex(targetPanel);
+                container.Controls.SetChildIndex(draggedPanel, targetIndex);
+
+                UpdateCustomerIndexes(container);
+            }
+
+            ScrollTimer.Stop();
+            direction = scrollDirection.None;
+        }
+        public void CustomerPanel_DragLeave(object? sender, EventArgs e)
+        {
+            ScrollTimer.Stop();
+            direction = scrollDirection.None;
+        }
+        private void UpdateCustomerIndexes(FlowLayoutPanel container)
+        {
+            for (int i = 0; i < container.Controls.Count; i++)
+            {
+                if (container.Controls[i] is FlowLayoutPanel customerPanel)
+                {
+                    var customerId = customerPanel.Tag;
+
+                    DataBase.UpdateCustomerIndex(customerId, i);
+                }
+            }
+        }
+        int scrollSpeed = 10;
+        private void ScrollTimer_Tick(object sender, EventArgs e)
+        {
+            if (direction == scrollDirection.Down)
+            {
+                if (pnlCustomerContainer.VerticalScroll.Value + pnlCustomerContainer.VerticalScroll.SmallChange <= pnlCustomerContainer.VerticalScroll.Maximum)
+                {
+                    pnlCustomerContainer.VerticalScroll.Value += (pnlCustomerContainer.VerticalScroll.SmallChange + scrollSpeed);
+                }
+            }
+            else if (direction == scrollDirection.Up)
+            {
+                if (pnlCustomerContainer.VerticalScroll.Value - pnlCustomerContainer.VerticalScroll.SmallChange >= pnlCustomerContainer.VerticalScroll.Minimum)
+                {
+                    pnlCustomerContainer.VerticalScroll.Value -= (pnlCustomerContainer.VerticalScroll.SmallChange + scrollSpeed);
+                }
+            }
+        }
+        #endregion
     }
 }

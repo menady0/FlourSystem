@@ -84,7 +84,8 @@ namespace FlourSystem.Forms
 
         public void btnRefresh_Click(object sender, EventArgs e)
         {
-            _ucHomeInstance?.RefreshData();
+            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
+            _ucHomeInstance.DisplayTimer(DataBase.CustomersList);
         }
 
         // Search Button

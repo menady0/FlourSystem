@@ -335,5 +335,30 @@ public class DataBase
         }
     }
     #endregion
+
+    public static void UpdateCustomerIndex(object customerId, int newIndex)
+    {
+        string query = "UPDATE customer SET customerIndex = @newIndex WHERE CustomerID = @customerId";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@newIndex", newIndex);
+        cmd.Parameters.AddWithValue("@customerId", customerId);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to update customer index.");
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+
 }
 

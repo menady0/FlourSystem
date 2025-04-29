@@ -47,6 +47,7 @@
             label9 = new Label();
             AdditionaldropDownTimer = new System.Windows.Forms.Timer(components);
             _renderTimer = new System.Windows.Forms.Timer(components);
+            ScrollTimer = new System.Windows.Forms.Timer(components);
             pnlRoundedContainer.SuspendLayout();
             pnlAddtionalDropDown.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -344,6 +345,11 @@
             _renderTimer.Interval = 25;
             _renderTimer.Tick += RenderNextBatch;
             // 
+            // ScrollTimer
+            // 
+            ScrollTimer.Interval = 1;
+            ScrollTimer.Tick += ScrollTimer_Tick;
+            // 
             // ucHome
             // 
             AutoScaleDimensions = new SizeF(6F, 23F);
@@ -381,5 +387,6 @@
         private CuoreUI.Controls.cuiButton btnAddCustomer;
         private System.Windows.Forms.Timer AdditionaldropDownTimer;
         private System.Windows.Forms.Timer _renderTimer;
+        private System.Windows.Forms.Timer ScrollTimer;
     }
 }
