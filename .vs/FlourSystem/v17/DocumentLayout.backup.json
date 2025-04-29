@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Mena\\Documents\\FlourSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\ucstatistaics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\ucstatistaics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\ucstatistaics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\ucstatistaics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\classes\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,19 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "DataBase.cs",
               "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\DataBase.cs",
               "RelativeDocumentMoniker": "Classes\\DataBase.cs",
               "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\DataBase.cs",
               "RelativeToolTip": "Classes\\DataBase.cs",
-              "ViewState": "AgIAAAMBAAAAAAAAAADwv1QBAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAABYBAAAAAAAAAAAUwO0BAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T10:34:37.92Z",
+              "WhenOpened": "2025-04-29T15:09:21.899Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -52,52 +44,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmDashboard.cs",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
-              "RelativeDocumentMoniker": "Forms\\frmDashboard.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
-              "RelativeToolTip": "Forms\\frmDashboard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T10:51:15.396Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmDashboard.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
-              "RelativeDocumentMoniker": "Forms\\frmDashboard.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs [Design]",
-              "RelativeToolTip": "Forms\\frmDashboard.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T10:51:12.633Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ucHome.cs",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs",
-              "RelativeDocumentMoniker": "Forms\\User Control\\ucHome.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs*",
-              "RelativeToolTip": "Forms\\User Control\\ucHome.cs*",
-              "ViewState": "AgIAAD0CAAAAAAAAAAAjwJYCAAA1AAAAAAAAAA==",
+              "Title": "ucStatistaics.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucStatistaics.cs",
+              "RelativeDocumentMoniker": "Forms\\User Control\\ucStatistaics.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucStatistaics.cs",
+              "RelativeToolTip": "Forms\\User Control\\ucStatistaics.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAawB4AAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T10:24:33.204Z",
+              "WhenOpened": "2025-04-29T14:45:03.082Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ucHome.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs",
-              "RelativeDocumentMoniker": "Forms\\User Control\\ucHome.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs [Design]*",
-              "RelativeToolTip": "Forms\\User Control\\ucHome.cs [Design]*",
+              "Title": "ucStatistaics.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucStatistaics.cs",
+              "RelativeDocumentMoniker": "Forms\\User Control\\ucStatistaics.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucStatistaics.cs [Design]",
+              "RelativeToolTip": "Forms\\User Control\\ucStatistaics.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T10:24:30.759Z",
+              "WhenOpened": "2025-04-29T14:44:57.053Z",
               "EditorCaption": " [Design]"
             }
           ]

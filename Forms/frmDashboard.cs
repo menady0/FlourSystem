@@ -66,7 +66,6 @@ namespace FlourSystem.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void btnMinimize_MouseEnter(object sender, EventArgs e)
         {
             btnMinimize.BackColor = Color.FromArgb(18, 18, 18);
@@ -88,7 +87,7 @@ namespace FlourSystem.Forms
             _ucHomeInstance.DisplayTimer(DataBase.CustomersList);
         }
 
-        // Search Button
+        #region Search Button
         bool srchExpanded = false;
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -129,14 +128,6 @@ namespace FlourSystem.Forms
             foreach (Control child in control.Controls)
                 CloseOpenedSearch(child);
         }
-        private void Form1_MouseDown(object? sender, MouseEventArgs e)
-        {
-            if (!pnlSearch.Bounds.Contains(PointToClient(MousePosition)) && srchExpanded)
-                searchTimer.Start();
-            if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
-                addDropDownTimer.Start();
-        }
-
         private void txtSearch_ContentChanged(object sender, EventArgs e)
         {
             btnSrchClear.Visible = !string.IsNullOrEmpty(txtSearch.Content);
@@ -148,11 +139,19 @@ namespace FlourSystem.Forms
                     _ucHomeInstance.FilterCustomersByName(txtSearch.Content);
             }
         }
-
         private void btnSrchClear_Click(object sender, EventArgs e)
         {
             txtSearch.Content = string.Empty;
             txtSearch.Focus();
+        }
+        #endregion
+
+        private void Form1_MouseDown(object? sender, MouseEventArgs e)
+        {
+            if (!pnlSearch.Bounds.Contains(PointToClient(MousePosition)) && srchExpanded)
+                searchTimer.Start();
+            if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
+                addDropDownTimer.Start();
         }
 
         private void LoadUserControl(UserControl uc)
@@ -239,6 +238,7 @@ namespace FlourSystem.Forms
             if (button == btnSettings) return lblSettings;
             return null;
         }
+        
         #region Side Menu Buttons
         private ucHome? _ucHomeInstance;
         private void btnHome_Click(object sender, EventArgs e)

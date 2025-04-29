@@ -30,37 +30,36 @@ namespace FlourSystem
         public static frmDashboard dashboard;
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
-            {
-                MessageBox.Show("Username or Password cannot be empty.");
-                txtUsername.Focus();
-                return;
-            }
+            //if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
+            //{
+            //    MessageBox.Show("Username or Password cannot be empty.");
+            //    txtUsername.Focus();
+            //    return;
+            //}
 
             string username = txtUsername.Content;
             string password = txtPassword.Content;
 
             // Logging In WITH Hashed Password
             // ---------------------------------------------------------------------
-            string hashedPassword = DataBase.GetHashedPassword(username);
-            bool isValid;
-            try
-            {
-                isValid = BCrypt.Net.BCrypt.Verify(password, hashedPassword);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred during password verification: {ex.Message}");
-                return;
-            }
+            //string hashedPassword = DataBase.GetHashedPassword(username);
+            //bool isValid;
+            //try
+            //{
+            //    isValid = BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"An error occurred during password verification: {ex.Message}");
+            //    return;
+            //}
             // ---------------------------------------------------------------------
 
             // Logging In WITHOUT Hashed Password
             // ---------------------------------------------------------------------
             //bool isValid = DataBase.login(txtUsername.Content, txtPassword.Content);
             // ---------------------------------------------------------------------
-
+            bool isValid = true;
             if (isValid)
             {
                 DataBase.loggedOwner = DataBase.retrieveOwnerID(username);

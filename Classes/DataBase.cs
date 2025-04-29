@@ -5,9 +5,8 @@ public class DataBase
 {
     static string mySQLConnection = "server=127.0.0.1 ; user=root; database=floursystem; password=";
 
+    #region Login Form
     public static int loggedOwner;
-    public static List<Dictionary<string, object>> CustomersList = new List<Dictionary<string, object>>();
-
     public static int retrieveOwnerID(string username)
     {
         string query = "SELECT OwnerID FROM owner WHERE Username = @username";
@@ -36,7 +35,6 @@ public class DataBase
         }
         return -1;
     }
-
     public static string GetHashedPassword(string username)
     {
         string query = "SELECT Password FROM owner WHERE Username = @username";
@@ -97,76 +95,17 @@ public class DataBase
     //    return false;
     //}
     #endregion
+    #endregion
 
-    public static List<Dictionary<string, object>> RetrieveCustomerTable()
-    {
-        string query = @"
-            SELECT 
-                c.CustomerID, 
-                c.OwnerName, 
-                c.NumberOfPeople, 
-                c.Price, 
-                c.Registration, 
-                c.TotalQuantity AS remainQuantity,
-                c.Delivered,
-                c.customerIndex
-            FROM 
-                customer c
-            LEFT JOIN 
-                store s ON c.CustomerID = s.CustomerID
-            GROUP BY 
-                c.CustomerID
-            ORDER BY
-                c.customerIndex";
-
-        MySqlConnection conn = new MySqlConnection(mySQLConnection);
-        MySqlCommand cmd = new MySqlCommand(query, conn);
-        cmd.CommandTimeout = 60;
-        MySqlDataReader reader;
-        List<Dictionary<string, object>> customers = new List<Dictionary<string, object>>();
-
-        try
-        {
-            conn.Open();
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Dictionary<string, object> customer = new Dictionary<string, object>
-                {
-                    { "CustomerID", reader["CustomerID"] },
-                    { "name", reader["OwnerName"] },
-                    { "numberOfPeople", reader["NumberOfPeople"] },
-                    { "remainQuantity", reader["remainQuantity"] },
-                    { "price", reader["Price"] },
-                    { "registration", reader["Registration"] },
-                    { "delivered", reader["Delivered"] },
-                    { "index", reader["customerIndex"] }
-                };
-                customers.Add(customer);
-            }
-        }
-        catch (MySqlException ex)
-        {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
-        }
-        finally
-        {
-            conn.Close();
-        }
-
-        return customers;
-    }
-
-
+    #region Dashboard Form
     #region Adding Buttons Group
     public static bool AddCustomer(long cardID, string ownerName, int numberOfPeople, int totalQuantity, int price, int registration, int delivered, string renewalDate, int index)
     {
         string query = @"
         INSERT INTO customer (CustomerID, OwnerName, NumberOfPeople, TotalQuantity, Price, Registration, Delivered, RenewalDate, customerIndex, OwnerID)
         VALUES (@customerID, @ownerName, @numberOfPeople, @totalQuantity, @price, @registration, @delivered, @renewalDate, @customerIndex, @ownerID)";
-        
-        MySqlConnection conn = new MySqlConnection(mySQLConnection); 
+
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@customerID", cardID);
         cmd.Parameters.AddWithValue("@ownerName", ownerName);
@@ -257,8 +196,6 @@ public class DataBase
         }
     }
     #endregion
-
-
     #region Checking Adding Buttons Group
     public static bool CustomerExists(long cardID)
     {
@@ -336,6 +273,68 @@ public class DataBase
     }
     #endregion
 
+
+    #region Home UserControl
+    public static List<Dictionary<string, object>> CustomersList = new List<Dictionary<string, object>>();
+    public static List<Dictionary<string, object>> RetrieveCustomerTable()
+    {
+        string query = @"
+            SELECT 
+                c.CustomerID, 
+                c.OwnerName, 
+                c.NumberOfPeople, 
+                c.Price, 
+                c.Registration, 
+                c.TotalQuantity AS remainQuantity,
+                c.Delivered,
+                c.customerIndex
+            FROM 
+                customer c
+            LEFT JOIN 
+                store s ON c.CustomerID = s.CustomerID
+            GROUP BY 
+                c.CustomerID
+            ORDER BY
+                c.customerIndex";
+
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.CommandTimeout = 60;
+        MySqlDataReader reader;
+        List<Dictionary<string, object>> customers = new List<Dictionary<string, object>>();
+
+        try
+        {
+            conn.Open();
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Dictionary<string, object> customer = new Dictionary<string, object>
+                {
+                    { "CustomerID", reader["CustomerID"] },
+                    { "name", reader["OwnerName"] },
+                    { "numberOfPeople", reader["NumberOfPeople"] },
+                    { "remainQuantity", reader["remainQuantity"] },
+                    { "price", reader["Price"] },
+                    { "registration", reader["Registration"] },
+                    { "delivered", reader["Delivered"] },
+                    { "index", reader["customerIndex"] }
+                };
+                customers.Add(customer);
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Connection Failed");
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            conn.Close();
+        }
+
+        return customers;
+    }
     public static void UpdateCustomerIndex(object customerId, int newIndex)
     {
         string query = "UPDATE customer SET customerIndex = @newIndex WHERE CustomerID = @customerId";
@@ -359,6 +358,163 @@ public class DataBase
             conn.Close();
         }
     }
+    #endregion
 
+    #region Statistics UserControl
+    public static int ReceivedQuotas(int month, int year)
+    {
+        string query = "SELECT COUNT(*) FROM quota WHERE MONTH(DateReceived) = @month AND YEAR(DateReceived) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to retrieve quota count.");
+            MessageBox.Show(ex.Message);
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static int Cards(int month, int year)
+    {
+        string query = "SELECT COUNT(*) FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to retrieve today's card count.");
+            MessageBox.Show(ex.Message);
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static int Cards(int day, int month, int year)
+    {
+        string query = "SELECT COUNT(*) FROM store WHERE DAY(DateOfOperation) = @day AND MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@day", day);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to retrieve today's card count.");
+            MessageBox.Show(ex.Message);
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+
+    public static int Store(int month, int year)
+    {
+        string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to retrieve store amount.");
+            MessageBox.Show(ex.Message);
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static int Store(int day, int month, int year)
+    {
+        string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE DAY(DateOfOperation) = @day AND MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@day", day);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to retrieve store amount.");
+            MessageBox.Show(ex.Message);
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static int AmountPerKG(int month, int year)
+    {
+        string query = "SELECT SUM(AmountPerKG) FROM quota WHERE MONTH(DateReceived) = @month AND YEAR(DateReceived) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to retrieve quota amount.");
+            MessageBox.Show(ex.Message);
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    #endregion
+
+    #endregion
 }
-
