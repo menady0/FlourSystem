@@ -5,9 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+using System.Threading;
 namespace FlourSystem.Forms.User_Control
 {
     public partial class ucStatistaics : UserControl
@@ -38,13 +36,72 @@ namespace FlourSystem.Forms.User_Control
 
         private void ucStatistaics_Load(object sender, EventArgs e)
         {
-            lblReceivedQuota.Text = receivedQuota.ToString();
-            lblTodayCards.Text = todayCards.ToString();
-            lblTotalCards.Text = totalCards.ToString();
+            StartAllAnimations();
 
-            lblBalance.Text = balance.ToString();
-            lblTodaySales.Text = todaySales.ToString();
-            lblTotalSales.Text = totalSales.ToString();
+            // Use Instead To Display The Values Without Animation
+            // ----------------------------------------------------
+            //lblReceivedQuota.Text = receivedQuota.ToString();
+            //lblTodayCards.Text = todayCards.ToString();
+            //lblTotalCards.Text = totalCards.ToString();
+
+            //lblBalance.Text = balance.ToString();
+            //lblTodaySales.Text = todaySales.ToString();
+            //lblTotalSales.Text = totalSales.ToString();
+            // ----------------------------------------------------
+        }
+
+        private List<NumberAnimation> animations = new List<NumberAnimation>();
+        private void StartAllAnimations()
+        {
+            animations = new List<NumberAnimation>
+            {
+                new NumberAnimation { TargetLabel = lblReceivedQuota, StartValue = 0, EndValue = receivedQuota, Duration = 750, StartTime = DateTime.Now },
+                new NumberAnimation { TargetLabel = lblTodayCards, StartValue = 0, EndValue = todayCards, Duration = 1000, StartTime = DateTime.Now },
+                new NumberAnimation { TargetLabel = lblTotalCards, StartValue = 0, EndValue = totalCards, Duration = 1000, StartTime = DateTime.Now },
+                new NumberAnimation { TargetLabel = lblBalance, StartValue = 0, EndValue = balance, Duration = 2000, StartTime = DateTime.Now },
+                new NumberAnimation { TargetLabel = lblTodaySales, StartValue = 0, EndValue = todaySales, Duration = 2000, StartTime = DateTime.Now },
+                new NumberAnimation { TargetLabel = lblTotalSales, StartValue = 0, EndValue = totalSales, Duration = 2000, StartTime = DateTime.Now },
+            };
+
+            timing.Start();
+        }
+        private void timing_Tick(object sender, EventArgs e)
+        {
+            bool anyActive = false;
+
+            foreach (var anim in animations)
+            {
+                double elapsed = (DateTime.Now - anim.StartTime).TotalMilliseconds;
+                double progress = Math.Min(elapsed / anim.Duration, 1.0);
+                double easedProgress = EaseInOut(progress);
+
+                int currentValue = (int)(anim.StartValue + (anim.EndValue - anim.StartValue) * easedProgress);
+                anim.TargetLabel.Text = currentValue.ToString();
+
+                if (progress < 1.0)
+                    anyActive = true;
+            }
+
+            if (!anyActive)
+            {
+                timing.Stop();
+                timing.Dispose();
+            }
+        }
+        private double EaseInOut(double t)
+        {
+            return t < 0.5
+                ? 4 * t * t * t
+                : 1 - Math.Pow(-2 * t + 2, 3) / 2;
         }
     }
 }
+class NumberAnimation
+{
+    public required Label TargetLabel { get; set; }
+    public int StartValue { get; set; }
+    public int EndValue { get; set; }
+    public int Duration { get; set; } // in ms
+    public DateTime StartTime { get; set; }
+}
+

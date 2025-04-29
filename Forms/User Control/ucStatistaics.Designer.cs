@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pnlRoundedContainer = new CuoreUI.Controls.cuiBorder();
             pnlTotalSales = new CuoreUI.Controls.cuiBorder();
             totalSaleslbl = new Label();
@@ -47,6 +48,7 @@
             pnlReceivedQuota = new CuoreUI.Controls.cuiBorder();
             receivedQuotalbl = new Label();
             lblReceivedQuota = new Label();
+            timing = new System.Windows.Forms.Timer(components);
             pnlRoundedContainer.SuspendLayout();
             pnlTotalSales.SuspendLayout();
             pnlTotalCards.SuspendLayout();
@@ -286,6 +288,11 @@
             lblReceivedQuota.Text = "0";
             lblReceivedQuota.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // timing
+            // 
+            timing.Interval = 16;
+            timing.Tick += timing_Tick;
+            // 
             // ucStatistaics
             // 
             AutoScaleDimensions = new SizeF(6F, 23F);
@@ -334,5 +341,6 @@
         private CuoreUI.Controls.cuiBorder pnlBalance;
         private Label balancelbl;
         private Label lblBalance;
+        private System.Windows.Forms.Timer timing;
     }
 }
