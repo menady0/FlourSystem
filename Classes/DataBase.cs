@@ -100,6 +100,7 @@ public class DataBase
     #endregion
 
     #region Dashboard Form
+
     #region Adding Buttons Group
     public static bool AddCustomer(long cardID, string ownerName, int numberOfPeople, int totalQuantity, int price, int registration, int delivered, string renewalDate, int index)
     {
@@ -198,6 +199,7 @@ public class DataBase
         }
     }
     #endregion
+
     #region Checking Adding Buttons Group
     public static bool CustomerExists(long cardID)
     {
@@ -274,6 +276,7 @@ public class DataBase
         }
     }
     #endregion
+
 
 
     #region Home UserControl
@@ -353,6 +356,56 @@ public class DataBase
         catch (MySqlException ex)
         {
             MessageBox.Show("Failed to update customer index.");
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static void Registration(Dictionary<string, object> customer, int? required, int? delievered, int? paid, string dateOperation)
+    {
+        string updateCustomerQuery = @"
+            UPDATE customer 
+            SET 
+                Registration = Registration + 1, 
+                TotalQuantity = TotalQuantity - @theReceivedQuantity,
+                Price = Price - @paid,
+                Delivered = @delievered
+            WHERE 
+                CustomerID = @customerID";
+        string insertStoreQuery = "INSERT INTO store (DateOfOperation, MoneyPaid, theReceivedQuantity, CustomerID) VALUES (@dateOfOperation, @moneyPaid, @theReceivedQuantity, @customerID)";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand updateCustomerCmd = new MySqlCommand(updateCustomerQuery, conn);
+        MySqlCommand insertStoreCmd = new MySqlCommand(insertStoreQuery, conn);
+
+        updateCustomerCmd.Parameters.AddWithValue("@theReceivedQuantity", required);
+        updateCustomerCmd.Parameters.AddWithValue("@paid", paid);
+        updateCustomerCmd.Parameters.AddWithValue("@delievered", delievered);
+        updateCustomerCmd.Parameters.AddWithValue("@customerID", customer["CustomerID"]);
+
+        insertStoreCmd.Parameters.AddWithValue("@dateOfOperation", dateOperation);
+        insertStoreCmd.Parameters.AddWithValue("@moneyPaid", paid);
+        insertStoreCmd.Parameters.AddWithValue("@theReceivedQuantity", required);
+        insertStoreCmd.Parameters.AddWithValue("@customerID", customer["CustomerID"]);
+
+        try
+        {
+            conn.Open();
+            int rowsAffected = updateCustomerCmd.ExecuteNonQuery();
+            if (rowsAffected > 0)
+            {
+                insertStoreCmd.ExecuteNonQuery();
+                MessageBox.Show("Customer record updated and store record created successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Failed to update customer record.");
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Connection Failed");
             MessageBox.Show(ex.Message);
         }
         finally
@@ -451,11 +504,12 @@ public class DataBase
         }
     }
 
-    public static int Store(int month, int year)
+    public static int Store(int day, int month, int year)
     {
-        string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE DAY(DateOfOperation) = @day AND MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@day", day);
         cmd.Parameters.AddWithValue("@month", month);
         cmd.Parameters.AddWithValue("@year", year);
         cmd.CommandTimeout = 60;
@@ -480,12 +534,12 @@ public class DataBase
             conn.Close();
         }
     }
-    public static int Store(int day, int month, int year)
+    public static int balance;
+    public static int Store(int month, int year)
     {
-        string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE DAY(DateOfOperation) = @day AND MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);
-        cmd.Parameters.AddWithValue("@day", day);
         cmd.Parameters.AddWithValue("@month", month);
         cmd.Parameters.AddWithValue("@year", year);
         cmd.CommandTimeout = 60;

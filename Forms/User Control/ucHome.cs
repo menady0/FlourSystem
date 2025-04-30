@@ -1,7 +1,5 @@
 ﻿using CuoreUI.Controls;
 using FontAwesome.Sharp;
-using System.Diagnostics;
-using System.Xml;
 
 namespace FlourSystem.Forms.User_Control
 {
@@ -136,6 +134,7 @@ namespace FlourSystem.Forms.User_Control
                     FocusBackgroundColor = Color.Transparent,
                     FocusBorderColor = ThemeColors.Green,
                 };
+
                 cuiButton btnRegister = new cuiButton
                 {
                     Name = "btnRegister",
@@ -224,6 +223,9 @@ namespace FlourSystem.Forms.User_Control
                 index++;
             }
         }
+
+
+
         private bool _isClosingForReposition = false;
         private void OpenDropDown(IconButton? button)
         {
@@ -380,6 +382,8 @@ namespace FlourSystem.Forms.User_Control
                 FocusBackgroundColor = Color.Transparent,
                 FocusBorderColor = ThemeColors.Green,
             };
+            txtRequired.ContentChanged += (sender, e) => txtRequired_ContentChanged(sender, e, txtReceived, txtPaid);
+
             cuiButton btnRegister = new cuiButton
             {
                 Name = "btnRegister",
@@ -393,11 +397,12 @@ namespace FlourSystem.Forms.User_Control
                 NormalBackground = Color.FromArgb(85, 86, 82),
                 HoverBackground = Color.FromArgb(200, 71, 137, 75),
                 PressedBackground = Color.FromArgb(71, 137, 75),
+                Tag = new { Customer = customer, Remain = lblRemain , Required = txtRequired, Price = lblPrice, Paid = txtPaid, Received = txtReceived },
             };
-            if (btnRegister.Content != "0")
-            {
-                btnRegister.NormalBackground = Color.FromArgb(71, 137, 75);
-            }
+            if (btnRegister.Content != "0") btnRegister.NormalBackground = Color.FromArgb(71, 137, 75);
+            btnRegister.Click += btnRegister_Click;
+
+
             Panel pnlAdditional = new Panel
             {
                 Width = 85,
@@ -469,6 +474,102 @@ namespace FlourSystem.Forms.User_Control
             txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
             _currentIndex++;
             return customerPanel;
+        }
+        private void txtRequired_ContentChanged(object? sender, EventArgs e, cuiTextBox2 txtReceived, cuiTextBox2 txtPaid)
+        {
+            if (sender is cuiTextBox2 req)
+            {
+                if (int.TryParse(req.Content, out int reqValue))
+                {
+                    txtReceived.Content = reqValue.ToString();
+                    txtPaid.Content = (reqValue * 3).ToString();
+                }
+                else
+                {
+                    txtReceived.Content = "0";
+                    txtPaid.Content = "0";
+                }
+            }
+        }
+        private void btnRegister_Click(object? sender, EventArgs e)
+        {
+            if (sender is cuiButton btnRegister)
+            {
+                dynamic? tag = btnRegister.Tag;
+                Dictionary<string, object> customer = tag.Customer;
+
+                Label remain = tag.Remain;
+                cuiTextBox2 txtRequired = tag.Required;
+
+                cuiTextBox2 txtReceived = tag.Received;
+
+                Label price = tag.Price;
+                cuiTextBox2 txtPaid = tag.Paid;
+
+                if(
+                    string.IsNullOrEmpty(txtReceived.Content) || 
+                    string.IsNullOrEmpty(txtRequired.Content) || 
+                    string.IsNullOrEmpty(txtPaid.Content)
+                    )
+                {
+                    MessageBox.Show("Can't Leave one of the fields empty!");
+                    return;
+                }
+                if (
+                    int.TryParse(txtRequired.Content, out int reqValue) && 
+                    int.TryParse(txtReceived.Content, out int recValue) &&
+                    int.TryParse(txtPaid.Content, out int paidValue))
+                {
+                    if (
+                        reqValue <= 0 ||
+                        reqValue > int.Parse(customer["remainQuantity"].ToString()) ||
+                        recValue <= 0 ||
+                        recValue > int.Parse(customer["remainQuantity"].ToString()) ||
+                        paidValue <= 0 ||
+                        paidValue > int.Parse(customer["price"].ToString())
+                        )
+                    {
+                        MessageBox.Show("Quantity exceeds the remaining quantity.");
+                        return;
+                    }
+                    int currentMonth = DateTime.Now.Month;
+                    int currentYear = DateTime.Now.Year;
+                    DataBase.balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
+                    if (reqValue > DataBase.balance)
+                    {
+                        MessageBox.Show("Not enough balance.");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid number.");
+                    return;
+                }
+
+                if (customer != null && txtRequired != null && txtReceived != null && txtPaid != null && remain != null)
+                {
+                    int required = int.Parse(txtRequired.Content);
+                    int received = int.Parse(txtReceived.Content);
+                    int paid = int.Parse(txtPaid.Content);
+                    string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+                    DataBase.Registration(customer, required,received, paid, date);
+
+                    int totalQuantity = int.Parse(customer["numberOfPeople"].ToString());
+                    totalQuantity *= 10;
+                    int receivedQuantity = int.Parse(txtRequired.Content);
+                    MessageBox.Show($"{totalQuantity} - {receivedQuantity}");
+                    remain.Text = (totalQuantity - receivedQuantity).ToString();
+                    txtRequired.Content = remain.Text;
+                    txtReceived.Content = remain.Text;
+                    price.Text = (int.Parse(remain.Text) * 3).ToString();
+                    txtPaid.Content = price.Text;
+
+                    btnRegister.Content = (int.Parse(btnRegister.Content) + 1).ToString();
+                    btnRegister.NormalBackground = Color.Green;
+                }
+            }
         }
 
         #endregion

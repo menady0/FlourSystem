@@ -31,33 +31,33 @@
             components = new System.ComponentModel.Container();
             pnlRoundedContainer = new CuoreUI.Controls.cuiBorder();
             pnlAddtionalDropDown = new CuoreUI.Controls.cuiBorder();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            btnAddQuota = new CuoreUI.Controls.cuiButton();
-            btnAddCustomer = new CuoreUI.Controls.cuiButton();
+            btnDelete = new CuoreUI.Controls.cuiButton();
+            btnUpdate = new CuoreUI.Controls.cuiButton();
+            btnReset = new CuoreUI.Controls.cuiButton();
             pnlCustomerContainer = new FlowLayoutPanel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
+            pnlTableHeader = new FlowLayoutPanel();
+            lblName = new Label();
+            lblTotal = new Label();
+            lblRemain = new Label();
+            lblRequired = new Label();
+            lblReceived = new Label();
+            lblPrice = new Label();
+            lblPaid = new Label();
+            lblRegister = new Label();
+            lblAddtional = new Label();
             AdditionaldropDownTimer = new System.Windows.Forms.Timer(components);
             _renderTimer = new System.Windows.Forms.Timer(components);
             ScrollTimer = new System.Windows.Forms.Timer(components);
             pnlRoundedContainer.SuspendLayout();
             pnlAddtionalDropDown.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            pnlTableHeader.SuspendLayout();
             SuspendLayout();
             // 
             // pnlRoundedContainer
             // 
             pnlRoundedContainer.Controls.Add(pnlAddtionalDropDown);
             pnlRoundedContainer.Controls.Add(pnlCustomerContainer);
-            pnlRoundedContainer.Controls.Add(flowLayoutPanel1);
+            pnlRoundedContainer.Controls.Add(pnlTableHeader);
             pnlRoundedContainer.Dock = DockStyle.Fill;
             pnlRoundedContainer.Location = new Point(0, 0);
             pnlRoundedContainer.Margin = new Padding(3, 5, 3, 5);
@@ -73,9 +73,9 @@
             // 
             pnlAddtionalDropDown.BackColor = Color.FromArgb(232, 237, 223);
             pnlAddtionalDropDown.BackgroundImageLayout = ImageLayout.Stretch;
-            pnlAddtionalDropDown.Controls.Add(cuiButton1);
-            pnlAddtionalDropDown.Controls.Add(btnAddQuota);
-            pnlAddtionalDropDown.Controls.Add(btnAddCustomer);
+            pnlAddtionalDropDown.Controls.Add(btnDelete);
+            pnlAddtionalDropDown.Controls.Add(btnUpdate);
+            pnlAddtionalDropDown.Controls.Add(btnReset);
             pnlAddtionalDropDown.Location = new Point(18, 3);
             pnlAddtionalDropDown.MaximumSize = new Size(100, 90);
             pnlAddtionalDropDown.MinimumSize = new Size(100, 0);
@@ -87,122 +87,122 @@
             pnlAddtionalDropDown.Size = new Size(100, 0);
             pnlAddtionalDropDown.TabIndex = 12;
             // 
-            // cuiButton1
+            // btnDelete
             // 
-            cuiButton1.BackColor = Color.Transparent;
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "حذف";
-            cuiButton1.Cursor = Cursors.Hand;
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Dock = DockStyle.Top;
-            cuiButton1.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.LightGray;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.Empty;
-            cuiButton1.Image = null;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(0, 0);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(0, 60);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.Transparent;
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.Empty;
-            cuiButton1.OutlineThickness = 0F;
-            cuiButton1.PressedBackground = Color.FromArgb(71, 137, 75);
-            cuiButton1.PressedForeColor = Color.White;
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.Empty;
-            cuiButton1.Rounding = new Padding(0, 0, 10, 10);
-            cuiButton1.Size = new Size(100, 30);
-            cuiButton1.TabIndex = 2;
-            cuiButton1.TextOffset = new Point(0, 0);
+            btnDelete.BackColor = Color.Transparent;
+            btnDelete.CheckButton = false;
+            btnDelete.Checked = false;
+            btnDelete.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnDelete.CheckedForeColor = Color.White;
+            btnDelete.CheckedImageTint = Color.White;
+            btnDelete.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnDelete.Content = "حذف";
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.DialogResult = DialogResult.None;
+            btnDelete.Dock = DockStyle.Top;
+            btnDelete.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnDelete.ForeColor = Color.Black;
+            btnDelete.HoverBackground = Color.LightGray;
+            btnDelete.HoveredImageTint = Color.White;
+            btnDelete.HoverForeColor = Color.Black;
+            btnDelete.HoverOutline = Color.Empty;
+            btnDelete.Image = null;
+            btnDelete.ImageAutoCenter = true;
+            btnDelete.ImageExpand = new Point(0, 0);
+            btnDelete.ImageOffset = new Point(0, 0);
+            btnDelete.Location = new Point(0, 60);
+            btnDelete.Name = "btnDelete";
+            btnDelete.NormalBackground = Color.Transparent;
+            btnDelete.NormalForeColor = Color.Black;
+            btnDelete.NormalImageTint = Color.White;
+            btnDelete.NormalOutline = Color.Empty;
+            btnDelete.OutlineThickness = 0F;
+            btnDelete.PressedBackground = Color.FromArgb(71, 137, 75);
+            btnDelete.PressedForeColor = Color.White;
+            btnDelete.PressedImageTint = Color.White;
+            btnDelete.PressedOutline = Color.Empty;
+            btnDelete.Rounding = new Padding(0, 0, 10, 10);
+            btnDelete.Size = new Size(100, 30);
+            btnDelete.TabIndex = 2;
+            btnDelete.TextOffset = new Point(0, 0);
             // 
-            // btnAddQuota
+            // btnUpdate
             // 
-            btnAddQuota.BackColor = Color.Transparent;
-            btnAddQuota.CheckButton = false;
-            btnAddQuota.Checked = false;
-            btnAddQuota.CheckedBackground = Color.FromArgb(255, 106, 0);
-            btnAddQuota.CheckedForeColor = Color.White;
-            btnAddQuota.CheckedImageTint = Color.White;
-            btnAddQuota.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnAddQuota.Content = "تحديث";
-            btnAddQuota.Cursor = Cursors.Hand;
-            btnAddQuota.DialogResult = DialogResult.None;
-            btnAddQuota.Dock = DockStyle.Top;
-            btnAddQuota.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            btnAddQuota.ForeColor = Color.Black;
-            btnAddQuota.HoverBackground = Color.LightGray;
-            btnAddQuota.HoveredImageTint = Color.White;
-            btnAddQuota.HoverForeColor = Color.Black;
-            btnAddQuota.HoverOutline = Color.Empty;
-            btnAddQuota.Image = null;
-            btnAddQuota.ImageAutoCenter = true;
-            btnAddQuota.ImageExpand = new Point(0, 0);
-            btnAddQuota.ImageOffset = new Point(0, 0);
-            btnAddQuota.Location = new Point(0, 30);
-            btnAddQuota.Name = "btnAddQuota";
-            btnAddQuota.NormalBackground = Color.Transparent;
-            btnAddQuota.NormalForeColor = Color.Black;
-            btnAddQuota.NormalImageTint = Color.White;
-            btnAddQuota.NormalOutline = Color.Empty;
-            btnAddQuota.OutlineThickness = 0F;
-            btnAddQuota.PressedBackground = Color.FromArgb(71, 137, 75);
-            btnAddQuota.PressedForeColor = Color.White;
-            btnAddQuota.PressedImageTint = Color.White;
-            btnAddQuota.PressedOutline = Color.Empty;
-            btnAddQuota.Rounding = new Padding(0);
-            btnAddQuota.Size = new Size(100, 30);
-            btnAddQuota.TabIndex = 1;
-            btnAddQuota.TextOffset = new Point(0, 0);
+            btnUpdate.BackColor = Color.Transparent;
+            btnUpdate.CheckButton = false;
+            btnUpdate.Checked = false;
+            btnUpdate.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnUpdate.CheckedForeColor = Color.White;
+            btnUpdate.CheckedImageTint = Color.White;
+            btnUpdate.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnUpdate.Content = "تحديث";
+            btnUpdate.Cursor = Cursors.Hand;
+            btnUpdate.DialogResult = DialogResult.None;
+            btnUpdate.Dock = DockStyle.Top;
+            btnUpdate.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnUpdate.ForeColor = Color.Black;
+            btnUpdate.HoverBackground = Color.LightGray;
+            btnUpdate.HoveredImageTint = Color.White;
+            btnUpdate.HoverForeColor = Color.Black;
+            btnUpdate.HoverOutline = Color.Empty;
+            btnUpdate.Image = null;
+            btnUpdate.ImageAutoCenter = true;
+            btnUpdate.ImageExpand = new Point(0, 0);
+            btnUpdate.ImageOffset = new Point(0, 0);
+            btnUpdate.Location = new Point(0, 30);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.NormalBackground = Color.Transparent;
+            btnUpdate.NormalForeColor = Color.Black;
+            btnUpdate.NormalImageTint = Color.White;
+            btnUpdate.NormalOutline = Color.Empty;
+            btnUpdate.OutlineThickness = 0F;
+            btnUpdate.PressedBackground = Color.FromArgb(71, 137, 75);
+            btnUpdate.PressedForeColor = Color.White;
+            btnUpdate.PressedImageTint = Color.White;
+            btnUpdate.PressedOutline = Color.Empty;
+            btnUpdate.Rounding = new Padding(0);
+            btnUpdate.Size = new Size(100, 30);
+            btnUpdate.TabIndex = 1;
+            btnUpdate.TextOffset = new Point(0, 0);
             // 
-            // btnAddCustomer
+            // btnReset
             // 
-            btnAddCustomer.BackColor = Color.Transparent;
-            btnAddCustomer.CheckButton = false;
-            btnAddCustomer.Checked = false;
-            btnAddCustomer.CheckedBackground = Color.FromArgb(255, 106, 0);
-            btnAddCustomer.CheckedForeColor = Color.White;
-            btnAddCustomer.CheckedImageTint = Color.White;
-            btnAddCustomer.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnAddCustomer.Content = "إعادة ضبط";
-            btnAddCustomer.Cursor = Cursors.Hand;
-            btnAddCustomer.DialogResult = DialogResult.None;
-            btnAddCustomer.Dock = DockStyle.Top;
-            btnAddCustomer.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            btnAddCustomer.ForeColor = Color.Black;
-            btnAddCustomer.HoverBackground = Color.LightGray;
-            btnAddCustomer.HoveredImageTint = Color.White;
-            btnAddCustomer.HoverForeColor = Color.Black;
-            btnAddCustomer.HoverOutline = Color.Empty;
-            btnAddCustomer.Image = null;
-            btnAddCustomer.ImageAutoCenter = true;
-            btnAddCustomer.ImageExpand = new Point(0, 0);
-            btnAddCustomer.ImageOffset = new Point(0, 0);
-            btnAddCustomer.Location = new Point(0, 0);
-            btnAddCustomer.Name = "btnAddCustomer";
-            btnAddCustomer.NormalBackground = Color.Transparent;
-            btnAddCustomer.NormalForeColor = Color.Black;
-            btnAddCustomer.NormalImageTint = Color.White;
-            btnAddCustomer.NormalOutline = Color.Empty;
-            btnAddCustomer.OutlineThickness = 0F;
-            btnAddCustomer.PressedBackground = Color.FromArgb(71, 137, 75);
-            btnAddCustomer.PressedForeColor = Color.White;
-            btnAddCustomer.PressedImageTint = Color.White;
-            btnAddCustomer.PressedOutline = Color.Empty;
-            btnAddCustomer.Rounding = new Padding(10, 10, 3, 3);
-            btnAddCustomer.Size = new Size(100, 30);
-            btnAddCustomer.TabIndex = 0;
-            btnAddCustomer.TextOffset = new Point(0, 0);
+            btnReset.BackColor = Color.Transparent;
+            btnReset.CheckButton = false;
+            btnReset.Checked = false;
+            btnReset.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnReset.CheckedForeColor = Color.White;
+            btnReset.CheckedImageTint = Color.White;
+            btnReset.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnReset.Content = "إعادة ضبط";
+            btnReset.Cursor = Cursors.Hand;
+            btnReset.DialogResult = DialogResult.None;
+            btnReset.Dock = DockStyle.Top;
+            btnReset.Font = new Font("Cairo Light", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnReset.ForeColor = Color.Black;
+            btnReset.HoverBackground = Color.LightGray;
+            btnReset.HoveredImageTint = Color.White;
+            btnReset.HoverForeColor = Color.Black;
+            btnReset.HoverOutline = Color.Empty;
+            btnReset.Image = null;
+            btnReset.ImageAutoCenter = true;
+            btnReset.ImageExpand = new Point(0, 0);
+            btnReset.ImageOffset = new Point(0, 0);
+            btnReset.Location = new Point(0, 0);
+            btnReset.Name = "btnReset";
+            btnReset.NormalBackground = Color.Transparent;
+            btnReset.NormalForeColor = Color.Black;
+            btnReset.NormalImageTint = Color.White;
+            btnReset.NormalOutline = Color.Empty;
+            btnReset.OutlineThickness = 0F;
+            btnReset.PressedBackground = Color.FromArgb(71, 137, 75);
+            btnReset.PressedForeColor = Color.White;
+            btnReset.PressedImageTint = Color.White;
+            btnReset.PressedOutline = Color.Empty;
+            btnReset.Rounding = new Padding(10, 10, 3, 3);
+            btnReset.Size = new Size(100, 30);
+            btnReset.TabIndex = 0;
+            btnReset.TextOffset = new Point(0, 0);
             // 
             // pnlCustomerContainer
             // 
@@ -217,123 +217,123 @@
             pnlCustomerContainer.WrapContents = false;
             pnlCustomerContainer.MouseWheel += PnlCustomerContainer_MouseWheel;
             // 
-            // flowLayoutPanel1
+            // pnlTableHeader
             // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(207, 219, 213);
-            flowLayoutPanel1.Controls.Add(label1);
-            flowLayoutPanel1.Controls.Add(label2);
-            flowLayoutPanel1.Controls.Add(label3);
-            flowLayoutPanel1.Controls.Add(label4);
-            flowLayoutPanel1.Controls.Add(label5);
-            flowLayoutPanel1.Controls.Add(label6);
-            flowLayoutPanel1.Controls.Add(label7);
-            flowLayoutPanel1.Controls.Add(label8);
-            flowLayoutPanel1.Controls.Add(label9);
-            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(0, 40);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(10);
-            flowLayoutPanel1.Size = new Size(1084, 40);
-            flowLayoutPanel1.TabIndex = 0;
+            pnlTableHeader.BackColor = Color.FromArgb(207, 219, 213);
+            pnlTableHeader.Controls.Add(lblName);
+            pnlTableHeader.Controls.Add(lblTotal);
+            pnlTableHeader.Controls.Add(lblRemain);
+            pnlTableHeader.Controls.Add(lblRequired);
+            pnlTableHeader.Controls.Add(lblReceived);
+            pnlTableHeader.Controls.Add(lblPrice);
+            pnlTableHeader.Controls.Add(lblPaid);
+            pnlTableHeader.Controls.Add(lblRegister);
+            pnlTableHeader.Controls.Add(lblAddtional);
+            pnlTableHeader.FlowDirection = FlowDirection.RightToLeft;
+            pnlTableHeader.Location = new Point(0, 40);
+            pnlTableHeader.Name = "pnlTableHeader";
+            pnlTableHeader.Padding = new Padding(10);
+            pnlTableHeader.Size = new Size(1084, 40);
+            pnlTableHeader.TabIndex = 0;
             // 
-            // label1
+            // lblName
             // 
-            label1.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(761, 10);
-            label1.Name = "label1";
-            label1.Size = new Size(300, 20);
-            label1.TabIndex = 0;
-            label1.Text = "الاسم";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            lblName.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblName.ForeColor = Color.Black;
+            lblName.Location = new Point(761, 10);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(300, 20);
+            lblName.TabIndex = 0;
+            lblName.Text = "الاسم";
+            lblName.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblTotal
             // 
-            label2.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(670, 10);
-            label2.Name = "label2";
-            label2.Size = new Size(85, 20);
-            label2.TabIndex = 1;
-            label2.Text = "الإجمالي";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            lblTotal.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblTotal.ForeColor = Color.Black;
+            lblTotal.Location = new Point(670, 10);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(85, 20);
+            lblTotal.TabIndex = 1;
+            lblTotal.Text = "الإجمالي";
+            lblTotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lblRemain
             // 
-            label3.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(579, 10);
-            label3.Name = "label3";
-            label3.Size = new Size(85, 20);
-            label3.TabIndex = 2;
-            label3.Text = "المتبقي";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
+            lblRemain.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblRemain.ForeColor = Color.Black;
+            lblRemain.Location = new Point(579, 10);
+            lblRemain.Name = "lblRemain";
+            lblRemain.Size = new Size(85, 20);
+            lblRemain.TabIndex = 2;
+            lblRemain.Text = "المتبقي";
+            lblRemain.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // lblRequired
             // 
-            label4.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label4.ForeColor = Color.Black;
-            label4.Location = new Point(488, 10);
-            label4.Name = "label4";
-            label4.Size = new Size(85, 20);
-            label4.TabIndex = 3;
-            label4.Text = "المطلوب";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
+            lblRequired.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblRequired.ForeColor = Color.Black;
+            lblRequired.Location = new Point(488, 10);
+            lblRequired.Name = "lblRequired";
+            lblRequired.Size = new Size(85, 20);
+            lblRequired.TabIndex = 3;
+            lblRequired.Text = "المطلوب";
+            lblRequired.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // lblReceived
             // 
-            label5.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(397, 10);
-            label5.Name = "label5";
-            label5.Size = new Size(85, 20);
-            label5.TabIndex = 4;
-            label5.Text = "استلم";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            lblReceived.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblReceived.ForeColor = Color.Black;
+            lblReceived.Location = new Point(397, 10);
+            lblReceived.Name = "lblReceived";
+            lblReceived.Size = new Size(85, 20);
+            lblReceived.TabIndex = 4;
+            lblReceived.Text = "استلم";
+            lblReceived.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // lblPrice
             // 
-            label6.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(306, 10);
-            label6.Name = "label6";
-            label6.Size = new Size(85, 20);
-            label6.TabIndex = 5;
-            label6.Text = "المبلغ";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
+            lblPrice.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblPrice.ForeColor = Color.Black;
+            lblPrice.Location = new Point(306, 10);
+            lblPrice.Name = "lblPrice";
+            lblPrice.Size = new Size(85, 20);
+            lblPrice.TabIndex = 5;
+            lblPrice.Text = "المبلغ";
+            lblPrice.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // lblPaid
             // 
-            label7.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label7.ForeColor = Color.Black;
-            label7.Location = new Point(215, 10);
-            label7.Name = "label7";
-            label7.Size = new Size(85, 20);
-            label7.TabIndex = 6;
-            label7.Text = "المدفوع";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
+            lblPaid.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblPaid.ForeColor = Color.Black;
+            lblPaid.Location = new Point(215, 10);
+            lblPaid.Name = "lblPaid";
+            lblPaid.Size = new Size(85, 20);
+            lblPaid.TabIndex = 6;
+            lblPaid.Text = "المدفوع";
+            lblPaid.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // lblRegister
             // 
-            label8.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label8.ForeColor = Color.Black;
-            label8.Location = new Point(124, 10);
-            label8.Name = "label8";
-            label8.Size = new Size(85, 20);
-            label8.TabIndex = 7;
-            label8.Text = "تسجيل";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
+            lblRegister.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblRegister.ForeColor = Color.Black;
+            lblRegister.Location = new Point(124, 10);
+            lblRegister.Name = "lblRegister";
+            lblRegister.Size = new Size(85, 20);
+            lblRegister.TabIndex = 7;
+            lblRegister.Text = "تسجيل";
+            lblRegister.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label9
+            // lblAddtional
             // 
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
-            label9.ForeColor = Color.Black;
-            label9.Location = new Point(33, 10);
-            label9.Name = "label9";
-            label9.Size = new Size(85, 20);
-            label9.TabIndex = 8;
-            label9.TextAlign = ContentAlignment.MiddleCenter;
+            lblAddtional.BackColor = Color.Transparent;
+            lblAddtional.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            lblAddtional.ForeColor = Color.Black;
+            lblAddtional.Location = new Point(33, 10);
+            lblAddtional.Name = "lblAddtional";
+            lblAddtional.Size = new Size(85, 20);
+            lblAddtional.TabIndex = 8;
+            lblAddtional.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // AdditionaldropDownTimer
             // 
@@ -363,28 +363,28 @@
             Load += ucHome_Load;
             pnlRoundedContainer.ResumeLayout(false);
             pnlAddtionalDropDown.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
+            pnlTableHeader.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private CuoreUI.Controls.cuiBorder pnlRoundedContainer;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Label label1;
+        private FlowLayoutPanel pnlTableHeader;
+        private Label lblName;
         private FlowLayoutPanel pnlCustomerContainer;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
+        private Label lblTotal;
+        private Label lblRemain;
+        private Label lblRequired;
+        private Label lblReceived;
+        private Label lblPrice;
+        private Label lblPaid;
+        private Label lblRegister;
+        private Label lblAddtional;
         private CuoreUI.Controls.cuiBorder pnlAddtionalDropDown;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiButton btnAddQuota;
-        private CuoreUI.Controls.cuiButton btnAddCustomer;
+        private CuoreUI.Controls.cuiButton btnDelete;
+        private CuoreUI.Controls.cuiButton btnUpdate;
+        private CuoreUI.Controls.cuiButton btnReset;
         private System.Windows.Forms.Timer AdditionaldropDownTimer;
         private System.Windows.Forms.Timer _renderTimer;
         private System.Windows.Forms.Timer ScrollTimer;

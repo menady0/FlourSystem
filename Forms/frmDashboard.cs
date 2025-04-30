@@ -207,6 +207,8 @@ namespace FlourSystem.Forms
                     btn.BackColor = Color.FromArgb(18, 18, 18);
                     btn.IconColor = Color.White;
                 }
+                if (selectedButton == btnHome) pnlNavBtns.Visible = true;
+                else pnlNavBtns.Visible = false;
             }
         }
         private void menuTranstion_Tick(object sender, EventArgs e)

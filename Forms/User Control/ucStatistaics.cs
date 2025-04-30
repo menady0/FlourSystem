@@ -9,7 +9,7 @@ namespace FlourSystem.Forms.User_Control
         int todayCards;
         int totalCards;
 
-        int balance;
+        //int balance;
         int todaySales;
         int totalSales;
 
@@ -26,7 +26,7 @@ namespace FlourSystem.Forms.User_Control
             todayCards = DataBase.Cards(currentDay, currentMonth, currentYear);
             totalCards = DataBase.Cards(currentMonth, currentYear);
 
-            balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
+            DataBase.balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
             todaySales = DataBase.Store(currentDay, currentMonth, currentYear);
             totalSales = DataBase.Store(currentMonth, currentYear);
 
@@ -95,7 +95,7 @@ namespace FlourSystem.Forms.User_Control
                 new NumberAnimation { TargetLabel = lblReceivedQuota, StartValue = 0, EndValue = receivedQuota, Duration = 750, StartTime = DateTime.Now },
                 new NumberAnimation { TargetLabel = lblTodayCards, StartValue = 0, EndValue = todayCards, Duration = 1000, StartTime = DateTime.Now },
                 new NumberAnimation { TargetLabel = lblTotalCards, StartValue = 0, EndValue = totalCards, Duration = 1000, StartTime = DateTime.Now },
-                new NumberAnimation { TargetLabel = lblBalance, StartValue = 0, EndValue = balance, Duration = 2000, StartTime = DateTime.Now },
+                new NumberAnimation { TargetLabel = lblBalance, StartValue = 0, EndValue = DataBase.balance, Duration = 2000, StartTime = DateTime.Now },
                 new NumberAnimation { TargetLabel = lblTodaySales, StartValue = 0, EndValue = todaySales, Duration = 2000, StartTime = DateTime.Now },
                 new NumberAnimation { TargetLabel = lblTotalSales, StartValue = 0, EndValue = totalSales, Duration = 2000, StartTime = DateTime.Now },
             };
