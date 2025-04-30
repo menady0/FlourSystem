@@ -2,6 +2,7 @@
 using FlourSystem.Forms.User_Control;
 using FlourSystem.Properties;
 using FlourSystem.Forms.User_Control.ucHomeBtns;
+using FlourSystem.Classes;
 namespace FlourSystem.Forms
 {
     public partial class frmDashboard : Form
@@ -18,40 +19,36 @@ namespace FlourSystem.Forms
         }
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-            AttachHoverEffect(btns);
+            HoverEffect.Hover(
+                btns,
+                getHoverValue: ctrl => ThemeColors.Green,
+                getDefaultValue: ctrl => Color.White,
+                setValue: (ctrl, value) =>
+                {
+                    if (ctrl is IconButton btn)
+                        btn.IconColor = value;
+                },
+                interpolate: HoverEffect.InterpolateColor,
+                transitionDuration: 100
+            );
+            HoverEffect.Hover(
+                menu,
+                getHoverValue: ctrl => ThemeColors.Green,
+                getDefaultValue: ctrl => Color.White,
+                setValue: (ctrl, value) =>
+                {
+                    if (ctrl is IconPictureBox pic)
+                        pic.IconColor = value;
+                    if(ctrl is IconPictureBox pic2 && pic2 == targetbtn)
+                        pic2.IconColor = ThemeColors.LightForeColor;
+                },
+                interpolate: HoverEffect.InterpolateColor,
+                transitionDuration: 100
+            );
+
             CloseOpenedSearch(this);
             btnHome_Click(sender, e);
             //ThemeManager.ApplyTheme();
-        }
-        private void AttachHoverEffect(IconButton[] buttons)
-        {
-            foreach (var button in buttons)
-            {
-                button.MouseEnter += Button_MouseEnter;
-                button.MouseLeave += Button_MouseLeave;
-            }
-        }
-        private void Button_MouseEnter(object? sender, EventArgs e)
-        {
-            IconButton? button = sender as IconButton;
-            if (button != null)
-            {
-                button.BackColor = Color.FromArgb(18, 18, 18);
-                button.IconColor = ThemeColors.Green;
-            }
-            if (button == btnSrchClear)
-            {
-                button.IconColor = Color.Red;
-            }
-        }
-        private void Button_MouseLeave(object? sender, EventArgs e)
-        {
-            IconButton? button = sender as IconButton;
-            if (button != null)
-            {
-                button.BackColor = Color.FromArgb(18, 18, 18);
-                button.IconColor = Color.White;
-            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -238,7 +235,7 @@ namespace FlourSystem.Forms
             if (button == btnSettings) return lblSettings;
             return null;
         }
-        
+
         #region Side Menu Buttons
         private ucHome? _ucHomeInstance;
         private void btnHome_Click(object sender, EventArgs e)

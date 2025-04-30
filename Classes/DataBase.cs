@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Session;
+using MySqlX.XDevAPI.Common;
 using System.Net.NetworkInformation;
 
 public class DataBase
@@ -372,7 +374,11 @@ public class DataBase
         try
         {
             conn.Open();
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
             return count;
         }
         catch (MySqlException ex)
@@ -397,7 +403,11 @@ public class DataBase
         try
         {
             conn.Open();
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
             return count;
         }
         catch (MySqlException ex)
@@ -423,7 +433,10 @@ public class DataBase
         try
         {
             conn.Open();
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
             return count;
         }
         catch (MySqlException ex)
@@ -449,7 +462,11 @@ public class DataBase
         try
         {
             conn.Open();
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
             return count;
         }
         catch (MySqlException ex)
@@ -475,7 +492,11 @@ public class DataBase
         try
         {
             conn.Open();
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
             return count;
         }
         catch (MySqlException ex)
@@ -500,7 +521,10 @@ public class DataBase
         try
         {
             conn.Open();
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
             return count;
         }
         catch (MySqlException ex)

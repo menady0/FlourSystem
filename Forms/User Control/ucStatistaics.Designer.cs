@@ -261,7 +261,7 @@
             pnlReceivedQuota.Name = "pnlReceivedQuota";
             pnlReceivedQuota.OutlineThickness = 1F;
             pnlReceivedQuota.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlReceivedQuota.PanelOutlineColor = Color.FromArgb(0, 71, 137, 75);
+            pnlReceivedQuota.PanelOutlineColor = Color.Transparent;
             pnlReceivedQuota.Rounding = new Padding(10);
             pnlReceivedQuota.Size = new Size(300, 175);
             pnlReceivedQuota.TabIndex = 0;

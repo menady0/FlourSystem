@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using CuoreUI.Controls;
+using FlourSystem.Classes;
+
 namespace FlourSystem.Forms.User_Control
 {
     public partial class ucStatistaics : UserControl
@@ -17,6 +12,8 @@ namespace FlourSystem.Forms.User_Control
         int balance;
         int todaySales;
         int totalSales;
+
+        Control[] cards;
         public ucStatistaics()
         {
             InitializeComponent();
@@ -32,6 +29,33 @@ namespace FlourSystem.Forms.User_Control
             balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
             todaySales = DataBase.Store(currentDay, currentMonth, currentYear);
             totalSales = DataBase.Store(currentMonth, currentYear);
+
+            cards = new Control[]
+            {
+                lblReceivedQuota,
+                receivedQuotalbl,
+                pnlReceivedQuota,
+
+                lblTodayCards,
+                todayCardlbl,
+                pnlTodayCard,
+
+                lblTotalCards,
+                totalCardslbl,
+                pnlTotalCards,
+
+                lblBalance,
+                balancelbl,
+                pnlBalance,
+
+                lblTodaySales,
+                todaySaleslbl,
+                pnlTodaySale,
+
+                lblTotalSales,
+                totalSaleslbl,
+                pnlTotalSales,
+            };
         }
 
         private void ucStatistaics_Load(object sender, EventArgs e)
@@ -48,6 +72,19 @@ namespace FlourSystem.Forms.User_Control
             //lblTodaySales.Text = todaySales.ToString();
             //lblTotalSales.Text = totalSales.ToString();
             // ----------------------------------------------------
+
+            HoverEffect.Hover(
+                cards,
+                getHoverValue: ctrl => ThemeColors.Green,
+                getDefaultValue: ctrl => Color.Transparent,
+                setValue: (ctrl, value) =>
+                {
+                    if (ctrl is cuiBorder panel)
+                        panel.PanelOutlineColor = value;
+                },
+                interpolate: HoverEffect.InterpolateColor,
+                transitionDuration: 250
+            );
         }
 
         private List<NumberAnimation> animations = new List<NumberAnimation>();
