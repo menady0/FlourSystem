@@ -9,10 +9,12 @@ namespace FlourSystem.Forms
     {
         IconButton[] btns;
         IconPictureBox[] menu;
+        Control[] redBtns;
         public frmDashboard()
         {
             InitializeComponent();
-            btns = new IconButton[] { btnSearch, btnAdd, btnRefresh, btnSrchClear };
+            btns = new IconButton[] { btnSearch, btnAdd, btnRefresh };
+            redBtns = new Control[] { btnClose, picClearSearch };
             menu = new IconPictureBox[] { btnHome, btnSta, btnInfo, btnSettings };
             targetbtn = btnHome;
             targetLabel = lblHome;
@@ -30,6 +32,20 @@ namespace FlourSystem.Forms
                 },
                 interpolate: HoverEffect.InterpolateColor,
                 transitionDuration: 100
+            ); 
+            HoverEffect.Hover(
+                redBtns,
+                getDefaultValue: ctrl => Color.White,
+                getHoverValue: ctrl => Color.Red,
+                setValue: (ctrl, value) =>
+                {
+                    if (ctrl is IconButton btn)
+                        btn.IconColor = value; 
+                    if (ctrl is IconPictureBox pic)
+                        pic.IconColor = value;
+                },
+                interpolate: HoverEffect.InterpolateColor,
+                transitionDuration: 100
             );
             HoverEffect.Hover(
                 menu,
@@ -39,7 +55,7 @@ namespace FlourSystem.Forms
                 {
                     if (ctrl is IconPictureBox pic)
                         pic.IconColor = value;
-                    if(ctrl is IconPictureBox pic2 && pic2 == targetbtn)
+                    if (ctrl is IconPictureBox pic2 && pic2 == targetbtn)
                         pic2.IconColor = ThemeColors.LightForeColor;
                 },
                 interpolate: HoverEffect.InterpolateColor,
@@ -80,8 +96,7 @@ namespace FlourSystem.Forms
 
         public void btnRefresh_Click(object sender, EventArgs e)
         {
-            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
-            _ucHomeInstance.DisplayTimer(DataBase.CustomersList);
+            _ucHomeInstance.RefreshData();
         }
 
         #region Search Button
@@ -127,7 +142,7 @@ namespace FlourSystem.Forms
         }
         private void txtSearch_ContentChanged(object sender, EventArgs e)
         {
-            btnSrchClear.Visible = !string.IsNullOrEmpty(txtSearch.Content);
+            picClearSearch.Visible = !string.IsNullOrEmpty(txtSearch.Content);
             if (_ucHomeInstance != null)
             {
                 if (int.TryParse(txtSearch.Content, out int value))
@@ -369,5 +384,6 @@ namespace FlourSystem.Forms
             new frmAddOwner().ShowDialog();
         }
         #endregion
+
     }
 }

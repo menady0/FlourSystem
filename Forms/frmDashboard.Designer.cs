@@ -39,7 +39,7 @@
             btnMinimize = new FontAwesome.Sharp.IconButton();
             btnClose = new FontAwesome.Sharp.IconButton();
             pnlSearch = new Panel();
-            btnSrchClear = new FontAwesome.Sharp.IconButton();
+            picClearSearch = new FontAwesome.Sharp.IconPictureBox();
             txtSearch = new CuoreUI.Controls.cuiTextBox2();
             pnlNavBtns = new Panel();
             btnAdd = new FontAwesome.Sharp.IconButton();
@@ -66,6 +66,7 @@
             pnlNavBar.SuspendLayout();
             pnlAddDropDown.SuspendLayout();
             pnlSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picClearSearch).BeginInit();
             pnlNavBtns.SuspendLayout();
             pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSettings).BeginInit();
@@ -104,7 +105,7 @@
             pnlAddDropDown.Controls.Add(btnAddOwner);
             pnlAddDropDown.Controls.Add(btnAddQuota);
             pnlAddDropDown.Controls.Add(btnAddCustomer);
-            pnlAddDropDown.Location = new Point(20, 68);
+            pnlAddDropDown.Location = new Point(20, 59);
             pnlAddDropDown.MaximumSize = new Size(150, 120);
             pnlAddDropDown.MinimumSize = new Size(150, 0);
             pnlAddDropDown.Name = "pnlAddDropDown";
@@ -288,33 +289,31 @@
             // 
             // pnlSearch
             // 
-            pnlSearch.Controls.Add(btnSrchClear);
+            pnlSearch.Controls.Add(picClearSearch);
             pnlSearch.Controls.Add(txtSearch);
-            pnlSearch.Location = new Point(120, 29);
+            pnlSearch.Location = new Point(120, 24);
             pnlSearch.MaximumSize = new Size(200, 35);
             pnlSearch.MinimumSize = new Size(0, 35);
             pnlSearch.Name = "pnlSearch";
             pnlSearch.Size = new Size(0, 35);
             pnlSearch.TabIndex = 8;
             // 
-            // btnSrchClear
+            // picClearSearch
             // 
-            btnSrchClear.BackColor = Color.Transparent;
-            btnSrchClear.Cursor = Cursors.Hand;
-            btnSrchClear.FlatAppearance.BorderSize = 0;
-            btnSrchClear.FlatStyle = FlatStyle.Flat;
-            btnSrchClear.ForeColor = Color.Transparent;
-            btnSrchClear.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnSrchClear.IconColor = Color.White;
-            btnSrchClear.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnSrchClear.IconSize = 10;
-            btnSrchClear.Location = new Point(10, 6);
-            btnSrchClear.Name = "btnSrchClear";
-            btnSrchClear.Size = new Size(25, 25);
-            btnSrchClear.TabIndex = 9;
-            btnSrchClear.UseVisualStyleBackColor = false;
-            btnSrchClear.Visible = false;
-            btnSrchClear.Click += btnSrchClear_Click;
+            picClearSearch.BackColor = Color.Transparent;
+            picClearSearch.Cursor = Cursors.Hand;
+            picClearSearch.IconChar = FontAwesome.Sharp.IconChar.X;
+            picClearSearch.IconColor = Color.White;
+            picClearSearch.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            picClearSearch.IconSize = 12;
+            picClearSearch.Location = new Point(15, 14);
+            picClearSearch.Name = "picClearSearch";
+            picClearSearch.Size = new Size(12, 12);
+            picClearSearch.SizeMode = PictureBoxSizeMode.AutoSize;
+            picClearSearch.TabIndex = 13;
+            picClearSearch.TabStop = false;
+            picClearSearch.Visible = false;
+            picClearSearch.Click += btnSrchClear_Click;
             // 
             // txtSearch
             // 
@@ -350,7 +349,7 @@
             pnlNavBtns.Controls.Add(btnAdd);
             pnlNavBtns.Controls.Add(btnRefresh);
             pnlNavBtns.Controls.Add(btnSearch);
-            pnlNavBtns.Location = new Point(15, 30);
+            pnlNavBtns.Location = new Point(15, 24);
             pnlNavBtns.Name = "pnlNavBtns";
             pnlNavBtns.Size = new Size(105, 35);
             pnlNavBtns.TabIndex = 12;
@@ -632,6 +631,8 @@
             pnlNavBar.ResumeLayout(false);
             pnlAddDropDown.ResumeLayout(false);
             pnlSearch.ResumeLayout(false);
+            pnlSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picClearSearch).EndInit();
             pnlNavBtns.ResumeLayout(false);
             pnlMenu.ResumeLayout(false);
             pnlMenu.PerformLayout();
@@ -656,7 +657,6 @@
         private FontAwesome.Sharp.IconButton btnSearch;
         private System.Windows.Forms.Timer searchTimer;
         private Panel pnlSearch;
-        private FontAwesome.Sharp.IconButton btnSrchClear;
         private Label lblTitle;
         private FontAwesome.Sharp.IconButton btnMode;
         private CuoreUI.Controls.Shapes.cuiEllipse circle;
@@ -678,5 +678,6 @@
         private System.Windows.Forms.Timer btnAddCustomerTimer;
         public FontAwesome.Sharp.IconButton btnRefresh;
         private Panel pnlNavBtns;
+        private FontAwesome.Sharp.IconPictureBox picClearSearch;
     }
 }

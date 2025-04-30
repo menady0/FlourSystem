@@ -99,8 +99,8 @@ public class DataBase
     #endregion
     #endregion
 
-    #region Dashboard Form
 
+    #region Dashboard Form
     #region Adding Buttons Group
     public static bool AddCustomer(long cardID, string ownerName, int numberOfPeople, int totalQuantity, int price, int registration, int delivered, string renewalDate, int index)
     {
@@ -276,8 +276,6 @@ public class DataBase
         }
     }
     #endregion
-
-
 
     #region Home UserControl
     public static List<Dictionary<string, object>> CustomersList = new List<Dictionary<string, object>>();
@@ -593,6 +591,5 @@ public class DataBase
         }
     }
     #endregion
-
     #endregion
 }

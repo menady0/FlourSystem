@@ -215,6 +215,7 @@
             pnlCustomerContainer.Size = new Size(1084, 480);
             pnlCustomerContainer.TabIndex = 1;
             pnlCustomerContainer.WrapContents = false;
+            pnlCustomerContainer.Scroll += pnlCustomerContainer_Scroll;
             pnlCustomerContainer.MouseWheel += PnlCustomerContainer_MouseWheel;
             // 
             // pnlTableHeader
@@ -342,7 +343,7 @@
             // 
             // _renderTimer
             // 
-            _renderTimer.Interval = 25;
+            _renderTimer.Interval = 16;
             _renderTimer.Tick += RenderNextBatch;
             // 
             // ScrollTimer
@@ -372,7 +373,6 @@
         private CuoreUI.Controls.cuiBorder pnlRoundedContainer;
         private FlowLayoutPanel pnlTableHeader;
         private Label lblName;
-        private FlowLayoutPanel pnlCustomerContainer;
         private Label lblTotal;
         private Label lblRemain;
         private Label lblRequired;
@@ -388,5 +388,6 @@
         private System.Windows.Forms.Timer AdditionaldropDownTimer;
         private System.Windows.Forms.Timer _renderTimer;
         private System.Windows.Forms.Timer ScrollTimer;
+        public FlowLayoutPanel pnlCustomerContainer;
     }
 }
