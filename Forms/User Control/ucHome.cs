@@ -254,9 +254,8 @@ namespace FlourSystem.Forms.User_Control
         public void DisplayTimer(List<Dictionary<string, object>> customers)
         {
             customersToDisplay = customers;
+            // Change Min To Max: To Display All Customers at once
             targetIndex = Math.Min(currentIndex + batchSize, customersToDisplay.Count);
-            // To Display All Customers at once
-            //targetIndex = Math.Max(currentIndex + batchSize, customersToDisplay.Count);
 
             if (isLoading || currentIndex >= customersToDisplay.Count)
                 return;
@@ -432,6 +431,7 @@ namespace FlourSystem.Forms.User_Control
                         BorderSize = 0
                     },
                 BackColor = Color.Transparent,
+                Tag = customer,
             };
 
             btnAdditonals.Click += (sender, e) =>
@@ -451,6 +451,13 @@ namespace FlourSystem.Forms.User_Control
                 // Bring the drop-down panel to the front and make it visible
                 pnlAddtionalDropDown.Parent = this.FindForm();
                 pnlAddtionalDropDown.BringToFront();
+
+                foreach(Control ctrl in pnlAddtionalDropDown.Controls)
+                {
+                    if (ctrl is cuiButton btn) 
+                        btn.Tag = btnAdditonals.Tag;
+                }
+
                 AdditionaldropDownTimer.Start();
             };
             pnlAdditional.Controls.Add(btnAdditonals);
@@ -561,12 +568,12 @@ namespace FlourSystem.Forms.User_Control
                     int required = int.Parse(txtRequired.Content);
                     int received = int.Parse(txtReceived.Content);
                     int paid = int.Parse(txtPaid.Content);
-                    string date = DateTime.Now.ToString("yyyy-MM-dd");
+                    string date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                     DataBase.Registration(customer, required, received, paid, date);
 
-                    int totalQuantity = int.Parse(customer["numberOfPeople"].ToString());
-                    totalQuantity *= 10;
+                    int totalQuantity = int.Parse(remain.Text);
+                    //totalQuantity *= 10;
                     int receivedQuantity = int.Parse(txtRequired.Content);
                     MessageBox.Show($"{totalQuantity} - {receivedQuantity}");
                     remain.Text = (totalQuantity - receivedQuantity).ToString();
@@ -584,7 +591,7 @@ namespace FlourSystem.Forms.User_Control
         {
             if (isAddtionalDropDownExpanded)
                 AdditionaldropDownTimer.Start();
-            
+
             DisplayTheRest(sender);
         }
         private void pnlCustomerContainer_Scroll(object sender, ScrollEventArgs e)
@@ -803,7 +810,94 @@ namespace FlourSystem.Forms.User_Control
             }
         }
         #endregion
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            AdditionaldropDownTimer.Start();
+            if (sender is cuiButton btn)
+            {
+                if (btn.Tag is Dictionary<string, object> customer)
+                {
+                    if (
+                        customer.TryGetValue("CustomerID", out var customerIdObj) &&
+                        int.TryParse(customerIdObj.ToString(), out int customerId) &&
+                        customer.TryGetValue("numberOfPeople", out var customerNumObj) &&
+                        int.TryParse(customerNumObj.ToString(), out int customerNum)
+                        )
+                    {
+                        var result = MessageBox.Show(
+                            "Are you sure you want to reset this customer's data?",
+                            "Confirm Reset",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning
+                        );
 
+                        if (result == DialogResult.Yes)
+                        {
+                            int totalQuantity = customerNum * 10;
+                            int price = totalQuantity * 3;
+                            string date = DateTime.Now.ToString("yyyy-MM");
+                            if (DataBase.ResetCustomer(customerId, totalQuantity, price, date))
+                            {
+                                MessageBox.Show("Customer data reset successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                                RefreshData();
+                            }
+                            else MessageBox.Show("Failed to reset customer data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else MessageBox.Show("Invalid customer data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else MessageBox.Show("No customer data associated with this button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            AdditionaldropDownTimer.Start();
+            if(sender is cuiButton btn)
+            {
+                if (btn.Tag is Dictionary<string, object> customer) 
+                { 
+                    MessageBox.Show($"Update: {customer}");
+                }
+                else MessageBox.Show("No customer data associated with this button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            AdditionaldropDownTimer.Start();
+            if (sender is cuiButton btn) 
+            {
+                if(btn.Tag is Dictionary<string, object> customer)
+                {
+                    if (customer.TryGetValue("CustomerID", out var customerIdObj) && 
+                        int.TryParse(customerIdObj.ToString(), out int customerId) &&
+                        customer.TryGetValue("name", out var customerNameObj))
+                    {
+                        var result = MessageBox.Show(
+                            "Are you sure you want to reset this customer's data?",
+                            "Confirm Reset",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning
+                        );
+
+                        if (result == DialogResult.Yes)
+                        {
+                            if (DataBase.DeleteCustomer(customerId))
+                            {
+                                MessageBox.Show($"Customer: {customerNameObj} with the ID: {customerId} is deleted successfully");
+                                RefreshData();
+                            }
+                            else
+                                MessageBox.Show($"Failed to delete customer: {customerNameObj} with the ID: {customerId}");
+                        }
+                    }
+                }
+                else MessageBox.Show("No customer data associated with this button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     }
 }

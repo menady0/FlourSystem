@@ -411,6 +411,75 @@ public class DataBase
             conn.Close();
         }
     }
+    public static bool ResetCustomer(int customerID, int totalQuantity, int price, string date)
+    {
+        string update = "UPDATE customer SET Registration = 0, Delivered = 0, TotalQuantity = @totalQuantity, Price = @price WHERE CustomerID = @customerID";
+        string delete = "DELETE FROM store WHERE CustomerID = @customerID AND DATE_FORMAT(DateOfOperation, '%Y-%m') = @date";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmdUpdate = new MySqlCommand(update, conn);
+        MySqlCommand cmdDelete = new MySqlCommand(delete, conn);
+        cmdUpdate.Parameters.AddWithValue("@totalQuantity", totalQuantity);
+        cmdUpdate.Parameters.AddWithValue("@price", price);
+        cmdUpdate.Parameters.AddWithValue("@customerID", customerID);
+        cmdUpdate.CommandTimeout = 60;
+
+        cmdDelete.Parameters.AddWithValue("@customerID", customerID);
+        cmdDelete.Parameters.AddWithValue("@date", date);
+        cmdDelete.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            cmdDelete.ExecuteNonQuery();
+            int rowsUpdate = cmdUpdate.ExecuteNonQuery();
+            if (rowsUpdate > 0)
+            {
+                MessageBox.Show("Customer record updated successfully.");
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Failed to update customer record.");
+                return false;
+            }
+            
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Connection Failed");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static bool DeleteCustomer(int customerId)
+    {
+        string query = "DELETE FROM customer WHERE CustomerID = @customerID";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@customerID", customerId);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int row = cmd.ExecuteNonQuery();
+            if (row > 0)
+                return true;
+            else return false;
+        } 
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Connection Failed");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
     #endregion
 
     #region Statistics UserControl

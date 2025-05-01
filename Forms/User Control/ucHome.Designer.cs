@@ -125,6 +125,7 @@
             btnDelete.Size = new Size(100, 30);
             btnDelete.TabIndex = 2;
             btnDelete.TextOffset = new Point(0, 0);
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -164,6 +165,7 @@
             btnUpdate.Size = new Size(100, 30);
             btnUpdate.TabIndex = 1;
             btnUpdate.TextOffset = new Point(0, 0);
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnReset
             // 
@@ -203,6 +205,7 @@
             btnReset.Size = new Size(100, 30);
             btnReset.TabIndex = 0;
             btnReset.TextOffset = new Point(0, 0);
+            btnReset.Click += btnReset_Click;
             // 
             // pnlCustomerContainer
             // 
