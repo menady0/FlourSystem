@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Mena\\Documents\\FlourSystem\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\uchomebtns\\frmaddcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\uchomebtns\\frmaddcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\classes\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:classes\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\uchomebtns\\frmaddcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\uchomebtns\\frmaddcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|C:\\Users\\Mena\\Documents\\FlourSystem\\forms\\user control\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -22,20 +38,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DataBase.cs",
               "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\DataBase.cs",
               "RelativeDocumentMoniker": "Classes\\DataBase.cs",
               "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\DataBase.cs",
               "RelativeToolTip": "Classes\\DataBase.cs",
-              "ViewState": "AgIAACIBAAAAAAAAAAAgwD0BAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAMwBAAAAAAAAAAAUwNcBAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T10:40:16.211Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmDashboard.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
+              "RelativeDocumentMoniker": "Forms\\frmDashboard.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
+              "RelativeToolTip": "Forms\\frmDashboard.cs",
+              "ViewState": "AgIAAO4AAAAAAAAAAADwvwUBAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T08:08:44.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
+              "RelativeDocumentMoniker": "Forms\\frmDashboard.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs [Design]",
+              "RelativeToolTip": "Forms\\frmDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T08:08:42.419Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmAddCustomer.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs",
+              "RelativeDocumentMoniker": "Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs [Design]",
+              "RelativeToolTip": "Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T07:19:05.381Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmAddCustomer.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs",
+              "RelativeDocumentMoniker": "Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs",
+              "RelativeToolTip": "Forms\\User Control\\ucHomeBtns\\frmAddCustomer.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAUwH4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T07:17:06.745Z",
               "EditorCaption": ""
             },
             {
@@ -44,28 +110,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ucHome.cs",
               "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs",
               "RelativeDocumentMoniker": "Forms\\User Control\\ucHome.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs*",
-              "RelativeToolTip": "Forms\\User Control\\ucHome.cs*",
-              "ViewState": "AgIAAGMDAAAAAAAAAADwv24DAAA0AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs",
+              "RelativeToolTip": "Forms\\User Control\\ucHome.cs",
+              "ViewState": "AgIAAF4DAAAAAAAAAAAUwGwDAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T10:18:33.827Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "ucHome.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs",
               "RelativeDocumentMoniker": "Forms\\User Control\\ucHome.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs [Design]*",
-              "RelativeToolTip": "Forms\\User Control\\ucHome.cs [Design]*",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHome.cs [Design]",
+              "RelativeToolTip": "Forms\\User Control\\ucHome.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T10:18:32.281Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-30T10:18:32.281Z"
             }
           ]
         }

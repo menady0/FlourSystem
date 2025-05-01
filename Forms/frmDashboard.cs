@@ -261,7 +261,7 @@ namespace FlourSystem.Forms
             selectedbtn(btnHome);
             if (_ucHomeInstance == null)
             {
-                _ucHomeInstance = new ucHome();
+                _ucHomeInstance = new ucHome(this);
             }
             LoadUserControl(_ucHomeInstance);
         }

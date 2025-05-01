@@ -201,7 +201,7 @@ public class DataBase
     #endregion
 
     #region Checking Adding Buttons Group
-    public static bool CustomerExists(long cardID)
+    public static int CustomerExists(long cardID)
     {
         string query = "SELECT COUNT(*) FROM customer WHERE CustomerID = @customerID";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
@@ -213,13 +213,13 @@ public class DataBase
             conn.Open();
             //int c = int.Parse((string)cmd.ExecuteScalar());
             int count = Convert.ToInt32(cmd.ExecuteScalar());
-            return count > 0;
+            return count;
         }
         catch (MySqlException ex)
         {
             MessageBox.Show("Failed to check customer existence.");
             MessageBox.Show(ex.Message);
-            return false;
+            return -1;
         }
         finally
         {
@@ -411,6 +411,7 @@ public class DataBase
             conn.Close();
         }
     }
+    #region Reset, Update & Delete Buttons
     public static bool ResetCustomer(int customerID, int totalQuantity, int price, string date)
     {
         string update = "UPDATE customer SET Registration = 0, Delivered = 0, TotalQuantity = @totalQuantity, Price = @price WHERE CustomerID = @customerID";
@@ -454,6 +455,42 @@ public class DataBase
             conn.Close();
         }
     }
+    public static bool UpdateCustomer(long originalID, long cardID, string name, int members, int quantity, int price)
+    {
+        string query = "UPDATE customer set CustomerID = @cardId, OwnerName = @name, NumberOfPeople = @members, TotalQuantity = @total, price = @price WHERE CustomerID = @originalID";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@originalID", originalID);
+        cmd.Parameters.AddWithValue("@cardId", cardID);
+        cmd.Parameters.AddWithValue("@name", name);
+        cmd.Parameters.AddWithValue("@members", members);
+        cmd.Parameters.AddWithValue("@total", quantity);
+        cmd.Parameters.AddWithValue("@price", price);
+        cmd.CommandTimeout = 60;
+
+        try
+        {
+            conn.Open();
+            int row = cmd.ExecuteNonQuery();
+            if (row > 0)
+                return true;
+            else
+            {
+                MessageBox.Show("Failed to update!");
+                return false;
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Connection Failed");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
     public static bool DeleteCustomer(int customerId)
     {
         string query = "DELETE FROM customer WHERE CustomerID = @customerID";
@@ -480,6 +517,7 @@ public class DataBase
             conn.Close();
         }
     }
+    #endregion
     #endregion
 
     #region Statistics UserControl

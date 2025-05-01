@@ -1,4 +1,5 @@
 ﻿using CuoreUI.Controls;
+using Google.Protobuf.Reflection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,6 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             InitializeComponent();
             _dashboard = dashboard;
         }
-
         #region Closing
         bool closing = true;
         private void btnClose_Click(object sender, EventArgs e)
@@ -104,14 +104,23 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 return;
             }
 
-            if (DataBase.CustomerExists(long.Parse(txtCardID.Content)))
+            int count = DataBase.CustomerExists(long.Parse(txtCardID.Content));
+            MessageBox.Show(count.ToString());
+            if ((btnAdd.Tag as string) != "update" && count > 0)
             {
                 MessageBox.Show("Customer with this Card ID already exists.");
                 txtCardID.Content = "";
                 txtCardID.Focus();
                 return;
             }
-            #endregion
+            else if ((btnAdd.Tag as string) == "update" && count > 0)
+            {
+                MessageBox.Show("Customer with this Card ID already exists.");
+                txtCardID.Content = Tag as string;
+                txtCardID.Focus();
+                return;
+            }
+                #endregion
 
             long cardID = long.Parse(txtCardID.Content);
             string name = txtName.Content;
@@ -122,13 +131,31 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             int delivered = 0;
             int customerIndex = DataBase.CustomersList.Count;
             string renewalDate = DateTime.Now.ToString("yyyy-MM-dd");
-            if (DataBase.AddCustomer(cardID, name, members, quantity, price, registration, delivered, renewalDate, customerIndex))
+
+            if ((btnAdd.Tag as string) == "update")
             {
-                this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
-                btnClose.PerformClick();
+                long originalID = int.Parse((string)Tag);
+                MessageBox.Show("update");
+                MessageBox.Show($"{originalID}");
+                if (DataBase.UpdateCustomer(originalID, cardID, name, members, quantity, price))
+                {
+                    this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
+                    btnClose.PerformClick();
+                }
+                else
+                    MessageBox.Show("Failed to update customer.");
             }
             else
-                MessageBox.Show("Failed to add customer.");
+            {
+                MessageBox.Show("add");
+                if (DataBase.AddCustomer(cardID, name, members, quantity, price, registration, delivered, renewalDate, customerIndex))
+                {
+                    this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
+                    btnClose.PerformClick();
+                }
+                else
+                    MessageBox.Show("Failed to add customer.");
+            }
 
         }
     }

@@ -1,4 +1,5 @@
 ﻿using CuoreUI.Controls;
+using FlourSystem.Forms.User_Control.ucHomeBtns;
 using FontAwesome.Sharp;
 using System;
 using System.Diagnostics;
@@ -11,6 +12,13 @@ namespace FlourSystem.Forms.User_Control
         {
             InitializeComponent();
             DataBase.CustomersList = DataBase.RetrieveCustomerTable();
+        }
+        private frmDashboard _dashboard;
+        public ucHome(frmDashboard dasbhoard)
+        {
+            InitializeComponent();
+            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
+            _dashboard = dasbhoard;
         }
         private void ucHome_Load(object sender, EventArgs e)
         {
@@ -857,8 +865,30 @@ namespace FlourSystem.Forms.User_Control
             if(sender is cuiButton btn)
             {
                 if (btn.Tag is Dictionary<string, object> customer) 
-                { 
-                    MessageBox.Show($"Update: {customer}");
+                {
+                    if(
+                        customer.TryGetValue("CustomerID", out var customerIdObj) &&
+                        int.TryParse(customerIdObj.ToString(), out int customerId) &&
+                        customer.TryGetValue("name", out var customerNameObj) &&
+                        customer.TryGetValue("numberOfPeople", out var customerNumObj) &&
+                        int.TryParse(customerNumObj.ToString(), out int customerNum)
+                        )
+                    {
+                        frmAddCustomer addCustomer = new frmAddCustomer(_dashboard);
+
+                        addCustomer.txtCardID.Content = customerId.ToString();
+                        addCustomer.txtName.Content = customerNameObj.ToString();
+                        addCustomer.txtMembers.Content = customerNumObj.ToString();
+                        addCustomer.txtQuantity.Content = (customerNum * 10).ToString();
+                        addCustomer.txtPrice.Content = (customerNum * 10 * 3).ToString();
+                        addCustomer.btnAdd.Text = "تعديل";
+                        addCustomer.btnAdd.Tag = "update";
+                        addCustomer.Tag = customerId.ToString();
+
+                        addCustomer.ShowDialog();
+
+                    }
+                        
                 }
                 else MessageBox.Show("No customer data associated with this button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

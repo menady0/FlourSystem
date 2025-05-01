@@ -383,17 +383,17 @@
         private FontAwesome.Sharp.IconButton btnClose;
         private Panel panel1;
         private CuoreUI.Components.cuiFormRounder frmBorder;
-        private CuoreUI.Controls.cuiTextBox2 txtCardID;
         private FontAwesome.Sharp.IconPictureBox picCardID;
         private FontAwesome.Sharp.IconPictureBox picName;
-        private CuoreUI.Controls.cuiTextBox2 txtName;
         private FontAwesome.Sharp.IconPictureBox picMembers;
-        private CuoreUI.Controls.cuiTextBox2 txtMembers;
         private FontAwesome.Sharp.IconPictureBox picPrice;
-        private CuoreUI.Controls.cuiTextBox2 txtPrice;
         private FontAwesome.Sharp.IconPictureBox picQuantity;
-        private CuoreUI.Controls.cuiTextBox2 txtQuantity;
-        private Classes.Controls.roundedButton btnAdd;
         private CuoreUI.Components.cuiFormAnimator frmAnimation;
+        public CuoreUI.Controls.cuiTextBox2 txtCardID;
+        public CuoreUI.Controls.cuiTextBox2 txtName;
+        public CuoreUI.Controls.cuiTextBox2 txtMembers;
+        public CuoreUI.Controls.cuiTextBox2 txtPrice;
+        public CuoreUI.Controls.cuiTextBox2 txtQuantity;
+        internal Classes.Controls.roundedButton btnAdd;
     }
 }
