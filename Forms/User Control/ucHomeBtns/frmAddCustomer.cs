@@ -120,7 +120,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 txtCardID.Focus();
                 return;
             }
-                #endregion
+            #endregion
 
             long cardID = long.Parse(txtCardID.Content);
             string name = txtName.Content;
@@ -157,6 +157,11 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                     MessageBox.Show("Failed to add customer.");
             }
 
+        }
+
+        private void frmAddCustomer_Load(object sender, EventArgs e)
+        {
+            ThemeManager.ApplyTheme();
         }
     }
 }

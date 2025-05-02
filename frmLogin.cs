@@ -84,9 +84,16 @@ namespace FlourSystem
             Settings.Default.DarkMode = ThemeManager.IsDarkMode;
             Settings.Default.Save();
             if (ThemeManager.IsDarkMode)
+            {
                 btnDarkMode.IconChar = IconChar.Sun;
+                btnDarkMode.IconColor = Color.FromArgb(245, 203, 92);
+            }
             else
+            {
                 btnDarkMode.IconChar = IconChar.Moon;
+                btnDarkMode.IconColor = ThemeColors.LightForeColor;
+
+            }
         }
         private void btnDarkMode_MouseEnter(object sender, EventArgs e)
         {

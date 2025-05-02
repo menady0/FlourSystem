@@ -17,19 +17,10 @@ namespace FlourSystem.Forms.User_Control
         public ucStatistaics()
         {
             InitializeComponent();
+        }
 
-            int currentDay = DateTime.Now.Day;
-            int currentMonth = DateTime.Now.Month;
-            int currentYear = DateTime.Now.Year;
-
-            receivedQuota = DataBase.ReceivedQuotas(currentMonth, currentYear);
-            todayCards = DataBase.Cards(currentDay, currentMonth, currentYear);
-            totalCards = DataBase.Cards(currentMonth, currentYear);
-
-            DataBase.balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
-            todaySales = DataBase.Store(currentDay, currentMonth, currentYear);
-            totalSales = DataBase.Store(currentMonth, currentYear);
-
+        private void ucStatistaics_Load(object sender, EventArgs e)
+        {
             cards = new Control[]
             {
                 lblReceivedQuota,
@@ -56,12 +47,21 @@ namespace FlourSystem.Forms.User_Control
                 totalSaleslbl,
                 pnlTotalSales,
             };
-        }
 
-        private void ucStatistaics_Load(object sender, EventArgs e)
-        {
+            int currentDay = DateTime.Now.Day;
+            int currentMonth = DateTime.Now.Month;
+            int currentYear = DateTime.Now.Year;
+
+            receivedQuota = DataBase.ReceivedQuotas(currentMonth, currentYear);
+            todayCards = DataBase.Cards(currentDay, currentMonth, currentYear);
+            totalCards = DataBase.Cards(currentMonth, currentYear);
+
+            DataBase.balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
+            todaySales = DataBase.Store(currentDay, currentMonth, currentYear);
+            totalSales = DataBase.Store(currentMonth, currentYear);
+
+
             StartAllAnimations();
-
             // Use Instead To Display The Values Without Animation
             // ----------------------------------------------------
             //lblReceivedQuota.Text = receivedQuota.ToString();

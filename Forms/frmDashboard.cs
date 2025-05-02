@@ -3,6 +3,7 @@ using FlourSystem.Forms.User_Control;
 using FlourSystem.Properties;
 using FlourSystem.Forms.User_Control.ucHomeBtns;
 using FlourSystem.Classes;
+using System.Runtime;
 namespace FlourSystem.Forms
 {
     public partial class frmDashboard : Form
@@ -96,7 +97,7 @@ namespace FlourSystem.Forms
 
         public void btnRefresh_Click(object sender, EventArgs e)
         {
-            _ucHomeInstance.RefreshData();
+            _ucHomeInstance?.RefreshData();
         }
 
         #region Search Button
@@ -254,61 +255,60 @@ namespace FlourSystem.Forms
         }
 
         #region Side Menu Buttons
-        private ucHome? _ucHomeInstance;
+        ucHome? _ucHomeInstance;
         private void btnHome_Click(object sender, EventArgs e)
         {
-            LoadTitle(0);
+            LoadTitle("الرئيسية");
             selectedbtn(btnHome);
             if (_ucHomeInstance == null)
-            {
                 _ucHomeInstance = new ucHome(this);
-            }
             LoadUserControl(_ucHomeInstance);
         }
-
+        ucStatistaics _ucStatistaics;
         private void btnSta_Click(object sender, EventArgs e)
         {
-            LoadTitle(1);
+            LoadTitle("الاستعلامات");
             selectedbtn(btnSta);
-            LoadUserControl(new ucStatistaics());
+            if(_ucStatistaics == null)
+                _ucStatistaics = new ucStatistaics();
+            LoadUserControl(_ucStatistaics);
         }
-
+        ucTeam? _ucTeamInstance;
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            LoadTitle(2);
+            LoadTitle("فريق العمل");
             selectedbtn(btnInfo);
-            LoadUserControl(new ucTeam());
+            if(_ucTeamInstance == null)
+                _ucTeamInstance = new ucTeam();
+            LoadUserControl(_ucTeamInstance);
         }
-
+        ucSettings? _ucSettings;
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            LoadTitle(3);
+            LoadTitle("الإعدادات");
             selectedbtn(btnSettings);
-            LoadUserControl(new ucSettings());
+            if(_ucSettings == null)
+                _ucSettings = new ucSettings();
+            LoadUserControl(_ucSettings);
         }
         #endregion
-        string[] menuNames = new string[] {
-            "الرئيسية",
-            "الاستعلامات",
-            "فريق العمل",
-            "الإعدادات"
-        };
+
         int counter;
-        int index = -1;
-        void LoadTitle(int i)
+        string currentTitle = "";
+        void LoadTitle(string title)
         {
-            if (index == i) return;
+            if (currentTitle == title) return;
 
             lblTitle.Text = "";
             counter = 0;
-            index = i;
+            currentTitle = title;
             typingTimer.Start();
         }
         private void typingTimer_Tick(object sender, EventArgs e)
         {
-            if (counter < menuNames[index].Length)
+            if (counter < currentTitle.Length)
             {
-                lblTitle.Text += menuNames[index][counter];
+                lblTitle.Text += currentTitle[counter];
                 counter++;
             }
             else

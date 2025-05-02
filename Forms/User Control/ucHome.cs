@@ -8,21 +8,15 @@ namespace FlourSystem.Forms.User_Control
 {
     public partial class ucHome : UserControl
     {
-        public ucHome()
-        {
-            InitializeComponent();
-            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
-        }
         private frmDashboard _dashboard;
         public ucHome(frmDashboard dasbhoard)
         {
             InitializeComponent();
-            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
             _dashboard = dasbhoard;
         }
         private void ucHome_Load(object sender, EventArgs e)
         {
-            //DisplayCustomers(CustomersList);
+            DataBase.CustomersList = DataBase.RetrieveCustomerTable();
             DisplayTimer(DataBase.CustomersList);
             CloseOpenedSearch(this);
             #region Stop Watch
@@ -907,7 +901,7 @@ namespace FlourSystem.Forms.User_Control
                         customer.TryGetValue("name", out var customerNameObj))
                     {
                         var result = MessageBox.Show(
-                            "Are you sure you want to reset this customer's data?",
+                            "Are you sure you want to delete this customer's data?",
                             "Confirm Reset",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Warning
