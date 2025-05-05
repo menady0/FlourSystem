@@ -34,5 +34,65 @@ namespace FlourSystem.Properties {
                 this["DarkMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int price {
+            get {
+                return ((int)(this["price"]));
+            }
+            set {
+                this["price"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int sack {
+            get {
+                return ((int)(this["sack"]));
+            }
+            set {
+                this["sack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool lazyLoading {
+            get {
+                return ((bool)(this["lazyLoading"]));
+            }
+            set {
+                this["lazyLoading"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        public int batchSize {
+            get {
+                return ((int)(this["batchSize"]));
+            }
+            set {
+                this["batchSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int scrollThreshold {
+            get {
+                return ((int)(this["scrollThreshold"]));
+            }
+            set {
+                this["scrollThreshold"] = value;
+            }
+        }
     }
 }

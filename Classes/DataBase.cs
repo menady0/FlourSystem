@@ -7,6 +7,35 @@ public class DataBase
 {
     static string mySQLConnection = "server=127.0.0.1 ; user=root; database=floursystem; password=";
 
+    public static string? currentUsername;
+    public static string? currentPassword;
+    public static string RetriveName(string username)
+    {
+        string query = "SELECT Name FROM owner WHERE Username = @username";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@username", username);
+        cmd.CommandTimeout = 60;
+        MySqlDataReader reader;
+        try
+        {
+            conn.Open();
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return reader["name"]?.ToString() ?? string.Empty;
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            conn.Close();
+        }
+        return string.Empty;
+    }
     #region Login Form
     public static int loggedOwner;
     public static int retrieveOwnerID(string username)
@@ -70,32 +99,32 @@ public class DataBase
         }
     }
     #region Use for logging in without hashing
-    //public static bool login(string username, string password)
-    //{
-    //    string query = "SELECT * FROM owner WHERE Username = @username AND Password = @password";
-    //    MySqlConnection conn = new MySqlConnection(mySQLConnection);
-    //    MySqlCommand cmd = new MySqlCommand(query, conn);
-    //    cmd.Parameters.AddWithValue("@username", username);
-    //    cmd.Parameters.AddWithValue("@password", password);
-    //    cmd.CommandTimeout = 60;
-    //    MySqlDataReader reader;
-    //    try
-    //    {
-    //        conn.Open();
-    //        reader = cmd.ExecuteReader();
-    //        if (reader.Read())
-    //            return true;
-    //    }
-    //    catch (MySqlException ex)
-    //    {
-    //        MessageBox.Show(ex.Message);
-    //    }
-    //    finally
-    //    {
-    //        conn.Close();
-    //    }
-    //    return false;
-    //}
+    public static bool login(string username, string password)
+    {
+        string query = "SELECT * FROM owner WHERE Username = @username AND Password = @password";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@username", username);
+        cmd.Parameters.AddWithValue("@password", password);
+        cmd.CommandTimeout = 60;
+        MySqlDataReader reader;
+        try
+        {
+            conn.Open();
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+                return true;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            conn.Close();
+        }
+        return false;
+    }
     #endregion
     #endregion
 
@@ -691,6 +720,112 @@ public class DataBase
             MessageBox.Show("Failed to retrieve quota amount.");
             MessageBox.Show(ex.Message);
             return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    #endregion
+
+    #region Settings UserControl
+    public static void UpdateOwner(string originalUsername, string? newUsername = null, string? name = null, string? password = null)
+    {
+        List<string> updates = new List<string>();
+        MySqlCommand cmd = new MySqlCommand();
+
+        if (newUsername != null)
+        {
+            updates.Add("Username = @newUsername");
+            cmd.Parameters.AddWithValue("@newUsername", newUsername);
+        }
+
+        if (name != null)
+        {
+            updates.Add("Name = @name");
+            cmd.Parameters.AddWithValue("@name", name);
+        }
+
+        if (password != null)
+        {
+            updates.Add("Password = @password");
+            cmd.Parameters.AddWithValue("@password", password);
+        }
+
+        string marge = string.Join(", ", updates);
+        string query = $"UPDATE owner SET {marge} WHERE Username = @originalUsername";
+
+        cmd.CommandText = query;
+        cmd.Connection = new MySqlConnection(mySQLConnection);
+        cmd.Parameters.AddWithValue("@originalUsername", originalUsername);
+        cmd.CommandTimeout = 60;
+
+        try
+        {
+            cmd.Connection.Open();
+            int row = cmd.ExecuteNonQuery();
+            if (row > 0)
+                MessageBox.Show("Updated successfully");
+            else
+                MessageBox.Show("Failed to update!");
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Connection Failed");
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            cmd.Connection.Close();
+        }
+    }
+    public static bool CheckOwners()
+    {
+        string query = "SELECT COUNT(*) FROM owner";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.CommandTimeout = 60;
+
+        try
+        {
+            conn.Open();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count == 1;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Failed to check owners count.");
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+
+    internal static bool DeleteOwner(string? currentUsername)
+    {
+        string query = "DELETE FROM owner WHERE Username = @username";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@username", currentUsername);
+        cmd.CommandTimeout = 60;
+
+        try
+        {
+            conn.Open();
+            int row = cmd.ExecuteNonQuery();
+            if (row > 0)
+                return true;
+            else
+                return false;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Connection Failed");
+            MessageBox.Show(ex.Message);
+            return false;
         }
         finally
         {

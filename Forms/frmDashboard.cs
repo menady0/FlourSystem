@@ -4,6 +4,7 @@ using FlourSystem.Properties;
 using FlourSystem.Forms.User_Control.ucHomeBtns;
 using FlourSystem.Classes;
 using System.Runtime;
+using System.Drawing.Drawing2D;
 namespace FlourSystem.Forms
 {
     public partial class frmDashboard : Form
@@ -33,7 +34,7 @@ namespace FlourSystem.Forms
                 },
                 interpolate: HoverEffect.InterpolateColor,
                 transitionDuration: 100
-            ); 
+            );
             HoverEffect.Hover(
                 redBtns,
                 getDefaultValue: ctrl => Color.White,
@@ -41,7 +42,7 @@ namespace FlourSystem.Forms
                 setValue: (ctrl, value) =>
                 {
                     if (ctrl is IconButton btn)
-                        btn.IconColor = value; 
+                        btn.IconColor = value;
                     if (ctrl is IconPictureBox pic)
                         pic.IconColor = value;
                 },
@@ -223,8 +224,21 @@ namespace FlourSystem.Forms
                     btn.BackColor = Color.FromArgb(18, 18, 18);
                     btn.IconColor = Color.White;
                 }
-                if (selectedButton == btnHome) pnlNavBtns.Visible = true;
-                else pnlNavBtns.Visible = false;
+                if (selectedButton == btnHome)
+                {
+                    pnlUpdateCheck.Visible = false;
+                    pnlNavBtns.Visible = true;
+                }
+                else if (selectedButton == btnSettings)
+                {
+                    pnlNavBtns.Visible = false;
+                    pnlUpdateCheck.Visible = true;
+                }
+                else
+                {
+                    pnlNavBtns.Visible = false;
+                    pnlUpdateCheck.Visible = false;
+                }
             }
         }
         private void menuTranstion_Tick(object sender, EventArgs e)
@@ -269,7 +283,7 @@ namespace FlourSystem.Forms
         {
             LoadTitle("الاستعلامات");
             selectedbtn(btnSta);
-            if(_ucStatistaics == null)
+            if (_ucStatistaics == null)
                 _ucStatistaics = new ucStatistaics();
             LoadUserControl(_ucStatistaics);
         }
@@ -278,7 +292,7 @@ namespace FlourSystem.Forms
         {
             LoadTitle("فريق العمل");
             selectedbtn(btnInfo);
-            if(_ucTeamInstance == null)
+            if (_ucTeamInstance == null)
                 _ucTeamInstance = new ucTeam();
             LoadUserControl(_ucTeamInstance);
         }
@@ -287,7 +301,7 @@ namespace FlourSystem.Forms
         {
             LoadTitle("الإعدادات");
             selectedbtn(btnSettings);
-            if(_ucSettings == null)
+            if (_ucSettings == null)
                 _ucSettings = new ucSettings();
             LoadUserControl(_ucSettings);
         }
@@ -384,6 +398,9 @@ namespace FlourSystem.Forms
             new frmAddOwner().ShowDialog();
         }
         #endregion
+        private void btnUpdateCheck_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

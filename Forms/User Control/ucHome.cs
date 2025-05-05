@@ -1,7 +1,9 @@
 ﻿using CuoreUI.Controls;
 using FlourSystem.Forms.User_Control.ucHomeBtns;
+using FlourSystem.Properties;
 using FontAwesome.Sharp;
 using System;
+using System.Configuration;
 using System.Diagnostics;
 
 namespace FlourSystem.Forms.User_Control
@@ -257,7 +259,10 @@ namespace FlourSystem.Forms.User_Control
         {
             customersToDisplay = customers;
             // Change Min To Max: To Display All Customers at once
-            targetIndex = Math.Min(currentIndex + batchSize, customersToDisplay.Count);
+            if (Settings.Default.lazyLoading)
+                targetIndex = Math.Min(currentIndex + Settings.Default.batchSize, customersToDisplay.Count);
+            else
+                targetIndex = customersToDisplay.Count;
 
             if (isLoading || currentIndex >= customersToDisplay.Count)
                 return;
@@ -328,7 +333,7 @@ namespace FlourSystem.Forms.User_Control
             Label lblTotal = new Label
             {
                 AutoSize = false,
-                Text = $"{int.Parse(customer["numberOfPeople"]?.ToString() ?? "0") * 10}",
+                Text = $"{int.Parse(customer["numberOfPeople"]?.ToString() ?? "0") * (Settings.Default.sack / 2)}",
                 Width = 85,
                 Height = 40,
                 TextAlign = ContentAlignment.MiddleCenter,
@@ -500,7 +505,7 @@ namespace FlourSystem.Forms.User_Control
                 if (int.TryParse(req.Content, out int reqValue))
                 {
                     txtReceived.Content = reqValue.ToString();
-                    txtPaid.Content = (reqValue * 3).ToString();
+                    txtPaid.Content = (reqValue * (Settings.Default.price / Settings.Default.sack)).ToString();
                 }
                 else
                 {
@@ -581,7 +586,7 @@ namespace FlourSystem.Forms.User_Control
                     remain.Text = (totalQuantity - receivedQuantity).ToString();
                     txtRequired.Content = remain.Text;
                     txtReceived.Content = remain.Text;
-                    price.Text = (int.Parse(remain.Text) * 3).ToString();
+                    price.Text = (int.Parse(remain.Text) * (Settings.Default.price / Settings.Default.sack)).ToString();
                     txtPaid.Content = price.Text;
 
                     btnRegister.Content = (int.Parse(btnRegister.Content) + 1).ToString();
@@ -835,8 +840,8 @@ namespace FlourSystem.Forms.User_Control
 
                         if (result == DialogResult.Yes)
                         {
-                            int totalQuantity = customerNum * 10;
-                            int price = totalQuantity * 3;
+                            int totalQuantity = customerNum * (Settings.Default.sack / 2);
+                            int price = totalQuantity * (Settings.Default.price / Settings.Default.sack);
                             string date = DateTime.Now.ToString("yyyy-MM");
                             if (DataBase.ResetCustomer(customerId, totalQuantity, price, date))
                             {
@@ -873,8 +878,8 @@ namespace FlourSystem.Forms.User_Control
                         addCustomer.txtCardID.Content = customerId.ToString();
                         addCustomer.txtName.Content = customerNameObj.ToString();
                         addCustomer.txtMembers.Content = customerNumObj.ToString();
-                        addCustomer.txtQuantity.Content = (customerNum * 10).ToString();
-                        addCustomer.txtPrice.Content = (customerNum * 10 * 3).ToString();
+                        addCustomer.txtQuantity.Content = (customerNum * (Settings.Default.sack / 2)).ToString();
+                        addCustomer.txtPrice.Content = (customerNum * (Settings.Default.price / Settings.Default.sack)).ToString();
                         addCustomer.btnAdd.Text = "تعديل";
                         addCustomer.btnAdd.Tag = "update";
                         addCustomer.Tag = customerId.ToString();

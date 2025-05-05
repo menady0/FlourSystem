@@ -42,27 +42,29 @@ namespace FlourSystem
 
             // Logging In WITH Hashed Password
             // ---------------------------------------------------------------------
-            //string hashedPassword = DataBase.GetHashedPassword(username);
-            //bool isValid;
-            //try
-            //{
-            //    isValid = BCrypt.Net.BCrypt.Verify(password, hashedPassword);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"An error occurred during password verification: {ex.Message}");
-            //    return;
-            //}
+            string hashedPassword = DataBase.GetHashedPassword(username);
+            bool isValid;
+            try
+            {
+                isValid = BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during password verification: {ex.Message}");
+                return;
+            }
             // ---------------------------------------------------------------------
 
             // Logging In WITHOUT Hashed Password
             // ---------------------------------------------------------------------
             //bool isValid = DataBase.login(txtUsername.Content, txtPassword.Content);
-            // ---------------------------------------------------------------------
-            bool isValid = true;
+            //---------------------------------------------------------------------
+            //isValid = true;
             if (isValid)
             {
                 DataBase.loggedOwner = DataBase.retrieveOwnerID(username);
+                DataBase.currentUsername = username;
+                DataBase.currentPassword = password;
                 this.Hide();
                 dashboard = new frmDashboard();
                 dashboard.FormClosed += (s, args) => this.Close();

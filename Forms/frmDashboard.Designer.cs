@@ -31,6 +31,9 @@
             components = new System.ComponentModel.Container();
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
+            pnlUpdateCheck = new Panel();
+            label1 = new Label();
+            btnUpdateCheck = new FontAwesome.Sharp.IconButton();
             pnlAddDropDown = new CuoreUI.Controls.cuiBorder();
             btnAddOwner = new CuoreUI.Controls.cuiButton();
             btnAddQuota = new CuoreUI.Controls.cuiButton();
@@ -64,6 +67,7 @@
             addDropDownTimer = new System.Windows.Forms.Timer(components);
             btnAddCustomerTimer = new System.Windows.Forms.Timer(components);
             pnlNavBar.SuspendLayout();
+            pnlUpdateCheck.SuspendLayout();
             pnlAddDropDown.SuspendLayout();
             pnlSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picClearSearch).BeginInit();
@@ -85,6 +89,7 @@
             // pnlNavBar
             // 
             pnlNavBar.BackColor = Color.Transparent;
+            pnlNavBar.Controls.Add(pnlUpdateCheck);
             pnlNavBar.Controls.Add(pnlAddDropDown);
             pnlNavBar.Controls.Add(lblTitle);
             pnlNavBar.Controls.Add(btnMinimize);
@@ -96,6 +101,48 @@
             pnlNavBar.Name = "pnlNavBar";
             pnlNavBar.Size = new Size(1200, 83);
             pnlNavBar.TabIndex = 0;
+            // 
+            // pnlUpdateCheck
+            // 
+            pnlUpdateCheck.Controls.Add(label1);
+            pnlUpdateCheck.Controls.Add(btnUpdateCheck);
+            pnlUpdateCheck.Location = new Point(15, 24);
+            pnlUpdateCheck.Name = "pnlUpdateCheck";
+            pnlUpdateCheck.Size = new Size(100, 35);
+            pnlUpdateCheck.TabIndex = 13;
+            pnlUpdateCheck.Visible = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Cairo", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
+            label1.ForeColor = Color.FromArgb(232, 237, 223);
+            label1.Location = new Point(0, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 17);
+            label1.TabIndex = 5;
+            label1.Text = "تفقد التحديثات";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnUpdateCheck
+            // 
+            btnUpdateCheck.BackColor = Color.FromArgb(18, 18, 18);
+            btnUpdateCheck.Cursor = Cursors.Hand;
+            btnUpdateCheck.Dock = DockStyle.Right;
+            btnUpdateCheck.FlatAppearance.BorderSize = 0;
+            btnUpdateCheck.FlatStyle = FlatStyle.Flat;
+            btnUpdateCheck.ForeColor = Color.Transparent;
+            btnUpdateCheck.IconChar = FontAwesome.Sharp.IconChar.Refresh;
+            btnUpdateCheck.IconColor = Color.White;
+            btnUpdateCheck.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnUpdateCheck.IconSize = 16;
+            btnUpdateCheck.Location = new Point(62, 0);
+            btnUpdateCheck.Name = "btnUpdateCheck";
+            btnUpdateCheck.Size = new Size(38, 35);
+            btnUpdateCheck.TabIndex = 4;
+            btnUpdateCheck.TabStop = false;
+            btnUpdateCheck.UseVisualStyleBackColor = false;
+            btnUpdateCheck.Click += btnUpdateCheck_Click;
             // 
             // pnlAddDropDown
             // 
@@ -629,6 +676,8 @@
             Text = "frmDashboard";
             Load += frmDashboard_Load;
             pnlNavBar.ResumeLayout(false);
+            pnlUpdateCheck.ResumeLayout(false);
+            pnlUpdateCheck.PerformLayout();
             pnlAddDropDown.ResumeLayout(false);
             pnlSearch.ResumeLayout(false);
             pnlSearch.PerformLayout();
@@ -679,5 +728,8 @@
         public FontAwesome.Sharp.IconButton btnRefresh;
         private Panel pnlNavBtns;
         private FontAwesome.Sharp.IconPictureBox picClearSearch;
+        private Panel pnlUpdateCheck;
+        private Label label1;
+        public FontAwesome.Sharp.IconButton btnUpdateCheck;
     }
 }
