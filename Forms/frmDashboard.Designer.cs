@@ -117,11 +117,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Cairo", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
             label1.ForeColor = Color.FromArgb(232, 237, 223);
-            label1.Location = new Point(0, 9);
+            label1.Location = new Point(23, 1);
             label1.Name = "label1";
-            label1.Size = new Size(61, 17);
+            label1.Size = new Size(41, 34);
             label1.TabIndex = 5;
-            label1.Text = "تفقد التحديثات";
+            label1.Text = "تفقد\r\nالتحديثات";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnUpdateCheck
@@ -371,7 +371,7 @@
             txtSearch.Content = "";
             txtSearch.FocusBackgroundColor = Color.FromArgb(18, 18, 18);
             txtSearch.FocusBorderColor = Color.FromArgb(71, 137, 75);
-            txtSearch.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Font = new Font("Cairo Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSearch.ForeColor = Color.White;
             txtSearch.Location = new Point(0, 0);
             txtSearch.Margin = new Padding(4);

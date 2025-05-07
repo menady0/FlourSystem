@@ -441,7 +441,7 @@ public class DataBase
         }
     }
     #region Reset, Update & Delete Buttons
-    public static bool ResetCustomer(int customerID, int totalQuantity, int price, string date)
+    public static bool ResetCustomer(long customerID, int totalQuantity, int price, string date)
     {
         string update = "UPDATE customer SET Registration = 0, Delivered = 0, TotalQuantity = @totalQuantity, Price = @price WHERE CustomerID = @customerID";
         string delete = "DELETE FROM store WHERE CustomerID = @customerID AND DATE_FORMAT(DateOfOperation, '%Y-%m') = @date";
@@ -520,7 +520,7 @@ public class DataBase
             conn.Close();
         }
     }
-    public static bool DeleteCustomer(int customerId)
+    public static bool DeleteCustomer(long customerId)
     {
         string query = "DELETE FROM customer WHERE CustomerID = @customerID";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);

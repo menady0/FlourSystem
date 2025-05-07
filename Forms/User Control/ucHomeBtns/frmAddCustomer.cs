@@ -113,7 +113,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 txtCardID.Focus();
                 return;
             }
-            else if ((btnAdd.Tag as string) == "update" && count > 0)
+            else if ((btnAdd.Tag as string) == "update" && count > 1)
             {
                 MessageBox.Show("Customer with this Card ID already exists.");
                 txtCardID.Content = Tag as string;

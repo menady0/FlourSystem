@@ -135,7 +135,7 @@ namespace FlourSystem.Forms
                 }
             }
         }
-        private void CloseOpenedSearch(Control control)
+        void CloseOpenedSearch(Control control)
         {
             control.MouseDown += Form1_MouseDown;
 
@@ -166,6 +166,8 @@ namespace FlourSystem.Forms
                 searchTimer.Start();
             if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
                 addDropDownTimer.Start();
+            if(!_ucHomeInstance.pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && _ucHomeInstance.isAddtionalDropDownExpanded)
+                _ucHomeInstance.AdditionaldropDownTimer.Start();
         }
 
         private void LoadUserControl(UserControl uc)
@@ -278,14 +280,14 @@ namespace FlourSystem.Forms
                 _ucHomeInstance = new ucHome(this);
             LoadUserControl(_ucHomeInstance);
         }
-        ucStatistaics _ucStatistaics;
+        //ucStatistaics _ucStatistaics;
         private void btnSta_Click(object sender, EventArgs e)
         {
             LoadTitle("الاستعلامات");
             selectedbtn(btnSta);
-            if (_ucStatistaics == null)
-                _ucStatistaics = new ucStatistaics();
-            LoadUserControl(_ucStatistaics);
+            //if (_ucStatistaics == null)
+                //_ucStatistaics = new ucStatistaics();
+            LoadUserControl(new ucStatistaics());
         }
         ucTeam? _ucTeamInstance;
         private void btnInfo_Click(object sender, EventArgs e)

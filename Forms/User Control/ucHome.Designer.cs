@@ -384,13 +384,13 @@
         private Label lblPaid;
         private Label lblRegister;
         private Label lblAddtional;
-        private CuoreUI.Controls.cuiBorder pnlAddtionalDropDown;
         private CuoreUI.Controls.cuiButton btnDelete;
         private CuoreUI.Controls.cuiButton btnUpdate;
         private CuoreUI.Controls.cuiButton btnReset;
-        private System.Windows.Forms.Timer AdditionaldropDownTimer;
         private System.Windows.Forms.Timer _renderTimer;
         private System.Windows.Forms.Timer ScrollTimer;
         public FlowLayoutPanel pnlCustomerContainer;
+        public CuoreUI.Controls.cuiBorder pnlAddtionalDropDown;
+        public System.Windows.Forms.Timer AdditionaldropDownTimer;
     }
 }

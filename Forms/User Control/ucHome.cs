@@ -1,4 +1,5 @@
 ﻿using CuoreUI.Controls;
+using FlourSystem.Classes;
 using FlourSystem.Forms.User_Control.ucHomeBtns;
 using FlourSystem.Properties;
 using FontAwesome.Sharp;
@@ -20,7 +21,8 @@ namespace FlourSystem.Forms.User_Control
         {
             DataBase.CustomersList = DataBase.RetrieveCustomerTable();
             DisplayTimer(DataBase.CustomersList);
-            CloseOpenedSearch(this);
+            CloseOpenedDropDown(this);
+
             #region Stop Watch
             //Stopwatch sw = Stopwatch.StartNew();
             //sw.Start();
@@ -29,227 +31,9 @@ namespace FlourSystem.Forms.User_Control
             #endregion
         }
 
-
-
-        #region Display Data
-        //void DisplayCustomers(List<Dictionary<string, object>> customers)
-        //{
-
-        //    int index = 0;
-        //    foreach (var customer in customers)
-        //    {
-        //        FlowLayoutPanel customerPanel = new FlowLayoutPanel
-        //        {
-        //            Width = 1067,
-        //            Height = 40,
-        //            Font = new Font("Cairo", 10),
-        //            Padding = new Padding(10, 0, 10, 0),
-        //            Margin = new Padding(0, 0, 0, 0),
-        //            AllowDrop = true,
-        //            FlowDirection = FlowDirection.RightToLeft,
-        //            //Dock = DockStyle.Top,
-        //            //BackColor = Color.Gray,
-        //        };
-        //        //customerPanel.DragEnter += CustomerPanel_DragEnter;
-        //        //customerPanel.DragDrop += CustomerPanel_DragDrop;
-
-        //        IconPictureBox drag = new IconPictureBox
-        //        {
-        //            IconChar = IconChar.GripVertical,
-        //            IconColor = Color.Gray,
-        //            IconSize = 20,
-        //            Width = 20,
-        //            Height = 40,
-        //            SizeMode = PictureBoxSizeMode.CenterImage,
-        //            Cursor = Cursors.Hand,
-        //        };
-
-        //        Label lblName = new Label
-        //        {
-        //            AutoSize = false,
-        //            Text = $"{customer["name"]}",
-        //            Width = 270,
-        //            Height = 40,
-        //            TextAlign = ContentAlignment.MiddleRight,
-        //            ForeColor = Color.Black,
-        //        };
-        //        Label lblTotal = new Label
-        //        {
-        //            AutoSize = false,
-        //            Text = $"{int.Parse(customer["numberOfPeople"]?.ToString() ?? "0") * 10}",
-        //            Width = 85,
-        //            Height = 40,
-        //            TextAlign = ContentAlignment.MiddleCenter,
-        //            ForeColor = Color.Black,
-        //        };
-        //        Label lblRemain = new Label
-        //        {
-        //            AutoSize = false,
-        //            Text = $"{customer["remainQuantity"]}",
-        //            Width = 85,
-        //            Height = 40,
-        //            TextAlign = ContentAlignment.MiddleCenter,
-        //            ForeColor = Color.Black,
-        //        };
-        //        cuiTextBox2 txtRequired = new cuiTextBox2
-        //        {
-        //            Content = $"{customer["remainQuantity"]}",
-        //            Width = 85,
-        //            Height = 30,
-        //            Padding = new Padding(0),
-        //            Rounding = new Padding(5),
-        //            ForeColor = Color.Black,
-        //            BackgroundColor = ThemeColors.LightBackground,
-        //            BorderColor = Color.FromArgb(216, 220, 208),
-        //            FocusBackgroundColor = Color.Transparent,
-        //            FocusBorderColor = ThemeColors.Green,
-        //        };
-        //        cuiTextBox2 txtReceived = new cuiTextBox2
-        //        {
-        //            Content = $"{customer["remainQuantity"]}",
-        //            Width = 85,
-        //            Height = 30,
-        //            Padding = new Padding(0),
-        //            Rounding = new Padding(5),
-        //            ForeColor = Color.Black,
-        //            BackgroundColor = ThemeColors.LightBackground,
-        //            BorderColor = Color.FromArgb(216, 220, 208),
-        //            FocusBackgroundColor = Color.Transparent,
-        //            FocusBorderColor = ThemeColors.Green,
-        //        };
-        //        Label lblPrice = new Label
-        //        {
-        //            AutoSize = false,
-        //            Text = $"{customer["price"]}",
-        //            Width = 85,
-        //            Height = 40,
-        //            TextAlign = ContentAlignment.MiddleCenter,
-        //            ForeColor = Color.Black,
-        //        };
-        //        cuiTextBox2 txtPaid = new cuiTextBox2
-        //        {
-        //            Name = "txtPaid",
-        //            Content = $"{customer["price"]}",
-        //            Width = 85,
-        //            Height = 30,
-        //            Padding = new Padding(0),
-        //            Rounding = new Padding(5),
-        //            ForeColor = Color.Black,
-        //            BackgroundColor = ThemeColors.LightBackground,
-        //            BorderColor = Color.FromArgb(216, 220, 208),
-        //            FocusBackgroundColor = Color.Transparent,
-        //            FocusBorderColor = ThemeColors.Green,
-        //        };
-
-        //        cuiButton btnRegister = new cuiButton
-        //        {
-        //            Name = "btnRegister",
-        //            Content = $"{customer["registration"]}",
-        //            Width = 85,
-        //            Height = 25,
-        //            Rounding = new Padding(5),
-        //            Cursor = Cursors.Hand,
-        //            Margin = new Padding(0, 7, 0, 7),
-        //            ForeColor = Color.White,
-        //            NormalBackground = Color.FromArgb(85, 86, 82),
-        //            HoverBackground = Color.FromArgb(200, 71, 137, 75),
-        //            PressedBackground = Color.FromArgb(71, 137, 75),
-        //        };
-        //        Panel pnlAdditional = new Panel
-        //        {
-        //            Width = 85,
-        //            Height = 40,
-        //            BackColor = Color.Transparent,
-        //            Padding = new Padding(25, 0, 25, 0),
-        //        };
-        //        IconButton btnAdditonals = new IconButton
-        //        {
-        //            IconChar = IconChar.EllipsisV,
-        //            IconColor = ThemeColors.LightForeColor,
-        //            IconSize = 20,
-        //            Dock = DockStyle.Fill,
-        //            Cursor = Cursors.Hand,
-        //            FlatStyle = FlatStyle.Flat,
-        //            FlatAppearance =
-        //            {
-        //                BorderSize = 0
-        //            },
-        //            BackColor = Color.Transparent,
-        //            Tag = customer["CustomerID"],
-        //        };
-        //        btnAdditonals.Click += (sender, e) =>
-        //        {
-        //            IconButton clickedButton = (IconButton)sender;
-
-        //            // Check if the drop-down is already expanded and associated with a different button
-        //            if (isAddtionalDropDownExpanded && pnlAddtionalDropDown.Tag != clickedButton)
-        //            {
-        //                // Close the drop-down first
-        //                pnlAddtionalDropDown.Tag = clickedButton; // Update the tag to the new button
-        //                _isClosingForReposition = true;
-        //                AdditionaldropDownTimer.Start();
-        //            }
-        //            else if (!isAddtionalDropDownExpanded)
-        //            {
-        //                // If the drop-down is not expanded, open it immediately
-        //                pnlAddtionalDropDown.Tag = clickedButton; // Associate the drop-down with the clicked button
-        //                OpenDropDown(clickedButton);
-        //            }
-        //        };
-
-        //        pnlAdditional.Controls.Add(btnAdditonals);
-
-        //        customerPanel.Controls.Add(drag);
-        //        customerPanel.Controls.Add(lblName);
-        //        customerPanel.Controls.Add(lblTotal);
-        //        customerPanel.Controls.Add(lblRemain);
-        //        customerPanel.Controls.Add(txtRequired);
-        //        customerPanel.Controls.Add(txtReceived);
-        //        customerPanel.Controls.Add(lblPrice);
-        //        customerPanel.Controls.Add(txtPaid);
-        //        customerPanel.Controls.Add(btnRegister);
-        //        customerPanel.Controls.Add(pnlAdditional);
-
-        //        pnlCustomerContainer.Controls.Add(customerPanel);
-        //        if (index % 2 == 0)
-        //        {
-        //            customerPanel.BackColor = Color.FromArgb(216, 220, 208);
-        //            txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = Color.FromArgb(216, 220, 208);
-        //            txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.FromArgb(196, 200, 188);
-        //            txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
-        //        }
-        //        else
-        //        {
-        //            customerPanel.BackColor = Color.Transparent;
-        //            txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = ThemeColors.LightBackground;
-        //            txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.LightGray;
-        //            txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
-        //        }
-        //        txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
-        //        index++;
-        //    }
-        //}
-        #endregion
-
-
-
-        private bool isClosingForReposition = false;
-        private void OpenDropDown(IconButton? button)
-        {
-            Point location = button.PointToScreen(Point.Empty);
-            Form? mainfrm = this.FindForm();
-            Point drpdownLocation = mainfrm.PointToClient(new Point(location.X, location.Y + button.Height));
-            pnlAddtionalDropDown.Location = drpdownLocation;
-
-            // Bring the drop-down panel to the front and make it visible
-            pnlAddtionalDropDown.Parent = this.FindForm();
-            pnlAddtionalDropDown.BringToFront();
-            AdditionaldropDownTimer.Start();
-        }
-
         #region Display Data [Best For Performance]
 
-        private int batchSize = 25;
+        //private int batchSize = 25;
         private bool isLoading = false;
         public int currentIndex = 0;
         public int targetIndex = 0;
@@ -281,6 +65,7 @@ namespace FlourSystem.Forms.User_Control
                 var customer = customersToDisplay[i];
                 FlowLayoutPanel customerPanel = CreateCustomerPanel(customer);
                 pnlCustomerContainer.Controls.Add(customerPanel);
+                CloseOpenedDropDown(customerPanel);
             }
 
             currentIndex = endIndex;
@@ -289,6 +74,21 @@ namespace FlourSystem.Forms.User_Control
             {
                 _renderTimer.Stop();
                 isLoading = false;
+                HoverEffectRefactored.Hover
+                (
+                completed.ToArray(),
+                getDefaultValue: ctrl => Color.FromArgb(200, 220, 190),
+                getHoverValue: ctrl => Color.FromArgb(186, 210, 178),
+                setValue: (ctrl, value) =>
+                {
+                    if (ctrl is FlowLayoutPanel panel)
+                    {
+                        panel.BackColor = value;
+                    }
+                },
+                interpolate: HoverEffectRefactored.InterpolateColor,
+                transitionDuration: 100
+                );
             }
         }
         int index = 0;
@@ -425,7 +225,7 @@ namespace FlourSystem.Forms.User_Control
                 BackColor = Color.Transparent,
                 Padding = new Padding(25, 0, 25, 0),
             };
-            IconButton btnAdditonals = new IconButton
+            IconButton btnAdditional = new IconButton
             {
                 IconChar = IconChar.EllipsisV,
                 IconColor = ThemeColors.LightForeColor,
@@ -435,39 +235,59 @@ namespace FlourSystem.Forms.User_Control
                 FlatStyle = FlatStyle.Flat,
                 FlatAppearance =
                     {
-                        BorderSize = 0
+                        BorderSize = 0,
+                        MouseDownBackColor = Color.Transparent,
+                        MouseOverBackColor = Color.Transparent,
                     },
                 BackColor = Color.Transparent,
+                TabStop = false,
                 Tag = customer,
             };
-
-            btnAdditonals.Click += (sender, e) =>
+            btnAdditional.Click += (sender, e) =>
             {
+                var clickedButton = sender as IconButton;
+                bool isSameButton = lastTriggerButton == clickedButton;
+
                 if (isAddtionalDropDownExpanded)
                 {
-                    pnlAddtionalDropDown.Height = 0;
-                    isAddtionalDropDownExpanded = false;
+                    if (isSameButton)
+                    {
+                        AdditionaldropDownTimer.Start();
+                        lastTriggerButton = null;
+                        return;
+                    }
+
+                    else
+                    {
+                        isClosingForReposition = true;
+                        pnlAddtionalDropDown.Tag = clickedButton;
+                        AdditionaldropDownTimer.Start();
+                    }
+
+                    return;
                 }
-                // Calculate the new position for the drop-down panel
-                Point panelPosition = customerPanel.PointToScreen(Point.Empty);
-                pnlAddtionalDropDown.Location = new Point(
-                    panelPosition.X,
-                    panelPosition.Y
-                );
+                OpenDropDown(clickedButton);
+                //// Calculate the new position for the drop-down panel
+                //Point panelPosition = customerPanel.PointToScreen(Point.Empty);
+                //pnlAddtionalDropDown.Parent = this.FindForm();
+                //pnlAddtionalDropDown.Location = new Point(
+                //    panelPosition.X,
+                //    panelPosition.Y
+                //);
 
-                // Bring the drop-down panel to the front and make it visible
-                pnlAddtionalDropDown.Parent = this.FindForm();
-                pnlAddtionalDropDown.BringToFront();
+                //// Bring the drop-down panel to the front and make it visible
+                //pnlAddtionalDropDown.Parent = this.FindForm();
+                //pnlAddtionalDropDown.BringToFront();
 
-                foreach(Control ctrl in pnlAddtionalDropDown.Controls)
-                {
-                    if (ctrl is cuiButton btn) 
-                        btn.Tag = btnAdditonals.Tag;
-                }
-
-                AdditionaldropDownTimer.Start();
+                //foreach(Control ctrl in pnlAddtionalDropDown.Controls)
+                //{
+                //    if (ctrl is cuiButton btn) 
+                //        btn.Tag = btnAdditional.Tag;
+                //}
+                //lastTriggerButton = clickedButton;
+                //AdditionaldropDownTimer.Start();
             };
-            pnlAdditional.Controls.Add(btnAdditonals);
+            pnlAdditional.Controls.Add(btnAdditional);
 
             customerPanel.Controls.Add(drag);
             customerPanel.Controls.Add(lblName);
@@ -496,8 +316,16 @@ namespace FlourSystem.Forms.User_Control
             txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
             txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
             index++;
+            if(int.TryParse(customer["price"].ToString(), out int price) && 
+                int.TryParse(customer["remainQuantity"].ToString(), out int remain) &&
+                price == 0 && remain == 0)
+            {
+                customerPanel.BackColor = Color.FromArgb(200, 220, 190);
+                completed.Add(customerPanel);
+            }
             return customerPanel;
         }
+        IconButton? lastTriggerButton = null;
         private void txtRequired_ContentChanged(object? sender, EventArgs e, cuiTextBox2 txtReceived, cuiTextBox2 txtPaid)
         {
             if (sender is cuiTextBox2 req)
@@ -514,6 +342,7 @@ namespace FlourSystem.Forms.User_Control
                 }
             }
         }
+        private List<Control> completed = new();
         private void btnRegister_Click(object? sender, EventArgs e)
         {
             if (sender is cuiButton btnRegister)
@@ -580,9 +409,7 @@ namespace FlourSystem.Forms.User_Control
                     DataBase.Registration(customer, required, received, paid, date);
 
                     int totalQuantity = int.Parse(remain.Text);
-                    //totalQuantity *= 10;
                     int receivedQuantity = int.Parse(txtRequired.Content);
-                    MessageBox.Show($"{totalQuantity} - {receivedQuantity}");
                     remain.Text = (totalQuantity - receivedQuantity).ToString();
                     txtRequired.Content = remain.Text;
                     txtReceived.Content = remain.Text;
@@ -591,18 +418,55 @@ namespace FlourSystem.Forms.User_Control
 
                     btnRegister.Content = (int.Parse(btnRegister.Content) + 1).ToString();
                     btnRegister.NormalBackground = Color.Green;
+
+                    MessageBox.Show($"{remain.Text}, {price.Text}");
+                    if (
+                        int.TryParse(remain.Text, out int value) &&
+                        value == 0 &&
+                        int.TryParse(price.Text, out int value2) &&
+                        value2 == 0)
+                    {
+                        FlowLayoutPanel? parentPanel = btnRegister.Parent as FlowLayoutPanel;
+                        parentPanel.BackColor = Color.FromArgb(200, 220, 190);
+                        completed.Add(parentPanel);
+                        HoverEffectRefactored.Hover
+                        (
+                            new Control[] {parentPanel},
+                            getDefaultValue: ctrl => Color.FromArgb(200, 220, 190),
+                            getHoverValue: ctrl => Color.FromArgb(186, 210, 178),
+                            setValue: (ctrl, value) =>
+                            {
+                                if (ctrl is FlowLayoutPanel panel)
+                                {
+                                    panel.BackColor = value;
+                                }
+                            },
+                            interpolate: HoverEffectRefactored.InterpolateColor,
+                            transitionDuration: 100
+                        );
+                    }
                 }
             }
         }
         private void PnlCustomerContainer_MouseWheel(object sender, MouseEventArgs e)
         {
             if (isAddtionalDropDownExpanded)
-                AdditionaldropDownTimer.Start();
+            {
+                pnlAddtionalDropDown.Height = 0;
+                isAddtionalDropDownExpanded = false;
+                //AdditionaldropDownTimer.Start();
+            }
 
             DisplayTheRest(sender);
         }
         private void pnlCustomerContainer_Scroll(object sender, ScrollEventArgs e)
         {
+            if (isAddtionalDropDownExpanded)
+            {
+                pnlAddtionalDropDown.Height = 0;
+                isAddtionalDropDownExpanded = false;
+                //AdditionaldropDownTimer.Start();
+            }
             DisplayTheRest(sender);
         }
         void DisplayTheRest(object sender)
@@ -659,7 +523,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 _renderTimer.Stop();
             }
-            targetIndex = Math.Min(currentIndex + batchSize, customersToDisplay.Count);
+            targetIndex = Math.Min(currentIndex + Settings.Default.batchSize, customersToDisplay.Count);
 
             _renderTimer.Tick -= RenderNextBatch;
             _renderTimer.Tick += RenderNextBatch;
@@ -668,12 +532,11 @@ namespace FlourSystem.Forms.User_Control
         #endregion
 
         #region Close Opened Drop-Down
-        bool isAddtionalDropDownExpanded = false;
+        public bool isAddtionalDropDownExpanded = false;
         private void AdditionaldropDownTimer_Tick(object sender, EventArgs e)
         {
             if (isAddtionalDropDownExpanded)
             {
-                // Close the drop-down
                 if (pnlAddtionalDropDown.Height > 0)
                 {
                     pnlAddtionalDropDown.Height -= 10;
@@ -705,11 +568,113 @@ namespace FlourSystem.Forms.User_Control
                 }
             }
         }
-        private void CloseOpenedSearch(Control control)
+        private bool isClosingForReposition = false;
+        private void OpenDropDown(IconButton triggerButton)
         {
+            // Get button location relative to the UserControl
+            Point relativePos = this.PointToClient(triggerButton.PointToScreen(Point.Empty));
+
+            int controlHeight = this.ClientSize.Height; // height of the UserControl
+
+            int spaceBelow = controlHeight - (relativePos.Y + triggerButton.Height);
+            int spaceAbove = relativePos.Y;
+
+            int dropdownHeight = pnlAddtionalDropDown.MaximumSize.Height;
+
+            int dropdownY;
+
+            if (spaceBelow >= dropdownHeight)
+            {
+                // ✅ Enough space below → show dropdown below
+                dropdownY = triggerButton.PointToScreen(new Point(0, triggerButton.Height)).Y;
+            }
+            else if (spaceAbove >= dropdownHeight)
+            {
+                // ✅ Enough space above → show dropdown above
+                dropdownY = triggerButton.PointToScreen(new Point(0, -dropdownHeight)).Y;
+            }
+            else
+            {
+                // 🤷‍♂️ Not enough space → default to below
+                dropdownY = triggerButton.PointToScreen(new Point(0, triggerButton.Height)).Y;
+            }
+
+            // Convert screen position to parent form space
+            Point finalPosition = this.FindForm().PointToClient(new Point(triggerButton.PointToScreen(Point.Empty).X + triggerButton.Width, dropdownY));
+
+            pnlAddtionalDropDown.Parent = this.FindForm();
+            pnlAddtionalDropDown.Location = finalPosition;
+            pnlAddtionalDropDown.BringToFront();
+
+            foreach (Control ctrl in pnlAddtionalDropDown.Controls)
+            {
+                if (ctrl is cuiButton btn)
+                    btn.Tag = triggerButton.Tag;
+            }
+
+            lastTriggerButton = triggerButton;
+            isAddtionalDropDownExpanded = false;
+            AdditionaldropDownTimer.Start();
+        }
+
+
+        /*
+        private void OpenDropDown(IconButton? button)
+        {
+            Point panelPosition = button.PointToScreen(Point.Empty);
+            int screenBottom = Screen.GetWorkingArea(this).Bottom;
+            int containerBottom = this.Parent?.PointToScreen(
+                new Point(0, this.Parent.ClientSize.Height)
+            ).Y ?? screenBottom;
+
+            int spaceBelow = screenBottom - (panelPosition.Y + button.Height);
+            int spaceAbove = panelPosition.Y;
+            int dropdownHeight = pnlAddtionalDropDown.MaximumSize.Height;
+            int dropdownY;
+
+            if (spaceBelow >= dropdownHeight)
+            {
+                // ✅ Enough space below → show dropdown below button
+                dropdownY = panelPosition.Y + button.Height;
+            }
+            else if (spaceAbove >= dropdownHeight)
+            {
+                // ✅ Enough space above → show dropdown above button
+                dropdownY = panelPosition.Y - dropdownHeight;
+            }
+            else
+            {
+                // 🤷‍♂️ Not enough space either way → default to below and clip
+                dropdownY = panelPosition.Y + button.Height;
+            }
+
+
+            pnlAddtionalDropDown.Parent = this.FindForm();
+            Point location = button.PointToScreen(Point.Empty);
+            Form? mainfrm = this.FindForm();
+            Point drpdownLocation = mainfrm.PointToClient(new Point(location.X + button.Width, dropdownY));
+
+            pnlAddtionalDropDown.Location = drpdownLocation;
+
+            pnlAddtionalDropDown.BringToFront();
+
+            foreach (Control ctrl in pnlAddtionalDropDown.Controls)
+            {
+                if (ctrl is cuiButton btn)
+                    btn.Tag = button.Tag;
+            }
+
+            lastTriggerButton = button;
+            isAddtionalDropDownExpanded = false;
+            AdditionaldropDownTimer.Start();
+        }
+        */
+        private void CloseOpenedDropDown(Control control)
+        {
+            control.MouseDown -= Form1_MouseDown;
             control.MouseDown += Form1_MouseDown;
             foreach (Control child in control.Controls)
-                CloseOpenedSearch(child);
+                CloseOpenedDropDown(child);
         }
         private void Form1_MouseDown(object? sender, MouseEventArgs e)
         {
@@ -826,7 +791,7 @@ namespace FlourSystem.Forms.User_Control
                 {
                     if (
                         customer.TryGetValue("CustomerID", out var customerIdObj) &&
-                        int.TryParse(customerIdObj.ToString(), out int customerId) &&
+                        long.TryParse(customerIdObj.ToString(), out long customerId) &&
                         customer.TryGetValue("numberOfPeople", out var customerNumObj) &&
                         int.TryParse(customerNumObj.ToString(), out int customerNum)
                         )
@@ -867,7 +832,7 @@ namespace FlourSystem.Forms.User_Control
                 {
                     if(
                         customer.TryGetValue("CustomerID", out var customerIdObj) &&
-                        int.TryParse(customerIdObj.ToString(), out int customerId) &&
+                        long.TryParse(customerIdObj.ToString(), out long customerId) &&
                         customer.TryGetValue("name", out var customerNameObj) &&
                         customer.TryGetValue("numberOfPeople", out var customerNumObj) &&
                         int.TryParse(customerNumObj.ToString(), out int customerNum)
@@ -902,7 +867,7 @@ namespace FlourSystem.Forms.User_Control
                 if(btn.Tag is Dictionary<string, object> customer)
                 {
                     if (customer.TryGetValue("CustomerID", out var customerIdObj) && 
-                        int.TryParse(customerIdObj.ToString(), out int customerId) &&
+                        long.TryParse(customerIdObj.ToString(), out long customerId) &&
                         customer.TryGetValue("name", out var customerNameObj))
                     {
                         var result = MessageBox.Show(
