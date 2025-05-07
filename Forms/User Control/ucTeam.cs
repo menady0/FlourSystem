@@ -78,7 +78,7 @@ namespace FlourSystem.Forms.User_Control
 
         private void ucTeam_Load(object sender, EventArgs e)
         {
-            HoverEffectRefactored.HoverWithChainedTransition
+            HoverEffect.HoverWithChainedTransition
             (
                 LeftCards,
                 getHoverValue1: ctrl => new Padding(5, 5, 5, 5),
@@ -89,10 +89,10 @@ namespace FlourSystem.Forms.User_Control
                         panel.Rounding = value;
                 },
                 interpolate1: (start, end, progress) => new Padding(
-                    HoverEffectRefactored.InterpolateInt(start.Left, end.Left, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Top, end.Top, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Right, end.Right, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Bottom, end.Bottom, progress)
+                    HoverEffect.InterpolateInt(start.Left, end.Left, progress),
+                    HoverEffect.InterpolateInt(start.Top, end.Top, progress),
+                    HoverEffect.InterpolateInt(start.Right, end.Right, progress),
+                    HoverEffect.InterpolateInt(start.Bottom, end.Bottom, progress)
                 ),
 
 
@@ -105,13 +105,13 @@ namespace FlourSystem.Forms.User_Control
                         panel.Location = value;
                 },
                 interpolate2: (start, end, progress) => new Point(
-                    HoverEffectRefactored.InterpolateInt(start.X, end.X, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Y, end.Y, progress)
+                    HoverEffect.InterpolateInt(start.X, end.X, progress),
+                    HoverEffect.InterpolateInt(start.Y, end.Y, progress)
                 ),
 
                 transitionDuration: 250
             );
-            HoverEffectRefactored.HoverWithChainedTransition
+            HoverEffect.HoverWithChainedTransition
             (
                 RightCards,
                 getHoverValue1: ctrl => new Padding(5, 5, 5, 5),
@@ -122,10 +122,10 @@ namespace FlourSystem.Forms.User_Control
                         panel.Rounding = value;
                 },
                 interpolate1: (start, end, progress) => new Padding(
-                    HoverEffectRefactored.InterpolateInt(start.Left, end.Left, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Top, end.Top, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Right, end.Right, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Bottom, end.Bottom, progress)
+                    HoverEffect.InterpolateInt(start.Left, end.Left, progress),
+                    HoverEffect.InterpolateInt(start.Top, end.Top, progress),
+                    HoverEffect.InterpolateInt(start.Right, end.Right, progress),
+                    HoverEffect.InterpolateInt(start.Bottom, end.Bottom, progress)
                 ),
 
 
@@ -138,13 +138,15 @@ namespace FlourSystem.Forms.User_Control
                         panel.Location = value;
                 },
                 interpolate2: (start, end, progress) => new Point(
-                    HoverEffectRefactored.InterpolateInt(start.X, end.X, progress),
-                    HoverEffectRefactored.InterpolateInt(start.Y, end.Y, progress)
+                    HoverEffect.InterpolateInt(start.X, end.X, progress),
+                    HoverEffect.InterpolateInt(start.Y, end.Y, progress)
                 ),
 
                 transitionDuration: 250
             );
+            ThemeManager.ApplyTheme();
         }
+
 
     }
 }

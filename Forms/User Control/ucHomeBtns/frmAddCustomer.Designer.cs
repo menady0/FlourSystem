@@ -81,6 +81,8 @@
             btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
+            btnClose.MouseEnter += btnClose_MouseEnter;
+            btnClose.MouseLeave += btnClose_MouseLeave;
             // 
             // panel1
             // 
@@ -103,7 +105,7 @@
             // 
             txtCardID.BackColor = Color.FromArgb(207, 219, 213);
             txtCardID.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtCardID.BorderColor = Color.FromArgb(244, 245, 244);
+            txtCardID.BorderColor = Color.Transparent;
             txtCardID.BorderSize = 1;
             txtCardID.Content = "";
             txtCardID.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -159,7 +161,7 @@
             // 
             txtName.BackColor = Color.FromArgb(207, 219, 213);
             txtName.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtName.BorderColor = Color.FromArgb(244, 245, 244);
+            txtName.BorderColor = Color.Transparent;
             txtName.BorderSize = 1;
             txtName.Content = "";
             txtName.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -200,7 +202,7 @@
             // 
             txtMembers.BackColor = Color.FromArgb(207, 219, 213);
             txtMembers.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtMembers.BorderColor = Color.FromArgb(244, 245, 244);
+            txtMembers.BorderColor = Color.Transparent;
             txtMembers.BorderSize = 1;
             txtMembers.Content = "";
             txtMembers.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -242,7 +244,7 @@
             // 
             txtQuantity.BackColor = Color.FromArgb(207, 219, 213);
             txtQuantity.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtQuantity.BorderColor = Color.FromArgb(244, 245, 244);
+            txtQuantity.BorderColor = Color.Transparent;
             txtQuantity.BorderSize = 1;
             txtQuantity.Content = "";
             txtQuantity.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -283,7 +285,7 @@
             // 
             txtPrice.BackColor = Color.FromArgb(207, 219, 213);
             txtPrice.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtPrice.BorderColor = Color.FromArgb(244, 245, 244);
+            txtPrice.BorderColor = Color.Transparent;
             txtPrice.BorderSize = 1;
             txtPrice.Content = "";
             txtPrice.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -388,12 +390,12 @@
         private FontAwesome.Sharp.IconPictureBox picMembers;
         private FontAwesome.Sharp.IconPictureBox picPrice;
         private FontAwesome.Sharp.IconPictureBox picQuantity;
-        private CuoreUI.Components.cuiFormAnimator frmAnimation;
         public CuoreUI.Controls.cuiTextBox2 txtCardID;
         public CuoreUI.Controls.cuiTextBox2 txtName;
         public CuoreUI.Controls.cuiTextBox2 txtMembers;
         public CuoreUI.Controls.cuiTextBox2 txtPrice;
         public CuoreUI.Controls.cuiTextBox2 txtQuantity;
         internal Classes.Controls.roundedButton btnAdd;
+        private CuoreUI.Components.cuiFormAnimator frmAnimation;
     }
 }

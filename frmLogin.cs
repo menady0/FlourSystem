@@ -15,19 +15,24 @@ namespace FlourSystem
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            pnlBar.BackColor = Color.FromArgb(15, 0, 0, 0);
             ThemeManager.ApplyTheme();
-            if (Settings.Default.DarkMode)
+            if (ThemeManager.IsDarkMode)
+            {
                 btnDarkMode.IconChar = IconChar.Sun;
+                btnDarkMode.IconColor = Color.FromArgb(245, 203, 92);
+            }
             else
+            {
                 btnDarkMode.IconChar = IconChar.Moon;
+                btnDarkMode.IconColor = ThemeColors.LightForeColor;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        public static frmDashboard dashboard;
+        public static frmDashboard? dashboard;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             //if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
@@ -94,7 +99,6 @@ namespace FlourSystem
             {
                 btnDarkMode.IconChar = IconChar.Moon;
                 btnDarkMode.IconColor = ThemeColors.LightForeColor;
-
             }
         }
         private void btnDarkMode_MouseEnter(object sender, EventArgs e)

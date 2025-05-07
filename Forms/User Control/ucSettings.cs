@@ -40,6 +40,8 @@ namespace FlourSystem.Forms.User_Control
         bool lazyLoadingSetting;
         private void ucSettings_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme();
+
             if (Settings.Default.lazyLoading)
             {
                 txtBatchSize.Enabled = txtScrollThreshold.Enabled = true;
@@ -67,7 +69,7 @@ namespace FlourSystem.Forms.User_Control
             txtBatchSize.PlaceholderText = Settings.Default.batchSize.ToString();
             txtScrollThreshold.PlaceholderText = Settings.Default.scrollThreshold.ToString();
 
-            HoverEffectRefactored.Hover(
+            HoverEffect.Hover(
                 new Control[] { pnlDelete, btnDelete },
                 getDefaultValue: ctrl => Color.Transparent,
                 getHoverValue: ctrl => Color.Red,
@@ -88,7 +90,7 @@ namespace FlourSystem.Forms.User_Control
                     }
 
                 },
-                interpolate: HoverEffectRefactored.InterpolateColor,
+                interpolate: HoverEffect.InterpolateColor,
                 transitionDuration: 200
                 );
         }

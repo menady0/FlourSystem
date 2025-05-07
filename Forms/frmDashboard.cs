@@ -66,7 +66,17 @@ namespace FlourSystem.Forms
 
             CloseOpenedSearch(this);
             btnHome_Click(sender, e);
-            //ThemeManager.ApplyTheme();
+            ThemeManager.ApplyTheme();
+            if (Settings.Default.DarkMode)
+            {
+                btnMode.IconChar = IconChar.Sun;
+                btnMode.IconColor = Color.FromArgb(245, 203, 92);
+            }
+            else
+            {
+                btnMode.IconChar = IconChar.Moon;
+                btnMode.IconColor = Color.White;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -180,6 +190,7 @@ namespace FlourSystem.Forms
             }
             pnlContainer.Controls.Clear();
             uc.Dock = DockStyle.Fill;
+            ThemeManager.ApplyUCTheme(uc);
             pnlContainer.Controls.Add(uc);
             AttachClickEvent(uc);
         }
@@ -382,6 +393,19 @@ namespace FlourSystem.Forms
                 btnMode.IconChar = IconChar.Moon;
                 btnMode.IconColor = Color.White;
             }
+
+            if (_ucHomeInstance != null)
+            {
+                _ucHomeInstance.Dispose();
+                _ucHomeInstance = null;
+            }
+
+            _ucHomeInstance = new ucHome(this);
+
+            if(lblHome.Visible)
+                LoadUserControl(_ucHomeInstance);
+
+            ThemeManager.ApplyTheme();
         }
         #region Add Buttons
         private void btnAddCustomer_Click(object sender, EventArgs e)

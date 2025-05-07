@@ -105,6 +105,8 @@
             btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
+            btnClose.MouseEnter += btnClose_MouseEnter;
+            btnClose.MouseLeave += btnClose_MouseLeave;
             // 
             // opacityTimer
             // 
@@ -150,7 +152,7 @@
             // 
             txtConfirmPassword.BackColor = Color.FromArgb(207, 219, 213);
             txtConfirmPassword.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtConfirmPassword.BorderColor = Color.FromArgb(244, 245, 244);
+            txtConfirmPassword.BorderColor = Color.Transparent;
             txtConfirmPassword.BorderSize = 1;
             txtConfirmPassword.Content = "";
             txtConfirmPassword.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -192,7 +194,7 @@
             // 
             txtPassword.BackColor = Color.FromArgb(207, 219, 213);
             txtPassword.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtPassword.BorderColor = Color.FromArgb(244, 245, 244);
+            txtPassword.BorderColor = Color.Transparent;
             txtPassword.BorderSize = 1;
             txtPassword.Content = "";
             txtPassword.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -234,7 +236,7 @@
             // 
             txtUsername.BackColor = Color.FromArgb(207, 219, 213);
             txtUsername.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtUsername.BorderColor = Color.FromArgb(244, 245, 244);
+            txtUsername.BorderColor = Color.Transparent;
             txtUsername.BorderSize = 1;
             txtUsername.Content = "";
             txtUsername.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -264,7 +266,7 @@
             picShowPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             picShowPassword.IconColor = Color.FromArgb(36, 36, 35);
             picShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            picShowPassword.IconSize = 16;
+            picShowPassword.IconSize = 22;
             picShowPassword.Location = new Point(22, 209);
             picShowPassword.Name = "picShowPassword";
             picShowPassword.Size = new Size(22, 22);
@@ -282,7 +284,7 @@
             picShowConfirmPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             picShowConfirmPassword.IconColor = Color.FromArgb(36, 36, 35);
             picShowConfirmPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            picShowConfirmPassword.IconSize = 16;
+            picShowConfirmPassword.IconSize = 22;
             picShowConfirmPassword.Location = new Point(22, 249);
             picShowConfirmPassword.Name = "picShowConfirmPassword";
             picShowConfirmPassword.Size = new Size(22, 22);
@@ -311,7 +313,7 @@
             // 
             txtName.BackColor = Color.FromArgb(207, 219, 213);
             txtName.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtName.BorderColor = Color.FromArgb(244, 245, 244);
+            txtName.BorderColor = Color.Transparent;
             txtName.BorderSize = 1;
             txtName.Content = "";
             txtName.FocusBackgroundColor = Color.FromArgb(207, 219, 213);

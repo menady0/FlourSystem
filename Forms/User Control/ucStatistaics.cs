@@ -21,6 +21,7 @@ namespace FlourSystem.Forms.User_Control
 
         private void ucStatistaics_Load(object sender, EventArgs e)
         {
+
             cards = new Control[]
             {
                 lblReceivedQuota,
@@ -85,6 +86,8 @@ namespace FlourSystem.Forms.User_Control
                 interpolate: HoverEffect.InterpolateColor,
                 transitionDuration: 250
             );
+            ThemeManager.ApplyTheme();
+
         }
 
         private List<NumberAnimation> animations = new List<NumberAnimation>();

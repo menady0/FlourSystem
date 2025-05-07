@@ -48,6 +48,7 @@
             // 
             // pnlBar
             // 
+            pnlBar.BackColor = Color.FromArgb(15, 0, 0, 0);
             pnlBar.Controls.Add(btnDarkMode);
             pnlBar.Controls.Add(btnClose);
             pnlBar.Dock = DockStyle.Top;

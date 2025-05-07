@@ -64,7 +64,7 @@
             pnlRoundedContainer.Name = "pnlRoundedContainer";
             pnlRoundedContainer.OutlineThickness = 1F;
             pnlRoundedContainer.PanelColor = Color.FromArgb(232, 237, 223);
-            pnlRoundedContainer.PanelOutlineColor = Color.FromArgb(232, 237, 223);
+            pnlRoundedContainer.PanelOutlineColor = Color.Transparent;
             pnlRoundedContainer.Rounding = new Padding(25);
             pnlRoundedContainer.Size = new Size(1084, 580);
             pnlRoundedContainer.TabIndex = 0;

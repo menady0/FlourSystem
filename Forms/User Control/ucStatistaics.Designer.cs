@@ -73,7 +73,7 @@
             pnlRoundedContainer.Name = "pnlRoundedContainer";
             pnlRoundedContainer.OutlineThickness = 1F;
             pnlRoundedContainer.PanelColor = Color.FromArgb(232, 237, 223);
-            pnlRoundedContainer.PanelOutlineColor = Color.FromArgb(232, 237, 223);
+            pnlRoundedContainer.PanelOutlineColor = Color.Transparent;
             pnlRoundedContainer.Rounding = new Padding(25);
             pnlRoundedContainer.Size = new Size(1084, 580);
             pnlRoundedContainer.TabIndex = 0;
@@ -86,7 +86,7 @@
             pnlTotalSales.Name = "pnlTotalSales";
             pnlTotalSales.OutlineThickness = 1F;
             pnlTotalSales.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlTotalSales.PanelOutlineColor = Color.FromArgb(0, 71, 137, 75);
+            pnlTotalSales.PanelOutlineColor = Color.Transparent;
             pnlTotalSales.Rounding = new Padding(10);
             pnlTotalSales.Size = new Size(300, 175);
             pnlTotalSales.TabIndex = 6;
@@ -121,7 +121,7 @@
             pnlTotalCards.Name = "pnlTotalCards";
             pnlTotalCards.OutlineThickness = 1F;
             pnlTotalCards.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlTotalCards.PanelOutlineColor = Color.FromArgb(0, 71, 137, 75);
+            pnlTotalCards.PanelOutlineColor = Color.Transparent;
             pnlTotalCards.Rounding = new Padding(10);
             pnlTotalCards.Size = new Size(300, 175);
             pnlTotalCards.TabIndex = 3;
@@ -156,7 +156,7 @@
             pnlTodaySale.Name = "pnlTodaySale";
             pnlTodaySale.OutlineThickness = 1F;
             pnlTodaySale.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlTodaySale.PanelOutlineColor = Color.FromArgb(0, 71, 137, 75);
+            pnlTodaySale.PanelOutlineColor = Color.Transparent;
             pnlTodaySale.Rounding = new Padding(10);
             pnlTodaySale.Size = new Size(300, 175);
             pnlTodaySale.TabIndex = 5;
@@ -191,7 +191,7 @@
             pnlBalance.Name = "pnlBalance";
             pnlBalance.OutlineThickness = 1F;
             pnlBalance.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlBalance.PanelOutlineColor = Color.FromArgb(0, 71, 137, 75);
+            pnlBalance.PanelOutlineColor = Color.Transparent;
             pnlBalance.Rounding = new Padding(10);
             pnlBalance.Size = new Size(300, 175);
             pnlBalance.TabIndex = 4;
@@ -226,7 +226,7 @@
             pnlTodayCard.Name = "pnlTodayCard";
             pnlTodayCard.OutlineThickness = 1F;
             pnlTodayCard.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlTodayCard.PanelOutlineColor = Color.FromArgb(0, 71, 137, 75);
+            pnlTodayCard.PanelOutlineColor = Color.Transparent;
             pnlTodayCard.Rounding = new Padding(10);
             pnlTodayCard.Size = new Size(300, 175);
             pnlTodayCard.TabIndex = 2;

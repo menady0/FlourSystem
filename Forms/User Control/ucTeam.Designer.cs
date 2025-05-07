@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            container = new CuoreUI.Controls.cuiBorder();
+            cuiBorder1 = new CuoreUI.Controls.cuiBorder();
             pnlCard8 = new CuoreUI.Controls.cuiBorder();
             label7 = new Label();
             cuiBorder4 = new CuoreUI.Controls.cuiBorder();
@@ -101,7 +101,7 @@
             pnlSocialMedia5 = new CuoreUI.Controls.cuiBorder();
             iconPictureBox13 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox14 = new FontAwesome.Sharp.IconPictureBox();
-            container.SuspendLayout();
+            cuiBorder1.SuspendLayout();
             pnlCard8.SuspendLayout();
             cuiBorder4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -152,26 +152,25 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox14).BeginInit();
             SuspendLayout();
             // 
-            // container
+            // cuiBorder1
             // 
-            container.Controls.Add(pnlCard8);
-            container.Controls.Add(pnlCard7);
-            container.Controls.Add(pnlCard4);
-            container.Controls.Add(pnlCard3);
-            container.Controls.Add(pnlCard6);
-            container.Controls.Add(pnlCard2);
-            container.Controls.Add(pnlCard1);
-            container.Controls.Add(pnlCard5);
-            container.Dock = DockStyle.Fill;
-            container.Font = new Font("Cairo", 8.999999F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            container.Location = new Point(0, 0);
-            container.Name = "container";
-            container.OutlineThickness = 1F;
-            container.PanelColor = Color.FromArgb(232, 237, 223);
-            container.PanelOutlineColor = Color.FromArgb(232, 237, 223);
-            container.Rounding = new Padding(25);
-            container.Size = new Size(1084, 580);
-            container.TabIndex = 0;
+            cuiBorder1.Controls.Add(pnlCard8);
+            cuiBorder1.Controls.Add(pnlCard7);
+            cuiBorder1.Controls.Add(pnlCard4);
+            cuiBorder1.Controls.Add(pnlCard3);
+            cuiBorder1.Controls.Add(pnlCard6);
+            cuiBorder1.Controls.Add(pnlCard2);
+            cuiBorder1.Controls.Add(pnlCard1);
+            cuiBorder1.Controls.Add(pnlCard5);
+            cuiBorder1.Dock = DockStyle.Fill;
+            cuiBorder1.Location = new Point(0, 0);
+            cuiBorder1.Name = "cuiBorder1";
+            cuiBorder1.OutlineThickness = 1F;
+            cuiBorder1.PanelColor = Color.FromArgb(232, 237, 223);
+            cuiBorder1.PanelOutlineColor = Color.Transparent;
+            cuiBorder1.Rounding = new Padding(25);
+            cuiBorder1.Size = new Size(1084, 580);
+            cuiBorder1.TabIndex = 0;
             // 
             // pnlCard8
             // 
@@ -184,10 +183,10 @@
             pnlCard8.Name = "pnlCard8";
             pnlCard8.OutlineThickness = 1F;
             pnlCard8.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard8.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard8.PanelOutlineColor = Color.Transparent;
             pnlCard8.Rounding = new Padding(125, 5, 125, 5);
             pnlCard8.Size = new Size(225, 275);
-            pnlCard8.TabIndex = 12;
+            pnlCard8.TabIndex = 28;
             // 
             // label7
             // 
@@ -249,7 +248,7 @@
             pnlSocialMedia8.Name = "pnlSocialMedia8";
             pnlSocialMedia8.OutlineThickness = 1F;
             pnlSocialMedia8.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia8.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia8.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia8.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia8.Size = new Size(200, 35);
             pnlSocialMedia8.TabIndex = 1;
@@ -297,10 +296,10 @@
             pnlCard7.Name = "pnlCard7";
             pnlCard7.OutlineThickness = 1F;
             pnlCard7.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard7.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard7.PanelOutlineColor = Color.Transparent;
             pnlCard7.Rounding = new Padding(5, 125, 5, 125);
             pnlCard7.Size = new Size(225, 275);
-            pnlCard7.TabIndex = 11;
+            pnlCard7.TabIndex = 27;
             // 
             // label9
             // 
@@ -362,7 +361,7 @@
             pnlSocialMedia7.Name = "pnlSocialMedia7";
             pnlSocialMedia7.OutlineThickness = 1F;
             pnlSocialMedia7.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia7.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia7.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia7.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia7.Size = new Size(200, 35);
             pnlSocialMedia7.TabIndex = 1;
@@ -410,10 +409,10 @@
             pnlCard4.Name = "pnlCard4";
             pnlCard4.OutlineThickness = 1F;
             pnlCard4.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard4.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard4.PanelOutlineColor = Color.Transparent;
             pnlCard4.Rounding = new Padding(5, 125, 5, 125);
             pnlCard4.Size = new Size(225, 275);
-            pnlCard4.TabIndex = 8;
+            pnlCard4.TabIndex = 24;
             // 
             // label5
             // 
@@ -475,7 +474,7 @@
             pnlSocialMedia4.Name = "pnlSocialMedia4";
             pnlSocialMedia4.OutlineThickness = 1F;
             pnlSocialMedia4.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia4.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia4.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia4.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia4.Size = new Size(200, 35);
             pnlSocialMedia4.TabIndex = 1;
@@ -523,10 +522,10 @@
             pnlCard3.Name = "pnlCard3";
             pnlCard3.OutlineThickness = 1F;
             pnlCard3.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard3.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard3.PanelOutlineColor = Color.Transparent;
             pnlCard3.Rounding = new Padding(125, 5, 125, 5);
             pnlCard3.Size = new Size(225, 275);
-            pnlCard3.TabIndex = 7;
+            pnlCard3.TabIndex = 23;
             // 
             // label1
             // 
@@ -588,7 +587,7 @@
             pnlSocialMedia3.Name = "pnlSocialMedia3";
             pnlSocialMedia3.OutlineThickness = 1F;
             pnlSocialMedia3.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia3.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia3.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia3.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia3.Size = new Size(200, 35);
             pnlSocialMedia3.TabIndex = 1;
@@ -636,10 +635,10 @@
             pnlCard6.Name = "pnlCard6";
             pnlCard6.OutlineThickness = 1F;
             pnlCard6.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard6.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard6.PanelOutlineColor = Color.Transparent;
             pnlCard6.Rounding = new Padding(125, 5, 125, 5);
             pnlCard6.Size = new Size(225, 275);
-            pnlCard6.TabIndex = 10;
+            pnlCard6.TabIndex = 26;
             // 
             // label11
             // 
@@ -701,7 +700,7 @@
             pnlSocialMedia6.Name = "pnlSocialMedia6";
             pnlSocialMedia6.OutlineThickness = 1F;
             pnlSocialMedia6.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia6.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia6.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia6.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia6.Size = new Size(200, 35);
             pnlSocialMedia6.TabIndex = 1;
@@ -749,10 +748,10 @@
             pnlCard2.Name = "pnlCard2";
             pnlCard2.OutlineThickness = 1F;
             pnlCard2.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard2.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard2.PanelOutlineColor = Color.Transparent;
             pnlCard2.Rounding = new Padding(5, 125, 5, 125);
             pnlCard2.Size = new Size(225, 275);
-            pnlCard2.TabIndex = 6;
+            pnlCard2.TabIndex = 22;
             // 
             // label3
             // 
@@ -814,7 +813,7 @@
             pnlSocialMedia2.Name = "pnlSocialMedia2";
             pnlSocialMedia2.OutlineThickness = 1F;
             pnlSocialMedia2.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia2.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia2.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia2.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia2.Size = new Size(200, 35);
             pnlSocialMedia2.TabIndex = 1;
@@ -862,10 +861,10 @@
             pnlCard1.Name = "pnlCard1";
             pnlCard1.OutlineThickness = 1F;
             pnlCard1.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard1.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard1.PanelOutlineColor = Color.Transparent;
             pnlCard1.Rounding = new Padding(125, 5, 125, 5);
             pnlCard1.Size = new Size(225, 275);
-            pnlCard1.TabIndex = 0;
+            pnlCard1.TabIndex = 21;
             // 
             // lblRole1
             // 
@@ -927,7 +926,7 @@
             pnlSocialMedia1.Name = "pnlSocialMedia1";
             pnlSocialMedia1.OutlineThickness = 1F;
             pnlSocialMedia1.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia1.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia1.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia1.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia1.Size = new Size(200, 35);
             pnlSocialMedia1.TabIndex = 1;
@@ -963,7 +962,6 @@
             picLinkedIn.SizeMode = PictureBoxSizeMode.AutoSize;
             picLinkedIn.TabIndex = 1;
             picLinkedIn.TabStop = false;
-            picLinkedIn.Click += picLinkedIn_Click;
             // 
             // pnlCard5
             // 
@@ -976,10 +974,10 @@
             pnlCard5.Name = "pnlCard5";
             pnlCard5.OutlineThickness = 1F;
             pnlCard5.PanelColor = Color.FromArgb(216, 220, 208);
-            pnlCard5.PanelOutlineColor = Color.FromArgb(216, 220, 208);
+            pnlCard5.PanelOutlineColor = Color.Transparent;
             pnlCard5.Rounding = new Padding(5, 125, 5, 125);
             pnlCard5.Size = new Size(225, 275);
-            pnlCard5.TabIndex = 9;
+            pnlCard5.TabIndex = 25;
             // 
             // label13
             // 
@@ -1041,7 +1039,7 @@
             pnlSocialMedia5.Name = "pnlSocialMedia5";
             pnlSocialMedia5.OutlineThickness = 1F;
             pnlSocialMedia5.PanelColor = Color.FromArgb(193, 196, 187);
-            pnlSocialMedia5.PanelOutlineColor = Color.FromArgb(193, 196, 187);
+            pnlSocialMedia5.PanelOutlineColor = Color.Transparent;
             pnlSocialMedia5.Rounding = new Padding(5, 5, 0, 0);
             pnlSocialMedia5.Size = new Size(200, 35);
             pnlSocialMedia5.TabIndex = 1;
@@ -1083,13 +1081,13 @@
             AutoScaleDimensions = new SizeF(6F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            Controls.Add(container);
+            Controls.Add(cuiBorder1);
             Font = new Font("Cairo", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 5, 3, 5);
             Name = "ucTeam";
             Size = new Size(1084, 580);
             Load += ucTeam_Load;
-            container.ResumeLayout(false);
+            cuiBorder1.ResumeLayout(false);
             pnlCard8.ResumeLayout(false);
             pnlCard8.PerformLayout();
             cuiBorder4.ResumeLayout(false);
@@ -1159,43 +1157,7 @@
 
         #endregion
 
-        private CuoreUI.Controls.cuiBorder container;
-        private CuoreUI.Controls.cuiBorder pnlCard1;
-        private CuoreUI.Controls.cuiBorder pnlSocialMedia1;
-        private Label lblRole1;
-        private Panel panel1;
-        private Label lblName1;
-        private PictureBox picImage1;
-        private FontAwesome.Sharp.IconPictureBox picLinkedIn;
-        private FontAwesome.Sharp.IconPictureBox picWebsite;
-        private CuoreUI.Controls.cuiBorder pnlImageBorder1;
-        private CuoreUI.Controls.cuiBorder pnlCard2;
-        private Label label3;
-        private CuoreUI.Controls.cuiBorder pnlImageBorder2;
-        private PictureBox pictureBox2;
-        private Panel panel2;
-        private Label label4;
-        private CuoreUI.Controls.cuiBorder pnlSocialMedia2;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private CuoreUI.Controls.cuiBorder pnlCard3;
-        private Label label1;
-        private CuoreUI.Controls.cuiBorder cuiBorder2;
-        private PictureBox pictureBox1;
-        private Panel panel3;
-        private Label label2;
-        private CuoreUI.Controls.cuiBorder pnlSocialMedia3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private CuoreUI.Controls.cuiBorder pnlCard4;
-        private Label label5;
-        private CuoreUI.Controls.cuiBorder cuiBorder3;
-        private PictureBox pictureBox3;
-        private Panel panel4;
-        private Label label6;
-        private CuoreUI.Controls.cuiBorder pnlSocialMedia4;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
+        private CuoreUI.Controls.cuiBorder cuiBorder1;
         private CuoreUI.Controls.cuiBorder pnlCard8;
         private Label label7;
         private CuoreUI.Controls.cuiBorder cuiBorder4;
@@ -1214,6 +1176,24 @@
         private CuoreUI.Controls.cuiBorder pnlSocialMedia7;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox9;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox10;
+        private CuoreUI.Controls.cuiBorder pnlCard4;
+        private Label label5;
+        private CuoreUI.Controls.cuiBorder cuiBorder3;
+        private PictureBox pictureBox3;
+        private Panel panel4;
+        private Label label6;
+        private CuoreUI.Controls.cuiBorder pnlSocialMedia4;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
+        private CuoreUI.Controls.cuiBorder pnlCard3;
+        private Label label1;
+        private CuoreUI.Controls.cuiBorder cuiBorder2;
+        private PictureBox pictureBox1;
+        private Panel panel3;
+        private Label label2;
+        private CuoreUI.Controls.cuiBorder pnlSocialMedia3;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private CuoreUI.Controls.cuiBorder pnlCard6;
         private Label label11;
         private CuoreUI.Controls.cuiBorder cuiBorder10;
@@ -1223,6 +1203,24 @@
         private CuoreUI.Controls.cuiBorder pnlSocialMedia6;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox11;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox12;
+        private CuoreUI.Controls.cuiBorder pnlCard2;
+        private Label label3;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder2;
+        private PictureBox pictureBox2;
+        private Panel panel2;
+        private Label label4;
+        private CuoreUI.Controls.cuiBorder pnlSocialMedia2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private CuoreUI.Controls.cuiBorder pnlCard1;
+        private Label lblRole1;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder1;
+        private PictureBox picImage1;
+        private Panel panel1;
+        private Label lblName1;
+        private CuoreUI.Controls.cuiBorder pnlSocialMedia1;
+        private FontAwesome.Sharp.IconPictureBox picWebsite;
+        private FontAwesome.Sharp.IconPictureBox picLinkedIn;
         private CuoreUI.Controls.cuiBorder pnlCard5;
         private Label label13;
         private CuoreUI.Controls.cuiBorder cuiBorder13;

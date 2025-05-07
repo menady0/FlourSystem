@@ -19,6 +19,10 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         {
             InitializeComponent();
             _dashboard = dashboard;
+            ThemeManager.ApplyFormTheme(this);
+        }
+        private void frmAddCustomer_Load(object sender, EventArgs e)
+        {
         }
         #region Closing
         bool closing = true;
@@ -159,9 +163,16 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
 
         }
 
-        private void frmAddCustomer_Load(object sender, EventArgs e)
+        private void btnClose_MouseEnter(object sender, EventArgs e)
         {
-            ThemeManager.ApplyTheme();
+            if (ThemeManager.IsDarkMode)
+                btnClose.BackColor = Color.FromArgb(15, 0, 0, 0);
+        }
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            if (ThemeManager.IsDarkMode)
+                btnClose.BackColor = Color.FromArgb(0, 0, 0, 0);
         }
     }
 }

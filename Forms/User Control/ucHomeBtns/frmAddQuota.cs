@@ -15,6 +15,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         public frmAddQuota()
         {
             InitializeComponent();
+            ThemeManager.ApplyFormTheme(this);
         }
 
         #region Closing
@@ -101,8 +102,17 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 btnClose.PerformClick();
             }
             else MessageBox.Show("Failed to add quota.");
+        }
+        private void btnClose_MouseEnter(object sender, EventArgs e)
+        {
+            if (ThemeManager.IsDarkMode)
+                btnClose.BackColor = Color.FromArgb(15, 0, 0, 0);
+        }
 
-
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            if (ThemeManager.IsDarkMode)
+                btnClose.BackColor = Color.FromArgb(0, 0, 0, 0);
         }
     }
 }

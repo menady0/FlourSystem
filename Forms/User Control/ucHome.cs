@@ -29,6 +29,7 @@ namespace FlourSystem.Forms.User_Control
             //sw.Stop();
             //MessageBox.Show($"Time taken to load customers: {sw.ElapsedMilliseconds} ms");
             #endregion
+            ThemeManager.ApplyTheme();
         }
 
         #region Display Data [Best For Performance]
@@ -74,11 +75,11 @@ namespace FlourSystem.Forms.User_Control
             {
                 _renderTimer.Stop();
                 isLoading = false;
-                HoverEffectRefactored.Hover
+                HoverEffect.Hover
                 (
                 completed.ToArray(),
-                getDefaultValue: ctrl => Color.FromArgb(200, 220, 190),
-                getHoverValue: ctrl => Color.FromArgb(186, 210, 178),
+                getDefaultValue: ctrl => ThemeManager.IsDarkMode ? ThemeColors.DarkCompleted : ThemeColors.LightCompleted,
+                getHoverValue: ctrl => ThemeManager.IsDarkMode ? ThemeColors.DarkHoverCompleted : ThemeColors.LightHoverCompleted,
                 setValue: (ctrl, value) =>
                 {
                     if (ctrl is FlowLayoutPanel panel)
@@ -86,7 +87,7 @@ namespace FlourSystem.Forms.User_Control
                         panel.BackColor = value;
                     }
                 },
-                interpolate: HoverEffectRefactored.InterpolateColor,
+                interpolate: HoverEffect.InterpolateColor,
                 transitionDuration: 100
                 );
             }
@@ -96,6 +97,7 @@ namespace FlourSystem.Forms.User_Control
         {
             FlowLayoutPanel customerPanel = new FlowLayoutPanel
             {
+                Name = "customerPanel",
                 Width = 1067,
                 Height = 40,
                 Font = new Font("Cairo", 10),
@@ -111,6 +113,7 @@ namespace FlourSystem.Forms.User_Control
 
             IconPictureBox drag = new IconPictureBox
             {
+                Name = "picDrag",
                 IconChar = IconChar.GripVertical,
                 IconColor = Color.Gray,
                 IconSize = 20,
@@ -118,6 +121,7 @@ namespace FlourSystem.Forms.User_Control
                 Height = 40,
                 SizeMode = PictureBoxSizeMode.CenterImage,
                 Cursor = Cursors.Hand,
+                BackColor = Color.Transparent,
             };
             drag.MouseDown += (sender, e) => drag_MouseDown(sender, e, customerPanel);
 
@@ -150,6 +154,7 @@ namespace FlourSystem.Forms.User_Control
             };
             cuiTextBox2 txtRequired = new cuiTextBox2
             {
+                Name = "input",
                 Content = $"{customer["remainQuantity"]}",
                 Width = 85,
                 Height = 30,
@@ -157,12 +162,14 @@ namespace FlourSystem.Forms.User_Control
                 Rounding = new Padding(5),
                 ForeColor = Color.Black,
                 BackgroundColor = ThemeColors.LightBackground,
-                BorderColor = Color.FromArgb(216, 220, 208),
+                //BorderColor = Color.FromArgb(216, 220, 208),
+                BorderColor = Color.Transparent,
                 FocusBackgroundColor = Color.Transparent,
                 FocusBorderColor = ThemeColors.Green,
             };
             cuiTextBox2 txtReceived = new cuiTextBox2
             {
+                Name = "input",
                 Content = $"{customer["remainQuantity"]}",
                 Width = 85,
                 Height = 30,
@@ -170,7 +177,8 @@ namespace FlourSystem.Forms.User_Control
                 Rounding = new Padding(5),
                 ForeColor = Color.Black,
                 BackgroundColor = ThemeColors.LightBackground,
-                BorderColor = Color.FromArgb(216, 220, 208),
+                //BorderColor = Color.FromArgb(216, 220, 208),
+                BorderColor = Color.Transparent,
                 FocusBackgroundColor = Color.Transparent,
                 FocusBorderColor = ThemeColors.Green,
             };
@@ -185,7 +193,7 @@ namespace FlourSystem.Forms.User_Control
             };
             cuiTextBox2 txtPaid = new cuiTextBox2
             {
-                Name = "txtPaid",
+                Name = "input",
                 Content = $"{customer["price"]}",
                 Width = 85,
                 Height = 30,
@@ -193,7 +201,8 @@ namespace FlourSystem.Forms.User_Control
                 Rounding = new Padding(5),
                 ForeColor = Color.Black,
                 BackgroundColor = ThemeColors.LightBackground,
-                BorderColor = Color.FromArgb(216, 220, 208),
+                //BorderColor = Color.FromArgb(216, 220, 208),
+                BorderColor = Color.Transparent,
                 FocusBackgroundColor = Color.Transparent,
                 FocusBorderColor = ThemeColors.Green,
             };
@@ -267,25 +276,6 @@ namespace FlourSystem.Forms.User_Control
                     return;
                 }
                 OpenDropDown(clickedButton);
-                //// Calculate the new position for the drop-down panel
-                //Point panelPosition = customerPanel.PointToScreen(Point.Empty);
-                //pnlAddtionalDropDown.Parent = this.FindForm();
-                //pnlAddtionalDropDown.Location = new Point(
-                //    panelPosition.X,
-                //    panelPosition.Y
-                //);
-
-                //// Bring the drop-down panel to the front and make it visible
-                //pnlAddtionalDropDown.Parent = this.FindForm();
-                //pnlAddtionalDropDown.BringToFront();
-
-                //foreach(Control ctrl in pnlAddtionalDropDown.Controls)
-                //{
-                //    if (ctrl is cuiButton btn) 
-                //        btn.Tag = btnAdditional.Tag;
-                //}
-                //lastTriggerButton = clickedButton;
-                //AdditionaldropDownTimer.Start();
             };
             pnlAdditional.Controls.Add(btnAdditional);
 
@@ -301,28 +291,18 @@ namespace FlourSystem.Forms.User_Control
             customerPanel.Controls.Add(pnlAdditional);
 
             pnlCustomerContainer.Controls.Add(customerPanel);
-            if (index % 2 == 0)
-            {
-                customerPanel.BackColor = Color.FromArgb(216, 220, 208);
-                txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = Color.FromArgb(216, 220, 208);
-                txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.FromArgb(196, 200, 188);
-            }
-            else
-            {
-                customerPanel.BackColor = Color.Transparent;
-                txtPaid.BackgroundColor = txtReceived.BackgroundColor = txtRequired.BackgroundColor = ThemeColors.LightBackground;
-                txtPaid.BorderColor = txtReceived.BorderColor = txtRequired.BorderColor = Color.LightGray;
-            }
-            txtPaid.FocusBackgroundColor = txtReceived.FocusBackgroundColor = txtRequired.FocusBackgroundColor = Color.Transparent;
-            txtPaid.FocusBorderColor = txtReceived.FocusBorderColor = txtRequired.FocusBorderColor = ThemeColors.Green;
+            ThemeManager.CustomerPanelTheme(customerPanel);
+
             index++;
-            if(int.TryParse(customer["price"].ToString(), out int price) && 
+
+            if (int.TryParse(customer["price"].ToString(), out int price) && 
                 int.TryParse(customer["remainQuantity"].ToString(), out int remain) &&
                 price == 0 && remain == 0)
             {
-                customerPanel.BackColor = Color.FromArgb(200, 220, 190);
+                customerPanel.BackColor = ThemeManager.IsDarkMode ? ThemeColors.DarkCompleted : ThemeColors.LightCompleted;
                 completed.Add(customerPanel);
             }
+            ThemeManager.ApplyControlTheme(customerPanel, ThemeManager.IsDarkMode);
             return customerPanel;
         }
         IconButton? lastTriggerButton = null;
@@ -427,13 +407,13 @@ namespace FlourSystem.Forms.User_Control
                         value2 == 0)
                     {
                         FlowLayoutPanel? parentPanel = btnRegister.Parent as FlowLayoutPanel;
-                        parentPanel.BackColor = Color.FromArgb(200, 220, 190);
+                        parentPanel.BackColor = ThemeManager.IsDarkMode ? ThemeColors.DarkCompleted : ThemeColors.LightCompleted;
                         completed.Add(parentPanel);
-                        HoverEffectRefactored.Hover
+                        HoverEffect.Hover
                         (
                             new Control[] {parentPanel},
-                            getDefaultValue: ctrl => Color.FromArgb(200, 220, 190),
-                            getHoverValue: ctrl => Color.FromArgb(186, 210, 178),
+                            getDefaultValue: ctrl => ThemeManager.IsDarkMode ? ThemeColors.DarkCompleted : ThemeColors.LightCompleted,
+                            getHoverValue: ctrl => ThemeManager.IsDarkMode ? ThemeColors.DarkHoverCompleted : ThemeColors.LightHoverCompleted,
                             setValue: (ctrl, value) =>
                             {
                                 if (ctrl is FlowLayoutPanel panel)
@@ -441,7 +421,7 @@ namespace FlourSystem.Forms.User_Control
                                     panel.BackColor = value;
                                 }
                             },
-                            interpolate: HoverEffectRefactored.InterpolateColor,
+                            interpolate: HoverEffect.InterpolateColor,
                             transitionDuration: 100
                         );
                     }
@@ -585,17 +565,14 @@ namespace FlourSystem.Forms.User_Control
 
             if (spaceBelow >= dropdownHeight)
             {
-                // ✅ Enough space below → show dropdown below
                 dropdownY = triggerButton.PointToScreen(new Point(0, triggerButton.Height)).Y;
             }
             else if (spaceAbove >= dropdownHeight)
             {
-                // ✅ Enough space above → show dropdown above
                 dropdownY = triggerButton.PointToScreen(new Point(0, -dropdownHeight)).Y;
             }
             else
             {
-                // 🤷‍♂️ Not enough space → default to below
                 dropdownY = triggerButton.PointToScreen(new Point(0, triggerButton.Height)).Y;
             }
 
@@ -617,58 +594,6 @@ namespace FlourSystem.Forms.User_Control
             AdditionaldropDownTimer.Start();
         }
 
-
-        /*
-        private void OpenDropDown(IconButton? button)
-        {
-            Point panelPosition = button.PointToScreen(Point.Empty);
-            int screenBottom = Screen.GetWorkingArea(this).Bottom;
-            int containerBottom = this.Parent?.PointToScreen(
-                new Point(0, this.Parent.ClientSize.Height)
-            ).Y ?? screenBottom;
-
-            int spaceBelow = screenBottom - (panelPosition.Y + button.Height);
-            int spaceAbove = panelPosition.Y;
-            int dropdownHeight = pnlAddtionalDropDown.MaximumSize.Height;
-            int dropdownY;
-
-            if (spaceBelow >= dropdownHeight)
-            {
-                // ✅ Enough space below → show dropdown below button
-                dropdownY = panelPosition.Y + button.Height;
-            }
-            else if (spaceAbove >= dropdownHeight)
-            {
-                // ✅ Enough space above → show dropdown above button
-                dropdownY = panelPosition.Y - dropdownHeight;
-            }
-            else
-            {
-                // 🤷‍♂️ Not enough space either way → default to below and clip
-                dropdownY = panelPosition.Y + button.Height;
-            }
-
-
-            pnlAddtionalDropDown.Parent = this.FindForm();
-            Point location = button.PointToScreen(Point.Empty);
-            Form? mainfrm = this.FindForm();
-            Point drpdownLocation = mainfrm.PointToClient(new Point(location.X + button.Width, dropdownY));
-
-            pnlAddtionalDropDown.Location = drpdownLocation;
-
-            pnlAddtionalDropDown.BringToFront();
-
-            foreach (Control ctrl in pnlAddtionalDropDown.Controls)
-            {
-                if (ctrl is cuiButton btn)
-                    btn.Tag = button.Tag;
-            }
-
-            lastTriggerButton = button;
-            isAddtionalDropDownExpanded = false;
-            AdditionaldropDownTimer.Start();
-        }
-        */
         private void CloseOpenedDropDown(Control control)
         {
             control.MouseDown -= Form1_MouseDown;

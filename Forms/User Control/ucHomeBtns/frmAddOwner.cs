@@ -18,6 +18,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         public frmAddOwner()
         {
             InitializeComponent();
+            ThemeManager.ApplyFormTheme(this);
         }
 
         #region Closing
@@ -70,10 +71,10 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         private void picShowConfirmPassword_Click(object sender, EventArgs e)
         {
             txtConfirmPassword.PasswordChar = !txtConfirmPassword.PasswordChar;
-            if (picShowPassword.IconChar == IconChar.EyeSlash)
-                picShowPassword.IconChar = IconChar.Eye;
+            if (picConfirmPassword.IconChar == IconChar.EyeSlash)
+                picConfirmPassword.IconChar = IconChar.Eye;
             else
-                picShowPassword.IconChar = IconChar.EyeSlash;
+                picConfirmPassword.IconChar = IconChar.EyeSlash;
         }
         #endregion
 
@@ -120,6 +121,18 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             else
                 MessageBox.Show("Failed to add owner.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        private void btnClose_MouseEnter(object sender, EventArgs e)
+        {
+            if (ThemeManager.IsDarkMode)
+                btnClose.BackColor = Color.FromArgb(15, 0, 0, 0);
+        }
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            if (ThemeManager.IsDarkMode)
+                btnClose.BackColor = Color.FromArgb(0, 0, 0, 0);
         }
     }
 }

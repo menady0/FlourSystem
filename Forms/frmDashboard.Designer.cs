@@ -633,7 +633,7 @@
             pnlContainer.Location = new Point(10, 85);
             pnlContainer.Name = "pnlContainer";
             pnlContainer.OutlineThickness = 1F;
-            pnlContainer.PanelColor = Color.FromArgb(232, 237, 223);
+            pnlContainer.PanelColor = Color.Transparent;
             pnlContainer.PanelOutlineColor = Color.Transparent;
             pnlContainer.Rounding = new Padding(25);
             pnlContainer.Size = new Size(1084, 580);
@@ -701,7 +701,6 @@
         private CuoreUI.cuiControlDrag frmDrag;
         private Panel pnlMenu;
         private FontAwesome.Sharp.IconButton btnAdd;
-        private CuoreUI.Controls.cuiBorder pnlContainer;
         private CuoreUI.Controls.cuiTextBox2 txtSearch;
         private FontAwesome.Sharp.IconButton btnSearch;
         private System.Windows.Forms.Timer searchTimer;
@@ -731,5 +730,6 @@
         private Panel pnlUpdateCheck;
         private Label label1;
         public FontAwesome.Sharp.IconButton btnUpdateCheck;
+        public CuoreUI.Controls.cuiBorder pnlContainer;
     }
 }

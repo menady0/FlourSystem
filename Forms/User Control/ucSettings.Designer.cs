@@ -133,7 +133,7 @@ namespace FlourSystem.Forms.User_Control
             container.Name = "container";
             container.OutlineThickness = 1F;
             container.PanelColor = Color.FromArgb(232, 237, 223);
-            container.PanelOutlineColor = Color.FromArgb(232, 237, 223);
+            container.PanelOutlineColor = Color.Transparent;
             container.Rounding = new Padding(25);
             container.Size = new Size(1084, 580);
             container.TabIndex = 0;
@@ -176,7 +176,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             // separator
             // 
-            separator.BackColor = Color.LightGray;
+            separator.BackColor = Color.FromArgb(125, 255, 255, 255);
             separator.Location = new Point(542, 140);
             separator.Name = "separator";
             separator.Size = new Size(1, 300);
@@ -309,7 +309,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             txtPassword.BackColor = Color.FromArgb(207, 219, 213);
             txtPassword.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtPassword.BorderColor = Color.FromArgb(207, 219, 213);
+            txtPassword.BorderColor = Color.Transparent;
             txtPassword.BorderSize = 1;
             txtPassword.Content = "";
             txtPassword.Dock = DockStyle.Fill;
@@ -386,7 +386,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             txtUsername.BackColor = Color.FromArgb(207, 219, 213);
             txtUsername.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtUsername.BorderColor = Color.FromArgb(207, 219, 213);
+            txtUsername.BorderColor = Color.Transparent;
             txtUsername.BorderSize = 1;
             txtUsername.Content = "";
             txtUsername.Dock = DockStyle.Fill;
@@ -463,7 +463,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             txtName.BackColor = Color.FromArgb(207, 219, 213);
             txtName.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtName.BorderColor = Color.FromArgb(207, 219, 213);
+            txtName.BorderColor = Color.Transparent;
             txtName.BorderSize = 1;
             txtName.Content = "";
             txtName.Dock = DockStyle.Fill;
@@ -563,7 +563,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             txtQuantityPerPerson.BackColor = Color.FromArgb(207, 219, 213);
             txtQuantityPerPerson.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtQuantityPerPerson.BorderColor = Color.FromArgb(207, 219, 213);
+            txtQuantityPerPerson.BorderColor = Color.Transparent;
             txtQuantityPerPerson.BorderSize = 1;
             txtQuantityPerPerson.Content = "";
             txtQuantityPerPerson.Dock = DockStyle.Fill;
@@ -640,7 +640,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             txtPrice.BackColor = Color.FromArgb(207, 219, 213);
             txtPrice.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtPrice.BorderColor = Color.FromArgb(207, 219, 213);
+            txtPrice.BorderColor = Color.Transparent;
             txtPrice.BorderSize = 1;
             txtPrice.Content = "";
             txtPrice.Dock = DockStyle.Fill;
@@ -714,7 +714,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             // swtchLazyLoad
             // 
-            swtchLazyLoad.Checked = Settings.Default.lazyLoading;
+            swtchLazyLoad.Checked = true;
             swtchLazyLoad.CheckedBackground = Color.FromArgb(71, 137, 75);
             swtchLazyLoad.CheckedForeground = Color.White;
             swtchLazyLoad.CheckedOutlineColor = Color.Transparent;
@@ -800,7 +800,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             txtBatchSize.BackColor = Color.FromArgb(207, 219, 213);
             txtBatchSize.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtBatchSize.BorderColor = Color.FromArgb(207, 219, 213);
+            txtBatchSize.BorderColor = Color.Transparent;
             txtBatchSize.BorderSize = 1;
             txtBatchSize.Content = "";
             txtBatchSize.Dock = DockStyle.Fill;
@@ -878,7 +878,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             txtScrollThreshold.BackColor = Color.FromArgb(207, 219, 213);
             txtScrollThreshold.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtScrollThreshold.BorderColor = Color.FromArgb(207, 219, 213);
+            txtScrollThreshold.BorderColor = Color.Transparent;
             txtScrollThreshold.BorderSize = 1;
             txtScrollThreshold.Content = "";
             txtScrollThreshold.Dock = DockStyle.Fill;

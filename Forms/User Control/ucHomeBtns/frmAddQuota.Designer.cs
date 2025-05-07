@@ -98,6 +98,8 @@
             btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
+            btnClose.MouseEnter += btnClose_MouseEnter;
+            btnClose.MouseLeave += btnClose_MouseLeave;
             // 
             // frmAnimation
             // 
@@ -143,7 +145,7 @@
             // 
             txtPrice.BackColor = Color.FromArgb(207, 219, 213);
             txtPrice.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtPrice.BorderColor = Color.FromArgb(244, 245, 244);
+            txtPrice.BorderColor = Color.Transparent;
             txtPrice.BorderSize = 1;
             txtPrice.Content = "";
             txtPrice.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -184,7 +186,7 @@
             // 
             txtAmountPerKG.BackColor = Color.FromArgb(207, 219, 213);
             txtAmountPerKG.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtAmountPerKG.BorderColor = Color.FromArgb(244, 245, 244);
+            txtAmountPerKG.BorderColor = Color.Transparent;
             txtAmountPerKG.BorderSize = 1;
             txtAmountPerKG.Content = "";
             txtAmountPerKG.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
@@ -225,7 +227,7 @@
             // 
             txtAmount.BackColor = Color.FromArgb(207, 219, 213);
             txtAmount.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtAmount.BorderColor = Color.FromArgb(244, 245, 244);
+            txtAmount.BorderColor = Color.Transparent;
             txtAmount.BorderSize = 1;
             txtAmount.Content = "";
             txtAmount.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
