@@ -714,7 +714,7 @@ namespace FlourSystem.Forms.User_Control
             // 
             // swtchLazyLoad
             // 
-            swtchLazyLoad.Checked = true;
+            swtchLazyLoad.Checked = Settings.Default.lazyLoading;
             swtchLazyLoad.CheckedBackground = Color.FromArgb(71, 137, 75);
             swtchLazyLoad.CheckedForeground = Color.White;
             swtchLazyLoad.CheckedOutlineColor = Color.Transparent;

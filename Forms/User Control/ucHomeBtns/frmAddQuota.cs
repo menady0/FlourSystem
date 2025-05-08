@@ -49,19 +49,16 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             if (string.IsNullOrEmpty(txtAmount.Content) || !float.TryParse(txtAmount.Content, out _))
             {
                 txtAmountPerKG.Content = "";
-                txtPrice.Content = "";
                 return;
             }
             txtAmountPerKG.Content = (float.Parse(txtAmount.Content) * 20).ToString();
-            txtPrice.Content = (float.Parse(txtAmount.Content) * 56).ToString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (
                 string.IsNullOrEmpty(txtAmount.Content) ||
-                string.IsNullOrEmpty(txtAmountPerKG.Content) ||
-                string.IsNullOrEmpty(txtPrice.Content)
+                string.IsNullOrEmpty(txtAmountPerKG.Content)
                 )
             {
                 MessageBox.Show("Please fill in all fields.");
@@ -70,7 +67,6 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             if (
                 !float.TryParse(txtAmount.Content, out _)
                 && !int.TryParse(txtAmountPerKG.Content, out _)
-                && !int.TryParse(txtPrice.Content, out _)
                 )
             {
                 MessageBox.Show("Invalid input. Please enter valid numbers.");
@@ -78,16 +74,17 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             if (
                 float.Parse(txtAmount.Content) <= 0
                 || int.Parse(txtAmountPerKG.Content) <= 0
-                || int.Parse(txtPrice.Content) <= 0
                 )
             {
                 MessageBox.Show("Please enter greater values than 0 values.");
                 return;
             }
 
+            (int preMonth, int preYear) = DataBase.GetPreviousMonthYear(DateTime.Now.Month, DateTime.Now.Year);
+            int prevMonthAmount = DataBase.GetAmountPerKGForMonth(preMonth, preYear) - DataBase.GetStore(preMonth, preYear);
+
             float amount = float.Parse(txtAmount.Content);
             int amountPerKG = int.Parse(txtAmountPerKG.Content);
-            int price = int.Parse(txtPrice.Content);
             string date = DateTime.Now.ToString("yyyy-MM-dd");
 
             if (DataBase.QuotaExists(DataBase.loggedOwner, date))
@@ -96,7 +93,33 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 return;
             }
 
-            if (DataBase.addQuota(amount, amountPerKG, price, date, DataBase.loggedOwner))
+            if (prevMonthAmount > 0)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to continue?\n" +
+                    $"Note: There is a quota for the previous month: {prevMonthAmount} left.",
+                    "Confirmation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+                if (result == DialogResult.Yes)
+                {
+                    amountPerKG -= prevMonthAmount;
+                    if(amountPerKG <= 0)
+                    {
+                        MessageBox.Show("The amount per KG is less than or equal to 0.\n" +
+                            "Please enter a greater value.");
+                        return;
+                    }
+                    amount = amountPerKG / 20;
+                    MessageBox.Show(Text = $"The amount per KG will be reduced by {prevMonthAmount}.\n" +
+                        $"The new amount will be {amountPerKG}\n" +
+                        $"the number of sacks is {amount}");
+                }
+                //MessageBox.Show($"Note: There is a quota for the previous month: {prevMonthAmount} left.");
+                //return;
+            }
+            if (DataBase.addQuota(amount, amountPerKG, date, DataBase.loggedOwner))
             {
                 MessageBox.Show("Quota added successfully.");
                 btnClose.PerformClick();

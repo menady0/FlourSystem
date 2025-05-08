@@ -168,16 +168,15 @@ public class DataBase
             conn.Close();
         }
     }
-    public static bool addQuota(float amount, int amountPerKG, int price, string dateReceived, int ownerID)
+    public static bool addQuota(float amount, int amountPerKG, string dateReceived, int ownerID)
     {
         string query =
-            "INSERT INTO quota (amount, AmountPerKG, Price, DateReceived, OwnerID) " +
-            "   VALUES (@amount, @amountPerKG, @price, @dateReceived, @ownerID)";
+            "INSERT INTO quota (amount, AmountPerKG, DateReceived, OwnerID) " +
+            "   VALUES (@amount, @amountPerKG, @dateReceived, @ownerID)";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@amount", amount);
         cmd.Parameters.AddWithValue("@amountPerKG", amountPerKG);
-        cmd.Parameters.AddWithValue("@price", price);
         cmd.Parameters.AddWithValue("@dateReceived", dateReceived);
         cmd.Parameters.AddWithValue("@ownerID", ownerID);
         cmd.CommandTimeout = 60;
@@ -638,7 +637,33 @@ public class DataBase
         }
     }
 
-    public static int Store(int day, int month, int year)
+    public static int balance;
+    public static int Balance(int month, int year)
+    {
+        return AmountPerKG(month, year) - Store(month, year);
+    }
+    public static (int month, int year) GetPreviousMonthYear(int month, int year)
+    {
+        int prevMonth = (month == 1) ? 12 : month - 1;
+        int prevYear = (month == 1) ? year - 1 : year;
+        return (prevMonth, prevYear);
+    }
+    public static int Store(int month, int year)
+    {
+        int currentMonthAmount = GetStore(month, year);
+
+        (int prevMonth, int prevYear) = GetPreviousMonthYear(month, year);
+
+        int previousMonthAmount = GetStore(prevMonth, prevYear);
+
+        if (previousMonthAmount > 0)
+        {
+            currentMonthAmount += previousMonthAmount;
+        }
+
+        return currentMonthAmount;
+    }
+    public static int GetStore(int day, int month, int year)
     {
         string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE DAY(DateOfOperation) = @day AND MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
@@ -668,8 +693,7 @@ public class DataBase
             conn.Close();
         }
     }
-    public static int balance;
-    public static int Store(int month, int year)
+    public static int GetStore(int month, int year)
     {
         string query = "SELECT SUM(theReceivedQuantity) FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
@@ -699,6 +723,19 @@ public class DataBase
         }
     }
     public static int AmountPerKG(int month, int year)
+    {
+        int currentMonthAmount = GetAmountPerKGForMonth(month, year);
+        var (prevMonth, prevYear) = GetPreviousMonthYear(month, year);
+        int previousMonthAmount = GetAmountPerKGForMonth(prevMonth, prevYear);
+
+        if (previousMonthAmount > 0)
+        {
+            currentMonthAmount += previousMonthAmount;
+        }
+
+        return currentMonthAmount;
+    }
+    public static int GetAmountPerKGForMonth(int month, int year)
     {
         string query = "SELECT SUM(AmountPerKG) FROM quota WHERE MONTH(DateReceived) = @month AND YEAR(DateReceived) = @year";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);

@@ -94,7 +94,7 @@ public class ThemeManager
         else if (control is Button button)
         {
             button.BackColor = isDarkMode ? ThemeColors.Green : ThemeColors.DarkBackground;
-            button.ForeColor = isDarkMode ? ThemeColors.DarkForeColor : ThemeColors.DarkForeColor;
+            button.ForeColor = isDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightBackground;
         }
         else if (control is Label)
         {
@@ -105,6 +105,7 @@ public class ThemeManager
             txt.BackgroundColor = IsDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightBorderPanel;
             txt.BorderColor = IsDarkMode ? Color.FromArgb(5, 255, 255, 255) : Color.LightGray;
             txt.ForeColor = IsDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor;
+            txt.FocusBackgroundColor = IsDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightBorderPanel;
 
         }
         else if (control is cuiTextBox2 cuiTextBox)
@@ -117,6 +118,11 @@ public class ThemeManager
         {
             pic.BackColor = Color.Transparent;
         }
+        else if (control is IconPictureBox pic2 && pic2.Name.Contains("link"))
+        {
+            pic2.BackColor = isDarkMode ? ThemeColors.DarkSocialMediaPanel : ThemeColors.LightSocialMediaPanel;
+            pic2.IconColor = isDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor;
+        }
         else if (control is IconPictureBox icon)
         {
             icon.BackColor = isDarkMode ? ThemeColors.DarkTextbox : ThemeColors.LightTextbox;
@@ -126,16 +132,22 @@ public class ThemeManager
         {
             if (pnl is cuiBorder border && pnl.GetType() == typeof(cuiBorder))
             {
-                if(border.Name == "pnlDelete")
+                if (border.Name == "pnlDelete")
                     border.PanelColor = Color.Transparent;
                 else if (border.Name == "pnlSave")
-                    if(border.PanelColor == Color.Gray)
+                    if (border.PanelColor == Color.Gray)
                         border.PanelColor = Color.Gray;
                     else
-                       border.PanelColor = ThemeColors.Green;
-
-                else
+                        border.PanelColor = ThemeColors.Green;
+                else if (border.Name.Contains("pnlSocialMedia"))
+                    border.PanelColor = isDarkMode ? ThemeColors.DarkSocialMediaPanel : ThemeColors.LightSocialMediaPanel;
+                else if (border.Name.Contains("pnlImageBorder"))
+                    border.PanelOutlineColor = isDarkMode ? ThemeColors.LightBorderPanel : ThemeColors.DarkBorderPanel;
+                else if (border.Name != "pnlAddtionalDropDown")
+                {
                     border.PanelColor = isDarkMode ? ThemeColors.DarkBorderPanel : ThemeColors.LightBorderPanel;
+                    border.PanelOutlineColor = isDarkMode ? ThemeColors.DarkBorderPanel : ThemeColors.LightBorderPanel;
+                }
             }
             else if (pnl is FlowLayoutPanel flow && pnl.GetType() == typeof(FlowLayoutPanel))
             {
@@ -143,11 +155,11 @@ public class ThemeManager
                     pnl.BackColor = isDarkMode ? ThemeColors.DarkucHomeTableHeaderpnl : ThemeColors.LightucHomeTableHeaderpnl;
                 else if (pnl.Name == "pnlCustomerContainer")
                     //pnl.BackColor = Color.Yellow;
-                    pnl.BackColor = isDarkMode ? ThemeColors.DarkBackground : ThemeColors.LightBackground;
+                    pnl.BackColor = isDarkMode ? ThemeColors.UserControlBG : ThemeColors.LightBackground;
                 if (pnl.Name == "pnlCustomer")
                     CustomerPanelTheme(pnl as FlowLayoutPanel);
             }
-            if(pnl.Name == "separator")
+            if (pnl.Name == "separator")
                 pnl.BackColor = isDarkMode ? Color.FromArgb(25, 255, 255, 255) : Color.FromArgb(25, 0, 0, 0);
 
             foreach (Control childControl in pnl.Controls)

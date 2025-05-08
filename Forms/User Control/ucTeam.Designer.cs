@@ -28,52 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cuiBorder1 = new CuoreUI.Controls.cuiBorder();
+            container = new CuoreUI.Controls.cuiBorder();
             pnlCard8 = new CuoreUI.Controls.cuiBorder();
             label7 = new Label();
-            cuiBorder4 = new CuoreUI.Controls.cuiBorder();
+            pnlImageBorder8 = new CuoreUI.Controls.cuiBorder();
             pictureBox4 = new PictureBox();
             panel5 = new Panel();
             label8 = new Label();
             pnlSocialMedia8 = new CuoreUI.Controls.cuiBorder();
-            iconPictureBox7 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox8 = new FontAwesome.Sharp.IconPictureBox();
+            link15 = new FontAwesome.Sharp.IconPictureBox();
+            link16 = new FontAwesome.Sharp.IconPictureBox();
             pnlCard7 = new CuoreUI.Controls.cuiBorder();
             label9 = new Label();
-            cuiBorder7 = new CuoreUI.Controls.cuiBorder();
+            pnlImageBorder7 = new CuoreUI.Controls.cuiBorder();
             pictureBox5 = new PictureBox();
             panel6 = new Panel();
             label10 = new Label();
             pnlSocialMedia7 = new CuoreUI.Controls.cuiBorder();
-            iconPictureBox9 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox10 = new FontAwesome.Sharp.IconPictureBox();
+            link13 = new FontAwesome.Sharp.IconPictureBox();
+            link14 = new FontAwesome.Sharp.IconPictureBox();
             pnlCard4 = new CuoreUI.Controls.cuiBorder();
             label5 = new Label();
-            cuiBorder3 = new CuoreUI.Controls.cuiBorder();
+            pnlImageBorder4 = new CuoreUI.Controls.cuiBorder();
             pictureBox3 = new PictureBox();
             panel4 = new Panel();
             label6 = new Label();
             pnlSocialMedia4 = new CuoreUI.Controls.cuiBorder();
-            iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
+            link7 = new FontAwesome.Sharp.IconPictureBox();
+            link8 = new FontAwesome.Sharp.IconPictureBox();
             pnlCard3 = new CuoreUI.Controls.cuiBorder();
             label1 = new Label();
-            cuiBorder2 = new CuoreUI.Controls.cuiBorder();
+            pnlImageBorder3 = new CuoreUI.Controls.cuiBorder();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
             label2 = new Label();
             pnlSocialMedia3 = new CuoreUI.Controls.cuiBorder();
-            iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
+            link5 = new FontAwesome.Sharp.IconPictureBox();
+            link6 = new FontAwesome.Sharp.IconPictureBox();
             pnlCard6 = new CuoreUI.Controls.cuiBorder();
             label11 = new Label();
-            cuiBorder10 = new CuoreUI.Controls.cuiBorder();
+            pnlImageBorder6 = new CuoreUI.Controls.cuiBorder();
             pictureBox6 = new PictureBox();
             panel7 = new Panel();
             label12 = new Label();
             pnlSocialMedia6 = new CuoreUI.Controls.cuiBorder();
-            iconPictureBox11 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox12 = new FontAwesome.Sharp.IconPictureBox();
+            link11 = new FontAwesome.Sharp.IconPictureBox();
+            link12 = new FontAwesome.Sharp.IconPictureBox();
             pnlCard2 = new CuoreUI.Controls.cuiBorder();
             label3 = new Label();
             pnlImageBorder2 = new CuoreUI.Controls.cuiBorder();
@@ -81,8 +81,8 @@
             panel2 = new Panel();
             label4 = new Label();
             pnlSocialMedia2 = new CuoreUI.Controls.cuiBorder();
-            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            link2 = new FontAwesome.Sharp.IconPictureBox();
+            link4 = new FontAwesome.Sharp.IconPictureBox();
             pnlCard1 = new CuoreUI.Controls.cuiBorder();
             lblRole1 = new Label();
             pnlImageBorder1 = new CuoreUI.Controls.cuiBorder();
@@ -90,92 +90,92 @@
             panel1 = new Panel();
             lblName1 = new Label();
             pnlSocialMedia1 = new CuoreUI.Controls.cuiBorder();
-            picWebsite = new FontAwesome.Sharp.IconPictureBox();
-            picLinkedIn = new FontAwesome.Sharp.IconPictureBox();
+            link0 = new FontAwesome.Sharp.IconPictureBox();
+            link1 = new FontAwesome.Sharp.IconPictureBox();
             pnlCard5 = new CuoreUI.Controls.cuiBorder();
             label13 = new Label();
-            cuiBorder13 = new CuoreUI.Controls.cuiBorder();
+            pnlImageBorder5 = new CuoreUI.Controls.cuiBorder();
             pictureBox7 = new PictureBox();
             panel8 = new Panel();
             label14 = new Label();
             pnlSocialMedia5 = new CuoreUI.Controls.cuiBorder();
-            iconPictureBox13 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox14 = new FontAwesome.Sharp.IconPictureBox();
-            cuiBorder1.SuspendLayout();
+            link10 = new FontAwesome.Sharp.IconPictureBox();
+            link9 = new FontAwesome.Sharp.IconPictureBox();
+            container.SuspendLayout();
             pnlCard8.SuspendLayout();
-            cuiBorder4.SuspendLayout();
+            pnlImageBorder8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             pnlSocialMedia8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link15).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link16).BeginInit();
             pnlCard7.SuspendLayout();
-            cuiBorder7.SuspendLayout();
+            pnlImageBorder7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             pnlSocialMedia7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox9).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link13).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link14).BeginInit();
             pnlCard4.SuspendLayout();
-            cuiBorder3.SuspendLayout();
+            pnlImageBorder4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             pnlSocialMedia4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link8).BeginInit();
             pnlCard3.SuspendLayout();
-            cuiBorder2.SuspendLayout();
+            pnlImageBorder3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlSocialMedia3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link6).BeginInit();
             pnlCard6.SuspendLayout();
-            cuiBorder10.SuspendLayout();
+            pnlImageBorder6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             pnlSocialMedia6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox11).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox12).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link11).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link12).BeginInit();
             pnlCard2.SuspendLayout();
             pnlImageBorder2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             pnlSocialMedia2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link4).BeginInit();
             pnlCard1.SuspendLayout();
             pnlImageBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picImage1).BeginInit();
             pnlSocialMedia1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picWebsite).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picLinkedIn).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link0).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link1).BeginInit();
             pnlCard5.SuspendLayout();
-            cuiBorder13.SuspendLayout();
+            pnlImageBorder5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             pnlSocialMedia5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox13).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox14).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)link9).BeginInit();
             SuspendLayout();
             // 
-            // cuiBorder1
+            // container
             // 
-            cuiBorder1.Controls.Add(pnlCard8);
-            cuiBorder1.Controls.Add(pnlCard7);
-            cuiBorder1.Controls.Add(pnlCard4);
-            cuiBorder1.Controls.Add(pnlCard3);
-            cuiBorder1.Controls.Add(pnlCard6);
-            cuiBorder1.Controls.Add(pnlCard2);
-            cuiBorder1.Controls.Add(pnlCard1);
-            cuiBorder1.Controls.Add(pnlCard5);
-            cuiBorder1.Dock = DockStyle.Fill;
-            cuiBorder1.Location = new Point(0, 0);
-            cuiBorder1.Name = "cuiBorder1";
-            cuiBorder1.OutlineThickness = 1F;
-            cuiBorder1.PanelColor = Color.FromArgb(232, 237, 223);
-            cuiBorder1.PanelOutlineColor = Color.Transparent;
-            cuiBorder1.Rounding = new Padding(25);
-            cuiBorder1.Size = new Size(1084, 580);
-            cuiBorder1.TabIndex = 0;
+            container.Controls.Add(pnlCard8);
+            container.Controls.Add(pnlCard7);
+            container.Controls.Add(pnlCard4);
+            container.Controls.Add(pnlCard3);
+            container.Controls.Add(pnlCard6);
+            container.Controls.Add(pnlCard2);
+            container.Controls.Add(pnlCard1);
+            container.Controls.Add(pnlCard5);
+            container.Dock = DockStyle.Fill;
+            container.Location = new Point(0, 0);
+            container.Name = "container";
+            container.OutlineThickness = 1F;
+            container.PanelColor = Color.FromArgb(232, 237, 223);
+            container.PanelOutlineColor = Color.Transparent;
+            container.Rounding = new Padding(25);
+            container.Size = new Size(1084, 580);
+            container.TabIndex = 0;
             // 
             // pnlCard8
             // 
             pnlCard8.Controls.Add(label7);
-            pnlCard8.Controls.Add(cuiBorder4);
+            pnlCard8.Controls.Add(pnlImageBorder8);
             pnlCard8.Controls.Add(panel5);
             pnlCard8.Controls.Add(label8);
             pnlCard8.Controls.Add(pnlSocialMedia8);
@@ -199,17 +199,17 @@
             label7.TabIndex = 5;
             label7.Text = "Role Here";
             // 
-            // cuiBorder4
+            // pnlImageBorder8
             // 
-            cuiBorder4.Controls.Add(pictureBox4);
-            cuiBorder4.Location = new Point(55, 34);
-            cuiBorder4.Name = "cuiBorder4";
-            cuiBorder4.OutlineThickness = 1F;
-            cuiBorder4.PanelColor = Color.Transparent;
-            cuiBorder4.PanelOutlineColor = Color.Black;
-            cuiBorder4.Rounding = new Padding(57);
-            cuiBorder4.Size = new Size(115, 115);
-            cuiBorder4.TabIndex = 1;
+            pnlImageBorder8.Controls.Add(pictureBox4);
+            pnlImageBorder8.Location = new Point(55, 34);
+            pnlImageBorder8.Name = "pnlImageBorder8";
+            pnlImageBorder8.OutlineThickness = 1F;
+            pnlImageBorder8.PanelColor = Color.Transparent;
+            pnlImageBorder8.PanelOutlineColor = Color.Black;
+            pnlImageBorder8.Rounding = new Padding(57);
+            pnlImageBorder8.Size = new Size(115, 115);
+            pnlImageBorder8.TabIndex = 1;
             // 
             // pictureBox4
             // 
@@ -242,8 +242,8 @@
             // 
             // pnlSocialMedia8
             // 
-            pnlSocialMedia8.Controls.Add(iconPictureBox7);
-            pnlSocialMedia8.Controls.Add(iconPictureBox8);
+            pnlSocialMedia8.Controls.Add(link15);
+            pnlSocialMedia8.Controls.Add(link16);
             pnlSocialMedia8.Location = new Point(12, 275);
             pnlSocialMedia8.Name = "pnlSocialMedia8";
             pnlSocialMedia8.OutlineThickness = 1F;
@@ -253,42 +253,42 @@
             pnlSocialMedia8.Size = new Size(200, 35);
             pnlSocialMedia8.TabIndex = 1;
             // 
-            // iconPictureBox7
+            // link15
             // 
-            iconPictureBox7.BackColor = Color.Transparent;
-            iconPictureBox7.Cursor = Cursors.Hand;
-            iconPictureBox7.ForeColor = Color.Black;
-            iconPictureBox7.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            iconPictureBox7.IconColor = Color.Black;
-            iconPictureBox7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox7.IconSize = 25;
-            iconPictureBox7.Location = new Point(111, 5);
-            iconPictureBox7.Name = "iconPictureBox7";
-            iconPictureBox7.Size = new Size(25, 25);
-            iconPictureBox7.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox7.TabIndex = 2;
-            iconPictureBox7.TabStop = false;
+            link15.BackColor = Color.Transparent;
+            link15.Cursor = Cursors.Hand;
+            link15.ForeColor = Color.Black;
+            link15.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link15.IconColor = Color.Black;
+            link15.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link15.IconSize = 25;
+            link15.Location = new Point(111, 5);
+            link15.Name = "link15";
+            link15.Size = new Size(25, 25);
+            link15.SizeMode = PictureBoxSizeMode.AutoSize;
+            link15.TabIndex = 2;
+            link15.TabStop = false;
             // 
-            // iconPictureBox8
+            // link16
             // 
-            iconPictureBox8.BackColor = Color.Transparent;
-            iconPictureBox8.Cursor = Cursors.Hand;
-            iconPictureBox8.ForeColor = Color.Black;
-            iconPictureBox8.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            iconPictureBox8.IconColor = Color.Black;
-            iconPictureBox8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox8.IconSize = 25;
-            iconPictureBox8.Location = new Point(65, 5);
-            iconPictureBox8.Name = "iconPictureBox8";
-            iconPictureBox8.Size = new Size(25, 25);
-            iconPictureBox8.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox8.TabIndex = 1;
-            iconPictureBox8.TabStop = false;
+            link16.BackColor = Color.Transparent;
+            link16.Cursor = Cursors.Hand;
+            link16.ForeColor = Color.Black;
+            link16.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link16.IconColor = Color.Black;
+            link16.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link16.IconSize = 25;
+            link16.Location = new Point(65, 5);
+            link16.Name = "link16";
+            link16.Size = new Size(25, 25);
+            link16.SizeMode = PictureBoxSizeMode.AutoSize;
+            link16.TabIndex = 1;
+            link16.TabStop = false;
             // 
             // pnlCard7
             // 
             pnlCard7.Controls.Add(label9);
-            pnlCard7.Controls.Add(cuiBorder7);
+            pnlCard7.Controls.Add(pnlImageBorder7);
             pnlCard7.Controls.Add(panel6);
             pnlCard7.Controls.Add(label10);
             pnlCard7.Controls.Add(pnlSocialMedia7);
@@ -312,17 +312,17 @@
             label9.TabIndex = 5;
             label9.Text = "Role Here";
             // 
-            // cuiBorder7
+            // pnlImageBorder7
             // 
-            cuiBorder7.Controls.Add(pictureBox5);
-            cuiBorder7.Location = new Point(55, 34);
-            cuiBorder7.Name = "cuiBorder7";
-            cuiBorder7.OutlineThickness = 1F;
-            cuiBorder7.PanelColor = Color.Transparent;
-            cuiBorder7.PanelOutlineColor = Color.Black;
-            cuiBorder7.Rounding = new Padding(57);
-            cuiBorder7.Size = new Size(115, 115);
-            cuiBorder7.TabIndex = 1;
+            pnlImageBorder7.Controls.Add(pictureBox5);
+            pnlImageBorder7.Location = new Point(55, 34);
+            pnlImageBorder7.Name = "pnlImageBorder7";
+            pnlImageBorder7.OutlineThickness = 1F;
+            pnlImageBorder7.PanelColor = Color.Transparent;
+            pnlImageBorder7.PanelOutlineColor = Color.Black;
+            pnlImageBorder7.Rounding = new Padding(57);
+            pnlImageBorder7.Size = new Size(115, 115);
+            pnlImageBorder7.TabIndex = 1;
             // 
             // pictureBox5
             // 
@@ -355,8 +355,8 @@
             // 
             // pnlSocialMedia7
             // 
-            pnlSocialMedia7.Controls.Add(iconPictureBox9);
-            pnlSocialMedia7.Controls.Add(iconPictureBox10);
+            pnlSocialMedia7.Controls.Add(link13);
+            pnlSocialMedia7.Controls.Add(link14);
             pnlSocialMedia7.Location = new Point(12, 275);
             pnlSocialMedia7.Name = "pnlSocialMedia7";
             pnlSocialMedia7.OutlineThickness = 1F;
@@ -366,42 +366,42 @@
             pnlSocialMedia7.Size = new Size(200, 35);
             pnlSocialMedia7.TabIndex = 1;
             // 
-            // iconPictureBox9
+            // link13
             // 
-            iconPictureBox9.BackColor = Color.Transparent;
-            iconPictureBox9.Cursor = Cursors.Hand;
-            iconPictureBox9.ForeColor = Color.Black;
-            iconPictureBox9.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            iconPictureBox9.IconColor = Color.Black;
-            iconPictureBox9.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox9.IconSize = 25;
-            iconPictureBox9.Location = new Point(111, 5);
-            iconPictureBox9.Name = "iconPictureBox9";
-            iconPictureBox9.Size = new Size(25, 25);
-            iconPictureBox9.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox9.TabIndex = 2;
-            iconPictureBox9.TabStop = false;
+            link13.BackColor = Color.Transparent;
+            link13.Cursor = Cursors.Hand;
+            link13.ForeColor = Color.Black;
+            link13.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link13.IconColor = Color.Black;
+            link13.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link13.IconSize = 25;
+            link13.Location = new Point(111, 5);
+            link13.Name = "link13";
+            link13.Size = new Size(25, 25);
+            link13.SizeMode = PictureBoxSizeMode.AutoSize;
+            link13.TabIndex = 2;
+            link13.TabStop = false;
             // 
-            // iconPictureBox10
+            // link14
             // 
-            iconPictureBox10.BackColor = Color.Transparent;
-            iconPictureBox10.Cursor = Cursors.Hand;
-            iconPictureBox10.ForeColor = Color.Black;
-            iconPictureBox10.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            iconPictureBox10.IconColor = Color.Black;
-            iconPictureBox10.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox10.IconSize = 25;
-            iconPictureBox10.Location = new Point(65, 5);
-            iconPictureBox10.Name = "iconPictureBox10";
-            iconPictureBox10.Size = new Size(25, 25);
-            iconPictureBox10.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox10.TabIndex = 1;
-            iconPictureBox10.TabStop = false;
+            link14.BackColor = Color.Transparent;
+            link14.Cursor = Cursors.Hand;
+            link14.ForeColor = Color.Black;
+            link14.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link14.IconColor = Color.Black;
+            link14.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link14.IconSize = 25;
+            link14.Location = new Point(65, 5);
+            link14.Name = "link14";
+            link14.Size = new Size(25, 25);
+            link14.SizeMode = PictureBoxSizeMode.AutoSize;
+            link14.TabIndex = 1;
+            link14.TabStop = false;
             // 
             // pnlCard4
             // 
             pnlCard4.Controls.Add(label5);
-            pnlCard4.Controls.Add(cuiBorder3);
+            pnlCard4.Controls.Add(pnlImageBorder4);
             pnlCard4.Controls.Add(panel4);
             pnlCard4.Controls.Add(label6);
             pnlCard4.Controls.Add(pnlSocialMedia4);
@@ -425,17 +425,17 @@
             label5.TabIndex = 5;
             label5.Text = "Role Here";
             // 
-            // cuiBorder3
+            // pnlImageBorder4
             // 
-            cuiBorder3.Controls.Add(pictureBox3);
-            cuiBorder3.Location = new Point(55, 34);
-            cuiBorder3.Name = "cuiBorder3";
-            cuiBorder3.OutlineThickness = 1F;
-            cuiBorder3.PanelColor = Color.Transparent;
-            cuiBorder3.PanelOutlineColor = Color.Black;
-            cuiBorder3.Rounding = new Padding(57);
-            cuiBorder3.Size = new Size(115, 115);
-            cuiBorder3.TabIndex = 1;
+            pnlImageBorder4.Controls.Add(pictureBox3);
+            pnlImageBorder4.Location = new Point(55, 34);
+            pnlImageBorder4.Name = "pnlImageBorder4";
+            pnlImageBorder4.OutlineThickness = 1F;
+            pnlImageBorder4.PanelColor = Color.Transparent;
+            pnlImageBorder4.PanelOutlineColor = Color.Black;
+            pnlImageBorder4.Rounding = new Padding(57);
+            pnlImageBorder4.Size = new Size(115, 115);
+            pnlImageBorder4.TabIndex = 1;
             // 
             // pictureBox3
             // 
@@ -468,8 +468,8 @@
             // 
             // pnlSocialMedia4
             // 
-            pnlSocialMedia4.Controls.Add(iconPictureBox5);
-            pnlSocialMedia4.Controls.Add(iconPictureBox6);
+            pnlSocialMedia4.Controls.Add(link7);
+            pnlSocialMedia4.Controls.Add(link8);
             pnlSocialMedia4.Location = new Point(12, 275);
             pnlSocialMedia4.Name = "pnlSocialMedia4";
             pnlSocialMedia4.OutlineThickness = 1F;
@@ -479,42 +479,42 @@
             pnlSocialMedia4.Size = new Size(200, 35);
             pnlSocialMedia4.TabIndex = 1;
             // 
-            // iconPictureBox5
+            // link7
             // 
-            iconPictureBox5.BackColor = Color.Transparent;
-            iconPictureBox5.Cursor = Cursors.Hand;
-            iconPictureBox5.ForeColor = Color.Black;
-            iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            iconPictureBox5.IconColor = Color.Black;
-            iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox5.IconSize = 25;
-            iconPictureBox5.Location = new Point(111, 5);
-            iconPictureBox5.Name = "iconPictureBox5";
-            iconPictureBox5.Size = new Size(25, 25);
-            iconPictureBox5.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox5.TabIndex = 2;
-            iconPictureBox5.TabStop = false;
+            link7.BackColor = Color.Transparent;
+            link7.Cursor = Cursors.Hand;
+            link7.ForeColor = Color.Black;
+            link7.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link7.IconColor = Color.Black;
+            link7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link7.IconSize = 25;
+            link7.Location = new Point(111, 5);
+            link7.Name = "link7";
+            link7.Size = new Size(25, 25);
+            link7.SizeMode = PictureBoxSizeMode.AutoSize;
+            link7.TabIndex = 2;
+            link7.TabStop = false;
             // 
-            // iconPictureBox6
+            // link8
             // 
-            iconPictureBox6.BackColor = Color.Transparent;
-            iconPictureBox6.Cursor = Cursors.Hand;
-            iconPictureBox6.ForeColor = Color.Black;
-            iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            iconPictureBox6.IconColor = Color.Black;
-            iconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox6.IconSize = 25;
-            iconPictureBox6.Location = new Point(65, 5);
-            iconPictureBox6.Name = "iconPictureBox6";
-            iconPictureBox6.Size = new Size(25, 25);
-            iconPictureBox6.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox6.TabIndex = 1;
-            iconPictureBox6.TabStop = false;
+            link8.BackColor = Color.Transparent;
+            link8.Cursor = Cursors.Hand;
+            link8.ForeColor = Color.Black;
+            link8.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link8.IconColor = Color.Black;
+            link8.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link8.IconSize = 25;
+            link8.Location = new Point(65, 5);
+            link8.Name = "link8";
+            link8.Size = new Size(25, 25);
+            link8.SizeMode = PictureBoxSizeMode.AutoSize;
+            link8.TabIndex = 1;
+            link8.TabStop = false;
             // 
             // pnlCard3
             // 
             pnlCard3.Controls.Add(label1);
-            pnlCard3.Controls.Add(cuiBorder2);
+            pnlCard3.Controls.Add(pnlImageBorder3);
             pnlCard3.Controls.Add(panel3);
             pnlCard3.Controls.Add(label2);
             pnlCard3.Controls.Add(pnlSocialMedia3);
@@ -538,17 +538,17 @@
             label1.TabIndex = 5;
             label1.Text = "Role Here";
             // 
-            // cuiBorder2
+            // pnlImageBorder3
             // 
-            cuiBorder2.Controls.Add(pictureBox1);
-            cuiBorder2.Location = new Point(55, 34);
-            cuiBorder2.Name = "cuiBorder2";
-            cuiBorder2.OutlineThickness = 1F;
-            cuiBorder2.PanelColor = Color.Transparent;
-            cuiBorder2.PanelOutlineColor = Color.Black;
-            cuiBorder2.Rounding = new Padding(57);
-            cuiBorder2.Size = new Size(115, 115);
-            cuiBorder2.TabIndex = 1;
+            pnlImageBorder3.Controls.Add(pictureBox1);
+            pnlImageBorder3.Location = new Point(55, 34);
+            pnlImageBorder3.Name = "pnlImageBorder3";
+            pnlImageBorder3.OutlineThickness = 1F;
+            pnlImageBorder3.PanelColor = Color.Transparent;
+            pnlImageBorder3.PanelOutlineColor = Color.Black;
+            pnlImageBorder3.Rounding = new Padding(57);
+            pnlImageBorder3.Size = new Size(115, 115);
+            pnlImageBorder3.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -581,8 +581,8 @@
             // 
             // pnlSocialMedia3
             // 
-            pnlSocialMedia3.Controls.Add(iconPictureBox3);
-            pnlSocialMedia3.Controls.Add(iconPictureBox4);
+            pnlSocialMedia3.Controls.Add(link5);
+            pnlSocialMedia3.Controls.Add(link6);
             pnlSocialMedia3.Location = new Point(12, 275);
             pnlSocialMedia3.Name = "pnlSocialMedia3";
             pnlSocialMedia3.OutlineThickness = 1F;
@@ -592,42 +592,42 @@
             pnlSocialMedia3.Size = new Size(200, 35);
             pnlSocialMedia3.TabIndex = 1;
             // 
-            // iconPictureBox3
+            // link5
             // 
-            iconPictureBox3.BackColor = Color.Transparent;
-            iconPictureBox3.Cursor = Cursors.Hand;
-            iconPictureBox3.ForeColor = Color.Black;
-            iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            iconPictureBox3.IconColor = Color.Black;
-            iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox3.IconSize = 25;
-            iconPictureBox3.Location = new Point(111, 5);
-            iconPictureBox3.Name = "iconPictureBox3";
-            iconPictureBox3.Size = new Size(25, 25);
-            iconPictureBox3.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox3.TabIndex = 2;
-            iconPictureBox3.TabStop = false;
+            link5.BackColor = Color.Transparent;
+            link5.Cursor = Cursors.Hand;
+            link5.ForeColor = Color.Black;
+            link5.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link5.IconColor = Color.Black;
+            link5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link5.IconSize = 25;
+            link5.Location = new Point(111, 5);
+            link5.Name = "link5";
+            link5.Size = new Size(25, 25);
+            link5.SizeMode = PictureBoxSizeMode.AutoSize;
+            link5.TabIndex = 2;
+            link5.TabStop = false;
             // 
-            // iconPictureBox4
+            // link6
             // 
-            iconPictureBox4.BackColor = Color.Transparent;
-            iconPictureBox4.Cursor = Cursors.Hand;
-            iconPictureBox4.ForeColor = Color.Black;
-            iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            iconPictureBox4.IconColor = Color.Black;
-            iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox4.IconSize = 25;
-            iconPictureBox4.Location = new Point(65, 5);
-            iconPictureBox4.Name = "iconPictureBox4";
-            iconPictureBox4.Size = new Size(25, 25);
-            iconPictureBox4.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox4.TabIndex = 1;
-            iconPictureBox4.TabStop = false;
+            link6.BackColor = Color.Transparent;
+            link6.Cursor = Cursors.Hand;
+            link6.ForeColor = Color.Black;
+            link6.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link6.IconColor = Color.Black;
+            link6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link6.IconSize = 25;
+            link6.Location = new Point(65, 5);
+            link6.Name = "link6";
+            link6.Size = new Size(25, 25);
+            link6.SizeMode = PictureBoxSizeMode.AutoSize;
+            link6.TabIndex = 1;
+            link6.TabStop = false;
             // 
             // pnlCard6
             // 
             pnlCard6.Controls.Add(label11);
-            pnlCard6.Controls.Add(cuiBorder10);
+            pnlCard6.Controls.Add(pnlImageBorder6);
             pnlCard6.Controls.Add(panel7);
             pnlCard6.Controls.Add(label12);
             pnlCard6.Controls.Add(pnlSocialMedia6);
@@ -651,17 +651,17 @@
             label11.TabIndex = 5;
             label11.Text = "Role Here";
             // 
-            // cuiBorder10
+            // pnlImageBorder6
             // 
-            cuiBorder10.Controls.Add(pictureBox6);
-            cuiBorder10.Location = new Point(55, 34);
-            cuiBorder10.Name = "cuiBorder10";
-            cuiBorder10.OutlineThickness = 1F;
-            cuiBorder10.PanelColor = Color.Transparent;
-            cuiBorder10.PanelOutlineColor = Color.Black;
-            cuiBorder10.Rounding = new Padding(57);
-            cuiBorder10.Size = new Size(115, 115);
-            cuiBorder10.TabIndex = 1;
+            pnlImageBorder6.Controls.Add(pictureBox6);
+            pnlImageBorder6.Location = new Point(55, 34);
+            pnlImageBorder6.Name = "pnlImageBorder6";
+            pnlImageBorder6.OutlineThickness = 1F;
+            pnlImageBorder6.PanelColor = Color.Transparent;
+            pnlImageBorder6.PanelOutlineColor = Color.Black;
+            pnlImageBorder6.Rounding = new Padding(57);
+            pnlImageBorder6.Size = new Size(115, 115);
+            pnlImageBorder6.TabIndex = 1;
             // 
             // pictureBox6
             // 
@@ -694,8 +694,8 @@
             // 
             // pnlSocialMedia6
             // 
-            pnlSocialMedia6.Controls.Add(iconPictureBox11);
-            pnlSocialMedia6.Controls.Add(iconPictureBox12);
+            pnlSocialMedia6.Controls.Add(link11);
+            pnlSocialMedia6.Controls.Add(link12);
             pnlSocialMedia6.Location = new Point(12, 275);
             pnlSocialMedia6.Name = "pnlSocialMedia6";
             pnlSocialMedia6.OutlineThickness = 1F;
@@ -705,37 +705,37 @@
             pnlSocialMedia6.Size = new Size(200, 35);
             pnlSocialMedia6.TabIndex = 1;
             // 
-            // iconPictureBox11
+            // link11
             // 
-            iconPictureBox11.BackColor = Color.Transparent;
-            iconPictureBox11.Cursor = Cursors.Hand;
-            iconPictureBox11.ForeColor = Color.Black;
-            iconPictureBox11.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            iconPictureBox11.IconColor = Color.Black;
-            iconPictureBox11.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox11.IconSize = 25;
-            iconPictureBox11.Location = new Point(111, 5);
-            iconPictureBox11.Name = "iconPictureBox11";
-            iconPictureBox11.Size = new Size(25, 25);
-            iconPictureBox11.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox11.TabIndex = 2;
-            iconPictureBox11.TabStop = false;
+            link11.BackColor = Color.Transparent;
+            link11.Cursor = Cursors.Hand;
+            link11.ForeColor = Color.Black;
+            link11.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link11.IconColor = Color.Black;
+            link11.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link11.IconSize = 25;
+            link11.Location = new Point(111, 5);
+            link11.Name = "link11";
+            link11.Size = new Size(25, 25);
+            link11.SizeMode = PictureBoxSizeMode.AutoSize;
+            link11.TabIndex = 2;
+            link11.TabStop = false;
             // 
-            // iconPictureBox12
+            // link12
             // 
-            iconPictureBox12.BackColor = Color.Transparent;
-            iconPictureBox12.Cursor = Cursors.Hand;
-            iconPictureBox12.ForeColor = Color.Black;
-            iconPictureBox12.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            iconPictureBox12.IconColor = Color.Black;
-            iconPictureBox12.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox12.IconSize = 25;
-            iconPictureBox12.Location = new Point(65, 5);
-            iconPictureBox12.Name = "iconPictureBox12";
-            iconPictureBox12.Size = new Size(25, 25);
-            iconPictureBox12.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox12.TabIndex = 1;
-            iconPictureBox12.TabStop = false;
+            link12.BackColor = Color.Transparent;
+            link12.Cursor = Cursors.Hand;
+            link12.ForeColor = Color.Black;
+            link12.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link12.IconColor = Color.Black;
+            link12.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link12.IconSize = 25;
+            link12.Location = new Point(65, 5);
+            link12.Name = "link12";
+            link12.Size = new Size(25, 25);
+            link12.SizeMode = PictureBoxSizeMode.AutoSize;
+            link12.TabIndex = 1;
+            link12.TabStop = false;
             // 
             // pnlCard2
             // 
@@ -807,8 +807,8 @@
             // 
             // pnlSocialMedia2
             // 
-            pnlSocialMedia2.Controls.Add(iconPictureBox1);
-            pnlSocialMedia2.Controls.Add(iconPictureBox2);
+            pnlSocialMedia2.Controls.Add(link2);
+            pnlSocialMedia2.Controls.Add(link4);
             pnlSocialMedia2.Location = new Point(12, 275);
             pnlSocialMedia2.Name = "pnlSocialMedia2";
             pnlSocialMedia2.OutlineThickness = 1F;
@@ -818,37 +818,37 @@
             pnlSocialMedia2.Size = new Size(200, 35);
             pnlSocialMedia2.TabIndex = 1;
             // 
-            // iconPictureBox1
+            // link2
             // 
-            iconPictureBox1.BackColor = Color.Transparent;
-            iconPictureBox1.Cursor = Cursors.Hand;
-            iconPictureBox1.ForeColor = Color.Black;
-            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            iconPictureBox1.IconColor = Color.Black;
-            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox1.IconSize = 25;
-            iconPictureBox1.Location = new Point(111, 5);
-            iconPictureBox1.Name = "iconPictureBox1";
-            iconPictureBox1.Size = new Size(25, 25);
-            iconPictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox1.TabIndex = 2;
-            iconPictureBox1.TabStop = false;
+            link2.BackColor = Color.Transparent;
+            link2.Cursor = Cursors.Hand;
+            link2.ForeColor = Color.Black;
+            link2.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link2.IconColor = Color.Black;
+            link2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link2.IconSize = 25;
+            link2.Location = new Point(111, 5);
+            link2.Name = "link2";
+            link2.Size = new Size(25, 25);
+            link2.SizeMode = PictureBoxSizeMode.AutoSize;
+            link2.TabIndex = 2;
+            link2.TabStop = false;
             // 
-            // iconPictureBox2
+            // link4
             // 
-            iconPictureBox2.BackColor = Color.Transparent;
-            iconPictureBox2.Cursor = Cursors.Hand;
-            iconPictureBox2.ForeColor = Color.Black;
-            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            iconPictureBox2.IconColor = Color.Black;
-            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox2.IconSize = 25;
-            iconPictureBox2.Location = new Point(65, 5);
-            iconPictureBox2.Name = "iconPictureBox2";
-            iconPictureBox2.Size = new Size(25, 25);
-            iconPictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox2.TabIndex = 1;
-            iconPictureBox2.TabStop = false;
+            link4.BackColor = Color.Transparent;
+            link4.Cursor = Cursors.Hand;
+            link4.ForeColor = Color.Black;
+            link4.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link4.IconColor = Color.Black;
+            link4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link4.IconSize = 25;
+            link4.Location = new Point(65, 5);
+            link4.Name = "link4";
+            link4.Size = new Size(25, 25);
+            link4.SizeMode = PictureBoxSizeMode.AutoSize;
+            link4.TabIndex = 1;
+            link4.TabStop = false;
             // 
             // pnlCard1
             // 
@@ -920,8 +920,8 @@
             // 
             // pnlSocialMedia1
             // 
-            pnlSocialMedia1.Controls.Add(picWebsite);
-            pnlSocialMedia1.Controls.Add(picLinkedIn);
+            pnlSocialMedia1.Controls.Add(link0);
+            pnlSocialMedia1.Controls.Add(link1);
             pnlSocialMedia1.Location = new Point(12, 275);
             pnlSocialMedia1.Name = "pnlSocialMedia1";
             pnlSocialMedia1.OutlineThickness = 1F;
@@ -931,42 +931,42 @@
             pnlSocialMedia1.Size = new Size(200, 35);
             pnlSocialMedia1.TabIndex = 1;
             // 
-            // picWebsite
+            // link0
             // 
-            picWebsite.BackColor = Color.Transparent;
-            picWebsite.Cursor = Cursors.Hand;
-            picWebsite.ForeColor = Color.Black;
-            picWebsite.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            picWebsite.IconColor = Color.Black;
-            picWebsite.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            picWebsite.IconSize = 25;
-            picWebsite.Location = new Point(111, 5);
-            picWebsite.Name = "picWebsite";
-            picWebsite.Size = new Size(25, 25);
-            picWebsite.SizeMode = PictureBoxSizeMode.AutoSize;
-            picWebsite.TabIndex = 2;
-            picWebsite.TabStop = false;
+            link0.BackColor = Color.Transparent;
+            link0.Cursor = Cursors.Hand;
+            link0.ForeColor = Color.Black;
+            link0.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link0.IconColor = Color.Black;
+            link0.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link0.IconSize = 25;
+            link0.Location = new Point(111, 5);
+            link0.Name = "link0";
+            link0.Size = new Size(25, 25);
+            link0.SizeMode = PictureBoxSizeMode.AutoSize;
+            link0.TabIndex = 2;
+            link0.TabStop = false;
             // 
-            // picLinkedIn
+            // link1
             // 
-            picLinkedIn.BackColor = Color.Transparent;
-            picLinkedIn.Cursor = Cursors.Hand;
-            picLinkedIn.ForeColor = Color.Black;
-            picLinkedIn.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            picLinkedIn.IconColor = Color.Black;
-            picLinkedIn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            picLinkedIn.IconSize = 25;
-            picLinkedIn.Location = new Point(65, 5);
-            picLinkedIn.Name = "picLinkedIn";
-            picLinkedIn.Size = new Size(25, 25);
-            picLinkedIn.SizeMode = PictureBoxSizeMode.AutoSize;
-            picLinkedIn.TabIndex = 1;
-            picLinkedIn.TabStop = false;
+            link1.BackColor = Color.Transparent;
+            link1.Cursor = Cursors.Hand;
+            link1.ForeColor = Color.Black;
+            link1.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link1.IconColor = Color.Black;
+            link1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link1.IconSize = 25;
+            link1.Location = new Point(65, 5);
+            link1.Name = "link1";
+            link1.Size = new Size(25, 25);
+            link1.SizeMode = PictureBoxSizeMode.AutoSize;
+            link1.TabIndex = 1;
+            link1.TabStop = false;
             // 
             // pnlCard5
             // 
             pnlCard5.Controls.Add(label13);
-            pnlCard5.Controls.Add(cuiBorder13);
+            pnlCard5.Controls.Add(pnlImageBorder5);
             pnlCard5.Controls.Add(panel8);
             pnlCard5.Controls.Add(label14);
             pnlCard5.Controls.Add(pnlSocialMedia5);
@@ -990,17 +990,17 @@
             label13.TabIndex = 5;
             label13.Text = "Role Here";
             // 
-            // cuiBorder13
+            // pnlImageBorder5
             // 
-            cuiBorder13.Controls.Add(pictureBox7);
-            cuiBorder13.Location = new Point(55, 34);
-            cuiBorder13.Name = "cuiBorder13";
-            cuiBorder13.OutlineThickness = 1F;
-            cuiBorder13.PanelColor = Color.Transparent;
-            cuiBorder13.PanelOutlineColor = Color.Black;
-            cuiBorder13.Rounding = new Padding(57);
-            cuiBorder13.Size = new Size(115, 115);
-            cuiBorder13.TabIndex = 1;
+            pnlImageBorder5.Controls.Add(pictureBox7);
+            pnlImageBorder5.Location = new Point(55, 34);
+            pnlImageBorder5.Name = "pnlImageBorder5";
+            pnlImageBorder5.OutlineThickness = 1F;
+            pnlImageBorder5.PanelColor = Color.Transparent;
+            pnlImageBorder5.PanelOutlineColor = Color.Black;
+            pnlImageBorder5.Rounding = new Padding(57);
+            pnlImageBorder5.Size = new Size(115, 115);
+            pnlImageBorder5.TabIndex = 1;
             // 
             // pictureBox7
             // 
@@ -1033,8 +1033,8 @@
             // 
             // pnlSocialMedia5
             // 
-            pnlSocialMedia5.Controls.Add(iconPictureBox13);
-            pnlSocialMedia5.Controls.Add(iconPictureBox14);
+            pnlSocialMedia5.Controls.Add(link10);
+            pnlSocialMedia5.Controls.Add(link9);
             pnlSocialMedia5.Location = new Point(12, 275);
             pnlSocialMedia5.Name = "pnlSocialMedia5";
             pnlSocialMedia5.OutlineThickness = 1F;
@@ -1044,165 +1044,165 @@
             pnlSocialMedia5.Size = new Size(200, 35);
             pnlSocialMedia5.TabIndex = 1;
             // 
-            // iconPictureBox13
+            // link10
             // 
-            iconPictureBox13.BackColor = Color.Transparent;
-            iconPictureBox13.Cursor = Cursors.Hand;
-            iconPictureBox13.ForeColor = Color.Black;
-            iconPictureBox13.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            iconPictureBox13.IconColor = Color.Black;
-            iconPictureBox13.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox13.IconSize = 25;
-            iconPictureBox13.Location = new Point(111, 5);
-            iconPictureBox13.Name = "iconPictureBox13";
-            iconPictureBox13.Size = new Size(25, 25);
-            iconPictureBox13.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox13.TabIndex = 2;
-            iconPictureBox13.TabStop = false;
+            link10.BackColor = Color.Transparent;
+            link10.Cursor = Cursors.Hand;
+            link10.ForeColor = Color.Black;
+            link10.IconChar = FontAwesome.Sharp.IconChar.Globe;
+            link10.IconColor = Color.Black;
+            link10.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link10.IconSize = 25;
+            link10.Location = new Point(111, 5);
+            link10.Name = "link10";
+            link10.Size = new Size(25, 25);
+            link10.SizeMode = PictureBoxSizeMode.AutoSize;
+            link10.TabIndex = 2;
+            link10.TabStop = false;
             // 
-            // iconPictureBox14
+            // link9
             // 
-            iconPictureBox14.BackColor = Color.Transparent;
-            iconPictureBox14.Cursor = Cursors.Hand;
-            iconPictureBox14.ForeColor = Color.Black;
-            iconPictureBox14.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
-            iconPictureBox14.IconColor = Color.Black;
-            iconPictureBox14.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox14.IconSize = 25;
-            iconPictureBox14.Location = new Point(65, 5);
-            iconPictureBox14.Name = "iconPictureBox14";
-            iconPictureBox14.Size = new Size(25, 25);
-            iconPictureBox14.SizeMode = PictureBoxSizeMode.AutoSize;
-            iconPictureBox14.TabIndex = 1;
-            iconPictureBox14.TabStop = false;
+            link9.BackColor = Color.Transparent;
+            link9.Cursor = Cursors.Hand;
+            link9.ForeColor = Color.Black;
+            link9.IconChar = FontAwesome.Sharp.IconChar.Linkedin;
+            link9.IconColor = Color.Black;
+            link9.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            link9.IconSize = 25;
+            link9.Location = new Point(65, 5);
+            link9.Name = "link9";
+            link9.Size = new Size(25, 25);
+            link9.SizeMode = PictureBoxSizeMode.AutoSize;
+            link9.TabIndex = 1;
+            link9.TabStop = false;
             // 
             // ucTeam
             // 
             AutoScaleDimensions = new SizeF(6F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            Controls.Add(cuiBorder1);
+            Controls.Add(container);
             Font = new Font("Cairo", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 5, 3, 5);
             Name = "ucTeam";
             Size = new Size(1084, 580);
             Load += ucTeam_Load;
-            cuiBorder1.ResumeLayout(false);
+            container.ResumeLayout(false);
             pnlCard8.ResumeLayout(false);
             pnlCard8.PerformLayout();
-            cuiBorder4.ResumeLayout(false);
+            pnlImageBorder8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             pnlSocialMedia8.ResumeLayout(false);
             pnlSocialMedia8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link15).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link16).EndInit();
             pnlCard7.ResumeLayout(false);
             pnlCard7.PerformLayout();
-            cuiBorder7.ResumeLayout(false);
+            pnlImageBorder7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             pnlSocialMedia7.ResumeLayout(false);
             pnlSocialMedia7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox9).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link13).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link14).EndInit();
             pnlCard4.ResumeLayout(false);
             pnlCard4.PerformLayout();
-            cuiBorder3.ResumeLayout(false);
+            pnlImageBorder4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             pnlSocialMedia4.ResumeLayout(false);
             pnlSocialMedia4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link8).EndInit();
             pnlCard3.ResumeLayout(false);
             pnlCard3.PerformLayout();
-            cuiBorder2.ResumeLayout(false);
+            pnlImageBorder3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlSocialMedia3.ResumeLayout(false);
             pnlSocialMedia3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link6).EndInit();
             pnlCard6.ResumeLayout(false);
             pnlCard6.PerformLayout();
-            cuiBorder10.ResumeLayout(false);
+            pnlImageBorder6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             pnlSocialMedia6.ResumeLayout(false);
             pnlSocialMedia6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox11).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox12).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link11).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link12).EndInit();
             pnlCard2.ResumeLayout(false);
             pnlCard2.PerformLayout();
             pnlImageBorder2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             pnlSocialMedia2.ResumeLayout(false);
             pnlSocialMedia2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link4).EndInit();
             pnlCard1.ResumeLayout(false);
             pnlCard1.PerformLayout();
             pnlImageBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picImage1).EndInit();
             pnlSocialMedia1.ResumeLayout(false);
             pnlSocialMedia1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picWebsite).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picLinkedIn).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link0).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link1).EndInit();
             pnlCard5.ResumeLayout(false);
             pnlCard5.PerformLayout();
-            cuiBorder13.ResumeLayout(false);
+            pnlImageBorder5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             pnlSocialMedia5.ResumeLayout(false);
             pnlSocialMedia5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox13).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)link9).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private CuoreUI.Controls.cuiBorder cuiBorder1;
+        private CuoreUI.Controls.cuiBorder container;
         private CuoreUI.Controls.cuiBorder pnlCard8;
         private Label label7;
-        private CuoreUI.Controls.cuiBorder cuiBorder4;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder8;
         private PictureBox pictureBox4;
         private Panel panel5;
         private Label label8;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia8;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox7;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox8;
+        private FontAwesome.Sharp.IconPictureBox link15;
+        private FontAwesome.Sharp.IconPictureBox link16;
         private CuoreUI.Controls.cuiBorder pnlCard7;
         private Label label9;
-        private CuoreUI.Controls.cuiBorder cuiBorder7;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder7;
         private PictureBox pictureBox5;
         private Panel panel6;
         private Label label10;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia7;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox9;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox10;
+        private FontAwesome.Sharp.IconPictureBox link13;
+        private FontAwesome.Sharp.IconPictureBox link14;
         private CuoreUI.Controls.cuiBorder pnlCard4;
         private Label label5;
-        private CuoreUI.Controls.cuiBorder cuiBorder3;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder4;
         private PictureBox pictureBox3;
         private Panel panel4;
         private Label label6;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia4;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
+        private FontAwesome.Sharp.IconPictureBox link7;
+        private FontAwesome.Sharp.IconPictureBox link8;
         private CuoreUI.Controls.cuiBorder pnlCard3;
         private Label label1;
-        private CuoreUI.Controls.cuiBorder cuiBorder2;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder3;
         private PictureBox pictureBox1;
         private Panel panel3;
         private Label label2;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
+        private FontAwesome.Sharp.IconPictureBox link5;
+        private FontAwesome.Sharp.IconPictureBox link6;
         private CuoreUI.Controls.cuiBorder pnlCard6;
         private Label label11;
-        private CuoreUI.Controls.cuiBorder cuiBorder10;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder6;
         private PictureBox pictureBox6;
         private Panel panel7;
         private Label label12;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia6;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox11;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox12;
+        private FontAwesome.Sharp.IconPictureBox link11;
+        private FontAwesome.Sharp.IconPictureBox link12;
         private CuoreUI.Controls.cuiBorder pnlCard2;
         private Label label3;
         private CuoreUI.Controls.cuiBorder pnlImageBorder2;
@@ -1210,8 +1210,8 @@
         private Panel panel2;
         private Label label4;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia2;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private FontAwesome.Sharp.IconPictureBox link2;
+        private FontAwesome.Sharp.IconPictureBox link4;
         private CuoreUI.Controls.cuiBorder pnlCard1;
         private Label lblRole1;
         private CuoreUI.Controls.cuiBorder pnlImageBorder1;
@@ -1219,16 +1219,16 @@
         private Panel panel1;
         private Label lblName1;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia1;
-        private FontAwesome.Sharp.IconPictureBox picWebsite;
-        private FontAwesome.Sharp.IconPictureBox picLinkedIn;
+        private FontAwesome.Sharp.IconPictureBox link0;
+        private FontAwesome.Sharp.IconPictureBox link1;
         private CuoreUI.Controls.cuiBorder pnlCard5;
         private Label label13;
-        private CuoreUI.Controls.cuiBorder cuiBorder13;
+        private CuoreUI.Controls.cuiBorder pnlImageBorder5;
         private PictureBox pictureBox7;
         private Panel panel8;
         private Label label14;
         private CuoreUI.Controls.cuiBorder pnlSocialMedia5;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox13;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox14;
+        private FontAwesome.Sharp.IconPictureBox link10;
+        private FontAwesome.Sharp.IconPictureBox link9;
     }
 }

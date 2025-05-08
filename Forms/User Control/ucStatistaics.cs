@@ -57,9 +57,9 @@ namespace FlourSystem.Forms.User_Control
             todayCards = DataBase.Cards(currentDay, currentMonth, currentYear);
             totalCards = DataBase.Cards(currentMonth, currentYear);
 
-            DataBase.balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
-            todaySales = DataBase.Store(currentDay, currentMonth, currentYear);
-            totalSales = DataBase.Store(currentMonth, currentYear);
+            DataBase.balance = DataBase.Balance(currentMonth, currentYear);
+            todaySales = DataBase.GetStore(currentDay, currentMonth, currentYear);
+            totalSales = DataBase.GetStore(currentMonth, currentYear);
 
 
             StartAllAnimations();
@@ -76,8 +76,8 @@ namespace FlourSystem.Forms.User_Control
 
             HoverEffect.Hover(
                 cards,
+                getDefaultValue: ctrl => ThemeManager.IsDarkMode ? ThemeColors.DarkBorderPanel : ThemeColors.LightBorderPanel,
                 getHoverValue: ctrl => ThemeColors.Green,
-                getDefaultValue: ctrl => Color.Transparent,
                 setValue: (ctrl, value) =>
                 {
                     if (ctrl is cuiBorder panel)

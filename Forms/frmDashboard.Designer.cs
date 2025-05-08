@@ -703,8 +703,6 @@
         private FontAwesome.Sharp.IconButton btnAdd;
         private CuoreUI.Controls.cuiTextBox2 txtSearch;
         private FontAwesome.Sharp.IconButton btnSearch;
-        private System.Windows.Forms.Timer searchTimer;
-        private Panel pnlSearch;
         private Label lblTitle;
         private FontAwesome.Sharp.IconButton btnMode;
         private CuoreUI.Controls.Shapes.cuiEllipse circle;
@@ -718,10 +716,8 @@
         private Label lblSettings;
         private System.Windows.Forms.Timer menuTranstion;
         private System.Windows.Forms.Timer typingTimer;
-        private CuoreUI.Controls.cuiBorder pnlAddDropDown;
         private CuoreUI.Controls.cuiButton btnAddCustomer;
         private CuoreUI.Controls.cuiButton btnAddQuota;
-        private System.Windows.Forms.Timer addDropDownTimer;
         private CuoreUI.Controls.cuiButton btnAddOwner;
         private System.Windows.Forms.Timer btnAddCustomerTimer;
         public FontAwesome.Sharp.IconButton btnRefresh;
@@ -731,5 +727,9 @@
         private Label label1;
         public FontAwesome.Sharp.IconButton btnUpdateCheck;
         public CuoreUI.Controls.cuiBorder pnlContainer;
+        public Panel pnlSearch;
+        public System.Windows.Forms.Timer searchTimer;
+        public CuoreUI.Controls.cuiBorder pnlAddDropDown;
+        public System.Windows.Forms.Timer addDropDownTimer;
     }
 }

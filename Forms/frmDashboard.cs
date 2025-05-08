@@ -112,7 +112,7 @@ namespace FlourSystem.Forms
         }
 
         #region Search Button
-        bool srchExpanded = false;
+        public bool srchExpanded = false;
         private void btnSearch_Click(object sender, EventArgs e)
         {
             searchTimer.Start();
@@ -176,8 +176,16 @@ namespace FlourSystem.Forms
                 searchTimer.Start();
             if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
                 addDropDownTimer.Start();
-            if(!_ucHomeInstance.pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && _ucHomeInstance.isAddtionalDropDownExpanded)
+            if (!_ucHomeInstance.pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && _ucHomeInstance.isAddtionalDropDownExpanded)
                 _ucHomeInstance.AdditionaldropDownTimer.Start();
+
+            //Rectangle panelScreenBounds = _ucHomeInstance.pnlAddtionalDropDown.RectangleToScreen(_ucHomeInstance.pnlAddtionalDropDown.ClientRectangle);
+
+            // If mouse is outside and panel is expanded, close it
+            //if (!panelScreenBounds.Contains(Control.MousePosition) && _ucHomeInstance.isAddtionalDropDownExpanded)
+            //{
+            //    _ucHomeInstance.AdditionaldropDownTimer.Start();
+            //}
         }
 
         private void LoadUserControl(UserControl uc)
@@ -343,7 +351,7 @@ namespace FlourSystem.Forms
         }
 
 
-        bool isAddDropDownExpanded = false;
+        public bool isAddDropDownExpanded = false;
         private void btnAdd_Click(object sender, EventArgs e)
         {
             pnlAddDropDown.Parent = this;
@@ -424,6 +432,24 @@ namespace FlourSystem.Forms
             new frmAddOwner().ShowDialog();
         }
         #endregion
+        public void AttachGlobalMouseHandler(Form form)
+        {
+            form.MouseDown -= Form1_MouseDown;
+            form.MouseDown += Form1_MouseDown;
+
+            // Recursively attach to all child controls of the form
+            foreach (Control ctrl in form.Controls)
+                AttachMouseDownToControl(ctrl);
+        }
+
+        private void AttachMouseDownToControl(Control control)
+        {
+            control.MouseDown -= Form1_MouseDown;
+            control.MouseDown += Form1_MouseDown;
+
+            foreach (Control child in control.Controls)
+                AttachMouseDownToControl(child);
+        }
         private void btnUpdateCheck_Click(object sender, EventArgs e)
         {
 

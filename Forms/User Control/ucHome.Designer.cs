@@ -215,7 +215,7 @@
             pnlCustomerContainer.Location = new Point(0, 80);
             pnlCustomerContainer.Name = "pnlCustomerContainer";
             pnlCustomerContainer.Padding = new Padding(3);
-            pnlCustomerContainer.Size = new Size(1084, 480);
+            pnlCustomerContainer.Size = new Size(1084, 470);
             pnlCustomerContainer.TabIndex = 1;
             pnlCustomerContainer.WrapContents = false;
             pnlCustomerContainer.Scroll += pnlCustomerContainer_Scroll;

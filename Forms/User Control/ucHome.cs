@@ -431,28 +431,21 @@ namespace FlourSystem.Forms.User_Control
         private void PnlCustomerContainer_MouseWheel(object sender, MouseEventArgs e)
         {
             if (isAddtionalDropDownExpanded)
-            {
-                pnlAddtionalDropDown.Height = 0;
-                isAddtionalDropDownExpanded = false;
-                //AdditionaldropDownTimer.Start();
-            }
+                AdditionaldropDownTimer.Start();
 
             DisplayTheRest(sender);
         }
         private void pnlCustomerContainer_Scroll(object sender, ScrollEventArgs e)
         {
             if (isAddtionalDropDownExpanded)
-            {
-                pnlAddtionalDropDown.Height = 0;
-                isAddtionalDropDownExpanded = false;
-                //AdditionaldropDownTimer.Start();
-            }
+                AdditionaldropDownTimer.Start();
+
             DisplayTheRest(sender);
         }
         void DisplayTheRest(object sender)
         {
             var scrollPanel = (FlowLayoutPanel)sender;
-            int scrollThreshold = 200;
+            int scrollThreshold = Settings.Default.scrollThreshold;
             if (scrollPanel.VerticalScroll.Value + scrollPanel.Height + scrollThreshold >= scrollPanel.VerticalScroll.Maximum)
             {
                 DisplayTimer(customersToDisplay);
@@ -605,6 +598,10 @@ namespace FlourSystem.Forms.User_Control
         {
             if (!pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddtionalDropDownExpanded)
                 AdditionaldropDownTimer.Start();
+            if (!_dashboard.pnlSearch.Bounds.Contains(PointToClient(MousePosition)) && _dashboard.srchExpanded)
+                _dashboard.searchTimer.Start();
+            if (!_dashboard.pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && _dashboard.isAddDropDownExpanded)
+                _dashboard.addDropDownTimer.Start();
         }
         #endregion
 

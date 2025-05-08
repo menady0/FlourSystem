@@ -36,14 +36,11 @@
             frmDrag = new CuoreUI.cuiFormDrag(components);
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             opacityTimer = new System.Windows.Forms.Timer(components);
-            picPrice = new FontAwesome.Sharp.IconPictureBox();
-            txtPrice = new CuoreUI.Controls.cuiTextBox2();
             picAmountPerKG = new FontAwesome.Sharp.IconPictureBox();
             txtAmountPerKG = new CuoreUI.Controls.cuiTextBox2();
             picAmount = new FontAwesome.Sharp.IconPictureBox();
             txtAmount = new CuoreUI.Controls.cuiTextBox2();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picAmountPerKG).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picAmount).BeginInit();
             SuspendLayout();
@@ -126,47 +123,6 @@
             opacityTimer.Interval = 50;
             opacityTimer.Tick += opacityTimer_Tick;
             // 
-            // picPrice
-            // 
-            picPrice.BackColor = Color.FromArgb(207, 219, 213);
-            picPrice.ForeColor = Color.FromArgb(36, 36, 35);
-            picPrice.IconChar = FontAwesome.Sharp.IconChar.MoneyBill1;
-            picPrice.IconColor = Color.FromArgb(36, 36, 35);
-            picPrice.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            picPrice.IconSize = 22;
-            picPrice.Location = new Point(260, 227);
-            picPrice.Name = "picPrice";
-            picPrice.Size = new Size(22, 22);
-            picPrice.SizeMode = PictureBoxSizeMode.CenterImage;
-            picPrice.TabIndex = 21;
-            picPrice.TabStop = false;
-            // 
-            // txtPrice
-            // 
-            txtPrice.BackColor = Color.FromArgb(207, 219, 213);
-            txtPrice.BackgroundColor = Color.FromArgb(207, 219, 213);
-            txtPrice.BorderColor = Color.Transparent;
-            txtPrice.BorderSize = 1;
-            txtPrice.Content = "";
-            txtPrice.FocusBackgroundColor = Color.FromArgb(207, 219, 213);
-            txtPrice.FocusBorderColor = Color.FromArgb(71, 137, 75);
-            txtPrice.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPrice.ForeColor = Color.Black;
-            txtPrice.Location = new Point(9, 218);
-            txtPrice.Margin = new Padding(4);
-            txtPrice.Multiline = false;
-            txtPrice.Name = "txtPrice";
-            txtPrice.Padding = new Padding(40, 8, 40, 0);
-            txtPrice.PasswordChar = false;
-            txtPrice.PlaceholderColor = Color.Gray;
-            txtPrice.PlaceholderText = "السعر";
-            txtPrice.RightToLeft = RightToLeft.Yes;
-            txtPrice.Rounding = new Padding(5);
-            txtPrice.Size = new Size(280, 40);
-            txtPrice.TabIndex = 18;
-            txtPrice.TextOffset = new Size(15, 0);
-            txtPrice.UnderlinedStyle = false;
-            // 
             // picAmountPerKG
             // 
             picAmountPerKG.BackColor = Color.FromArgb(207, 219, 213);
@@ -175,7 +131,7 @@
             picAmountPerKG.IconColor = Color.FromArgb(36, 36, 35);
             picAmountPerKG.IconFont = FontAwesome.Sharp.IconFont.Solid;
             picAmountPerKG.IconSize = 22;
-            picAmountPerKG.Location = new Point(262, 187);
+            picAmountPerKG.Location = new Point(262, 209);
             picAmountPerKG.Name = "picAmountPerKG";
             picAmountPerKG.Size = new Size(22, 22);
             picAmountPerKG.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -193,7 +149,7 @@
             txtAmountPerKG.FocusBorderColor = Color.FromArgb(71, 137, 75);
             txtAmountPerKG.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtAmountPerKG.ForeColor = Color.Black;
-            txtAmountPerKG.Location = new Point(11, 178);
+            txtAmountPerKG.Location = new Point(11, 200);
             txtAmountPerKG.Margin = new Padding(4);
             txtAmountPerKG.Multiline = false;
             txtAmountPerKG.Name = "txtAmountPerKG";
@@ -216,7 +172,7 @@
             picAmount.IconColor = Color.FromArgb(36, 36, 35);
             picAmount.IconFont = FontAwesome.Sharp.IconFont.Solid;
             picAmount.IconSize = 22;
-            picAmount.Location = new Point(262, 147);
+            picAmount.Location = new Point(262, 169);
             picAmount.Name = "picAmount";
             picAmount.Size = new Size(22, 22);
             picAmount.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -234,7 +190,7 @@
             txtAmount.FocusBorderColor = Color.FromArgb(71, 137, 75);
             txtAmount.Font = new Font("Cairo", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtAmount.ForeColor = Color.Black;
-            txtAmount.Location = new Point(11, 138);
+            txtAmount.Location = new Point(11, 160);
             txtAmount.Margin = new Padding(4);
             txtAmount.Multiline = false;
             txtAmount.Name = "txtAmount";
@@ -258,8 +214,6 @@
             BackColor = Color.FromArgb(232, 237, 223);
             CancelButton = btnClose;
             ClientSize = new Size(300, 400);
-            Controls.Add(picPrice);
-            Controls.Add(txtPrice);
             Controls.Add(picAmountPerKG);
             Controls.Add(txtAmountPerKG);
             Controls.Add(picAmount);
@@ -275,7 +229,6 @@
             TopMost = true;
             FormClosing += frmAddQuota_FormClosing;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)picAmountPerKG).EndInit();
             ((System.ComponentModel.ISupportInitialize)picAmount).EndInit();
             ResumeLayout(false);
@@ -290,8 +243,6 @@
         private CuoreUI.cuiFormDrag frmDrag;
         private CuoreUI.Components.cuiFormRounder frmBorder;
         private System.Windows.Forms.Timer opacityTimer;
-        private FontAwesome.Sharp.IconPictureBox picPrice;
-        private CuoreUI.Controls.cuiTextBox2 txtPrice;
         private FontAwesome.Sharp.IconPictureBox picAmountPerKG;
         private CuoreUI.Controls.cuiTextBox2 txtAmountPerKG;
         private FontAwesome.Sharp.IconPictureBox picAmount;
