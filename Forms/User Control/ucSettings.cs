@@ -27,17 +27,17 @@ namespace FlourSystem.Forms.User_Control
                 txtBatchSize.Enabled = txtScrollThreshold.Enabled = true;
                 pnlBatchSize.Cursor = Cursors.Default;
                 pnlScrollThreHold.Cursor = Cursors.Default;
-                lazyLoadingSetting = true;
+                //lazyLoadingSetting = true;
             }
             else
             {
                 txtBatchSize.Enabled = txtScrollThreshold.Enabled = false;
                 pnlBatchSize.Cursor = Cursors.No;
                 pnlScrollThreHold.Cursor = Cursors.No;
-                lazyLoadingSetting = false;
+                //lazyLoadingSetting = false;
             }
         }
-        bool lazyLoadingSetting;
+        //bool lazyLoadingSetting;
         private void ucSettings_Load(object sender, EventArgs e)
         {
             ThemeManager.ApplyTheme();
@@ -54,8 +54,6 @@ namespace FlourSystem.Forms.User_Control
                 pnlBatchSize.Cursor = Cursors.No;
                 pnlScrollThreHold.Cursor = Cursors.No;
             }
-            swtchLazyLoad.Checked = true;
-            //swtchLazyLoad.Checked = Settings.Default.lazyLoading;
 
             // Set the default values for the text boxes
             if (!string.IsNullOrEmpty(DataBase.currentUsername))
@@ -88,11 +86,10 @@ namespace FlourSystem.Forms.User_Control
                             btnInsidePanel.IconColor = value == Color.Transparent ? Color.Red : Color.White;
                         }
                     }
-
                 },
                 interpolate: HoverEffect.InterpolateColor,
                 transitionDuration: 200
-                );
+            );
         }
         private void pnlCheck_Click(object sender, EventArgs e)
         {

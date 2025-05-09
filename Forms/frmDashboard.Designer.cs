@@ -32,8 +32,9 @@
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
             pnlUpdateCheck = new Panel();
-            label1 = new Label();
             btnUpdateCheck = new FontAwesome.Sharp.IconButton();
+            label1 = new Label();
+            spUpdateCheck = new CuoreUI.Controls.cuiSpinner();
             pnlAddDropDown = new CuoreUI.Controls.cuiBorder();
             btnAddOwner = new CuoreUI.Controls.cuiButton();
             btnAddQuota = new CuoreUI.Controls.cuiButton();
@@ -104,31 +105,20 @@
             // 
             // pnlUpdateCheck
             // 
-            pnlUpdateCheck.Controls.Add(label1);
             pnlUpdateCheck.Controls.Add(btnUpdateCheck);
+            pnlUpdateCheck.Controls.Add(label1);
+            pnlUpdateCheck.Controls.Add(spUpdateCheck);
             pnlUpdateCheck.Location = new Point(15, 24);
             pnlUpdateCheck.Name = "pnlUpdateCheck";
-            pnlUpdateCheck.Size = new Size(100, 35);
+            pnlUpdateCheck.Size = new Size(132, 35);
             pnlUpdateCheck.TabIndex = 13;
             pnlUpdateCheck.Visible = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cairo", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
-            label1.ForeColor = Color.FromArgb(232, 237, 223);
-            label1.Location = new Point(23, 1);
-            label1.Name = "label1";
-            label1.Size = new Size(41, 34);
-            label1.TabIndex = 5;
-            label1.Text = "تفقد\r\nالتحديثات";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnUpdateCheck
             // 
             btnUpdateCheck.BackColor = Color.FromArgb(18, 18, 18);
             btnUpdateCheck.Cursor = Cursors.Hand;
-            btnUpdateCheck.Dock = DockStyle.Right;
+            btnUpdateCheck.Dock = DockStyle.Left;
             btnUpdateCheck.FlatAppearance.BorderSize = 0;
             btnUpdateCheck.FlatStyle = FlatStyle.Flat;
             btnUpdateCheck.ForeColor = Color.Transparent;
@@ -136,13 +126,40 @@
             btnUpdateCheck.IconColor = Color.White;
             btnUpdateCheck.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdateCheck.IconSize = 16;
-            btnUpdateCheck.Location = new Point(62, 0);
+            btnUpdateCheck.Location = new Point(59, 0);
             btnUpdateCheck.Name = "btnUpdateCheck";
             btnUpdateCheck.Size = new Size(38, 35);
             btnUpdateCheck.TabIndex = 4;
             btnUpdateCheck.TabStop = false;
             btnUpdateCheck.UseVisualStyleBackColor = false;
             btnUpdateCheck.Click += btnUpdateCheck_Click;
+            // 
+            // label1
+            // 
+            label1.Dock = DockStyle.Left;
+            label1.Font = new Font("Cairo", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
+            label1.ForeColor = Color.FromArgb(232, 237, 223);
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 35);
+            label1.TabIndex = 5;
+            label1.Text = "تفقد التحديثات";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // spUpdateCheck
+            // 
+            spUpdateCheck.ArcColor = Color.FromArgb(71, 137, 75);
+            spUpdateCheck.BackColor = Color.FromArgb(18, 18, 18);
+            spUpdateCheck.Dock = DockStyle.Right;
+            spUpdateCheck.Location = new Point(97, 0);
+            spUpdateCheck.Name = "spUpdateCheck";
+            spUpdateCheck.RingColor = Color.FromArgb(34, 34, 34);
+            spUpdateCheck.RotateSpeed = 3F;
+            spUpdateCheck.Rotation = 132.091217F;
+            spUpdateCheck.Size = new Size(35, 35);
+            spUpdateCheck.TabIndex = 14;
+            spUpdateCheck.Thickness = 3F;
+            spUpdateCheck.Visible = false;
             // 
             // pnlAddDropDown
             // 
@@ -677,7 +694,6 @@
             Load += frmDashboard_Load;
             pnlNavBar.ResumeLayout(false);
             pnlUpdateCheck.ResumeLayout(false);
-            pnlUpdateCheck.PerformLayout();
             pnlAddDropDown.ResumeLayout(false);
             pnlSearch.ResumeLayout(false);
             pnlSearch.PerformLayout();
@@ -731,5 +747,6 @@
         public System.Windows.Forms.Timer searchTimer;
         public CuoreUI.Controls.cuiBorder pnlAddDropDown;
         public System.Windows.Forms.Timer addDropDownTimer;
+        public CuoreUI.Controls.cuiSpinner spUpdateCheck;
     }
 }

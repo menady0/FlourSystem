@@ -21,7 +21,7 @@ namespace FlourSystem.Forms
             targetbtn = btnHome;
             targetLabel = lblHome;
         }
-        private void frmDashboard_Load(object sender, EventArgs e)
+        private async void frmDashboard_Load(object sender, EventArgs e)
         {
             HoverEffect.Hover(
                 btns,
@@ -77,6 +77,8 @@ namespace FlourSystem.Forms
                 btnMode.IconChar = IconChar.Moon;
                 btnMode.IconColor = Color.White;
             }
+            // UnComment When Push The Project
+            //await CheckUpdates.CheckForUpdatesAsync();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -176,16 +178,8 @@ namespace FlourSystem.Forms
                 searchTimer.Start();
             if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
                 addDropDownTimer.Start();
-            if (!_ucHomeInstance.pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && _ucHomeInstance.isAddtionalDropDownExpanded)
+            if (_ucHomeInstance != null && !_ucHomeInstance.pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && _ucHomeInstance.isAddtionalDropDownExpanded)
                 _ucHomeInstance.AdditionaldropDownTimer.Start();
-
-            //Rectangle panelScreenBounds = _ucHomeInstance.pnlAddtionalDropDown.RectangleToScreen(_ucHomeInstance.pnlAddtionalDropDown.ClientRectangle);
-
-            // If mouse is outside and panel is expanded, close it
-            //if (!panelScreenBounds.Contains(Control.MousePosition) && _ucHomeInstance.isAddtionalDropDownExpanded)
-            //{
-            //    _ucHomeInstance.AdditionaldropDownTimer.Start();
-            //}
         }
 
         private void LoadUserControl(UserControl uc)
@@ -437,7 +431,6 @@ namespace FlourSystem.Forms
             form.MouseDown -= Form1_MouseDown;
             form.MouseDown += Form1_MouseDown;
 
-            // Recursively attach to all child controls of the form
             foreach (Control ctrl in form.Controls)
                 AttachMouseDownToControl(ctrl);
         }
@@ -450,9 +443,11 @@ namespace FlourSystem.Forms
             foreach (Control child in control.Controls)
                 AttachMouseDownToControl(child);
         }
-        private void btnUpdateCheck_Click(object sender, EventArgs e)
+        private async void btnUpdateCheck_Click(object sender, EventArgs e)
         {
-
+            spUpdateCheck.Visible = true;
+            await CheckUpdates.CheckForUpdatesAsync(true);
+            spUpdateCheck.Visible = false;
         }
     }
 }

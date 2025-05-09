@@ -1020,16 +1020,12 @@ namespace FlourSystem.Forms.User_Control
         private CuoreUI.Controls.cuiTextBox2 txtPassword;
         private Panel pnlAccountInfo;
         private Panel pnlPriceAndQuantity;
-        private Label label10;
-        private Panel panel13;
         private Panel pnlQuantityPerPersonContainer;
         private Label label11;
         private Panel pnlQuantityPerPerson;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
         private Panel pnlPriceContainer;
         private Label label12;
         private Panel pnlPrice;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
         private Label label13;
         private CuoreUI.Controls.cuiTextBox2 txtPrice;
         private FlowLayoutPanel pnlLeftSide;
@@ -1050,7 +1046,6 @@ namespace FlourSystem.Forms.User_Control
         private FontAwesome.Sharp.IconButton btnDelete;
         private CuoreUI.Controls.cuiBorder pnlDelete;
         private ToolTip toolTip;
-        private CuoreUI.Controls.cuiBorder cuiBorder1;
         private CuoreUI.Controls.cuiBorder pnlSave;
         private FontAwesome.Sharp.IconButton btnSave;
     }

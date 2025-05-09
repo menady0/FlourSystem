@@ -3,6 +3,7 @@ using FlourSystem.Forms;
 using FlourSystem.Properties;
 using FontAwesome.Sharp;
 using BCrypt.Net;
+using FlourSystem.Classes;
 
 namespace FlourSystem
 {
@@ -35,12 +36,12 @@ namespace FlourSystem
         public static frmDashboard? dashboard;
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
-            //{
-            //    MessageBox.Show("Username or Password cannot be empty.");
-            //    txtUsername.Focus();
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
+            {
+                MessageBox.Show("Username or Password cannot be empty.");
+                txtUsername.Focus();
+                return;
+            }
 
             string username = txtUsername.Content;
             string password = txtPassword.Content;

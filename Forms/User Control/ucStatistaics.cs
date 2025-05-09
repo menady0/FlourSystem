@@ -13,7 +13,7 @@ namespace FlourSystem.Forms.User_Control
         int todaySales;
         int totalSales;
 
-        Control[] cards;
+        Control[]? cards;
         public ucStatistaics()
         {
             InitializeComponent();
