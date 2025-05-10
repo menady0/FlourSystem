@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Mena\\Documents\\FlourSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\toastmessage\\toast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\toastmessage\\toast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|C:\\Users\\Mena\\Documents\\FlourSystem\\forms\\toastmessage\\toast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\toastmessage\\toast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\classes\\toastclass\\toastmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:classes\\toastclass\\toastmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\classes\\thememanager\\thememanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:classes\\thememanager\\thememanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\uchomebtns\\frmaddquota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\uchomebtns\\frmaddquota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,26 +38,99 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\frmLogin.cs",
+              "RelativeDocumentMoniker": "frmLogin.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\frmLogin.cs",
+              "RelativeToolTip": "frmLogin.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwDsAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T08:38:11.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frmAddQuota.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
+              "RelativeDocumentMoniker": "Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
+              "RelativeToolTip": "Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAwwG0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T08:27:29.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ThemeManager.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\ThemeManager\\ThemeManager.cs",
+              "RelativeDocumentMoniker": "Classes\\ThemeManager\\ThemeManager.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\ThemeManager\\ThemeManager.cs",
+              "RelativeToolTip": "Classes\\ThemeManager\\ThemeManager.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T08:11:09.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmDashboard.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
+              "RelativeDocumentMoniker": "Forms\\frmDashboard.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
+              "RelativeToolTip": "Forms\\frmDashboard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T19:06:22.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ToastManager.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\ToastClass\\ToastManager.cs",
+              "RelativeDocumentMoniker": "Classes\\ToastClass\\ToastManager.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Classes\\ToastClass\\ToastManager.cs",
+              "RelativeToolTip": "Classes\\ToastClass\\ToastManager.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAgwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T18:51:41.583Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\frmLogin.cs",
-              "RelativeDocumentMoniker": "frmLogin.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\frmLogin.cs [Design]",
-              "RelativeToolTip": "frmLogin.cs [Design]",
+              "Title": "Toast.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\ToastMessage\\Toast.cs",
+              "RelativeDocumentMoniker": "Forms\\ToastMessage\\Toast.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\ToastMessage\\Toast.cs*",
+              "RelativeToolTip": "Forms\\ToastMessage\\Toast.cs*",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowE0AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T16:38:14.878Z",
+              "WhenOpened": "2025-05-09T16:55:33.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Toast.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\ToastMessage\\Toast.cs",
+              "RelativeDocumentMoniker": "Forms\\ToastMessage\\Toast.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\ToastMessage\\Toast.cs [Design]*",
+              "RelativeToolTip": "Forms\\ToastMessage\\Toast.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T16:51:47.977Z",
               "EditorCaption": " [Design]"
             }
           ]

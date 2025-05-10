@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -95,36 +97,46 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
 
             if (prevMonthAmount > 0)
             {
-                DialogResult result = MessageBox.Show(
-                    "Are you sure you want to continue?\n" +
-                    $"Note: There is a quota for the previous month: {prevMonthAmount} left.",
-                    "Confirmation",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-                if (result == DialogResult.Yes)
+                //DialogResult result = MessageBox.Show(
+                //    "Are you sure you want to continue?\n" +
+                //    $"Note: There is a quota for the previous month: {prevMonthAmount} left.",
+                //    "Confirmation",
+                //    MessageBoxButtons.YesNo,
+                //    MessageBoxIcon.Question
+                //);
+                Toast.Show(
+                    "هل انت متأكد من الاستمرار؟\n" +
+                    $"متبقي {prevMonthAmount} من الشهر الماضي"
+                    , ToastType.YesNo, result =>
                 {
-                    amountPerKG -= prevMonthAmount;
-                    if(amountPerKG <= 0)
+                    if (result)
                     {
-                        MessageBox.Show("The amount per KG is less than or equal to 0.\n" +
-                            "Please enter a greater value.");
-                        return;
+                        MessageBox.Show("yes");
                     }
-                    amount = amountPerKG / 20;
-                    MessageBox.Show(Text = $"The amount per KG will be reduced by {prevMonthAmount}.\n" +
-                        $"The new amount will be {amountPerKG}\n" +
-                        $"the number of sacks is {amount}");
-                }
+                });
+                //if (result == DialogResult.Yes)
+                //{
+                //    amountPerKG -= prevMonthAmount;
+                //    if(amountPerKG <= 0)
+                //    {
+                //        MessageBox.Show("The amount per KG is less than or equal to 0.\n" +
+                //            "Please enter a greater value.");
+                //        return;
+                //    }
+                //    amount = amountPerKG / 20;
+                //    MessageBox.Show(Text = $"The amount per KG will be reduced by {prevMonthAmount}.\n" +
+                //        $"The new amount will be {amountPerKG}\n" +
+                //        $"the number of sacks is {amount}");
+                //}
                 //MessageBox.Show($"Note: There is a quota for the previous month: {prevMonthAmount} left.");
                 //return;
             }
-            if (DataBase.addQuota(amount, amountPerKG, date, DataBase.loggedOwner))
-            {
-                MessageBox.Show("Quota added successfully.");
-                btnClose.PerformClick();
-            }
-            else MessageBox.Show("Failed to add quota.");
+            //if (DataBase.addQuota(amount, amountPerKG, date, DataBase.loggedOwner))
+            //{
+            //    MessageBox.Show("Quota added successfully.");
+            //    btnClose.PerformClick();
+            //}
+            //else MessageBox.Show("Failed to add quota.");
         }
         private void btnClose_MouseEnter(object sender, EventArgs e)
         {

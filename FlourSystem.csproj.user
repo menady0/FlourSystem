@@ -7,6 +7,9 @@
     <Compile Update="Forms\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ToastMessage\Toast.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\User Control\ucHome.cs">
       <SubType>UserControl</SubType>
     </Compile>

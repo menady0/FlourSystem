@@ -3,6 +3,7 @@ using FlourSystem.Properties;
 using CuoreUI.Controls;
 using FlourSystem.Forms;
 using System.Diagnostics;
+using FlourSystem.Forms.ToastMessage;
 
 public class ThemeManager
 {
@@ -36,7 +37,20 @@ public class ThemeManager
                     
                 }
             }
-            else 
+            else if (form.Name == "Toast")
+            {
+                if (IsDarkMode)
+                {
+                    form.BackColor = ThemeColors.DarkBackground;
+                    form.ForeColor = ThemeColors.DarkForeColor;
+                }
+                else
+                {
+                    form.BackColor = ThemeColors.LightBackground;
+                    form.ForeColor = ThemeColors.LightForeColor;
+                }
+            }
+            else
                 ApplyFormTheme(form);
         }
     }

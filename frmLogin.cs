@@ -4,6 +4,8 @@ using FlourSystem.Properties;
 using FontAwesome.Sharp;
 using BCrypt.Net;
 using FlourSystem.Classes;
+using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
 
 namespace FlourSystem
 {
@@ -31,7 +33,8 @@ namespace FlourSystem
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
+                form.Close();
         }
         public static frmDashboard? dashboard;
         private void btnLogin_Click(object sender, EventArgs e)
@@ -49,6 +52,14 @@ namespace FlourSystem
             // Logging In WITH Hashed Password
             // ---------------------------------------------------------------------
             string hashedPassword = DataBase.GetHashedPassword(username);
+            if (string.IsNullOrEmpty(hashedPassword))
+            {
+                Toast.Show("اسم المستخدم غير موجود.", ToastType.Error);
+                txtUsername.Content = "";
+                txtPassword.Content = "";
+                txtUsername.Focus();
+                return;
+            }
             bool isValid;
             try
             {
@@ -78,7 +89,7 @@ namespace FlourSystem
             }
             else
             {
-                MessageBox.Show("Invalid Username or Password");
+                Toast.Show("اسم المستخدم أو كلمة المرور غير صحيحة", ToastType.Error);
                 txtUsername.Content = "";
                 txtPassword.Content = "";
                 txtUsername.Focus();
