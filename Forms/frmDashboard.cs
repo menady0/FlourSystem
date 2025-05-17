@@ -79,10 +79,9 @@ namespace FlourSystem.Forms
                 btnMode.IconChar = IconChar.Moon;
                 btnMode.IconColor = Color.White;
             }
-            // UnComment When Push The Project
-            //await CheckUpdates.CheckForUpdatesAsync();
-        }
 
+            await CheckUpdates.CheckForUpdatesAsync(newUpdateAvaliable: true);
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             foreach (Form form in Application.OpenForms.Cast<Form>().ToList())

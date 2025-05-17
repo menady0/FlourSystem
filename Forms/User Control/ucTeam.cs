@@ -72,7 +72,7 @@ namespace FlourSystem.Forms.User_Control
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to open link. " + ex.Message);
+                MessageBox.Show($"Unable to open link. {ex.Message}");
             }
         }
 

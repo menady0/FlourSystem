@@ -1,14 +1,7 @@
 ﻿using CuoreUI.Controls;
-using Google.Protobuf.Reflection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
+using FlourSystem.Properties;
 
 namespace FlourSystem.Forms.User_Control.ucHomeBtns
 {
@@ -53,8 +46,8 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
         {
             if (int.TryParse(txtMembers.Content, out int value))
             {
-                int quantity = value * 10;
-                int price = value * 10 * 3;
+                int quantity = value * (Settings.Default.sack / 2);
+                int price = quantity * (Settings.Default.price / Settings.Default.sack);
                 txtQuantity.Content = quantity.ToString();
                 txtPrice.Content = price.ToString();
             }
@@ -75,51 +68,50 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 string.IsNullOrEmpty(txtQuantity.Content)
                )
             {
-                MessageBox.Show("Please fill in all fields.");
+                Toast.Show("يرجى تعبئة جميع الحقول.", ToastType.Error);
                 return;
             }
 
             if (!long.TryParse(txtCardID.Content, out _))
             {
-                MessageBox.Show("Please enter a valid number in the Card ID field.");
+                Toast.Show("يرجى إدخال رقم صالح في حقل رقم البطاقة.", ToastType.Error);
                 txtCardID.Content = "";
                 txtCardID.Focus();
                 return;
             }
             else if (!int.TryParse(txtMembers.Content, out _))
             {
-                MessageBox.Show("Please enter a valid number in the Members field.");
+                Toast.Show("يرجى إدخال رقم صالح في حقل الأعضاء.", ToastType.Error);
                 txtMembers.Content = "";
                 txtMembers.Focus();
                 return;
             }
             else if (!int.TryParse(txtPrice.Content, out _))
             {
-                MessageBox.Show("Please enter a valid number in the Price field.");
+                Toast.Show("يرجى إدخال رقم صالح في حقل السعر.", ToastType.Error);
                 txtPrice.Content = "";
                 txtPrice.Focus();
                 return;
             }
             else if (!int.TryParse(txtQuantity.Content, out _))
             {
-                MessageBox.Show("Please enter a valid number in the Quantity field.");
+                Toast.Show("يرجى إدخال رقم صالح في حقل الكمية.", ToastType.Error);
                 txtQuantity.Content = "";
                 txtQuantity.Focus();
                 return;
             }
 
             int count = DataBase.CustomerExists(long.Parse(txtCardID.Content));
-            MessageBox.Show(count.ToString());
             if ((btnAdd.Tag as string) != "update" && count > 0)
             {
-                MessageBox.Show("Customer with this Card ID already exists.");
+                Toast.Show("يوجد عميل بنفس رقم البطاقة.", ToastType.Error);
                 txtCardID.Content = "";
                 txtCardID.Focus();
                 return;
             }
             else if ((btnAdd.Tag as string) == "update" && count > 1)
             {
-                MessageBox.Show("Customer with this Card ID already exists.");
+                Toast.Show("يوجد عميل بنفس رقم البطاقة.", ToastType.Error);
                 txtCardID.Content = Tag as string;
                 txtCardID.Focus();
                 return;
@@ -133,32 +125,29 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             int price = int.Parse(txtPrice.Content);
             int registration = 0;
             int delivered = 0;
-            int customerIndex = DataBase.CustomersList.Count;
+            int customerIndex = DataBase.RetrieveCustomerTable().Count;
+            //int customerIndex = DataBase.CustomersList.Count;
+            MessageBox.Show(customerIndex.ToString());
             string renewalDate = DateTime.Now.ToString("yyyy-MM-dd");
 
             if ((btnAdd.Tag as string) == "update")
             {
                 long originalID = int.Parse((string)Tag);
-                MessageBox.Show("update");
-                MessageBox.Show($"{originalID}");
                 if (DataBase.UpdateCustomer(originalID, cardID, name, members, quantity, price))
                 {
                     this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
                     btnClose.PerformClick();
                 }
-                else
-                    MessageBox.Show("Failed to update customer.");
+                else Toast.Show("فشل في تحديث بيانات العميل.", ToastType.Error);
             }
             else
             {
-                MessageBox.Show("add");
                 if (DataBase.AddCustomer(cardID, name, members, quantity, price, registration, delivered, renewalDate, customerIndex))
                 {
                     this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
                     btnClose.PerformClick();
                 }
-                else
-                    MessageBox.Show("Failed to add customer.");
+                else Toast.Show("فشل في تحديث بيانات العميل.", ToastType.Error);
             }
 
         }

@@ -6,6 +6,7 @@ using BCrypt.Net;
 using FlourSystem.Classes;
 using FlourSystem.Classes.ToastClass;
 using FlourSystem.Forms.ToastMessage;
+using FlourSystem.Forms.User_Control;
 
 namespace FlourSystem
 {
@@ -29,7 +30,39 @@ namespace FlourSystem
                 btnDarkMode.IconChar = IconChar.Moon;
                 btnDarkMode.IconColor = ThemeColors.LightForeColor;
             }
+            if (DateTime.Now.Day == 1 && Settings.Default.resetDate != DateTime.Now.Date)
+            {
+                ResetAllCustomersForNewMonth();
+
+                Settings.Default.resetDate = DateTime.Now.Date;
+                Settings.Default.Save();
+            }
+
         }
+        void ResetAllCustomersForNewMonth()
+        {
+            var customers = DataBase.CustomersList;
+
+            int successCount = 0;
+            int failCount = 0;
+
+            foreach (var customer in customers)
+            {
+                if (customer.TryGetValue("CustomerID", out var idObj) &&
+                    long.TryParse(idObj.ToString(), out long customerId) &&
+                    customer.TryGetValue("numberOfPeople", out var numObj) &&
+                    int.TryParse(numObj.ToString(), out int customerNum))
+                {
+                    if (ucHome.ResetCustomerValues(customerId, customerNum, false))
+                        successCount++;
+                    else
+                        failCount++;
+                }
+            }
+
+            Toast.Show($"تمت إعادة تعيين بيانات {successCount} عميل. ({failCount} فشل)", ToastType.Info);
+        }
+
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -41,7 +74,7 @@ namespace FlourSystem
         {
             if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
             {
-                MessageBox.Show("Username or Password cannot be empty.");
+                Toast.Show("لا يمكن أن يكون اسم المستخدم أو كلمة المرور فارغًا.", ToastType.Error);
                 txtUsername.Focus();
                 return;
             }
@@ -67,7 +100,7 @@ namespace FlourSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred during password verification: {ex.Message}");
+                Toast.Show($"حدث خطأ أثناء التحقق من كلمة المرور: {ex.Message}", ToastType.Error);
                 return;
             }
             // ---------------------------------------------------------------------

@@ -94,5 +94,16 @@ namespace FlourSystem.Properties {
                 this["scrollThreshold"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime resetDate {
+            get {
+                return ((global::System.DateTime)(this["resetDate"]));
+            }
+            set {
+                this["resetDate"] = value;
+            }
+        }
     }
 }

@@ -110,7 +110,7 @@
             pnlUpdateCheck.Controls.Add(spUpdateCheck);
             pnlUpdateCheck.Location = new Point(15, 24);
             pnlUpdateCheck.Name = "pnlUpdateCheck";
-            pnlUpdateCheck.Size = new Size(132, 35);
+            pnlUpdateCheck.Size = new Size(155, 35);
             pnlUpdateCheck.TabIndex = 13;
             pnlUpdateCheck.Visible = false;
             // 
@@ -126,7 +126,7 @@
             btnUpdateCheck.IconColor = Color.White;
             btnUpdateCheck.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdateCheck.IconSize = 16;
-            btnUpdateCheck.Location = new Point(59, 0);
+            btnUpdateCheck.Location = new Point(70, 0);
             btnUpdateCheck.Name = "btnUpdateCheck";
             btnUpdateCheck.Size = new Size(38, 35);
             btnUpdateCheck.TabIndex = 4;
@@ -141,7 +141,7 @@
             label1.ForeColor = Color.FromArgb(232, 237, 223);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(59, 35);
+            label1.Size = new Size(70, 35);
             label1.TabIndex = 5;
             label1.Text = "تفقد التحديثات";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -151,14 +151,14 @@
             spUpdateCheck.ArcColor = Color.FromArgb(71, 137, 75);
             spUpdateCheck.BackColor = Color.FromArgb(18, 18, 18);
             spUpdateCheck.Dock = DockStyle.Right;
-            spUpdateCheck.Location = new Point(97, 0);
+            spUpdateCheck.Location = new Point(120, 0);
             spUpdateCheck.Name = "spUpdateCheck";
             spUpdateCheck.RingColor = Color.FromArgb(34, 34, 34);
-            spUpdateCheck.RotateSpeed = 3F;
-            spUpdateCheck.Rotation = 132.091217F;
+            spUpdateCheck.RotateSpeed = 5F;
+            spUpdateCheck.Rotation = 292.179718F;
             spUpdateCheck.Size = new Size(35, 35);
             spUpdateCheck.TabIndex = 14;
-            spUpdateCheck.Thickness = 3F;
+            spUpdateCheck.Thickness = 2F;
             spUpdateCheck.Visible = false;
             // 
             // pnlAddDropDown
@@ -415,7 +415,7 @@
             pnlNavBtns.Controls.Add(btnSearch);
             pnlNavBtns.Location = new Point(15, 24);
             pnlNavBtns.Name = "pnlNavBtns";
-            pnlNavBtns.Size = new Size(105, 35);
+            pnlNavBtns.Size = new Size(128, 35);
             pnlNavBtns.TabIndex = 12;
             // 
             // btnAdd
@@ -430,7 +430,7 @@
             btnAdd.IconColor = Color.White;
             btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAdd.IconSize = 20;
-            btnAdd.Location = new Point(0, 0);
+            btnAdd.Location = new Point(23, 0);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(35, 35);
             btnAdd.TabIndex = 2;
@@ -450,7 +450,7 @@
             btnRefresh.IconColor = Color.White;
             btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnRefresh.IconSize = 20;
-            btnRefresh.Location = new Point(35, 0);
+            btnRefresh.Location = new Point(58, 0);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(35, 35);
             btnRefresh.TabIndex = 3;
@@ -470,7 +470,7 @@
             btnSearch.IconColor = Color.White;
             btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSearch.IconSize = 20;
-            btnSearch.Location = new Point(70, 0);
+            btnSearch.Location = new Point(93, 0);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(35, 35);
             btnSearch.TabIndex = 7;

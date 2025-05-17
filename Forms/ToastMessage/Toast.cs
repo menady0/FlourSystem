@@ -2,8 +2,6 @@
 using FlourSystem.Classes;
 using FlourSystem.Classes.ToastClass;
 using FontAwesome.Sharp;
-using Google.Protobuf.WellKnownTypes;
-using System.Runtime.InteropServices;
 
 namespace FlourSystem.Forms.ToastMessage
 {
@@ -61,7 +59,7 @@ namespace FlourSystem.Forms.ToastMessage
             slideTimer.Tick += SlideOut;
             slideTimer.Start();
         }
-        private void SlideIn(object sender, EventArgs e)
+        private void SlideIn(object? sender, EventArgs e)
         {
             if (Opacity < 1.0)
                 Opacity += 0.05;
@@ -71,7 +69,7 @@ namespace FlourSystem.Forms.ToastMessage
             else
                 Top = TargetY;
         }
-        private void SlideOut(object sender, EventArgs e)
+        private void SlideOut(object? sender, EventArgs e)
         {
             if (Opacity > 0)
             {
@@ -128,7 +126,7 @@ namespace FlourSystem.Forms.ToastMessage
         }
 
 
-        int duration = 3000;
+        public static int duration = 3000;
         int elapsed = 0;
         private bool isPaused = false;
         private void progressTimer_Tick(object sender, EventArgs e)
@@ -154,7 +152,7 @@ namespace FlourSystem.Forms.ToastMessage
             if (!progressTimer.Enabled)
                 progressTimer.Start();
         }
-        private void PauseOnHover(Control control = null)
+        private void PauseOnHover(Control? control = null)
         {
             this.MouseEnter += (s, e) => isPaused = true;
             this.MouseLeave += (s, e) => isPaused = false;

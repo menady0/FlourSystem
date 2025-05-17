@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
+using MySql.Data.MySqlClient;
 using Mysqlx.Session;
 using MySqlX.XDevAPI.Common;
 using System.Net.NetworkInformation;
@@ -159,8 +161,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to add customer.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to add customer: {ex.Message}");
             return false;
         }
         finally
@@ -190,8 +191,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to add quota.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to add quota: {ex.Message}");
             return false;
         }
         finally
@@ -217,8 +217,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to add owner.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to add owner: {ex.Message}");
             return false;
         }
         finally
@@ -245,8 +244,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to check customer existence.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to check customer existence: {ex.Message}");
             return -1;
         }
         finally
@@ -270,8 +268,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to check quota existence.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to check quota existence: {ex.Message}");
             return false;
         }
         finally
@@ -294,8 +291,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to check owner existence.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to check owner existence: {ex.Message}");
             return false;
         }
         finally
@@ -356,8 +352,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Connection Failed: {ex.Message}");
         }
         finally
         {
@@ -381,8 +376,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to update customer index.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to update customer index: {ex.Message}");
         }
         finally
         {
@@ -422,17 +416,13 @@ public class DataBase
             if (rowsAffected > 0)
             {
                 insertStoreCmd.ExecuteNonQuery();
-                MessageBox.Show("Customer record updated and store record created successfully.");
+                Toast.Show("تم تحديث بيانات العميل بنجاح.", ToastType.Success);
             }
-            else
-            {
-                MessageBox.Show("Failed to update customer record.");
-            }
+            else Toast.Show("فشل في تحديث بيانات العميل.", ToastType.Error);
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Connection Failed: {ex.Message}");
         }
         finally
         {
@@ -440,49 +430,82 @@ public class DataBase
         }
     }
     #region Reset, Update & Delete Buttons
-    public static bool ResetCustomer(long customerID, int totalQuantity, int price, string date)
+    public static bool ResetCustomer(long customerID, int totalQuantity, int price, string date, bool deleteStore = true)
     {
         string update = "UPDATE customer SET Registration = 0, Delivered = 0, TotalQuantity = @totalQuantity, Price = @price WHERE CustomerID = @customerID";
         string delete = "DELETE FROM store WHERE CustomerID = @customerID AND DATE_FORMAT(DateOfOperation, '%Y-%m') = @date";
-        MySqlConnection conn = new MySqlConnection(mySQLConnection);
-        MySqlCommand cmdUpdate = new MySqlCommand(update, conn);
-        MySqlCommand cmdDelete = new MySqlCommand(delete, conn);
-        cmdUpdate.Parameters.AddWithValue("@totalQuantity", totalQuantity);
-        cmdUpdate.Parameters.AddWithValue("@price", price);
-        cmdUpdate.Parameters.AddWithValue("@customerID", customerID);
-        cmdUpdate.CommandTimeout = 60;
 
-        cmdDelete.Parameters.AddWithValue("@customerID", customerID);
-        cmdDelete.Parameters.AddWithValue("@date", date);
-        cmdDelete.CommandTimeout = 60;
-        try
+        using (MySqlConnection conn = new MySqlConnection(mySQLConnection))
+        using (MySqlCommand cmdUpdate = new MySqlCommand(update, conn))
         {
-            conn.Open();
-            cmdDelete.ExecuteNonQuery();
-            int rowsUpdate = cmdUpdate.ExecuteNonQuery();
-            if (rowsUpdate > 0)
+            cmdUpdate.Parameters.AddWithValue("@totalQuantity", totalQuantity);
+            cmdUpdate.Parameters.AddWithValue("@price", price);
+            cmdUpdate.Parameters.AddWithValue("@customerID", customerID);
+            cmdUpdate.CommandTimeout = 60;
+
+            MySqlCommand? cmdDelete = null;
+            if (deleteStore)
             {
-                MessageBox.Show("Customer record updated successfully.");
-                return true;
+                cmdDelete = new MySqlCommand(delete, conn);
+                cmdDelete.Parameters.AddWithValue("@customerID", customerID);
+                cmdDelete.Parameters.AddWithValue("@date", date);
+                cmdDelete.CommandTimeout = 60;
             }
-            else
+
+            try
             {
-                MessageBox.Show("Failed to update customer record.");
+                conn.Open();
+
+                if (deleteStore)
+                    cmdDelete?.ExecuteNonQuery();
+
+                int rowsUpdate = cmdUpdate.ExecuteNonQuery();
+                return rowsUpdate > 0;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Connection Failed: {ex.Message}");
                 return false;
             }
-            
-        }
-        catch (MySqlException ex)
-        {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
-            return false;
-        }
-        finally
-        {
-            conn.Close();
         }
     }
+
+    //public static bool ResetCustomer(long customerID, int totalQuantity, int price, string date)
+    //{
+    //    string update = "UPDATE customer SET Registration = 0, Delivered = 0, TotalQuantity = @totalQuantity, Price = @price WHERE CustomerID = @customerID";
+    //    string delete = "DELETE FROM store WHERE CustomerID = @customerID AND DATE_FORMAT(DateOfOperation, '%Y-%m') = @date";
+    //    MySqlConnection conn = new MySqlConnection(mySQLConnection);
+    //    MySqlCommand cmdUpdate = new MySqlCommand(update, conn);
+    //    MySqlCommand cmdDelete = new MySqlCommand(delete, conn);
+    //    cmdUpdate.Parameters.AddWithValue("@totalQuantity", totalQuantity);
+    //    cmdUpdate.Parameters.AddWithValue("@price", price);
+    //    cmdUpdate.Parameters.AddWithValue("@customerID", customerID);
+    //    cmdUpdate.CommandTimeout = 60;
+
+    //    cmdDelete.Parameters.AddWithValue("@customerID", customerID);
+    //    cmdDelete.Parameters.AddWithValue("@date", date);
+    //    cmdDelete.CommandTimeout = 60;
+    //    try
+    //    {
+    //        conn.Open();
+    //        cmdDelete.ExecuteNonQuery();
+    //        int rowsUpdate = cmdUpdate.ExecuteNonQuery();
+    //        if (rowsUpdate > 0)
+    //            return true;
+    //        else
+    //            return false;
+            
+    //    }
+    //    catch (MySqlException ex)
+    //    {
+    //        MessageBox.Show($"Connection Failed: {ex.Message}");
+    //        return false;
+    //    }
+    //    finally
+    //    {
+    //        conn.Close();
+    //    }
+    //}
     public static bool UpdateCustomer(long originalID, long cardID, string name, int members, int quantity, int price)
     {
         string query = "UPDATE customer set CustomerID = @cardId, OwnerName = @name, NumberOfPeople = @members, TotalQuantity = @total, price = @price WHERE CustomerID = @originalID";
@@ -504,14 +527,13 @@ public class DataBase
                 return true;
             else
             {
-                MessageBox.Show("Failed to update!");
+                Toast.Show("فشل التحديث!", ToastType.Error);
                 return false;
             }
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Connection Failed: {ex.Message}");
             return false;
         }
         finally
@@ -521,30 +543,42 @@ public class DataBase
     }
     public static bool DeleteCustomer(long customerId)
     {
-        string query = "DELETE FROM customer WHERE CustomerID = @customerID";
-        MySqlConnection conn = new MySqlConnection(mySQLConnection);
-        MySqlCommand cmd = new MySqlCommand(query, conn);
-        cmd.Parameters.AddWithValue("@customerID", customerId);
-        cmd.CommandTimeout = 60;
-        try
+        string queryDeleteStore = @"
+        DELETE FROM store 
+        WHERE CustomerID = @customerID 
+        AND MONTH(DateOfOperation) = @month 
+        AND YEAR(DateOfOperation) = @year";
+
+        string queryDeleteCustomer = "DELETE FROM customer WHERE CustomerID = @customerID";
+
+        using (MySqlConnection conn = new MySqlConnection(mySQLConnection))
+        using (MySqlCommand cmdDeleteStore = new MySqlCommand(queryDeleteStore, conn))
+        using (MySqlCommand cmdDeleteCustomer = new MySqlCommand(queryDeleteCustomer, conn))
         {
-            conn.Open();
-            int row = cmd.ExecuteNonQuery();
-            if (row > 0)
-                return true;
-            else return false;
-        } 
-        catch (MySqlException ex)
-        {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
-            return false;
-        }
-        finally
-        {
-            conn.Close();
+            cmdDeleteStore.Parameters.AddWithValue("@customerID", customerId);
+            cmdDeleteStore.Parameters.AddWithValue("@month", DateTime.Now.Month);
+            cmdDeleteStore.Parameters.AddWithValue("@year", DateTime.Now.Year);
+
+            cmdDeleteCustomer.Parameters.AddWithValue("@customerID", customerId);
+
+            try
+            {
+                conn.Open();
+
+                cmdDeleteStore.ExecuteNonQuery();
+
+                int row = cmdDeleteCustomer.ExecuteNonQuery();
+
+                return row > 0;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Connection Failed: {ex.Message}");
+                return false;
+            }
         }
     }
+
     #endregion
     #endregion
 
@@ -569,8 +603,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to retrieve quota count.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to retrieve quota count: {ex.Message}");
             return -1;
         }
         finally
@@ -598,8 +631,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to retrieve today's card count.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to retrieve today's card count: {ex.Message}");
             return -1;
         }
         finally
@@ -627,8 +659,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to retrieve today's card count.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to retrieve today's card count: {ex.Message}");
             return -1;
         }
         finally
@@ -684,8 +715,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to retrieve store amount.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to retrieve store amount: {ex.Message}");
             return -1;
         }
         finally
@@ -713,8 +743,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to retrieve store amount.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to retrieve store amount: {ex.Message}");
             return -1;
         }
         finally
@@ -754,8 +783,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to retrieve quota amount.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to retrieve quota amount: {ex.Message}");
             return -1;
         }
         finally
@@ -802,14 +830,13 @@ public class DataBase
             cmd.Connection.Open();
             int row = cmd.ExecuteNonQuery();
             if (row > 0)
-                MessageBox.Show("Updated successfully");
+                Toast.Show("تم التحديث بنجاح.", ToastType.Success);
             else
-                MessageBox.Show("Failed to update!");
+                Toast.Show("فشل التحديث!", ToastType.Error);
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Connection Failed: {ex.Message}");
         }
         finally
         {
@@ -831,8 +858,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Failed to check owners count.");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Failed to check owners count: {ex.Message}");
             return false;
         }
         finally
@@ -860,8 +886,7 @@ public class DataBase
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Connection Failed");
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Connection Failed: {ex.Message}");
             return false;
         }
         finally

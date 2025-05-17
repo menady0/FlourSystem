@@ -1,14 +1,5 @@
 ﻿using FlourSystem.Classes.ToastClass;
 using FlourSystem.Forms.ToastMessage;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FlourSystem.Forms.User_Control.ucHomeBtns
 {
@@ -63,7 +54,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 string.IsNullOrEmpty(txtAmountPerKG.Content)
                 )
             {
-                MessageBox.Show("Please fill in all fields.");
+                Toast.Show("يرجى تعبئة جميع الحقول.", ToastType.Error);
                 return;
             }
             if (
@@ -71,14 +62,15 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 && !int.TryParse(txtAmountPerKG.Content, out _)
                 )
             {
-                MessageBox.Show("Invalid input. Please enter valid numbers.");
+                Toast.Show("إدخال غير صالح. يرجى إدخال أرقام صحيحة.", ToastType.Error);
+                return;
             }
             if (
                 float.Parse(txtAmount.Content) <= 0
                 || int.Parse(txtAmountPerKG.Content) <= 0
                 )
             {
-                MessageBox.Show("Please enter greater values than 0 values.");
+                Toast.Show("يرجى إدخال قيم أكبر من 0.", ToastType.Error);
                 return;
             }
 
@@ -91,52 +83,38 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
 
             if (DataBase.QuotaExists(DataBase.loggedOwner, date))
             {
-                MessageBox.Show("Quota already exists for today.");
+                Toast.Show("تم استلام حصة اليوم بالفعل", ToastType.Info);
                 return;
             }
 
             if (prevMonthAmount > 0)
             {
-                //DialogResult result = MessageBox.Show(
-                //    "Are you sure you want to continue?\n" +
-                //    $"Note: There is a quota for the previous month: {prevMonthAmount} left.",
-                //    "Confirmation",
-                //    MessageBoxButtons.YesNo,
-                //    MessageBoxIcon.Question
-                //);
                 Toast.Show(
                     "هل انت متأكد من الاستمرار؟\n" +
                     $"متبقي {prevMonthAmount} من الشهر الماضي"
-                    , ToastType.YesNo, result =>
+                    , ToastType.YesNo, input =>
                 {
-                    if (result)
+                    if (input)
                     {
-                        MessageBox.Show("yes");
+                        amountPerKG -= prevMonthAmount;
+                        if (amountPerKG <= 0)
+                        {
+                            Toast.Show("يرجى إدخال قيمة أكبر من 0.", ToastType.Error);
+                            return;
+                        }
+                        amount = amountPerKG / 20;
+                        Toast.Show($"تم إضافة كمية: {amountPerKG}", ToastType.Info);
                     }
+                    else
+                        return;
                 });
-                //if (result == DialogResult.Yes)
-                //{
-                //    amountPerKG -= prevMonthAmount;
-                //    if(amountPerKG <= 0)
-                //    {
-                //        MessageBox.Show("The amount per KG is less than or equal to 0.\n" +
-                //            "Please enter a greater value.");
-                //        return;
-                //    }
-                //    amount = amountPerKG / 20;
-                //    MessageBox.Show(Text = $"The amount per KG will be reduced by {prevMonthAmount}.\n" +
-                //        $"The new amount will be {amountPerKG}\n" +
-                //        $"the number of sacks is {amount}");
-                //}
-                //MessageBox.Show($"Note: There is a quota for the previous month: {prevMonthAmount} left.");
-                //return;
             }
-            //if (DataBase.addQuota(amount, amountPerKG, date, DataBase.loggedOwner))
-            //{
-            //    MessageBox.Show("Quota added successfully.");
-            //    btnClose.PerformClick();
-            //}
-            //else MessageBox.Show("Failed to add quota.");
+            if (DataBase.addQuota(amount, amountPerKG, date, DataBase.loggedOwner))
+            {
+                Toast.Show("تم إضافة الحصة بنجاح", ToastType.Success);
+                btnClose.PerformClick();
+            }
+            else Toast.Show("فشل إضافة الحصة", ToastType.Error);
         }
         private void btnClose_MouseEnter(object sender, EventArgs e)
         {

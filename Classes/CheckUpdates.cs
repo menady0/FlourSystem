@@ -1,58 +1,53 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
+using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlourSystem.Classes
 {
     internal class CheckUpdates
     {
-        public static readonly HttpClient client = new HttpClient();
-
-        public static async Task CheckForUpdatesAsync(bool upToDate = false)
+        public static async Task CheckForUpdatesAsync(bool upToDate = false, bool newUpdateAvaliable = false)
         {
             string updateUrl = "https://raw.githubusercontent.com/menady0/FlourSystem/main/update-info.json";
 
             try
             {
-                string json = await client.GetStringAsync(updateUrl);
-                UpdateInfo? update = JsonConvert.DeserializeObject<UpdateInfo>(json);
-
-                if (update != null && !string.IsNullOrEmpty(update.version))
+                using(HttpClient client = new HttpClient())
                 {
-                    Version? currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-                    Version latestVersion = new Version(update.version);
+                    string json = await client.GetStringAsync(updateUrl);
+                    UpdateInfo? update = JsonConvert.DeserializeObject<UpdateInfo>(json); // 1.0.0.0 - GitHub
 
-                    if (latestVersion > currentVersion)
+                    if (update != null && !string.IsNullOrEmpty(update.version))
                     {
-                        DialogResult result = MessageBox.Show(
-                            $"Update available!\n\n{update.changelog}\n\nDownload now?",
-                            "Update",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information
-                        );
+                        Version? currentVersion = Assembly.GetExecutingAssembly().GetName().Version; // 0.1.0.0
+                        Version latestVersion = new Version(update.version); // 1.0.0.0
 
-                        if (result == DialogResult.Yes)
+                        if (newUpdateAvaliable && latestVersion > currentVersion)
+                            Toast.Show("تحديث جديد متوفر!", ToastType.Info);
+                        else if (latestVersion > currentVersion)
                         {
-                            Process.Start(new ProcessStartInfo
+                            Toast.Show("يتوفر تحديث جديد!", ToastType.YesNo, input =>
                             {
-                                FileName = update.url,
-                                UseShellExecute = true
+                                if (input)
+                                {
+                                    Process.Start(new ProcessStartInfo
+                                    {
+                                        FileName = update.url,
+                                        UseShellExecute = true
+                                    });
+                                    Application.Exit();
+                                }
                             });
-                            Application.Exit();
                         }
+                        else if (upToDate) Toast.Show("أنت تستخدم أحدث إصدار.", ToastType.Success);
                     }
-                    else if (upToDate)
-                        MessageBox.Show("You are using the latest version.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Update check failed: " + ex.Message);
+                MessageBox.Show($"Update check failed: {ex.Message}");
             }
         }
         public class UpdateInfo

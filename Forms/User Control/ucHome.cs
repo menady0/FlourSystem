@@ -1,11 +1,10 @@
 ﻿using CuoreUI.Controls;
 using FlourSystem.Classes;
+using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
 using FlourSystem.Forms.User_Control.ucHomeBtns;
 using FlourSystem.Properties;
 using FontAwesome.Sharp;
-using System;
-using System.Configuration;
-using System.Diagnostics;
 
 namespace FlourSystem.Forms.User_Control
 {
@@ -20,6 +19,8 @@ namespace FlourSystem.Forms.User_Control
         private void ucHome_Load(object sender, EventArgs e)
         {
             DataBase.CustomersList = DataBase.RetrieveCustomerTable();
+
+
             DisplayTimer(DataBase.CustomersList);
             CloseOpenedDropDown(this);
 
@@ -31,10 +32,8 @@ namespace FlourSystem.Forms.User_Control
             #endregion
             ThemeManager.ApplyTheme();
         }
-
         #region Display Data [Best For Performance]
 
-        //private int batchSize = 25;
         private bool isLoading = false;
         public int currentIndex = 0;
         public int targetIndex = 0;
@@ -43,7 +42,6 @@ namespace FlourSystem.Forms.User_Control
         public void DisplayTimer(List<Dictionary<string, object>> customers)
         {
             customersToDisplay = customers;
-            // Change Min To Max: To Display All Customers at once
             if (Settings.Default.lazyLoading)
                 targetIndex = Math.Min(currentIndex + Settings.Default.batchSize, customersToDisplay.Count);
             else
@@ -344,7 +342,7 @@ namespace FlourSystem.Forms.User_Control
                     string.IsNullOrEmpty(txtPaid.Content)
                     )
                 {
-                    MessageBox.Show("Can't Leave one of the fields empty!");
+                    Toast.Show("لا يمكن ترك أحد الحقول فارغًا!", ToastType.Error);
                     return;
                 }
                 if (
@@ -361,7 +359,7 @@ namespace FlourSystem.Forms.User_Control
                         paidValue > int.Parse(customer["price"].ToString())
                         )
                     {
-                        MessageBox.Show("Quantity exceeds the remaining quantity.");
+                        Toast.Show("الكمية تتجاوز الكمية المتبقية.", ToastType.Error);
                         return;
                     }
                     int currentMonth = DateTime.Now.Month;
@@ -369,13 +367,13 @@ namespace FlourSystem.Forms.User_Control
                     DataBase.balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
                     if (reqValue > DataBase.balance)
                     {
-                        MessageBox.Show("Not enough balance.");
+                        Toast.Show("الرصيد غير كافٍ.", ToastType.Error);
                         return;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please enter a valid number.");
+                    Toast.Show("يرجى إدخال رقم صالح.", ToastType.Error);
                     return;
                 }
 
@@ -399,7 +397,6 @@ namespace FlourSystem.Forms.User_Control
                     btnRegister.Content = (int.Parse(btnRegister.Content) + 1).ToString();
                     btnRegister.NormalBackground = Color.Green;
 
-                    MessageBox.Show($"{remain.Text}, {price.Text}");
                     if (
                         int.TryParse(remain.Text, out int value) &&
                         value == 0 &&
@@ -488,7 +485,7 @@ namespace FlourSystem.Forms.User_Control
 
             if (customersToDisplay.Count == 0)
             {
-                MessageBox.Show("No results found.");
+                Toast.Show("لم يتم العثور على أي نتائج.", ToastType.Error);
                 return;
             }
 
@@ -718,30 +715,51 @@ namespace FlourSystem.Forms.User_Control
                         int.TryParse(customerNumObj.ToString(), out int customerNum)
                         )
                     {
-                        var result = MessageBox.Show(
-                            "Are you sure you want to reset this customer's data?",
-                            "Confirm Reset",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Warning
-                        );
-
-                        if (result == DialogResult.Yes)
+                        Toast.Show("هل أنت متأكد من إعادة تعيين بيانات العميل؟", ToastType.YesNo, input =>
                         {
-                            int totalQuantity = customerNum * (Settings.Default.sack / 2);
-                            int price = totalQuantity * (Settings.Default.price / Settings.Default.sack);
-                            string date = DateTime.Now.ToString("yyyy-MM");
-                            if (DataBase.ResetCustomer(customerId, totalQuantity, price, date))
+                            if (input)
                             {
-                                MessageBox.Show("Customer data reset successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //int totalQuantity = customerNum * (Settings.Default.sack / 2);
+                                //int price = totalQuantity * (Settings.Default.price / Settings.Default.sack);
+                                //string date = DateTime.Now.ToString("yyyy-MM");
+                                //if (DataBase.ResetCustomer(customerId, totalQuantity, price, date))
+                                //{
+                                //    Toast.Show("تمت إعادة تعيين بيانات العميل بنجاح.", ToastType.Success);
 
-                                RefreshData();
+                                //    RefreshData();
+                                //}
+                                //else Toast.Show("فشل في إعادة تعيين بيانات العميل.", ToastType.Error);
+                                if (ResetCustomerValues(customerId, customerNum, true))
+                                {
+                                    Toast.Show("تمت إعادة تعيين بيانات العميل بنجاح.", ToastType.Success);
+                                    RefreshData();
+                                }
+                                else Toast.Show("فشل في إعادة تعيين بيانات العميل.", ToastType.Error);
                             }
-                            else MessageBox.Show("Failed to reset customer data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        });
+
                     }
-                    else MessageBox.Show("Invalid customer data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else Toast.Show("بيانات العميل غير صالحة.", ToastType.Error);
                 }
-                else MessageBox.Show("No customer data associated with this button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else Toast.Show("لا توجد بيانات عميل مرتبطة بهذا الزر.", ToastType.Error);
+            }
+        }
+        public static bool ResetCustomerValues(long customerId, int numberOfPeople, bool isAllCustomer)
+        {
+            try
+            {
+                int sack = Settings.Default.sack;
+                int priceSetting = Settings.Default.price;
+                int totalQuantity = numberOfPeople * (sack / 2);
+                int price = totalQuantity * (priceSetting / sack);
+                string date = DateTime.Now.ToString("yyyy-MM");
+
+                return DataBase.ResetCustomer(customerId, totalQuantity, price, date, isAllCustomer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"فشل في إعادة تعيين البيانات: {ex.Message}");
+                return false;
             }
         }
 
@@ -750,9 +768,9 @@ namespace FlourSystem.Forms.User_Control
             AdditionaldropDownTimer.Start();
             if(sender is cuiButton btn)
             {
-                if (btn.Tag is Dictionary<string, object> customer) 
+                if (btn.Tag is Dictionary<string, object> customer)
                 {
-                    if(
+                    if (
                         customer.TryGetValue("CustomerID", out var customerIdObj) &&
                         long.TryParse(customerIdObj.ToString(), out long customerId) &&
                         customer.TryGetValue("name", out var customerNameObj) &&
@@ -774,10 +792,8 @@ namespace FlourSystem.Forms.User_Control
                         addCustomer.ShowDialog();
 
                     }
-                        
                 }
-                else MessageBox.Show("No customer data associated with this button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                else Toast.Show("لا توجد بيانات عميل مرتبطة بهذا الزر.", ToastType.Error);
             }
         }
 
@@ -786,33 +802,28 @@ namespace FlourSystem.Forms.User_Control
             AdditionaldropDownTimer.Start();
             if (sender is cuiButton btn) 
             {
-                if(btn.Tag is Dictionary<string, object> customer)
+                if (btn.Tag is Dictionary<string, object> customer)
                 {
-                    if (customer.TryGetValue("CustomerID", out var customerIdObj) && 
+                    if (customer.TryGetValue("CustomerID", out var customerIdObj) &&
                         long.TryParse(customerIdObj.ToString(), out long customerId) &&
                         customer.TryGetValue("name", out var customerNameObj))
                     {
-                        var result = MessageBox.Show(
-                            "Are you sure you want to delete this customer's data?",
-                            "Confirm Reset",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Warning
-                        );
-
-                        if (result == DialogResult.Yes)
+                        Toast.Show("هل أنت متأكد من حذف بيانات هذا العميل؟", ToastType.YesNo, input =>
                         {
-                            if (DataBase.DeleteCustomer(customerId))
+                            if (input)
                             {
-                                MessageBox.Show($"Customer: {customerNameObj} with the ID: {customerId} is deleted successfully");
-                                RefreshData();
+                                if (DataBase.DeleteCustomer(customerId))
+                                {
+                                    Toast.Show($"تم حذف العميل: {customerNameObj}.", ToastType.Success);
+
+                                    RefreshData();
+                                }
+                                else Toast.Show("فشل حذف العميل.", ToastType.Error);
                             }
-                            else
-                                MessageBox.Show($"Failed to delete customer: {customerNameObj} with the ID: {customerId}");
-                        }
+                        });
                     }
                 }
-                else MessageBox.Show("No customer data associated with this button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                else Toast.Show("لا توجد بيانات عميل مرتبطة بهذا الزر.", ToastType.Error);
             }
         }
     }

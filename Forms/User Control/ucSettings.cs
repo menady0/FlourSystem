@@ -1,17 +1,9 @@
 ﻿using CuoreUI.Controls;
 using FlourSystem.Classes;
+using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
 using FlourSystem.Properties;
 using FontAwesome.Sharp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FlourSystem.Forms.User_Control
 {
@@ -215,7 +207,7 @@ namespace FlourSystem.Forms.User_Control
             // Show error only once if needed
             if (invalidNumber)
             {
-                MessageBox.Show("Please enter valid numbers in numeric fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Toast.Show("يرجى إدخال أرقام صحيحة في الحقول الرقمية.", ToastType.Error);
                 return;
             }
 
@@ -237,13 +229,12 @@ namespace FlourSystem.Forms.User_Control
             if (scrollThreshold.HasValue) Settings.Default.scrollThreshold = scrollThreshold.Value;
 
             Settings.Default.Save();
-            MessageBox.Show("Changes saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Toast.Show("تم حفظ التغييرات بنجاح.", ToastType.Success);
         }
 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnSave clicked");
             SaveChanges();
             btnSave.BackColor = pnlSave.PanelColor = pnlSave.PanelOutlineColor = ThemeColors.Green;
 
@@ -270,17 +261,21 @@ namespace FlourSystem.Forms.User_Control
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete your account? This action cannot be undone.", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            Toast.Show("هل أنت متأكد من رغبتك في حذف حسابك؟", ToastType.YesNo, async input =>
             {
-                if (DataBase.CheckOwners())
+                if (input)
                 {
-                    MessageBox.Show("You cannot delete the last owner.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (DataBase.CheckOwners())
+                    {
+                        Toast.Show("لا يمكنك حذف المالك الأخير.", ToastType.Error);
+                        return;
+                    }
+                    DataBase.DeleteOwner(DataBase.currentUsername);
+                    Toast.Show("تم حذف الحساب بنجاح. سيتم تسجيل خروجك.", ToastType.Success);
+                    await Task.Delay(Toast.duration);
+                    Application.Exit();
                 }
-                DataBase.DeleteOwner(DataBase.currentUsername);
-                MessageBox.Show("Account deleted successfully. You will be logged out.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Exit();
-            }
+            });
         }
     }
 }

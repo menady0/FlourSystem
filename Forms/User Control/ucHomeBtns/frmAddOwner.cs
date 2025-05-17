@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using BCrypt.Net;
+using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
 using FontAwesome.Sharp;
 
 namespace FlourSystem.Forms.User_Control.ucHomeBtns
@@ -89,19 +92,19 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 || string.IsNullOrEmpty(txtConfirmPassword.Content)
                 )
             {
-                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Toast.Show("يرجى تعبئة جميع الحقول.", ToastType.Error);
                 return;
             }
             if(DataBase.OwnerExists(txtUsername.Content))
             {
-                MessageBox.Show("Username already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Toast.Show("اسم المستخدم موجود بالفعل.", ToastType.Error);
                 txtUsername.Content = "";
                 txtUsername.Focus();
                 return;
             }
             if (txtPassword.Content!= txtConfirmPassword.Content)
             {
-                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Toast.Show("كلمتا المرور غير متطابقتين.", ToastType.Error);
                 txtConfirmPassword.Content = "";
                 txtConfirmPassword.Focus();
                 return;
@@ -115,12 +118,10 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
             if (DataBase.AddOwner(name, username, hashedPassword))
             {
-                MessageBox.Show("Owner added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Toast.Show("تم إضافة المالك بنجاح.", ToastType.Success);
                 btnClose.PerformClick();
             }
-            else
-                MessageBox.Show("Failed to add owner.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            else Toast.Show("فشل إضافة المالك!", ToastType.Error);
         }
 
         private void btnClose_MouseEnter(object sender, EventArgs e)
