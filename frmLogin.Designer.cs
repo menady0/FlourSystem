@@ -63,6 +63,8 @@
             btnDarkMode.Cursor = Cursors.Hand;
             btnDarkMode.Dock = DockStyle.Right;
             btnDarkMode.FlatAppearance.BorderSize = 0;
+            btnDarkMode.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnDarkMode.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnDarkMode.FlatStyle = FlatStyle.Flat;
             btnDarkMode.ForeColor = Color.FromArgb(36, 35, 35);
             btnDarkMode.IconChar = FontAwesome.Sharp.IconChar.Moon;

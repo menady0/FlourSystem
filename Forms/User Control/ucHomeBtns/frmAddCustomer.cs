@@ -124,10 +124,8 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             int quantity = int.Parse(txtQuantity.Content);
             int price = int.Parse(txtPrice.Content);
             int registration = 0;
-            int delivered = 0;
+            int delivered = quantity;
             int customerIndex = DataBase.RetrieveCustomerTable().Count;
-            //int customerIndex = DataBase.CustomersList.Count;
-            MessageBox.Show(customerIndex.ToString());
             string renewalDate = DateTime.Now.ToString("yyyy-MM-dd");
 
             if ((btnAdd.Tag as string) == "update")
@@ -147,7 +145,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                     this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
                     btnClose.PerformClick();
                 }
-                else Toast.Show("فشل في تحديث بيانات العميل.", ToastType.Error);
+                else Toast.Show("فشل في إضافة عميل جديد.", ToastType.Error);
             }
 
         }

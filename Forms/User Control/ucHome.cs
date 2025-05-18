@@ -90,7 +90,6 @@ namespace FlourSystem.Forms.User_Control
                 );
             }
         }
-        int index = 0;
         private FlowLayoutPanel CreateCustomerPanel(Dictionary<string, object> customer)
         {
             FlowLayoutPanel customerPanel = new FlowLayoutPanel
@@ -136,7 +135,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 AutoSize = false,
                 Text = $"{int.Parse(customer["numberOfPeople"]?.ToString() ?? "0") * (Settings.Default.sack / 2)}",
-                Width = 85,
+                Width = 80,
                 Height = 40,
                 TextAlign = ContentAlignment.MiddleCenter,
                 ForeColor = Color.Black,
@@ -145,7 +144,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 AutoSize = false,
                 Text = $"{customer["remainQuantity"]}",
-                Width = 85,
+                Width = 80,
                 Height = 40,
                 TextAlign = ContentAlignment.MiddleCenter,
                 ForeColor = Color.Black,
@@ -154,7 +153,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 Name = "input",
                 Content = $"{customer["remainQuantity"]}",
-                Width = 85,
+                Width = 80,
                 Height = 30,
                 Padding = new Padding(0),
                 Rounding = new Padding(5),
@@ -165,11 +164,20 @@ namespace FlourSystem.Forms.User_Control
                 FocusBackgroundColor = Color.Transparent,
                 FocusBorderColor = ThemeColors.Green,
             };
+            Label lblReceivedRemain = new Label
+            {
+                AutoSize = false,
+                Text = $"{customer["delivered"]}",
+                Width = 80,
+                Height = 40,
+                TextAlign = ContentAlignment.MiddleCenter,
+                ForeColor = Color.Black,
+            };
             cuiTextBox2 txtReceived = new cuiTextBox2
             {
                 Name = "input",
-                Content = $"{customer["remainQuantity"]}",
-                Width = 85,
+                Content = $"{customer["delivered"]}",
+                Width = 80,
                 Height = 30,
                 Padding = new Padding(0),
                 Rounding = new Padding(5),
@@ -184,7 +192,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 AutoSize = false,
                 Text = $"{customer["price"]}",
-                Width = 85,
+                Width = 80,
                 Height = 40,
                 TextAlign = ContentAlignment.MiddleCenter,
                 ForeColor = Color.Black,
@@ -193,7 +201,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 Name = "input",
                 Content = $"{customer["price"]}",
-                Width = 85,
+                Width = 80,
                 Height = 30,
                 Padding = new Padding(0),
                 Rounding = new Padding(5),
@@ -210,7 +218,7 @@ namespace FlourSystem.Forms.User_Control
             {
                 Name = "btnRegister",
                 Content = $"{customer["registration"]}",
-                Width = 85,
+                Width = 70,
                 Height = 25,
                 Rounding = new Padding(5),
                 Cursor = Cursors.Hand,
@@ -219,15 +227,14 @@ namespace FlourSystem.Forms.User_Control
                 NormalBackground = Color.FromArgb(85, 86, 82),
                 HoverBackground = Color.FromArgb(200, 71, 137, 75),
                 PressedBackground = Color.FromArgb(71, 137, 75),
-                Tag = new { Customer = customer, Remain = lblRemain, Required = txtRequired, Price = lblPrice, Paid = txtPaid, Received = txtReceived },
+                Tag = new { Customer = customer, Remain = lblRemain, Required = txtRequired, ReceivedRemain = lblReceivedRemain, Received = txtReceived, Price = lblPrice, Paid = txtPaid},
             };
             if (btnRegister.Content != "0") btnRegister.NormalBackground = Color.FromArgb(71, 137, 75);
             btnRegister.Click += btnRegister_Click;
 
-
             Panel pnlAdditional = new Panel
             {
-                Width = 85,
+                Width = 55,
                 Height = 40,
                 BackColor = Color.Transparent,
                 Padding = new Padding(25, 0, 25, 0),
@@ -282,6 +289,7 @@ namespace FlourSystem.Forms.User_Control
             customerPanel.Controls.Add(lblTotal);
             customerPanel.Controls.Add(lblRemain);
             customerPanel.Controls.Add(txtRequired);
+            customerPanel.Controls.Add(lblReceivedRemain);
             customerPanel.Controls.Add(txtReceived);
             customerPanel.Controls.Add(lblPrice);
             customerPanel.Controls.Add(txtPaid);
@@ -290,8 +298,6 @@ namespace FlourSystem.Forms.User_Control
 
             pnlCustomerContainer.Controls.Add(customerPanel);
             ThemeManager.CustomerPanelTheme(customerPanel);
-
-            index++;
 
             if (int.TryParse(customer["price"].ToString(), out int price) && 
                 int.TryParse(customer["remainQuantity"].ToString(), out int remain) &&
@@ -331,6 +337,7 @@ namespace FlourSystem.Forms.User_Control
                 Label remain = tag.Remain;
                 cuiTextBox2 txtRequired = tag.Required;
 
+                Label ReceivedRemain = tag.ReceivedRemain;
                 cuiTextBox2 txtReceived = tag.Received;
 
                 Label price = tag.Price;
@@ -350,13 +357,16 @@ namespace FlourSystem.Forms.User_Control
                     int.TryParse(txtReceived.Content, out int recValue) &&
                     int.TryParse(txtPaid.Content, out int paidValue))
                 {
-                    if (
-                        reqValue <= 0 ||
-                        reqValue > int.Parse(customer["remainQuantity"].ToString()) ||
-                        recValue <= 0 ||
-                        recValue > int.Parse(customer["remainQuantity"].ToString()) ||
-                        paidValue <= 0 ||
-                        paidValue > int.Parse(customer["price"].ToString())
+                    MessageBox.Show($"paid value: {paidValue}, price: {customer["price"] ?? "0"}");
+                    if (reqValue < 0 || recValue < 0 || paidValue < 0)
+                    {
+                        Toast.Show("لا يمكن ان تكون القيمة سالبة!", ToastType.Error);
+                        return;
+                    }
+                    else if (
+                        reqValue > int.Parse(remain.Text) ||
+                        recValue > int.Parse(ReceivedRemain.Text) ||
+                        paidValue > int.Parse(price.Text)
                         )
                     {
                         Toast.Show("الكمية تتجاوز الكمية المتبقية.", ToastType.Error);
@@ -364,7 +374,7 @@ namespace FlourSystem.Forms.User_Control
                     }
                     int currentMonth = DateTime.Now.Month;
                     int currentYear = DateTime.Now.Year;
-                    DataBase.balance = DataBase.AmountPerKG(currentMonth, currentYear) - DataBase.Store(currentMonth, currentYear);
+                    DataBase.balance = DataBase.Balance(currentMonth, currentYear);
                     if (reqValue > DataBase.balance)
                     {
                         Toast.Show("الرصيد غير كافٍ.", ToastType.Error);
@@ -386,16 +396,22 @@ namespace FlourSystem.Forms.User_Control
 
                     DataBase.Registration(customer, required, received, paid, date);
 
-                    int totalQuantity = int.Parse(remain.Text);
-                    int receivedQuantity = int.Parse(txtRequired.Content);
+                    int totalQuantity = int.Parse(remain.Text); 
+                    int receivedQuantity = int.Parse(txtRequired.Content); 
+                    int DeliveredQuantity = int.Parse(txtReceived.Content);
+                    int money = int.Parse(txtPaid.Content);
+
                     remain.Text = (totalQuantity - receivedQuantity).ToString();
                     txtRequired.Content = remain.Text;
-                    txtReceived.Content = remain.Text;
-                    price.Text = (int.Parse(remain.Text) * (Settings.Default.price / Settings.Default.sack)).ToString();
+
+                    ReceivedRemain.Text = (totalQuantity - DeliveredQuantity).ToString();
+                    txtReceived.Content = ReceivedRemain.Text;
+
+                    price.Text = (int.Parse(price.Text) - money).ToString();
                     txtPaid.Content = price.Text;
 
                     btnRegister.Content = (int.Parse(btnRegister.Content) + 1).ToString();
-                    btnRegister.NormalBackground = Color.Green;
+                    btnRegister.NormalBackground = ThemeColors.Green;
 
                     if (
                         int.TryParse(remain.Text, out int value) &&
@@ -719,16 +735,6 @@ namespace FlourSystem.Forms.User_Control
                         {
                             if (input)
                             {
-                                //int totalQuantity = customerNum * (Settings.Default.sack / 2);
-                                //int price = totalQuantity * (Settings.Default.price / Settings.Default.sack);
-                                //string date = DateTime.Now.ToString("yyyy-MM");
-                                //if (DataBase.ResetCustomer(customerId, totalQuantity, price, date))
-                                //{
-                                //    Toast.Show("تمت إعادة تعيين بيانات العميل بنجاح.", ToastType.Success);
-
-                                //    RefreshData();
-                                //}
-                                //else Toast.Show("فشل في إعادة تعيين بيانات العميل.", ToastType.Error);
                                 if (ResetCustomerValues(customerId, customerNum, true))
                                 {
                                     Toast.Show("تمت إعادة تعيين بيانات العميل بنجاح.", ToastType.Success);
@@ -744,7 +750,7 @@ namespace FlourSystem.Forms.User_Control
                 else Toast.Show("لا توجد بيانات عميل مرتبطة بهذا الزر.", ToastType.Error);
             }
         }
-        public static bool ResetCustomerValues(long customerId, int numberOfPeople, bool isAllCustomer)
+        public static bool ResetCustomerValues(long customerId, int numberOfPeople, bool deleteStore)
         {
             try
             {
@@ -754,7 +760,7 @@ namespace FlourSystem.Forms.User_Control
                 int price = totalQuantity * (priceSetting / sack);
                 string date = DateTime.Now.ToString("yyyy-MM");
 
-                return DataBase.ResetCustomer(customerId, totalQuantity, price, date, isAllCustomer);
+                return DataBase.ResetCustomer(customerId, totalQuantity, price, date, deleteStore);
             }
             catch (Exception ex)
             {

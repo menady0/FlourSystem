@@ -74,7 +74,7 @@ namespace FlourSystem
         {
             if (string.IsNullOrEmpty(txtUsername.Content) || string.IsNullOrEmpty(txtPassword.Content))
             {
-                Toast.Show("لا يمكن أن يكون اسم المستخدم أو كلمة المرور فارغًا.", ToastType.Error);
+                Toast.Show("لا يمكن ترك خانة فارغة!", ToastType.Error);
                 txtUsername.Focus();
                 return;
             }

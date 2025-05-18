@@ -25,5 +25,5 @@
     public static Color Green = Color.FromArgb(71, 137, 75);
 
     // Exceptions
-    public static Color UserControlBG = Color.FromArgb(10, 10, 10);
+    public static Color UserControlBG = Color.FromArgb(12, 12, 12);
 }

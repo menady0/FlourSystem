@@ -391,9 +391,10 @@ public class DataBase
                 Registration = Registration + 1, 
                 TotalQuantity = TotalQuantity - @theReceivedQuantity,
                 Price = Price - @paid,
-                Delivered = @delievered
+                Delivered = Delivered - @delievered
             WHERE 
                 CustomerID = @customerID";
+
         string insertStoreQuery = "INSERT INTO store (DateOfOperation, MoneyPaid, theReceivedQuantity, CustomerID) VALUES (@dateOfOperation, @moneyPaid, @theReceivedQuantity, @customerID)";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand updateCustomerCmd = new MySqlCommand(updateCustomerQuery, conn);
@@ -432,7 +433,7 @@ public class DataBase
     #region Reset, Update & Delete Buttons
     public static bool ResetCustomer(long customerID, int totalQuantity, int price, string date, bool deleteStore = true)
     {
-        string update = "UPDATE customer SET Registration = 0, Delivered = 0, TotalQuantity = @totalQuantity, Price = @price WHERE CustomerID = @customerID";
+        string update = "UPDATE customer SET TotalQuantity = @totalQuantity, Price = @price, Registration = 0, Delivered = @totalQuantity WHERE CustomerID = @customerID";
         string delete = "DELETE FROM store WHERE CustomerID = @customerID AND DATE_FORMAT(DateOfOperation, '%Y-%m') = @date";
 
         using (MySqlConnection conn = new MySqlConnection(mySQLConnection))

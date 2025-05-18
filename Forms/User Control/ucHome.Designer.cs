@@ -40,6 +40,7 @@
             lblTotal = new Label();
             lblRemain = new Label();
             lblRequired = new Label();
+            label1 = new Label();
             lblReceived = new Label();
             lblPrice = new Label();
             lblPaid = new Label();
@@ -228,6 +229,7 @@
             pnlTableHeader.Controls.Add(lblTotal);
             pnlTableHeader.Controls.Add(lblRemain);
             pnlTableHeader.Controls.Add(lblRequired);
+            pnlTableHeader.Controls.Add(label1);
             pnlTableHeader.Controls.Add(lblReceived);
             pnlTableHeader.Controls.Add(lblPrice);
             pnlTableHeader.Controls.Add(lblPaid);
@@ -236,7 +238,7 @@
             pnlTableHeader.FlowDirection = FlowDirection.RightToLeft;
             pnlTableHeader.Location = new Point(0, 40);
             pnlTableHeader.Name = "pnlTableHeader";
-            pnlTableHeader.Padding = new Padding(10);
+            pnlTableHeader.Padding = new Padding(25, 10, 10, 10);
             pnlTableHeader.Size = new Size(1084, 40);
             pnlTableHeader.TabIndex = 0;
             // 
@@ -244,7 +246,7 @@
             // 
             lblName.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblName.ForeColor = Color.Black;
-            lblName.Location = new Point(761, 10);
+            lblName.Location = new Point(746, 10);
             lblName.Name = "lblName";
             lblName.Size = new Size(300, 20);
             lblName.TabIndex = 0;
@@ -255,9 +257,9 @@
             // 
             lblTotal.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblTotal.ForeColor = Color.Black;
-            lblTotal.Location = new Point(670, 10);
+            lblTotal.Location = new Point(660, 10);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(85, 20);
+            lblTotal.Size = new Size(80, 20);
             lblTotal.TabIndex = 1;
             lblTotal.Text = "الإجمالي";
             lblTotal.TextAlign = ContentAlignment.MiddleCenter;
@@ -266,9 +268,9 @@
             // 
             lblRemain.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblRemain.ForeColor = Color.Black;
-            lblRemain.Location = new Point(579, 10);
+            lblRemain.Location = new Point(574, 10);
             lblRemain.Name = "lblRemain";
-            lblRemain.Size = new Size(85, 20);
+            lblRemain.Size = new Size(80, 20);
             lblRemain.TabIndex = 2;
             lblRemain.Text = "المتبقي";
             lblRemain.TextAlign = ContentAlignment.MiddleCenter;
@@ -279,18 +281,29 @@
             lblRequired.ForeColor = Color.Black;
             lblRequired.Location = new Point(488, 10);
             lblRequired.Name = "lblRequired";
-            lblRequired.Size = new Size(85, 20);
+            lblRequired.Size = new Size(80, 20);
             lblRequired.TabIndex = 3;
             lblRequired.Text = "المطلوب";
             lblRequired.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(402, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 20);
+            label1.TabIndex = 9;
+            label1.Text = "المتبقي";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblReceived
             // 
             lblReceived.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblReceived.ForeColor = Color.Black;
-            lblReceived.Location = new Point(397, 10);
+            lblReceived.Location = new Point(316, 10);
             lblReceived.Name = "lblReceived";
-            lblReceived.Size = new Size(85, 20);
+            lblReceived.Size = new Size(80, 20);
             lblReceived.TabIndex = 4;
             lblReceived.Text = "استلم";
             lblReceived.TextAlign = ContentAlignment.MiddleCenter;
@@ -299,9 +312,9 @@
             // 
             lblPrice.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblPrice.ForeColor = Color.Black;
-            lblPrice.Location = new Point(306, 10);
+            lblPrice.Location = new Point(230, 10);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(85, 20);
+            lblPrice.Size = new Size(80, 20);
             lblPrice.TabIndex = 5;
             lblPrice.Text = "المبلغ";
             lblPrice.TextAlign = ContentAlignment.MiddleCenter;
@@ -310,9 +323,9 @@
             // 
             lblPaid.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblPaid.ForeColor = Color.Black;
-            lblPaid.Location = new Point(215, 10);
+            lblPaid.Location = new Point(144, 10);
             lblPaid.Name = "lblPaid";
-            lblPaid.Size = new Size(85, 20);
+            lblPaid.Size = new Size(80, 20);
             lblPaid.TabIndex = 6;
             lblPaid.Text = "المدفوع";
             lblPaid.TextAlign = ContentAlignment.MiddleCenter;
@@ -321,9 +334,9 @@
             // 
             lblRegister.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblRegister.ForeColor = Color.Black;
-            lblRegister.Location = new Point(124, 10);
+            lblRegister.Location = new Point(68, 10);
             lblRegister.Name = "lblRegister";
-            lblRegister.Size = new Size(85, 20);
+            lblRegister.Size = new Size(70, 20);
             lblRegister.TabIndex = 7;
             lblRegister.Text = "تسجيل";
             lblRegister.TextAlign = ContentAlignment.MiddleCenter;
@@ -333,9 +346,9 @@
             lblAddtional.BackColor = Color.Transparent;
             lblAddtional.Font = new Font("Cairo", 10F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblAddtional.ForeColor = Color.Black;
-            lblAddtional.Location = new Point(33, 10);
+            lblAddtional.Location = new Point(7, 10);
             lblAddtional.Name = "lblAddtional";
-            lblAddtional.Size = new Size(85, 20);
+            lblAddtional.Size = new Size(55, 20);
             lblAddtional.TabIndex = 8;
             lblAddtional.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -392,5 +405,6 @@
         public FlowLayoutPanel pnlCustomerContainer;
         public CuoreUI.Controls.cuiBorder pnlAddtionalDropDown;
         public System.Windows.Forms.Timer AdditionaldropDownTimer;
+        private Label label1;
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboard));
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
             pnlUpdateCheck = new Panel();
@@ -155,7 +156,7 @@
             spUpdateCheck.Name = "spUpdateCheck";
             spUpdateCheck.RingColor = Color.FromArgb(34, 34, 34);
             spUpdateCheck.RotateSpeed = 5F;
-            spUpdateCheck.Rotation = 292.179718F;
+            spUpdateCheck.Rotation = 307.2821F;
             spUpdateCheck.Size = new Size(35, 35);
             spUpdateCheck.TabIndex = 14;
             spUpdateCheck.Thickness = 2F;
@@ -687,6 +688,7 @@
             Controls.Add(pnlNavBar);
             Font = new Font("Cairo", 10F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2, 4, 2, 4);
             Name = "frmDashboard";
             StartPosition = FormStartPosition.CenterScreen;
