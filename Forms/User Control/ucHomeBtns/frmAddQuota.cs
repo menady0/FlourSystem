@@ -72,20 +72,22 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                 return;
             }
 
-            if (amount > 74.5 || amountPerKG > 1490)
-            {
-                Toast.Show("الكمية المدخلة تتجاوز الحد الأقصى: 74.5 للكمية أو 1490 للكمية لكل كجم.", ToastType.Error);
-                txtAmount.Focus();
-                return;
-            }
+            // Check If Values are greater than maximum values
+            //if (amount > 74.5 || amountPerKG > 1490)
+            //{
+            //    Toast.Show("الكمية المدخلة تتجاوز الحد الأقصى: 74.5 للكمية أو 1490 للكمية لكل كجم.", ToastType.Error);
+            //    txtAmount.Focus();
+            //    return;
+            //}
 
             string date = DateTime.Now.ToString("yyyy-MM-dd");
-            if (DataBase.QuotaExists(DataBase.loggedOwner, date))
-            {
-                Toast.Show("تم استلام حصة اليوم بالفعل", ToastType.Info);
-                btnClose.PerformClick();
-                return;
-            }
+            // Check If Received Quota Today
+            //if (DataBase.QuotaExists(DataBase.loggedOwner, date))
+            //{
+            //    Toast.Show("تم استلام حصة اليوم بالفعل", ToastType.Info);
+            //    btnClose.PerformClick();
+            //    return;
+            //}
 
             int currentMonth = DateTime.Now.Month;
             int currentYear = DateTime.Now.Year;

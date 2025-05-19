@@ -201,11 +201,11 @@
             balancelbl.AutoSize = true;
             balancelbl.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             balancelbl.ForeColor = Color.Black;
-            balancelbl.Location = new Point(101, 130);
+            balancelbl.Location = new Point(99, 130);
             balancelbl.Name = "balancelbl";
-            balancelbl.Size = new Size(99, 30);
+            balancelbl.Size = new Size(102, 30);
             balancelbl.TabIndex = 1;
-            balancelbl.Text = "الرصيد المتاح";
+            balancelbl.Text = "الرصيد الحالي";
             // 
             // lblBalance
             // 
