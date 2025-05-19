@@ -299,9 +299,10 @@ namespace FlourSystem.Forms.User_Control
             pnlCustomerContainer.Controls.Add(customerPanel);
             ThemeManager.CustomerPanelTheme(customerPanel);
 
-            if (int.TryParse(customer["price"].ToString(), out int price) && 
+            if (int.TryParse(customer["price"].ToString(), out int price) &&
                 int.TryParse(customer["remainQuantity"].ToString(), out int remain) &&
-                price == 0 && remain == 0)
+                int.TryParse(customer["delivered"].ToString(), out int delivered) &&
+                price == 0 && remain == 0 && delivered == 0)
             {
                 customerPanel.BackColor = ThemeManager.IsDarkMode ? ThemeColors.DarkCompleted : ThemeColors.LightCompleted;
                 completed.Add(customerPanel);
@@ -384,6 +385,12 @@ namespace FlourSystem.Forms.User_Control
                         Toast.Show("الرصيد غير كافٍ.", ToastType.Error);
                         return;
                     }
+                    DataBase.flourStored = DataBase.FlourStored(currentMonth, currentYear);
+                    if (recValue > DataBase.flourStored)
+                    {
+                        Toast.Show("الكمية في المخزن غير كافية.", ToastType.Error);
+                        return;
+                    }
                 }
                 else
                 {
@@ -420,8 +427,10 @@ namespace FlourSystem.Forms.User_Control
                     if (
                         int.TryParse(remain.Text, out int value) &&
                         value == 0 &&
-                        int.TryParse(price.Text, out int value2) &&
-                        value2 == 0)
+                        int.TryParse(ReceivedRemain.Text, out int value2) &&
+                        value2 == 0 &&
+                        int.TryParse(price.Text, out int value3) &&
+                        value3 == 0)
                     {
                         FlowLayoutPanel? parentPanel = btnRegister.Parent as FlowLayoutPanel;
                         parentPanel.BackColor = ThemeManager.IsDarkMode ? ThemeColors.DarkCompleted : ThemeColors.LightCompleted;

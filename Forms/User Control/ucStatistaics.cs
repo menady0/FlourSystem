@@ -6,7 +6,7 @@ namespace FlourSystem.Forms.User_Control
     public partial class ucStatistaics : UserControl
     {
         int receivedQuota;
-        int todayCards;
+        //int todayCards;
         int totalCards;
 
         //int balance;
@@ -54,10 +54,11 @@ namespace FlourSystem.Forms.User_Control
             int currentYear = DateTime.Now.Year;
 
             receivedQuota = DataBase.ReceivedQuotas(currentMonth, currentYear);
-            todayCards = DataBase.Cards(currentDay, currentMonth, currentYear);
+            //todayCards = DataBase.Cards(currentDay, currentMonth, currentYear);
             totalCards = DataBase.Cards(currentMonth, currentYear);
 
             DataBase.balance = DataBase.Balance(currentMonth, currentYear);
+            DataBase.flourStored = DataBase.FlourStored(currentMonth, currentYear);
             todaySales = DataBase.GetStore(currentDay, currentMonth, currentYear);
             totalSales = DataBase.GetStore(currentMonth, currentYear);
 
@@ -96,7 +97,7 @@ namespace FlourSystem.Forms.User_Control
             animations = new List<NumberAnimation>
             {
                 new NumberAnimation { TargetLabel = lblReceivedQuota, StartValue = 0, EndValue = receivedQuota, Duration = 750, StartTime = DateTime.Now },
-                new NumberAnimation { TargetLabel = lblTodayCards, StartValue = 0, EndValue = todayCards, Duration = 1000, StartTime = DateTime.Now },
+                new NumberAnimation { TargetLabel = lblTodayCards, StartValue = 0, EndValue = DataBase.flourStored, Duration = 1000, StartTime = DateTime.Now },
                 new NumberAnimation { TargetLabel = lblTotalCards, StartValue = 0, EndValue = totalCards, Duration = 1000, StartTime = DateTime.Now },
                 new NumberAnimation { TargetLabel = lblBalance, StartValue = 0, EndValue = DataBase.balance, Duration = 2000, StartTime = DateTime.Now },
                 new NumberAnimation { TargetLabel = lblTodaySales, StartValue = 0, EndValue = todaySales, Duration = 2000, StartTime = DateTime.Now },

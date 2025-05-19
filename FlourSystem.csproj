@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -7,9 +7,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	<!-- Check For Updates -->
-	<Version>1.0.0.3</Version>
-	<AssemblyVersion>1.0.0.3</AssemblyVersion>
-	<FileVersion>1.0.0.3</FileVersion>
+	<Version>1.0.0.4</Version>
+	<AssemblyVersion>1.0.0.4</AssemblyVersion>
+	<FileVersion>1.0.0.4</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

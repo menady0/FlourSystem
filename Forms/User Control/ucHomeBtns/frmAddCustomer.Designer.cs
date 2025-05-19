@@ -367,7 +367,7 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Add Customer";
+            Text = "العميل";
             TopMost = true;
             FormClosing += frmAddCustomer_FormClosing;
             panel1.ResumeLayout(false);

@@ -117,7 +117,7 @@
             // 
             pnlTotalCards.Controls.Add(totalCardslbl);
             pnlTotalCards.Controls.Add(lblTotalCards);
-            pnlTotalCards.Location = new Point(67, 106);
+            pnlTotalCards.Location = new Point(396, 106);
             pnlTotalCards.Name = "pnlTotalCards";
             pnlTotalCards.OutlineThickness = 1F;
             pnlTotalCards.PanelColor = Color.FromArgb(216, 220, 208);
@@ -152,7 +152,7 @@
             // 
             pnlTodaySale.Controls.Add(todaySaleslbl);
             pnlTodaySale.Controls.Add(lblTodaySales);
-            pnlTodaySale.Location = new Point(392, 299);
+            pnlTodaySale.Location = new Point(67, 106);
             pnlTodaySale.Name = "pnlTodaySale";
             pnlTodaySale.OutlineThickness = 1F;
             pnlTodaySale.PanelColor = Color.FromArgb(216, 220, 208);
@@ -222,7 +222,7 @@
             // 
             pnlTodayCard.Controls.Add(todayCardlbl);
             pnlTodayCard.Controls.Add(lblTodayCards);
-            pnlTodayCard.Location = new Point(392, 106);
+            pnlTodayCard.Location = new Point(396, 299);
             pnlTodayCard.Name = "pnlTodayCard";
             pnlTodayCard.OutlineThickness = 1F;
             pnlTodayCard.PanelColor = Color.FromArgb(216, 220, 208);
@@ -236,11 +236,11 @@
             todayCardlbl.AutoSize = true;
             todayCardlbl.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             todayCardlbl.ForeColor = Color.Black;
-            todayCardlbl.Location = new Point(102, 130);
+            todayCardlbl.Location = new Point(80, 130);
             todayCardlbl.Name = "todayCardlbl";
-            todayCardlbl.Size = new Size(97, 30);
+            todayCardlbl.Size = new Size(140, 30);
             todayCardlbl.TabIndex = 1;
-            todayCardlbl.Text = "بطاقات اليوم";
+            todayCardlbl.Text = "المتوفر في المخزن";
             // 
             // lblTodayCards
             // 

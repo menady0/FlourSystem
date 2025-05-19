@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Mena\\Documents\\FlourSystem\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\ucstatistaics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\ucstatistaics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\user control\\uchomebtns\\frmaddquota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\user control\\uchomebtns\\frmaddquota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,36 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmAddQuota.cs",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
-              "RelativeDocumentMoniker": "Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
-              "RelativeToolTip": "Forms\\User Control\\ucHomeBtns\\frmAddQuota.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAIwIcAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T14:58:33.327Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ucStatistaics.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucStatistaics.cs",
-              "RelativeDocumentMoniker": "Forms\\User Control\\ucStatistaics.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\User Control\\ucStatistaics.cs [Design]",
-              "RelativeToolTip": "Forms\\User Control\\ucStatistaics.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T14:48:59.306Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }

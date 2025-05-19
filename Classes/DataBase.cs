@@ -383,7 +383,7 @@ public class DataBase
             conn.Close();
         }
     }
-    public static void Registration(Dictionary<string, object> customer, int? required, int? delievered, int? paid, string dateOperation)
+    public static void Registration(Dictionary<string, object> customer, int? required, int? delivered, int? paid, string dateOperation)
     {
         string updateCustomerQuery = @"
             UPDATE customer 
@@ -395,19 +395,20 @@ public class DataBase
             WHERE 
                 CustomerID = @customerID";
 
-        string insertStoreQuery = "INSERT INTO store (DateOfOperation, MoneyPaid, theReceivedQuantity, CustomerID) VALUES (@dateOfOperation, @moneyPaid, @theReceivedQuantity, @customerID)";
+        string insertStoreQuery = "INSERT INTO store (DateOfOperation, MoneyPaid, theReceivedQuantity, theDeliveredQuantity, CustomerID) VALUES (@dateOfOperation, @moneyPaid, @theReceivedQuantity, @theDeliveredQuantity, @customerID)";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand updateCustomerCmd = new MySqlCommand(updateCustomerQuery, conn);
         MySqlCommand insertStoreCmd = new MySqlCommand(insertStoreQuery, conn);
 
         updateCustomerCmd.Parameters.AddWithValue("@theReceivedQuantity", required);
         updateCustomerCmd.Parameters.AddWithValue("@paid", paid);
-        updateCustomerCmd.Parameters.AddWithValue("@delievered", delievered);
+        updateCustomerCmd.Parameters.AddWithValue("@delievered", delivered);
         updateCustomerCmd.Parameters.AddWithValue("@customerID", customer["CustomerID"]);
 
         insertStoreCmd.Parameters.AddWithValue("@dateOfOperation", dateOperation);
         insertStoreCmd.Parameters.AddWithValue("@moneyPaid", paid);
         insertStoreCmd.Parameters.AddWithValue("@theReceivedQuantity", required);
+        insertStoreCmd.Parameters.AddWithValue("@theDeliveredQuantity", delivered);
         insertStoreCmd.Parameters.AddWithValue("@customerID", customer["CustomerID"]);
 
         try
@@ -614,7 +615,7 @@ public class DataBase
     }
     public static int Cards(int month, int year)
     {
-        string query = "SELECT COUNT(*) FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        string query = "SELECT COUNT(DISTINCT CustomerID)  FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@month", month);
@@ -640,6 +641,7 @@ public class DataBase
             conn.Close();
         }
     }
+    /*
     public static int Cards(int day, int month, int year)
     {
         string query = "SELECT COUNT(*) FROM store WHERE DAY(DateOfOperation) = @day AND MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
@@ -667,8 +669,97 @@ public class DataBase
         {
             conn.Close();
         }
+    }*/
+    public static int flourStored;
+    public static int FlourStored(int month, int year)
+    {
+        return AmountPerKGDelivered(month, year) - StoreDelivered(month, year);
+    }
+    public static int StoreDelivered(int month, int year)
+    {
+        int currentMonthAmount = GetStoreDeliveredQuantity(month, year);
+
+        (int prevMonth, int prevYear) = GetPreviousMonthYear(month, year);
+
+        int previousMonthAmount = GetStoreDeliveredQuantity(prevMonth, prevYear);
+
+        if (previousMonthAmount > 0)
+        {
+            currentMonthAmount += previousMonthAmount;
+        }
+
+        return currentMonthAmount;
+    }
+    public static int GetStoreDeliveredQuantity(int month, int year)
+    {
+        string query = "SELECT SUM(theDeliveredQuantity) FROM store WHERE MONTH(DateOfOperation) = @month AND YEAR(DateOfOperation) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show($"Failed to retrieve store amount: {ex.Message}");
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    public static int AmountPerKGDelivered(int month, int year)
+    {
+        int currentMonthAmount = GetAmountPerKGForMonthDelivered(month, year);
+        var (prevMonth, prevYear) = GetPreviousMonthYear(month, year);
+        int previousMonthAmount = GetAmountPerKGForMonthDelivered(prevMonth, prevYear);
+
+        if (previousMonthAmount > 0)
+        {
+            currentMonthAmount += previousMonthAmount;
+        }
+
+        return currentMonthAmount;
+    }
+    public static int GetAmountPerKGForMonthDelivered(int month, int year)
+    {
+        string query = "SELECT SUM(AmountPerKG) FROM quota WHERE MONTH(DateReceived) = @month AND YEAR(DateReceived) = @year";
+        MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@month", month);
+        cmd.Parameters.AddWithValue("@year", year);
+        cmd.CommandTimeout = 60;
+        try
+        {
+            conn.Open();
+            int count = 0;
+            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+                count = value;
+
+            return count;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show($"Failed to retrieve quota amount: {ex.Message}");
+            return -1;
+        }
+        finally
+        {
+            conn.Close();
+        }
     }
 
+    #region Balance Calculation
     public static int balance;
     public static int Balance(int month, int year)
     {
@@ -792,6 +883,7 @@ public class DataBase
             conn.Close();
         }
     }
+    #endregion
     #endregion
 
     #region Settings UserControl

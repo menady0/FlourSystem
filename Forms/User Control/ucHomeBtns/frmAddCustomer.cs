@@ -14,9 +14,6 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
             _dashboard = dashboard;
             ThemeManager.ApplyFormTheme(this);
         }
-        private void frmAddCustomer_Load(object sender, EventArgs e)
-        {
-        }
         #region Closing
         bool closing = true;
         private void btnClose_Click(object sender, EventArgs e)
@@ -131,7 +128,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
 
             if ((btnAdd.Tag as string) == "update")
             {
-                long originalID = int.Parse((string)Tag);
+                long originalID = long.Parse((string)Tag);
                 if (DataBase.UpdateCustomer(originalID, cardID, name, members, quantity, price))
                 {
                     this.FormClosed += (s, args) => _dashboard.btnRefresh.PerformClick();
