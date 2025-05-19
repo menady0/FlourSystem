@@ -152,7 +152,7 @@ namespace FlourSystem.Forms.User_Control
             cuiTextBox2 txtRequired = new cuiTextBox2
             {
                 Name = "input",
-                Content = $"{customer["remainQuantity"]}",
+                Content = "0",
                 Width = 80,
                 Height = 30,
                 Padding = new Padding(0),
@@ -212,7 +212,7 @@ namespace FlourSystem.Forms.User_Control
                 FocusBackgroundColor = Color.Transparent,
                 FocusBorderColor = ThemeColors.Green,
             };
-            txtRequired.ContentChanged += (sender, e) => txtRequired_ContentChanged(sender, e, txtReceived, txtPaid);
+            //txtRequired.ContentChanged += (sender, e) => txtRequired_ContentChanged(sender, e, txtReceived, txtPaid);
 
             cuiButton btnRegister = new cuiButton
             {
@@ -357,10 +357,14 @@ namespace FlourSystem.Forms.User_Control
                     int.TryParse(txtReceived.Content, out int recValue) &&
                     int.TryParse(txtPaid.Content, out int paidValue))
                 {
-                    MessageBox.Show($"paid value: {paidValue}, price: {customer["price"] ?? "0"}");
                     if (reqValue < 0 || recValue < 0 || paidValue < 0)
                     {
                         Toast.Show("لا يمكن ان تكون القيمة سالبة!", ToastType.Error);
+                        return;
+                    }
+                    else if (reqValue == 0 && recValue == 0 && paidValue == 0)
+                    {
+                        Toast.Show("لا يمكن أن تكون جميع القيم صفرًا!", ToastType.Error);
                         return;
                     }
                     else if (
@@ -401,10 +405,10 @@ namespace FlourSystem.Forms.User_Control
                     int DeliveredQuantity = int.Parse(txtReceived.Content);
                     int money = int.Parse(txtPaid.Content);
 
-                    remain.Text = (totalQuantity - receivedQuantity).ToString();
+                    remain.Text = (int.Parse(remain.Text) - receivedQuantity).ToString();
                     txtRequired.Content = remain.Text;
 
-                    ReceivedRemain.Text = (totalQuantity - DeliveredQuantity).ToString();
+                    ReceivedRemain.Text = (int.Parse(ReceivedRemain.Text) - DeliveredQuantity).ToString();
                     txtReceived.Content = ReceivedRemain.Text;
 
                     price.Text = (int.Parse(price.Text) - money).ToString();
@@ -790,7 +794,7 @@ namespace FlourSystem.Forms.User_Control
                         addCustomer.txtName.Content = customerNameObj.ToString();
                         addCustomer.txtMembers.Content = customerNumObj.ToString();
                         addCustomer.txtQuantity.Content = (customerNum * (Settings.Default.sack / 2)).ToString();
-                        addCustomer.txtPrice.Content = (customerNum * (Settings.Default.price / Settings.Default.sack)).ToString();
+                        addCustomer.txtPrice.Content = (customerNum * (Settings.Default.price / Settings.Default.sack) * (Settings.Default.sack / 2)).ToString();
                         addCustomer.btnAdd.Text = "تعديل";
                         addCustomer.btnAdd.Tag = "update";
                         addCustomer.Tag = customerId.ToString();

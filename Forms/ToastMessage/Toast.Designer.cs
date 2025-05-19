@@ -45,7 +45,7 @@
             // lblMessage
             // 
             lblMessage.BackColor = Color.Transparent;
-            lblMessage.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            lblMessage.Font = new Font("Cairo", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMessage.Location = new Point(12, 8);
             lblMessage.Name = "lblMessage";
             lblMessage.RightToLeft = RightToLeft.Yes;

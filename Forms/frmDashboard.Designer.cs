@@ -41,15 +41,15 @@
             btnAddQuota = new CuoreUI.Controls.cuiButton();
             btnAddCustomer = new CuoreUI.Controls.cuiButton();
             lblTitle = new Label();
+            pnlNavBtns = new Panel();
+            btnAdd = new FontAwesome.Sharp.IconButton();
+            btnRefresh = new FontAwesome.Sharp.IconButton();
+            btnSearch = new FontAwesome.Sharp.IconButton();
             btnMinimize = new FontAwesome.Sharp.IconButton();
             btnClose = new FontAwesome.Sharp.IconButton();
             pnlSearch = new Panel();
             picClearSearch = new FontAwesome.Sharp.IconPictureBox();
             txtSearch = new CuoreUI.Controls.cuiTextBox2();
-            pnlNavBtns = new Panel();
-            btnAdd = new FontAwesome.Sharp.IconButton();
-            btnRefresh = new FontAwesome.Sharp.IconButton();
-            btnSearch = new FontAwesome.Sharp.IconButton();
             frmDrag = new CuoreUI.cuiControlDrag(components);
             pnlMenu = new Panel();
             btnSettings = new FontAwesome.Sharp.IconPictureBox();
@@ -71,9 +71,9 @@
             pnlNavBar.SuspendLayout();
             pnlUpdateCheck.SuspendLayout();
             pnlAddDropDown.SuspendLayout();
+            pnlNavBtns.SuspendLayout();
             pnlSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picClearSearch).BeginInit();
-            pnlNavBtns.SuspendLayout();
             pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSettings).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnInfo).BeginInit();
@@ -94,10 +94,10 @@
             pnlNavBar.Controls.Add(pnlUpdateCheck);
             pnlNavBar.Controls.Add(pnlAddDropDown);
             pnlNavBar.Controls.Add(lblTitle);
+            pnlNavBar.Controls.Add(pnlNavBtns);
             pnlNavBar.Controls.Add(btnMinimize);
             pnlNavBar.Controls.Add(btnClose);
             pnlNavBar.Controls.Add(pnlSearch);
-            pnlNavBar.Controls.Add(pnlNavBtns);
             pnlNavBar.Dock = DockStyle.Top;
             pnlNavBar.Location = new Point(0, 0);
             pnlNavBar.Name = "pnlNavBar";
@@ -156,7 +156,7 @@
             spUpdateCheck.Name = "spUpdateCheck";
             spUpdateCheck.RingColor = Color.FromArgb(34, 34, 34);
             spUpdateCheck.RotateSpeed = 5F;
-            spUpdateCheck.Rotation = 307.2821F;
+            spUpdateCheck.Rotation = 113.695038F;
             spUpdateCheck.Size = new Size(35, 35);
             spUpdateCheck.TabIndex = 14;
             spUpdateCheck.Thickness = 2F;
@@ -311,6 +311,76 @@
             lblTitle.TabIndex = 9;
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // pnlNavBtns
+            // 
+            pnlNavBtns.Controls.Add(btnAdd);
+            pnlNavBtns.Controls.Add(btnRefresh);
+            pnlNavBtns.Controls.Add(btnSearch);
+            pnlNavBtns.Location = new Point(10, 24);
+            pnlNavBtns.Name = "pnlNavBtns";
+            pnlNavBtns.Size = new Size(105, 35);
+            pnlNavBtns.TabIndex = 12;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.FromArgb(18, 18, 18);
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.Dock = DockStyle.Right;
+            btnAdd.FlatAppearance.BorderSize = 0;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.ForeColor = Color.Transparent;
+            btnAdd.IconChar = FontAwesome.Sharp.IconChar.Add;
+            btnAdd.IconColor = Color.White;
+            btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAdd.IconSize = 20;
+            btnAdd.Location = new Point(0, 0);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(35, 35);
+            btnAdd.TabIndex = 2;
+            btnAdd.TabStop = false;
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.FromArgb(18, 18, 18);
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.Dock = DockStyle.Right;
+            btnRefresh.FlatAppearance.BorderSize = 0;
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.ForeColor = Color.Transparent;
+            btnRefresh.IconChar = FontAwesome.Sharp.IconChar.Refresh;
+            btnRefresh.IconColor = Color.White;
+            btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnRefresh.IconSize = 20;
+            btnRefresh.Location = new Point(35, 0);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(35, 35);
+            btnRefresh.TabIndex = 3;
+            btnRefresh.TabStop = false;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.FromArgb(18, 18, 18);
+            btnSearch.Cursor = Cursors.Hand;
+            btnSearch.Dock = DockStyle.Right;
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.ForeColor = Color.Transparent;
+            btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+            btnSearch.IconColor = Color.White;
+            btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSearch.IconSize = 20;
+            btnSearch.Location = new Point(70, 0);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(35, 35);
+            btnSearch.TabIndex = 7;
+            btnSearch.TabStop = false;
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            // 
             // btnMinimize
             // 
             btnMinimize.BackColor = Color.FromArgb(18, 18, 18);
@@ -408,76 +478,6 @@
             txtSearch.TextOffset = new Size(0, 0);
             txtSearch.UnderlinedStyle = false;
             txtSearch.ContentChanged += txtSearch_ContentChanged;
-            // 
-            // pnlNavBtns
-            // 
-            pnlNavBtns.Controls.Add(btnAdd);
-            pnlNavBtns.Controls.Add(btnRefresh);
-            pnlNavBtns.Controls.Add(btnSearch);
-            pnlNavBtns.Location = new Point(15, 24);
-            pnlNavBtns.Name = "pnlNavBtns";
-            pnlNavBtns.Size = new Size(128, 35);
-            pnlNavBtns.TabIndex = 12;
-            // 
-            // btnAdd
-            // 
-            btnAdd.BackColor = Color.FromArgb(18, 18, 18);
-            btnAdd.Cursor = Cursors.Hand;
-            btnAdd.Dock = DockStyle.Right;
-            btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.ForeColor = Color.Transparent;
-            btnAdd.IconChar = FontAwesome.Sharp.IconChar.Add;
-            btnAdd.IconColor = Color.White;
-            btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAdd.IconSize = 20;
-            btnAdd.Location = new Point(23, 0);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(35, 35);
-            btnAdd.TabIndex = 2;
-            btnAdd.TabStop = false;
-            btnAdd.UseVisualStyleBackColor = false;
-            btnAdd.Click += btnAdd_Click;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.BackColor = Color.FromArgb(18, 18, 18);
-            btnRefresh.Cursor = Cursors.Hand;
-            btnRefresh.Dock = DockStyle.Right;
-            btnRefresh.FlatAppearance.BorderSize = 0;
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.ForeColor = Color.Transparent;
-            btnRefresh.IconChar = FontAwesome.Sharp.IconChar.Refresh;
-            btnRefresh.IconColor = Color.White;
-            btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnRefresh.IconSize = 20;
-            btnRefresh.Location = new Point(58, 0);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(35, 35);
-            btnRefresh.TabIndex = 3;
-            btnRefresh.TabStop = false;
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += btnRefresh_Click;
-            // 
-            // btnSearch
-            // 
-            btnSearch.BackColor = Color.FromArgb(18, 18, 18);
-            btnSearch.Cursor = Cursors.Hand;
-            btnSearch.Dock = DockStyle.Right;
-            btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.ForeColor = Color.Transparent;
-            btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
-            btnSearch.IconColor = Color.White;
-            btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSearch.IconSize = 20;
-            btnSearch.Location = new Point(93, 0);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(35, 35);
-            btnSearch.TabIndex = 7;
-            btnSearch.TabStop = false;
-            btnSearch.UseVisualStyleBackColor = false;
-            btnSearch.Click += btnSearch_Click;
             // 
             // frmDrag
             // 
@@ -692,15 +692,15 @@
             Margin = new Padding(2, 4, 2, 4);
             Name = "frmDashboard";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmDashboard";
+            Text = "لوحة التحكم";
             Load += frmDashboard_Load;
             pnlNavBar.ResumeLayout(false);
             pnlUpdateCheck.ResumeLayout(false);
             pnlAddDropDown.ResumeLayout(false);
+            pnlNavBtns.ResumeLayout(false);
             pnlSearch.ResumeLayout(false);
             pnlSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picClearSearch).EndInit();
-            pnlNavBtns.ResumeLayout(false);
             pnlMenu.ResumeLayout(false);
             pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnSettings).EndInit();

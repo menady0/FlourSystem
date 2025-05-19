@@ -69,6 +69,7 @@ namespace FlourSystem.Forms.User_Control.ucHomeBtns
                )
             {
                 Toast.Show("يرجى تعبئة جميع الحقول.", ToastType.Error);
+                txtCardID.Focus();
                 return;
             }
 

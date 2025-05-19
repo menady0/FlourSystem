@@ -252,7 +252,7 @@
             Margin = new Padding(2, 4, 2, 4);
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Login";
+            Text = "تسجيل الدخول";
             Load += frmLogin_Load;
             pnlBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
