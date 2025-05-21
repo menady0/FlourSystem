@@ -176,6 +176,7 @@
             txtHistorySearch.RightToLeft = RightToLeft.Yes;
             txtHistorySearch.Size = new Size(233, 23);
             txtHistorySearch.TabIndex = 16;
+            txtHistorySearch.TextChanged += txtHistorySearch_TextChanged;
             // 
             // picHistorySearch
             // 
@@ -356,7 +357,7 @@
             spUpdateCheck.Name = "spUpdateCheck";
             spUpdateCheck.RingColor = Color.FromArgb(34, 34, 34);
             spUpdateCheck.RotateSpeed = 5F;
-            spUpdateCheck.Rotation = 52.06779F;
+            spUpdateCheck.Rotation = 322.934021F;
             spUpdateCheck.Size = new Size(35, 35);
             spUpdateCheck.TabIndex = 14;
             spUpdateCheck.Thickness = 2F;

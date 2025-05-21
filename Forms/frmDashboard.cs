@@ -180,7 +180,7 @@ namespace FlourSystem.Forms
                 searchTimer.Start();
             if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
                 addDropDownTimer.Start();
-            if (!pnlHistory.Bounds.Contains(PointToClient(MousePosition)) && isHistoryExpanded) 
+            if (!pnlHistory.Bounds.Contains(PointToClient(MousePosition)) && isHistoryExpanded)
                 historyTimer.Start();
             if (_ucHomeInstance != null && !_ucHomeInstance.pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && _ucHomeInstance.isAddtionalDropDownExpanded)
                 _ucHomeInstance.AdditionaldropDownTimer.Start();
@@ -729,5 +729,10 @@ namespace FlourSystem.Forms
             Toast.Show($"شهر {monthName} - {year}: الرصيد [{balance}], المبيعات [{sales}]", ToastType.Info);
         }
 
+        private void txtHistorySearch_TextChanged(object sender, EventArgs e)
+        {
+            Toast.Show("لا تزال ميزة البحث قيد التطوير...", ToastType.Info);
+            txtHistorySearch.Focus();
+        }
     }
 }
