@@ -310,7 +310,7 @@
             pnlUpdateCheck.Controls.Add(btnUpdateCheck);
             pnlUpdateCheck.Controls.Add(lblCheckUpdate);
             pnlUpdateCheck.Controls.Add(spUpdateCheck);
-            pnlUpdateCheck.Location = new Point(1500, 24);
+            pnlUpdateCheck.Location = new Point(15, 24);
             pnlUpdateCheck.Name = "pnlUpdateCheck";
             pnlUpdateCheck.Size = new Size(155, 35);
             pnlUpdateCheck.TabIndex = 13;
@@ -357,7 +357,7 @@
             spUpdateCheck.Name = "spUpdateCheck";
             spUpdateCheck.RingColor = Color.FromArgb(34, 34, 34);
             spUpdateCheck.RotateSpeed = 5F;
-            spUpdateCheck.Rotation = 322.934021F;
+            spUpdateCheck.Rotation = 180.857422F;
             spUpdateCheck.Size = new Size(35, 35);
             spUpdateCheck.TabIndex = 14;
             spUpdateCheck.Thickness = 2F;
