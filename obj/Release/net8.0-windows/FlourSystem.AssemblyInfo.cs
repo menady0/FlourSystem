@@ -13,8 +13,8 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.3")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.4+fcc0b98a705cd49e99c5cbcc251a111333a7afaa")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.4+c4351b46dbc5a135ee6af81bd240333d39a1edc0")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.4")]

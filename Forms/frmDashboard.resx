@@ -124,6 +124,33 @@
     <value>52</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pnlHistory.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAASwAAAH0CAMAAACwzuAFAAAABGdBTUEAALGPC/xhBQAAAKtQTFRFEhIS
+        GRkYGhoZGhsaGxsbHBwcHR0cHh4dHx8eHyAfICEgISEgIiIhIyMiJCQjJCUkJSYkJiclJycmKCgnKSko
+        KSopKispKywqLC0rLS0sLi4tLy8tLzAuMDEvMTIwMjMxMzMxNDQyNDUzNTY0Njc1Nzg1ODk2OTo3OTo4
+        Ojs5Ozw5PD06PT47Pj88PkA9P0A9QEE+QUI/QkNAQ0RBREVBREZCRUZDRkdE6O3foj674AAAAAlwSFlz
+        AAALDAAACwwBP0AiyAAABBdJREFUeF7t0EeCFAQARcEBJElGkoDkIDkKc/+Twe+1i3n7qiPUEQAAAAAA
+        /+fUnJ4z88ecnXMH5+fCXJw/59Jcnitzda4dXJ8bc3P+mltze+7M3YN78/fcnwfzcP6ZR/P44Mk8nWfz
+        fF7My3k1r+ffgzfzdt7N+/kwH+fTfD74Ml/n23yf/+bH/Pzt6JgTkxXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQF
+        sgJZgaxAViArkBXICmQFsgJZgaxAViArkBXICmQFsgJZgaxAViDrxI6PfwE81HNWc8hxNgAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIAD2OAAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAgGAAAAXHKoZgAAAAlw
@@ -389,5 +416,11 @@
   </metadata>
   <metadata name="btnAddCustomerTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>753, 12</value>
+  </metadata>
+  <metadata name="historyTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>929, 12</value>
+  </metadata>
+  <metadata name="yearTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1049, 12</value>
   </metadata>
 </root>

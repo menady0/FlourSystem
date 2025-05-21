@@ -628,6 +628,8 @@ namespace FlourSystem.Forms.User_Control
                 _dashboard.searchTimer.Start();
             if (!_dashboard.pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && _dashboard.isAddDropDownExpanded)
                 _dashboard.addDropDownTimer.Start();
+            if (!_dashboard.pnlHistory.Bounds.Contains(PointToClient(MousePosition)) && _dashboard.isHistoryExpanded)
+                _dashboard.historyTimer.Start();
         }
         #endregion
 

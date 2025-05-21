@@ -5,6 +5,7 @@ using FlourSystem.Properties;
 using FlourSystem.Forms.User_Control.ucHomeBtns;
 using FlourSystem.Classes;
 using FlourSystem.Classes.ToastClass;
+using Timer = System.Windows.Forms.Timer;
 
 
 namespace FlourSystem.Forms
@@ -17,7 +18,7 @@ namespace FlourSystem.Forms
         public frmDashboard()
         {
             InitializeComponent();
-            btns = new IconButton[] { btnSearch, btnAdd, btnRefresh };
+            btns = new IconButton[] { btnSearch, btnAdd, btnRefresh, btnHistory };
             redBtns = new Control[] { btnClose, picClearSearch };
             menu = new IconPictureBox[] { btnHome, btnSta, btnInfo, btnSettings };
             targetbtn = btnHome;
@@ -179,6 +180,8 @@ namespace FlourSystem.Forms
                 searchTimer.Start();
             if (!pnlAddDropDown.Bounds.Contains(PointToClient(MousePosition)) && isAddDropDownExpanded)
                 addDropDownTimer.Start();
+            if (!pnlHistory.Bounds.Contains(PointToClient(MousePosition)) && isHistoryExpanded) 
+                historyTimer.Start();
             if (_ucHomeInstance != null && !_ucHomeInstance.pnlAddtionalDropDown.Bounds.Contains(PointToClient(MousePosition)) && _ucHomeInstance.isAddtionalDropDownExpanded)
                 _ucHomeInstance.AdditionaldropDownTimer.Start();
         }
@@ -300,7 +303,7 @@ namespace FlourSystem.Forms
             LoadTitle("الاستعلامات");
             selectedbtn(btnSta);
             //if (_ucStatistaics == null)
-                //_ucStatistaics = new ucStatistaics();
+            //_ucStatistaics = new ucStatistaics();
             LoadUserControl(new ucStatistaics());
         }
         ucTeam? _ucTeamInstance;
@@ -405,7 +408,7 @@ namespace FlourSystem.Forms
 
             _ucHomeInstance = new ucHome(this);
 
-            if(lblHome.Visible)
+            if (lblHome.Visible)
                 LoadUserControl(_ucHomeInstance);
 
             ThemeManager.ApplyTheme();
@@ -450,5 +453,281 @@ namespace FlourSystem.Forms
             await CheckUpdates.CheckForUpdatesAsync(true);
             spUpdateCheck.Visible = false;
         }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            pnlHistory.Parent = this;
+            pnlHistory.BringToFront();
+            historyTimer.Start();
+            DisplayYears();
+        }
+        private FlowLayoutPanel? expandingPanel;
+        IconPictureBox? arrowIcon;
+        bool isExpanding = true;
+        bool yearsDisplayed = false;
+
+        void DisplayYears()
+        {
+            if (yearsDisplayed) return;
+            yearsDisplayed = true;
+
+            pnlHistoryContainer.Controls.Clear();
+
+            int currentMonth = DateTime.Now.Month;
+            int currentYear = DateTime.Now.Year;
+            (int firstYear, int firstMonth) = DataBase.GetFirstOperationDate();
+            if (firstYear == 0)
+            {
+                Toast.Show("لا توجد بيانات سابقة", ToastType.Info);
+                return;
+            }
+            for (int i = currentYear; i >= firstYear; i--)
+            {
+                FlowLayoutPanel pnlYear = new FlowLayoutPanel
+                {
+                    Name = $"year{i}",
+                    Width = 300,
+                    Height = 35,
+                    Font = new Font("Cairo", 10),
+                    Padding = new Padding(0),
+                    Margin = new Padding(0),
+                    RightToLeft = RightToLeft.Yes,
+                    FlowDirection = FlowDirection.TopDown,
+                    Tag = i,
+                    BackColor = Color.FromArgb(232, 232, 232),
+                    MaximumSize = new Size(300, 155),
+                    MinimumSize = new Size(300, 35),
+                };
+                // Year Header
+                FlowLayoutPanel yearHeader = new FlowLayoutPanel
+                {
+                    Name = $"yearHeader{i}",
+                    Width = 300,
+                    Height = 35,
+                    Font = new Font("Cairo", 10),
+                    Padding = new Padding(10, 0, 10, 0),
+                    Margin = new Padding(0),
+                    RightToLeft = RightToLeft.Yes,
+                    Tag = i,
+                    BackColor = Color.FromArgb(227, 227, 227),
+                    Cursor = Cursors.Hand,
+                };
+                IconPictureBox arrow = new IconPictureBox
+                {
+                    IconChar = IconChar.AngleLeft,
+                    IconColor = ThemeManager.IsDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor,
+                    IconSize = 16,
+                    Width = 16,
+                    Height = 35,
+                    SizeMode = PictureBoxSizeMode.CenterImage,
+                    Margin = new Padding(0),
+                    Cursor = Cursors.Hand,
+                };
+                Label lblYear = new Label
+                {
+                    Text = i.ToString(),
+                    RightToLeft = RightToLeft.Yes,
+                    Height = 35,
+                    Width = 100,
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    ForeColor = ThemeManager.IsDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor,
+                    Cursor = Cursors.Hand,
+                };
+                yearHeader.Controls.Add(arrow);
+                yearHeader.Controls.Add(lblYear);
+                // Month Container
+                FlowLayoutPanel monthContainer = new FlowLayoutPanel
+                {
+                    Name = $"monthContainer{i}",
+                    Width = 300,
+                    Height = 120,
+                    Font = new Font("Cairo", 10),
+                    Padding = new Padding(0),
+                    Margin = new Padding(0),
+                    RightToLeft = RightToLeft.Yes,
+                    Tag = i,
+                    BackColor = Color.Transparent,
+                    AutoScroll = true,
+                    FlowDirection = FlowDirection.TopDown,
+
+                };
+                yearHeader.Click += (s, e) => YearHeader_Click(s, e);
+                arrow.Click += (s, e) => YearHeader_Click(s, e);
+                lblYear.Click += (s, e) => YearHeader_Click(s, e);
+                // This is for testing
+                Label lbl = new Label
+                {
+                    Text = "الشهر",
+                    RightToLeft = RightToLeft.Yes,
+                    Height = 35,
+                    Width = 100,
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    ForeColor = ThemeManager.IsDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor,
+                    Cursor = Cursors.Hand,
+                };
+                monthContainer.Controls.Add(lbl);
+
+                pnlYear.Controls.Add(yearHeader);
+                pnlYear.Controls.Add(monthContainer);
+
+                pnlHistoryContainer.Controls.Add(pnlYear);
+            }
+        }
+
+        public bool isHistoryExpanded = false;
+        private void historyTimer_Tick(object sender, EventArgs e)
+        {
+            if (isHistoryExpanded)
+            {
+                if (pnlHistory.Height > 0)
+                {
+                    pnlHistory.Height -= 20;
+                }
+                else
+                {
+                    historyTimer.Stop();
+                    isHistoryExpanded = false;
+                    foreach (FlowLayoutPanel yearPanel in pnlHistoryContainer.Controls.OfType<FlowLayoutPanel>())
+                    {
+                        if (yearPanel.Height > yearPanel.MinimumSize.Height)
+                        {
+                            yearPanel.Height = 35;
+
+                            var arrowIcon = yearPanel.Controls
+                                .OfType<FlowLayoutPanel>()
+                                .FirstOrDefault(y => y.Name.StartsWith("yearHeader"))
+                                ?.Controls.OfType<IconPictureBox>().FirstOrDefault();
+
+                            if (arrowIcon != null)
+                                arrowIcon.Rotation = 0;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (pnlHistory.Height < pnlHistory.MaximumSize.Height)
+                {
+                    pnlHistory.Height += 20;
+                }
+                else
+                {
+                    historyTimer.Stop();
+                    isHistoryExpanded = true;
+                }
+            }
+        }
+
+        private void yearTimer_Tick(object sender, EventArgs e)
+        {
+            if (expandingPanel == null || arrowIcon == null) return;
+
+            if (isExpanding)
+            {
+                if (expandingPanel.Height < expandingPanel.MaximumSize.Height)
+                {
+                    expandingPanel.Height += 10;
+                    arrowIcon.Rotation -= 7.5f;
+                }
+                else
+                {
+                    expandingPanel.Height = expandingPanel.MaximumSize.Height;
+                    arrowIcon.Rotation = -90;
+                    yearTimer.Stop();
+                }
+            }
+            else
+            {
+                if (expandingPanel.Height > expandingPanel.MinimumSize.Height)
+                {
+                    expandingPanel.Height -= 10;
+                    arrowIcon.Rotation += 7.5f;
+                }
+                else
+                {
+                    expandingPanel.Height = expandingPanel.MinimumSize.Height;
+                    arrowIcon.Rotation = 0;
+                    yearTimer.Stop();
+                }
+            }
+        }
+        void YearHeader_Click(object? sender, EventArgs e)
+        {
+            FlowLayoutPanel? header = sender is FlowLayoutPanel pnl
+                ? pnl
+                : (sender as Control)?.Parent as FlowLayoutPanel;
+
+            if (header == null) return;
+
+            if (header.Parent is FlowLayoutPanel parent && parent != null)
+                expandingPanel = parent;
+            else return;
+
+            isExpanding = expandingPanel != null && expandingPanel.Height <= expandingPanel.MinimumSize.Height;
+
+            arrowIcon = header.Controls.OfType<IconPictureBox>().FirstOrDefault();
+
+            yearTimer.Start();
+
+            FlowLayoutPanel? monthContainer = expandingPanel.Controls
+                .OfType<FlowLayoutPanel>()
+                .FirstOrDefault(m => m.Name.StartsWith("monthContainer"));
+
+            if (monthContainer != null)
+            {
+                int year = (int)expandingPanel.Tag;
+                DisplayMonths(monthContainer, year);
+            }
+
+        }
+        void DisplayMonths(FlowLayoutPanel monthContainer, int year)
+        {
+            monthContainer.Controls.Clear();
+
+            List<int> months = DataBase.GetMonthsForYear(year);
+
+            foreach (int month in months)
+            {
+                int balance = DataBase.GetAmountPerKGForMonth(month, year);
+                int sales = DataBase.GetStore(month, year);
+                if (balance == 0) continue;
+                FlowLayoutPanel pnlMonth = new FlowLayoutPanel
+                {
+                    Width = 300,
+                    Height = 30,
+                    Font = new Font("Cairo", 10),
+                    Padding = new Padding(20, 0, 20, 0),
+                    Margin = new Padding(0),
+                    RightToLeft = RightToLeft.Yes,
+                    BackColor = Color.Transparent,
+                    Cursor = Cursors.Hand,
+                };
+                Label lblMonth = new Label
+                {
+                    Text = new DateTime(year, month, 1).ToString("MMMM", new System.Globalization.CultureInfo("ar-EG")),
+                    AutoSize = false,
+                    Height = 30,
+                    Width = 80,
+                    RightToLeft = RightToLeft.Yes,
+                    Padding = new Padding(10, 0, 10, 0),
+                    Font = new Font("Cairo", 10),
+                    Cursor = Cursors.Hand,
+                    ForeColor = ThemeManager.IsDarkMode ? ThemeColors.DarkForeColor : ThemeColors.LightForeColor,
+                    BackColor = Color.Transparent,
+                    Margin = new Padding(5, 0, 5, 0)
+                };
+                pnlMonth.Controls.Add(lblMonth);
+                pnlMonth.Click += (s, e) => MonthClick(s, e, lblMonth.Text, year, balance, sales);
+                lblMonth.Click += (s, e) => MonthClick(s, e, lblMonth.Text, year, balance, sales);
+
+
+                monthContainer.Controls.Add(pnlMonth);
+            }
+        }
+        void MonthClick(object? sender, EventArgs e, string monthName, int year, int balance, int sales)
+        {
+            Toast.Show($"شهر {monthName} - {year}: الرصيد [{balance}], المبيعات [{sales}]", ToastType.Info);
+        }
+
     }
 }

@@ -510,7 +510,7 @@ public class DataBase
     //}
     public static bool UpdateCustomer(long originalID, long cardID, string name, int members, int quantity, int price)
     {
-        string query = "UPDATE customer set CustomerID = @cardId, OwnerName = @name, NumberOfPeople = @members, TotalQuantity = @total, price = @price WHERE CustomerID = @originalID";
+        string query = "UPDATE customer set CustomerID = @cardId, OwnerName = @name, NumberOfPeople = @members, TotalQuantity = @total, Delivered = @total, price = @price WHERE CustomerID = @originalID";
         MySqlConnection conn = new MySqlConnection(mySQLConnection);
         MySqlCommand cmd = new MySqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@originalID", originalID);
@@ -986,6 +986,59 @@ public class DataBase
         {
             conn.Close();
         }
+    }
+    #endregion
+
+    #region History Panel
+    public static (int Year, int Month) GetFirstOperationDate()
+    {
+        string query = "SELECT YEAR(MIN(DateOfOperation)), MONTH(MIN(DateOfOperation)) FROM store";
+
+        using MySqlConnection conn = new MySqlConnection(mySQLConnection);
+        using MySqlCommand cmd = new MySqlCommand(query, conn);
+
+        try
+        {
+            conn.Open();
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int year = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+                int month = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+                return (year, month);
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("فشل في جلب أول عملية: " + ex.Message);
+        }
+
+        return (0, 0);
+    }
+    public static List<int> GetMonthsForYear(int year)
+    {
+        string query = "SELECT DISTINCT MONTH(DateOfOperation) FROM store WHERE YEAR(DateOfOperation) = @year ORDER BY MONTH(DateOfOperation)";
+        List<int> months = new List<int>();
+
+        using var conn = new MySqlConnection(mySQLConnection);
+        using var cmd = new MySqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@year", year);
+
+        try
+        {
+            conn.Open();
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                months.Add(reader.GetInt32(0));
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("فشل في جلب الشهور: " + ex.Message);
+        }
+
+        return months;
     }
     #endregion
     #endregion

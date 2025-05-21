@@ -32,9 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboard));
             frmBorder = new CuoreUI.Components.cuiFormRounder();
             pnlNavBar = new Panel();
+            pnlHistory = new CuoreUI.Controls.cuiBorder();
+            pnlHistorySearchBorder = new CuoreUI.Controls.cuiBorder();
+            txtHistorySearch = new TextBox();
+            picHistorySearch = new FontAwesome.Sharp.IconPictureBox();
+            pnlHistoryContainer = new FlowLayoutPanel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            label2 = new Label();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            label1 = new Label();
+            line = new Panel();
+            lblHistory = new Label();
             pnlUpdateCheck = new Panel();
             btnUpdateCheck = new FontAwesome.Sharp.IconButton();
-            label1 = new Label();
+            lblCheckUpdate = new Label();
             spUpdateCheck = new CuoreUI.Controls.cuiSpinner();
             pnlAddDropDown = new CuoreUI.Controls.cuiBorder();
             btnAddOwner = new CuoreUI.Controls.cuiButton();
@@ -43,6 +57,7 @@
             lblTitle = new Label();
             pnlNavBtns = new Panel();
             btnAdd = new FontAwesome.Sharp.IconButton();
+            btnHistory = new FontAwesome.Sharp.IconButton();
             btnRefresh = new FontAwesome.Sharp.IconButton();
             btnSearch = new FontAwesome.Sharp.IconButton();
             btnMinimize = new FontAwesome.Sharp.IconButton();
@@ -68,7 +83,18 @@
             typingTimer = new System.Windows.Forms.Timer(components);
             addDropDownTimer = new System.Windows.Forms.Timer(components);
             btnAddCustomerTimer = new System.Windows.Forms.Timer(components);
+            historyTimer = new System.Windows.Forms.Timer(components);
+            yearTimer = new System.Windows.Forms.Timer(components);
             pnlNavBar.SuspendLayout();
+            pnlHistory.SuspendLayout();
+            pnlHistorySearchBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picHistorySearch).BeginInit();
+            pnlHistoryContainer.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
             pnlUpdateCheck.SuspendLayout();
             pnlAddDropDown.SuspendLayout();
             pnlNavBtns.SuspendLayout();
@@ -91,6 +117,7 @@
             // pnlNavBar
             // 
             pnlNavBar.BackColor = Color.Transparent;
+            pnlNavBar.Controls.Add(pnlHistory);
             pnlNavBar.Controls.Add(pnlUpdateCheck);
             pnlNavBar.Controls.Add(pnlAddDropDown);
             pnlNavBar.Controls.Add(lblTitle);
@@ -104,12 +131,185 @@
             pnlNavBar.Size = new Size(1200, 83);
             pnlNavBar.TabIndex = 0;
             // 
+            // pnlHistory
+            // 
+            pnlHistory.BackColor = Color.Transparent;
+            pnlHistory.BackgroundImage = (Image)resources.GetObject("pnlHistory.BackgroundImage");
+            pnlHistory.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlHistory.Controls.Add(pnlHistorySearchBorder);
+            pnlHistory.Controls.Add(pnlHistoryContainer);
+            pnlHistory.Controls.Add(line);
+            pnlHistory.Controls.Add(lblHistory);
+            pnlHistory.Location = new Point(55, 65);
+            pnlHistory.MaximumSize = new Size(300, 500);
+            pnlHistory.MinimumSize = new Size(300, 0);
+            pnlHistory.Name = "pnlHistory";
+            pnlHistory.OutlineThickness = 1F;
+            pnlHistory.PanelColor = Color.FromArgb(221, 221, 221);
+            pnlHistory.PanelOutlineColor = Color.Transparent;
+            pnlHistory.Rounding = new Padding(5);
+            pnlHistory.Size = new Size(300, 0);
+            pnlHistory.TabIndex = 14;
+            // 
+            // pnlHistorySearchBorder
+            // 
+            pnlHistorySearchBorder.BackColor = Color.FromArgb(221, 221, 221);
+            pnlHistorySearchBorder.Controls.Add(txtHistorySearch);
+            pnlHistorySearchBorder.Controls.Add(picHistorySearch);
+            pnlHistorySearchBorder.Location = new Point(10, 50);
+            pnlHistorySearchBorder.Name = "pnlHistorySearchBorder";
+            pnlHistorySearchBorder.OutlineThickness = 1F;
+            pnlHistorySearchBorder.PanelColor = Color.FromArgb(232, 232, 232);
+            pnlHistorySearchBorder.PanelOutlineColor = Color.Transparent;
+            pnlHistorySearchBorder.Rounding = new Padding(8);
+            pnlHistorySearchBorder.Size = new Size(280, 35);
+            pnlHistorySearchBorder.TabIndex = 15;
+            // 
+            // txtHistorySearch
+            // 
+            txtHistorySearch.BackColor = Color.FromArgb(232, 232, 232);
+            txtHistorySearch.BorderStyle = BorderStyle.None;
+            txtHistorySearch.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtHistorySearch.Location = new Point(12, 6);
+            txtHistorySearch.Name = "txtHistorySearch";
+            txtHistorySearch.PlaceholderText = "بحث عن...";
+            txtHistorySearch.RightToLeft = RightToLeft.Yes;
+            txtHistorySearch.Size = new Size(233, 23);
+            txtHistorySearch.TabIndex = 16;
+            // 
+            // picHistorySearch
+            // 
+            picHistorySearch.BackColor = Color.FromArgb(232, 232, 232);
+            picHistorySearch.ForeColor = Color.Black;
+            picHistorySearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+            picHistorySearch.IconColor = Color.Black;
+            picHistorySearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            picHistorySearch.IconSize = 20;
+            picHistorySearch.Location = new Point(252, 7);
+            picHistorySearch.Name = "picHistorySearch";
+            picHistorySearch.Size = new Size(20, 20);
+            picHistorySearch.SizeMode = PictureBoxSizeMode.AutoSize;
+            picHistorySearch.TabIndex = 16;
+            picHistorySearch.TabStop = false;
+            // 
+            // pnlHistoryContainer
+            // 
+            pnlHistoryContainer.BackColor = Color.FromArgb(221, 221, 221);
+            pnlHistoryContainer.Controls.Add(flowLayoutPanel2);
+            pnlHistoryContainer.FlowDirection = FlowDirection.TopDown;
+            pnlHistoryContainer.Location = new Point(0, 124);
+            pnlHistoryContainer.Name = "pnlHistoryContainer";
+            pnlHistoryContainer.RightToLeft = RightToLeft.Yes;
+            pnlHistoryContainer.Size = new Size(300, 370);
+            pnlHistoryContainer.TabIndex = 4;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(flowLayoutPanel1);
+            flowLayoutPanel2.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel2.Location = new Point(20, 0);
+            flowLayoutPanel2.Margin = new Padding(0);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(280, 155);
+            flowLayoutPanel2.TabIndex = 2;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(iconPictureBox2);
+            flowLayoutPanel1.Controls.Add(label2);
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Margin = new Padding(0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Padding = new Padding(10, 0, 10, 0);
+            flowLayoutPanel1.Size = new Size(280, 35);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
+            // iconPictureBox2
+            // 
+            iconPictureBox2.BackColor = Color.FromArgb(221, 221, 221);
+            iconPictureBox2.ForeColor = Color.FromArgb(18, 18, 18);
+            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            iconPictureBox2.IconColor = Color.FromArgb(18, 18, 18);
+            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox2.IconSize = 16;
+            iconPictureBox2.Location = new Point(244, 0);
+            iconPictureBox2.Margin = new Padding(0);
+            iconPictureBox2.Name = "iconPictureBox2";
+            iconPictureBox2.Size = new Size(16, 35);
+            iconPictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            iconPictureBox2.TabIndex = 0;
+            iconPictureBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Cairo", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(141, 0);
+            label2.Name = "label2";
+            label2.RightToLeft = RightToLeft.Yes;
+            label2.Size = new Size(100, 35);
+            label2.TabIndex = 1;
+            label2.Text = "2025";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.BackColor = Color.Gray;
+            flowLayoutPanel3.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel3.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel3.Location = new Point(0, 35);
+            flowLayoutPanel3.Margin = new Padding(0);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Padding = new Padding(15, 0, 15, 0);
+            flowLayoutPanel3.Size = new Size(280, 98);
+            flowLayoutPanel3.TabIndex = 1;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.BackColor = Color.FromArgb(0, 192, 0);
+            flowLayoutPanel4.Controls.Add(label1);
+            flowLayoutPanel4.Location = new Point(-10, 3);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.RightToLeft = RightToLeft.Yes;
+            flowLayoutPanel4.Size = new Size(257, 30);
+            flowLayoutPanel4.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(220, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(34, 19);
+            label1.TabIndex = 0;
+            label1.Text = "label1";
+            // 
+            // line
+            // 
+            line.BackColor = Color.Silver;
+            line.Location = new Point(10, 103);
+            line.Name = "line";
+            line.Size = new Size(280, 1);
+            line.TabIndex = 3;
+            // 
+            // lblHistory
+            // 
+            lblHistory.AutoSize = true;
+            lblHistory.BackColor = Color.FromArgb(221, 221, 221);
+            lblHistory.Font = new Font("Cairo SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHistory.ForeColor = Color.Black;
+            lblHistory.Location = new Point(228, 9);
+            lblHistory.Name = "lblHistory";
+            lblHistory.Size = new Size(57, 30);
+            lblHistory.TabIndex = 0;
+            lblHistory.Text = "السجل";
+            // 
             // pnlUpdateCheck
             // 
             pnlUpdateCheck.Controls.Add(btnUpdateCheck);
-            pnlUpdateCheck.Controls.Add(label1);
+            pnlUpdateCheck.Controls.Add(lblCheckUpdate);
             pnlUpdateCheck.Controls.Add(spUpdateCheck);
-            pnlUpdateCheck.Location = new Point(15, 24);
+            pnlUpdateCheck.Location = new Point(1500, 24);
             pnlUpdateCheck.Name = "pnlUpdateCheck";
             pnlUpdateCheck.Size = new Size(155, 35);
             pnlUpdateCheck.TabIndex = 13;
@@ -135,17 +335,17 @@
             btnUpdateCheck.UseVisualStyleBackColor = false;
             btnUpdateCheck.Click += btnUpdateCheck_Click;
             // 
-            // label1
+            // lblCheckUpdate
             // 
-            label1.Dock = DockStyle.Left;
-            label1.Font = new Font("Cairo", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
-            label1.ForeColor = Color.FromArgb(232, 237, 223);
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(70, 35);
-            label1.TabIndex = 5;
-            label1.Text = "تفقد التحديثات";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            lblCheckUpdate.Dock = DockStyle.Left;
+            lblCheckUpdate.Font = new Font("Cairo", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblCheckUpdate.ForeColor = Color.FromArgb(232, 237, 223);
+            lblCheckUpdate.Location = new Point(0, 0);
+            lblCheckUpdate.Name = "lblCheckUpdate";
+            lblCheckUpdate.Size = new Size(70, 35);
+            lblCheckUpdate.TabIndex = 5;
+            lblCheckUpdate.Text = "تفقد التحديثات";
+            lblCheckUpdate.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // spUpdateCheck
             // 
@@ -156,7 +356,7 @@
             spUpdateCheck.Name = "spUpdateCheck";
             spUpdateCheck.RingColor = Color.FromArgb(34, 34, 34);
             spUpdateCheck.RotateSpeed = 5F;
-            spUpdateCheck.Rotation = 113.695038F;
+            spUpdateCheck.Rotation = 52.06779F;
             spUpdateCheck.Size = new Size(35, 35);
             spUpdateCheck.TabIndex = 14;
             spUpdateCheck.Thickness = 2F;
@@ -314,11 +514,12 @@
             // pnlNavBtns
             // 
             pnlNavBtns.Controls.Add(btnAdd);
+            pnlNavBtns.Controls.Add(btnHistory);
             pnlNavBtns.Controls.Add(btnRefresh);
             pnlNavBtns.Controls.Add(btnSearch);
             pnlNavBtns.Location = new Point(10, 24);
             pnlNavBtns.Name = "pnlNavBtns";
-            pnlNavBtns.Size = new Size(105, 35);
+            pnlNavBtns.Size = new Size(140, 35);
             pnlNavBtns.TabIndex = 12;
             // 
             // btnAdd
@@ -341,6 +542,26 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
+            // btnHistory
+            // 
+            btnHistory.BackColor = Color.FromArgb(18, 18, 18);
+            btnHistory.Cursor = Cursors.Hand;
+            btnHistory.Dock = DockStyle.Right;
+            btnHistory.FlatAppearance.BorderSize = 0;
+            btnHistory.FlatStyle = FlatStyle.Flat;
+            btnHistory.ForeColor = Color.Transparent;
+            btnHistory.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            btnHistory.IconColor = Color.White;
+            btnHistory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnHistory.IconSize = 20;
+            btnHistory.Location = new Point(35, 0);
+            btnHistory.Name = "btnHistory";
+            btnHistory.Size = new Size(35, 35);
+            btnHistory.TabIndex = 8;
+            btnHistory.TabStop = false;
+            btnHistory.UseVisualStyleBackColor = false;
+            btnHistory.Click += btnHistory_Click;
+            // 
             // btnRefresh
             // 
             btnRefresh.BackColor = Color.FromArgb(18, 18, 18);
@@ -353,7 +574,7 @@
             btnRefresh.IconColor = Color.White;
             btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnRefresh.IconSize = 20;
-            btnRefresh.Location = new Point(35, 0);
+            btnRefresh.Location = new Point(70, 0);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(35, 35);
             btnRefresh.TabIndex = 3;
@@ -373,7 +594,7 @@
             btnSearch.IconColor = Color.White;
             btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSearch.IconSize = 20;
-            btnSearch.Location = new Point(70, 0);
+            btnSearch.Location = new Point(105, 0);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(35, 35);
             btnSearch.TabIndex = 7;
@@ -426,7 +647,7 @@
             // 
             pnlSearch.Controls.Add(picClearSearch);
             pnlSearch.Controls.Add(txtSearch);
-            pnlSearch.Location = new Point(120, 24);
+            pnlSearch.Location = new Point(160, 24);
             pnlSearch.MaximumSize = new Size(200, 35);
             pnlSearch.MinimumSize = new Size(0, 35);
             pnlSearch.Name = "pnlSearch";
@@ -467,7 +688,7 @@
             txtSearch.MinimumSize = new Size(0, 35);
             txtSearch.Multiline = false;
             txtSearch.Name = "txtSearch";
-            txtSearch.Padding = new Padding(15, 10, 15, 0);
+            txtSearch.Padding = new Padding(25, 5, 25, 0);
             txtSearch.PasswordChar = false;
             txtSearch.PlaceholderColor = Color.DimGray;
             txtSearch.PlaceholderText = "بحث عن..";
@@ -677,6 +898,16 @@
             addDropDownTimer.Interval = 10;
             addDropDownTimer.Tick += addDropDownTimer_Tick;
             // 
+            // historyTimer
+            // 
+            historyTimer.Interval = 10;
+            historyTimer.Tick += historyTimer_Tick;
+            // 
+            // yearTimer
+            // 
+            yearTimer.Interval = 10;
+            yearTimer.Tick += yearTimer_Tick;
+            // 
             // frmDashboard
             // 
             AutoScaleDimensions = new SizeF(5F, 19F);
@@ -695,6 +926,18 @@
             Text = "لوحة التحكم";
             Load += frmDashboard_Load;
             pnlNavBar.ResumeLayout(false);
+            pnlHistory.ResumeLayout(false);
+            pnlHistory.PerformLayout();
+            pnlHistorySearchBorder.ResumeLayout(false);
+            pnlHistorySearchBorder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picHistorySearch).EndInit();
+            pnlHistoryContainer.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             pnlUpdateCheck.ResumeLayout(false);
             pnlAddDropDown.ResumeLayout(false);
             pnlNavBtns.ResumeLayout(false);
@@ -742,7 +985,7 @@
         private Panel pnlNavBtns;
         private FontAwesome.Sharp.IconPictureBox picClearSearch;
         private Panel pnlUpdateCheck;
-        private Label label1;
+        private Label lblCheckUpdate;
         public FontAwesome.Sharp.IconButton btnUpdateCheck;
         public CuoreUI.Controls.cuiBorder pnlContainer;
         public Panel pnlSearch;
@@ -750,5 +993,22 @@
         public CuoreUI.Controls.cuiBorder pnlAddDropDown;
         public System.Windows.Forms.Timer addDropDownTimer;
         public CuoreUI.Controls.cuiSpinner spUpdateCheck;
+        private FontAwesome.Sharp.IconButton btnHistory;
+        private Label lblHistory;
+        private Panel line;
+        private FlowLayoutPanel pnlHistoryContainer;
+        private CuoreUI.Controls.cuiBorder pnlHistorySearchBorder;
+        private TextBox txtHistorySearch;
+        private FontAwesome.Sharp.IconPictureBox picHistorySearch;
+        public CuoreUI.Controls.cuiBorder pnlHistory;
+        public System.Windows.Forms.Timer historyTimer;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private Label label2;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private Label label1;
+        public System.Windows.Forms.Timer yearTimer;
     }
 }
