@@ -1756,7 +1756,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.1",
+    "version": "1.0.1.1",
     "restore": {
       "projectUniqueName": "C:\\Users\\Mena\\Documents\\FlourSystem\\FlourSystem.csproj",
       "projectName": "FlourSystem",

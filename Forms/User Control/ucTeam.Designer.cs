@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTeam));
             container = new CuoreUI.Controls.cuiBorder();
             pnlCard8 = new CuoreUI.Controls.cuiBorder();
             label7 = new Label();
@@ -193,11 +194,11 @@
             label7.AutoSize = true;
             label7.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(95, 205);
+            label7.Location = new Point(94, 206);
             label7.Name = "label7";
-            label7.Size = new Size(49, 19);
+            label7.Size = new Size(36, 19);
             label7.TabIndex = 5;
-            label7.Text = "Role Here";
+            label7.Text = "مصمم";
             // 
             // pnlImageBorder8
             // 
@@ -213,7 +214,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.Profile_Image;
+            pictureBox4.Image = Properties.Resources.Profile_Image__6_;
             pictureBox4.Location = new Point(7, 7);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(100, 100);
@@ -234,11 +235,11 @@
             label8.AutoSize = true;
             label8.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(51, 162);
+            label8.Location = new Point(33, 160);
             label8.Name = "label8";
-            label8.Size = new Size(135, 45);
+            label8.Size = new Size(158, 45);
             label8.TabIndex = 3;
-            label8.Text = "Name Here";
+            label8.Text = "يوسف ظريف";
             // 
             // pnlSocialMedia8
             // 
@@ -268,6 +269,7 @@
             link15.SizeMode = PictureBoxSizeMode.AutoSize;
             link15.TabIndex = 2;
             link15.TabStop = false;
+            link15.Click += links;
             // 
             // link16
             // 
@@ -284,6 +286,7 @@
             link16.SizeMode = PictureBoxSizeMode.AutoSize;
             link16.TabIndex = 1;
             link16.TabStop = false;
+            link16.Click += links;
             // 
             // pnlCard7
             // 
@@ -306,11 +309,11 @@
             label9.AutoSize = true;
             label9.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(95, 205);
+            label9.Location = new Point(79, 206);
             label9.Name = "label9";
-            label9.Size = new Size(49, 19);
+            label9.Size = new Size(66, 19);
             label9.TabIndex = 5;
-            label9.Text = "Role Here";
+            label9.Text = "مصمم ومطور";
             // 
             // pnlImageBorder7
             // 
@@ -347,11 +350,11 @@
             label10.AutoSize = true;
             label10.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(51, 162);
+            label10.Location = new Point(53, 159);
             label10.Name = "label10";
-            label10.Size = new Size(135, 45);
+            label10.Size = new Size(118, 45);
             label10.TabIndex = 3;
-            label10.Text = "Name Here";
+            label10.Text = "مينا نادي";
             // 
             // pnlSocialMedia7
             // 
@@ -381,6 +384,7 @@
             link13.SizeMode = PictureBoxSizeMode.AutoSize;
             link13.TabIndex = 2;
             link13.TabStop = false;
+            link13.Click += link13_Click;
             // 
             // link14
             // 
@@ -397,6 +401,7 @@
             link14.SizeMode = PictureBoxSizeMode.AutoSize;
             link14.TabIndex = 1;
             link14.TabStop = false;
+            link14.Click += picLinkedIn_Click;
             // 
             // pnlCard4
             // 
@@ -419,11 +424,11 @@
             label5.AutoSize = true;
             label5.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(95, 205);
+            label5.Location = new Point(79, 207);
             label5.Name = "label5";
-            label5.Size = new Size(49, 19);
+            label5.Size = new Size(66, 19);
             label5.TabIndex = 5;
-            label5.Text = "Role Here";
+            label5.Text = "مصمم ومطور";
             // 
             // pnlImageBorder4
             // 
@@ -439,7 +444,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.Profile_Image;
+            pictureBox3.Image = Properties.Resources.Profile_Image__5_;
             pictureBox3.Location = new Point(7, 7);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(100, 100);
@@ -460,11 +465,11 @@
             label6.AutoSize = true;
             label6.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(51, 162);
+            label6.Location = new Point(50, 157);
             label6.Name = "label6";
-            label6.Size = new Size(135, 45);
+            label6.Size = new Size(124, 45);
             label6.TabIndex = 3;
-            label6.Text = "Name Here";
+            label6.Text = "علي أحمد";
             // 
             // pnlSocialMedia4
             // 
@@ -494,6 +499,7 @@
             link7.SizeMode = PictureBoxSizeMode.AutoSize;
             link7.TabIndex = 2;
             link7.TabStop = false;
+            link7.Click += links;
             // 
             // link8
             // 
@@ -510,6 +516,7 @@
             link8.SizeMode = PictureBoxSizeMode.AutoSize;
             link8.TabIndex = 1;
             link8.TabStop = false;
+            link8.Click += links;
             // 
             // pnlCard3
             // 
@@ -532,11 +539,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(95, 205);
+            label1.Location = new Point(63, 205);
             label1.Name = "label1";
-            label1.Size = new Size(49, 19);
+            label1.Size = new Size(98, 19);
             label1.TabIndex = 5;
-            label1.Text = "Role Here";
+            label1.Text = "مطور الواجهة الأمامية";
             // 
             // pnlImageBorder3
             // 
@@ -552,7 +559,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Profile_Image;
+            pictureBox1.Image = Properties.Resources.Profile_Image__4_;
             pictureBox1.Location = new Point(7, 7);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(100, 100);
@@ -573,11 +580,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(51, 162);
+            label2.Location = new Point(45, 159);
             label2.Name = "label2";
-            label2.Size = new Size(135, 45);
+            label2.Size = new Size(134, 45);
             label2.TabIndex = 3;
-            label2.Text = "Name Here";
+            label2.Text = "طارق أحمد";
             // 
             // pnlSocialMedia3
             // 
@@ -607,6 +614,7 @@
             link5.SizeMode = PictureBoxSizeMode.AutoSize;
             link5.TabIndex = 2;
             link5.TabStop = false;
+            link5.Click += links;
             // 
             // link6
             // 
@@ -623,6 +631,7 @@
             link6.SizeMode = PictureBoxSizeMode.AutoSize;
             link6.TabIndex = 1;
             link6.TabStop = false;
+            link6.Click += links;
             // 
             // pnlCard6
             // 
@@ -645,11 +654,11 @@
             label11.AutoSize = true;
             label11.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             label11.ForeColor = Color.Black;
-            label11.Location = new Point(95, 205);
+            label11.Location = new Point(72, 208);
             label11.Name = "label11";
-            label11.Size = new Size(49, 19);
+            label11.Size = new Size(80, 19);
             label11.TabIndex = 5;
-            label11.Text = "Role Here";
+            label11.Text = "مدير ضمان الجودة";
             // 
             // pnlImageBorder6
             // 
@@ -665,7 +674,7 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.Image = Properties.Resources.Profile_Image;
+            pictureBox6.Image = Properties.Resources.Profile_Image__2_;
             pictureBox6.Location = new Point(7, 7);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(100, 100);
@@ -686,11 +695,11 @@
             label12.AutoSize = true;
             label12.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             label12.ForeColor = Color.Black;
-            label12.Location = new Point(51, 162);
+            label12.Location = new Point(46, 160);
             label12.Name = "label12";
-            label12.Size = new Size(135, 45);
+            label12.Size = new Size(133, 45);
             label12.TabIndex = 3;
-            label12.Text = "Name Here";
+            label12.Text = "مينا عاطف";
             // 
             // pnlSocialMedia6
             // 
@@ -720,6 +729,7 @@
             link11.SizeMode = PictureBoxSizeMode.AutoSize;
             link11.TabIndex = 2;
             link11.TabStop = false;
+            link11.Click += links;
             // 
             // link12
             // 
@@ -736,6 +746,7 @@
             link12.SizeMode = PictureBoxSizeMode.AutoSize;
             link12.TabIndex = 1;
             link12.TabStop = false;
+            link12.Click += links;
             // 
             // pnlCard2
             // 
@@ -758,11 +769,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(95, 205);
+            label3.Location = new Point(74, 205);
             label3.Name = "label3";
-            label3.Size = new Size(49, 19);
+            label3.Size = new Size(76, 19);
             label3.TabIndex = 5;
-            label3.Text = "Role Here";
+            label3.Text = "خبير قواعد البيانات";
             // 
             // pnlImageBorder2
             // 
@@ -778,7 +789,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Profile_Image;
+            pictureBox2.Image = Properties.Resources.Profile_Image__3_;
             pictureBox2.Location = new Point(7, 7);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(100, 100);
@@ -799,11 +810,11 @@
             label4.AutoSize = true;
             label4.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(51, 162);
+            label4.Location = new Point(42, 161);
             label4.Name = "label4";
-            label4.Size = new Size(135, 45);
+            label4.Size = new Size(141, 45);
             label4.TabIndex = 3;
-            label4.Text = "Name Here";
+            label4.Text = "أحمد محمد";
             // 
             // pnlSocialMedia2
             // 
@@ -833,6 +844,7 @@
             link2.SizeMode = PictureBoxSizeMode.AutoSize;
             link2.TabIndex = 2;
             link2.TabStop = false;
+            link2.Click += links;
             // 
             // link4
             // 
@@ -849,6 +861,7 @@
             link4.SizeMode = PictureBoxSizeMode.AutoSize;
             link4.TabIndex = 1;
             link4.TabStop = false;
+            link4.Click += links;
             // 
             // pnlCard1
             // 
@@ -871,11 +884,11 @@
             lblRole1.AutoSize = true;
             lblRole1.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblRole1.ForeColor = Color.Black;
-            lblRole1.Location = new Point(95, 205);
+            lblRole1.Location = new Point(94, 205);
             lblRole1.Name = "lblRole1";
-            lblRole1.Size = new Size(49, 19);
+            lblRole1.Size = new Size(36, 19);
             lblRole1.TabIndex = 5;
-            lblRole1.Text = "Role Here";
+            lblRole1.Text = "مصمم";
             // 
             // pnlImageBorder1
             // 
@@ -912,11 +925,11 @@
             lblName1.AutoSize = true;
             lblName1.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             lblName1.ForeColor = Color.Black;
-            lblName1.Location = new Point(51, 162);
+            lblName1.Location = new Point(43, 158);
             lblName1.Name = "lblName1";
-            lblName1.Size = new Size(135, 45);
+            lblName1.Size = new Size(139, 45);
             lblName1.TabIndex = 3;
-            lblName1.Text = "Name Here";
+            lblName1.Text = "أبانوب رشاد";
             // 
             // pnlSocialMedia1
             // 
@@ -946,6 +959,7 @@
             link0.SizeMode = PictureBoxSizeMode.AutoSize;
             link0.TabIndex = 2;
             link0.TabStop = false;
+            link0.Click += links;
             // 
             // link1
             // 
@@ -962,6 +976,7 @@
             link1.SizeMode = PictureBoxSizeMode.AutoSize;
             link1.TabIndex = 1;
             link1.TabStop = false;
+            link1.Click += links;
             // 
             // pnlCard5
             // 
@@ -984,11 +999,11 @@
             label13.AutoSize = true;
             label13.Font = new Font("Cairo ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Pixel);
             label13.ForeColor = Color.Black;
-            label13.Location = new Point(95, 205);
+            label13.Location = new Point(74, 207);
             label13.Name = "label13";
-            label13.Size = new Size(49, 19);
+            label13.Size = new Size(76, 19);
             label13.TabIndex = 5;
-            label13.Text = "Role Here";
+            label13.Text = "خبير قواعد البيانات";
             // 
             // pnlImageBorder5
             // 
@@ -1004,7 +1019,7 @@
             // 
             // pictureBox7
             // 
-            pictureBox7.Image = Properties.Resources.Profile_Image;
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
             pictureBox7.Location = new Point(7, 7);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(100, 100);
@@ -1025,11 +1040,11 @@
             label14.AutoSize = true;
             label14.Font = new Font("Cairo", 24F, FontStyle.Bold, GraphicsUnit.Pixel, 0);
             label14.ForeColor = Color.Black;
-            label14.Location = new Point(51, 162);
+            label14.Location = new Point(38, 160);
             label14.Name = "label14";
-            label14.Size = new Size(135, 45);
+            label14.Size = new Size(149, 45);
             label14.TabIndex = 3;
-            label14.Text = "Name Here";
+            label14.Text = "معتز خميس";
             // 
             // pnlSocialMedia5
             // 
@@ -1059,6 +1074,7 @@
             link10.SizeMode = PictureBoxSizeMode.AutoSize;
             link10.TabIndex = 2;
             link10.TabStop = false;
+            link10.Click += links;
             // 
             // link9
             // 
@@ -1075,6 +1091,7 @@
             link9.SizeMode = PictureBoxSizeMode.AutoSize;
             link9.TabIndex = 1;
             link9.TabStop = false;
+            link9.Click += links;
             // 
             // ucTeam
             // 

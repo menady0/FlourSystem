@@ -1,5 +1,7 @@
 ﻿using CuoreUI.Controls;
 using FlourSystem.Classes;
+using FlourSystem.Classes.ToastClass;
+using FlourSystem.Forms.ToastMessage;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -54,11 +56,6 @@ namespace FlourSystem.Forms.User_Control
                 pnlSocialMedia5,
                 pnlSocialMedia7,
             };
-        }
-        private void picLinkedIn_Click(object sender, EventArgs e)
-        {
-            string url = "https://www.linkedin.com/in/mena-nady";
-            goToLink(url);
         }
         void goToLink(string url)
         {
@@ -147,6 +144,22 @@ namespace FlourSystem.Forms.User_Control
             ThemeManager.ApplyTheme();
         }
 
+        #region Mina Nady
+        private void picLinkedIn_Click(object sender, EventArgs e)
+        {
+            string url = "https://www.linkedin.com/in/mena-nady";
+            goToLink(url);
+        }
+        private void link13_Click(object sender, EventArgs e)
+        {
+            string url = "https://menady0.github.io/portfolio/";
+            goToLink(url);
+        }
+        #endregion
 
+        void links(object sender, EventArgs e)
+        {
+            Toast.Show("لا يتوفر رابط لهذا الشخص", ToastType.Info);
+        }
     }
 }

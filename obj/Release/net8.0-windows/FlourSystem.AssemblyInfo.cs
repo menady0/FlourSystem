@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1.0+e33b33560d83e8c5596a41f97acd989c34913af9")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1.1+4be3f873dcb726e8490f021d3efbfa3b3b3ab9f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlourSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlourSystem")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.1")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 

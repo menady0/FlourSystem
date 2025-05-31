@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Mena\\Documents\\FlourSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:forms\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|c:\\users\\mena\\documents\\floursystem\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{F92E6904-F1F9-4A55-A342-45A679669357}|FlourSystem.csproj|solutionrelative:properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +26,27 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "Properties\\Resources.resx",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Properties\\Resources.resx",
+              "RelativeToolTip": "Properties\\Resources.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-06-01T18:00:07.238Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmDashboard.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs",
-              "RelativeDocumentMoniker": "Forms\\frmDashboard.cs",
-              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\Forms\\frmDashboard.cs [Design]",
-              "RelativeToolTip": "Forms\\frmDashboard.cs [Design]",
+              "Title": "frmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Mena\\Documents\\FlourSystem\\frmLogin.cs",
+              "RelativeDocumentMoniker": "frmLogin.cs",
+              "ToolTip": "C:\\Users\\Mena\\Documents\\FlourSystem\\frmLogin.cs",
+              "RelativeToolTip": "frmLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T19:01:41.712Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-01T17:50:34.744Z",
+              "EditorCaption": ""
             }
           ]
         }

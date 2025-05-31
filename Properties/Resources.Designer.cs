@@ -83,26 +83,6 @@ namespace FlourSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DarkInput {
-            get {
-                object obj = ResourceManager.GetObject("DarkInput", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DashboardBackground {
-            get {
-                object obj = ResourceManager.GetObject("DashboardBackground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap input {
             get {
                 object obj = ResourceManager.GetObject("input", resourceCulture);
@@ -116,6 +96,56 @@ namespace FlourSystem.Properties {
         internal static System.Drawing.Bitmap Profile_Image {
             get {
                 object obj = ResourceManager.GetObject("Profile Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profile_Image__2_ {
+            get {
+                object obj = ResourceManager.GetObject("Profile Image (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profile_Image__3_ {
+            get {
+                object obj = ResourceManager.GetObject("Profile Image (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profile_Image__4_ {
+            get {
+                object obj = ResourceManager.GetObject("Profile Image (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profile_Image__5_ {
+            get {
+                object obj = ResourceManager.GetObject("Profile Image (5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profile_Image__6_ {
+            get {
+                object obj = ResourceManager.GetObject("Profile Image (6)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

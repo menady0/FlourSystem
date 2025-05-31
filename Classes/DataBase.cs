@@ -7,7 +7,7 @@ using System.Net.NetworkInformation;
 
 public class DataBase
 {
-    static string mySQLConnection = "server=127.0.0.1 ; user=root; database=floursystem; password=";
+    static string mySQLConnection = "server=127.0.0.1 ; user=root; database=floursystemapp; password=";
 
     public static string? currentUsername;
     public static string? currentPassword;
@@ -673,7 +673,7 @@ public class DataBase
     public static int flourStored;
     public static int FlourStored(int month, int year)
     {
-        return AmountPerKGDelivered(month, year) - StoreDelivered(month, year);
+        return AmountPerKG(month, year) - StoreDelivered(month, year);
     }
     public static int StoreDelivered(int month, int year)
     {
@@ -718,46 +718,46 @@ public class DataBase
             conn.Close();
         }
     }
-    public static int AmountPerKGDelivered(int month, int year)
-    {
-        int currentMonthAmount = GetAmountPerKGForMonthDelivered(month, year);
-        var (prevMonth, prevYear) = GetPreviousMonthYear(month, year);
-        int previousMonthAmount = GetAmountPerKGForMonthDelivered(prevMonth, prevYear);
+    //public static int AmountPerKGDelivered(int month, int year)
+    //{
+    //    int currentMonthAmount = GetAmountPerKGForMonth(month, year);
+    //    var (prevMonth, prevYear) = GetPreviousMonthYear(month, year);
+    //    int previousMonthAmount = GetAmountPerKGForMonth(prevMonth, prevYear);
 
-        if (previousMonthAmount > 0)
-        {
-            currentMonthAmount += previousMonthAmount;
-        }
+    //    if (previousMonthAmount > 0)
+    //    {
+    //        currentMonthAmount += previousMonthAmount;
+    //    }
 
-        return currentMonthAmount;
-    }
-    public static int GetAmountPerKGForMonthDelivered(int month, int year)
-    {
-        string query = "SELECT SUM(AmountPerKG) FROM quota WHERE MONTH(DateReceived) = @month AND YEAR(DateReceived) = @year";
-        MySqlConnection conn = new MySqlConnection(mySQLConnection);
-        MySqlCommand cmd = new MySqlCommand(query, conn);
-        cmd.Parameters.AddWithValue("@month", month);
-        cmd.Parameters.AddWithValue("@year", year);
-        cmd.CommandTimeout = 60;
-        try
-        {
-            conn.Open();
-            int count = 0;
-            if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
-                count = value;
+    //    return currentMonthAmount;
+    //}
+    //public static int GetAmountPerKGForMonthDelivered(int month, int year)
+    //{
+    //    string query = "SELECT SUM(AmountPerKG) FROM quota WHERE MONTH(DateReceived) = @month AND YEAR(DateReceived) = @year";
+    //    MySqlConnection conn = new MySqlConnection(mySQLConnection);
+    //    MySqlCommand cmd = new MySqlCommand(query, conn);
+    //    cmd.Parameters.AddWithValue("@month", month);
+    //    cmd.Parameters.AddWithValue("@year", year);
+    //    cmd.CommandTimeout = 60;
+    //    try
+    //    {
+    //        conn.Open();
+    //        int count = 0;
+    //        if (int.TryParse(cmd.ExecuteScalar().ToString(), out int value))
+    //            count = value;
 
-            return count;
-        }
-        catch (MySqlException ex)
-        {
-            MessageBox.Show($"Failed to retrieve quota amount: {ex.Message}");
-            return -1;
-        }
-        finally
-        {
-            conn.Close();
-        }
-    }
+    //        return count;
+    //    }
+    //    catch (MySqlException ex)
+    //    {
+    //        MessageBox.Show($"Failed to retrieve quota amount: {ex.Message}");
+    //        return -1;
+    //    }
+    //    finally
+    //    {
+    //        conn.Close();
+    //    }
+    //}
 
     #region Balance Calculation
     public static int balance;

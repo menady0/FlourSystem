@@ -41,7 +41,7 @@ namespace FlourSystem
         }
         void ResetAllCustomersForNewMonth()
         {
-            var customers = DataBase.CustomersList;
+            List<Dictionary<string, object>> customers = DataBase.RetrieveCustomerTable();
 
             int successCount = 0;
             int failCount = 0;
